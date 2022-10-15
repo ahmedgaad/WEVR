@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
+import 'package:wevr_app/presentation/resources/routes_manager.dart';
+import 'package:wevr_app/presentation/resources/theme_manager.dart';
 
 class MyApp extends StatefulWidget {
   MyApp._internal(); //named constructor
@@ -15,6 +17,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: RouteGenerator.getRoute,
+      initialRoute: Routes.splashRoute,
+      theme: getThemeData(),
+    );
   }
 }
