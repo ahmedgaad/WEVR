@@ -10,7 +10,7 @@ TextStyle _getTextStyleInter(double fontSize, FontWeight fontWeight, Color color
   );
 }//Inter Style
 
-//bold style inter
+//bold style Inter
 TextStyle getBoldStyleInter({double fontSize = FontSize.s12, required Color color, }){
   return _getTextStyleInter(
       fontSize,
@@ -18,7 +18,7 @@ TextStyle getBoldStyleInter({double fontSize = FontSize.s12, required Color colo
       color);
 }
 
-//semiBold style inter
+//semiBold style Inter
 TextStyle getSemiBoldStyleInter({double fontSize = FontSize.s12, required Color color, }){
   return _getTextStyleInter(
       fontSize,
@@ -26,7 +26,7 @@ TextStyle getSemiBoldStyleInter({double fontSize = FontSize.s12, required Color 
       color);
 }
 
-//medium style inter
+//medium style Inter
 TextStyle getMediumStyleInter({double fontSize = FontSize.s12, required Color color, }){
   return _getTextStyleInter(
       fontSize,
@@ -34,7 +34,7 @@ TextStyle getMediumStyleInter({double fontSize = FontSize.s12, required Color co
       color);
 }
 
-//regular style inter
+//regular style Inter
 TextStyle getRegularStyleInter({double fontSize = FontSize.s12, required Color color, }){
   return _getTextStyleInter(
       fontSize,
@@ -42,7 +42,7 @@ TextStyle getRegularStyleInter({double fontSize = FontSize.s12, required Color c
       color);
 }
 
-//light style inter
+//light style Inter
 TextStyle getLightStyleInter({double fontSize = FontSize.s12, required Color color, }){
   return _getTextStyleInter(
       fontSize,
