@@ -1,5 +1,3 @@
-const String imagePath = 'assets/images';
-
 class ImagesAssets{
-  static const String splashLogo ='$imagePath/logo/white_logo.svg';
+  static const String splashLogo ='assets/logo/black_logo.png';
 }

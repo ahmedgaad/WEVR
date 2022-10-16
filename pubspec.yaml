@@ -72,8 +72,7 @@ flutter:
   assets:
     - assets/images/onboarding/
     - assets/images/reset_password/
-    - assets/images/logo/
-    - assets/images/logo/white_logo.svg
+    - assets/logo/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
