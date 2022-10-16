@@ -1,3 +1,4 @@
-class AppConstants{
-  static const int splashDelay=3;
+class AppConstants {
+  static const String imagePath = "assets/images";
+  static const int splashDelay = 3;
 }
