@@ -70,17 +70,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/onboarding/
     - assets/images/logo/white_logo_optimized.svg
     - assets/images/logo/black_logo_optimized.svg
-    - assets/images/onboarding/onboarding1.svg
-    - assets/images/onboarding/onboarding2.svg
-    - assets/images/onboarding/onboarding3.svg
-    - assets/images/onboarding/onboarding4.svg
-    - assets/images/reset_password/create_new_pass.svg
-    - assets/images/reset_password/email_reset.svg
-    - assets/images/reset_password/forgot_password.svg
-    - assets/images/reset_password/mobile_reset.svg
-    - assets/images/reset_password/success.svg
+
+    - assets/images/reset_password/
+    -
     - assets/images/icons/apple_ic.svg
     - assets/images/icons/back_arrow_ic.svg
     - assets/images/icons/check_ic.svg
