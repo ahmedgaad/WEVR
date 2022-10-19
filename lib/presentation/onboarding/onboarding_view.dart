@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:wevr_app/presentation/resources/assets_manager.dart';
+import 'package:wevr_app/presentation/resources/constants_manager.dart';
 import 'package:wevr_app/presentation/resources/font_manager.dart';
+import 'package:wevr_app/presentation/resources/routes_manager.dart';
 import 'package:wevr_app/presentation/resources/strings_manager.dart';
 import 'package:wevr_app/presentation/resources/style_manager.dart';
 import 'package:wevr_app/presentation/resources/values_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../resources/color_manager.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({Key? key}) : super(key: key);
@@ -20,6 +23,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   final PageController _pageController = PageController();
   late final List<SliderObject> _list = _getSliderData();
   int currentIndex = 0;
+  bool isLast = false;
+
   List<SliderObject> _getSliderData() => [
     SliderObject(
         ImagesAssetsManager.onBoarding1,
@@ -57,13 +62,14 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           statusBarIconBrightness: Brightness.dark,
         ),
          */
-
         actions: [
           TextButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.pushReplacementNamed(context, Routes.getStarted);
+              },
               child: Padding(
                 padding: const EdgeInsetsDirectional.only(
-                    end: AppPadding.p20
+                    end: PaddingSize.p20
                 ),
                 child: Text(
                   AppStrings.skip,
@@ -77,7 +83,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(AppSize.s0),
+        padding: const EdgeInsets.all(AppSize.s4),
         child: Column(
           children: [
             Expanded(
@@ -86,32 +92,136 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 controller: _pageController,
                   itemCount: _list.length,
                   onPageChanged: (int index){
-                  currentIndex = index;
+                  setState(() {
+                    currentIndex = index;
+                  });
+                  if(index == _list.length -1){
+                    setState(() {
+                      isLast = true;
+                    });
+                  }else{
+                    setState(() {
+                      isLast = false;
+                    });
+                  }
                   },
                   itemBuilder: (context, index) => itemSlider(_list[index]),
               ),
             ),
-            SmoothPageIndicator(
-                controller: _pageController,
-                effect: const ExpandingDotsEffect(
-                  dotColor: ColorManager.lightPrimary,
-                  activeDotColor: ColorManager.primary,
-                  dotHeight: AppSize.s7,
-                  dotWidth: AppSize.s10,
-                  expansionFactor: AppSize.s5,
-                  spacing: AppSize.s6,
+            Padding(
+              padding: const EdgeInsetsDirectional.only(
+                bottom: AppSize.s12
+              ),
+              child: SmoothPageIndicator(
+                  controller: _pageController,
+                  effect: const ExpandingDotsEffect(
+                    dotColor: ColorManager.lightPrimary,
+                    activeDotColor: ColorManager.primary,
+                    dotHeight: AppSize.s7,
+                    dotWidth: AppSize.s10,
+                    expansionFactor: AppSize.s5,
+                    spacing: AppSize.s6,
 
-                ),
-                count: _list.length,
+                  ),
+                  count: _list.length,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(PaddingSize.p8),
+              child: Row(
+                children: [
+                  ConditionalBuilder(
+                    condition: currentIndex > 0,
+                    builder: (BuildContext context) {
+                      return Padding(
+                        padding: const EdgeInsets.all(PaddingSize.p40),
+                        child: GestureDetector(
+                          onTap: (){
+                            _pageController.previousPage(
+                              duration: const Duration(
+                                  seconds: AppConstants.previousPageTime
+                              ),
+                              curve: Curves.fastLinearToSlowEaseIn,
+                            );
+                          },
+                          child: Container(
+                            height: AppSize.s44,
+                            width: AppSize.s44,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: ColorManager.lightGrey,
+                                  width: AppSize.s4,
+                                )
+                            ),
+                            child: SvgPicture.asset(ImagesAssetsManager.leftArrowIc,
+                              color: ColorManager.lightGrey,
+                              fit: BoxFit.scaleDown,
+                              height: AppSize.s25_33,
+                              width: AppSize.s14_67,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    fallback: (BuildContext context) {
+                      return Container();
+                    },
+                  ),
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.all(PaddingSize.p40),
+                    child: GestureDetector(
+                      onTap: (){
+                        if(isLast){
+                          Navigator.pushReplacementNamed(context, Routes.getStarted);
+                        }
+                        _pageController.nextPage(
+                            duration: const Duration(
+                              seconds: AppConstants.nextPageTime,
+                            ),
+                            curve: Curves.fastLinearToSlowEaseIn,
+                        );
+                      },
+                      child: Container(
+                        height: AppSize.s44,
+                        width: AppSize.s44,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: ColorManager.primary,
+                            width: AppSize.s4,
+                          ),
+                        ),
+                        child: SvgPicture.asset(ImagesAssetsManager.rightArrowIc,
+                          fit: BoxFit.scaleDown,
+                          height: AppSize.s25_33,
+                          width: AppSize.s14_67,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
-              height: AppSize.s255
-            )
+              height: AppMargin.m24,
+            ),
           ],
         ),
       ),
     );
   }
+
+
+
+
+
+
+
+
+
+
 
   Widget itemSlider(SliderObject object) => Column(
     mainAxisAlignment: MainAxisAlignment.start,
@@ -137,7 +247,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         height: AppSize.s10,
       ),
       Padding(
-        padding: const EdgeInsets.all(AppPadding.p8),
+        padding: const EdgeInsets.all(PaddingSize.p8),
         child: Text(
           object.subTitle,
           textAlign: TextAlign.center,
@@ -147,6 +257,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     ],
   );
 }
+
+
+
+
 
 class SliderObject{
   String image;

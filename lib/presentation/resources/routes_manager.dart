@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wevr_app/presentation/forgot_password/forgot_password_view.dart';
+import 'package:wevr_app/presentation/get_started/get_started_view.dart';
 import 'package:wevr_app/presentation/home/home_view.dart';
 import 'package:wevr_app/presentation/login/login_view.dart';
 import 'package:wevr_app/presentation/register/register_view.dart';
@@ -11,6 +12,7 @@ import '../onboarding/onboarding_view.dart';
 class Routes{
   static const String splashRoute = "/";
   static const String onBoardingRoute = '/onBoarding';
+  static const String getStarted = '/getStarted';
   static const String loginRoute = "/login";
   static const String registerRoute = "/register";
   static const String forgetPasswordRoute = "/forgetPassword";
@@ -24,6 +26,8 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => const OnBoardingView());
+      case Routes.getStarted:
+        return MaterialPageRoute(builder: (_) => const GetStartedView());
       case Routes.loginRoute:
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.registerRoute:

@@ -19,6 +19,8 @@ class ImagesAssetsManager{
   static const String facebookLogoIc ='${AppConstants.imagePath}/icons/facebook_ic.svg';
   static const String googleIc ='${AppConstants.imagePath}/icons/google_ic.svg';
   static const String infoIc ='${AppConstants.imagePath}/icons/info_ic.svg';
+  static const String rightArrowIc ='${AppConstants.imagePath}/icons/right_arrow_ic.svg';
+  static const String leftArrowIc ='${AppConstants.imagePath}/icons/left_arrow_ic.svg';
 
   static const String createNewPass ='${AppConstants.imagePath}/reset_password/create_new_pass.svg';
   static const String emailReset ='${AppConstants.imagePath}/reset_password/email_reset.svg';

@@ -50,7 +50,7 @@ class _SplashViewState extends State<SplashView> {
         end: Alignment.bottomLeft,
       )),
       child: SvgPicture.asset(
-        ImagesAssetsManager.splashLogoWhite,
+        ImagesAssetsManager.splashLogoBlack,
       ),
     );
   }
