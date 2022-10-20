@@ -6,6 +6,10 @@ class AppStrings{
   static const String onBoardingTitle2 = "virtual tour";
   static const String onBoardingTitle3 = "online auction";
   static const String onBoardingTitle4 = "property owner";
+  static const String welcomeTo = "Welcome to";
+  static const String signIn = "sign in";
+  static const String signUp = "sign up";
+  static const String asGuest = "Continue as a guest";
 
   static const String onBoardingSubTitle1 =
   """

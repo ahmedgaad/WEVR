@@ -7,6 +7,7 @@ TextStyle _getTextStyleInter(double fontSize, FontWeight fontWeight, Color color
     fontWeight: fontWeight,
     fontFamily: FontConstants.fontFamilyInter,
     color: color,
+
   );
 }//Inter Style
 
@@ -59,11 +60,12 @@ TextStyle _getTextStylePoppins(double fontSize, FontWeight fontWeight, Color col
     fontWeight: fontWeight,
     fontFamily: FontConstants.fontFamilyPoppins,
     color: color,
+
   );
 }//Poppins Style
 
 //bold style Poppins
-TextStyle getBoldStylePoppins({double fontSize = FontSize.s12, required Color color, }){
+TextStyle getBoldStylePoppins({double fontSize = FontSize.s20,required Color color }){
   return _getTextStylePoppins(
       fontSize,
       FontWeightManager.bold,
@@ -87,7 +89,7 @@ TextStyle getMediumStylePoppins({double fontSize = FontSize.s12, required Color 
 }
 
 //regular style Poppins
-TextStyle getRegularStylePoppins({double fontSize = FontSize.s12, required Color color, }){
+TextStyle getRegularStylePoppins({double fontSize = FontSize.s24, required Color color, }){
   return _getTextStylePoppins(
       fontSize,
       FontWeightManager.regular,

@@ -6,6 +6,7 @@ import 'package:wevr_app/presentation/resources/color_manager.dart';
 import 'package:wevr_app/presentation/resources/constants_manager.dart';
 import 'package:wevr_app/presentation/resources/routes_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wevr_app/presentation/resources/values_manager.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -49,8 +50,11 @@ class _SplashViewState extends State<SplashView> {
         begin: Alignment.topRight,
         end: Alignment.bottomLeft,
       )),
-      child: SvgPicture.asset(
-        ImagesAssetsManager.splashLogoBlack,
+      child: Padding(
+        padding: const EdgeInsets.all(PaddingSize.p70),
+        child: SvgPicture.asset(
+          ImagesAssetsManager.splashLogoBlack,
+        ),
       ),
     );
   }

@@ -3,7 +3,9 @@ import 'package:wevr_app/presentation/resources/constants_manager.dart';
 class ImagesAssetsManager{
 
   static const String splashLogoWhite ='${AppConstants.imagePath}/logo/white_logo_optimized.svg';
-  static const String splashLogoBlack ='${AppConstants.imagePath}/logo/black_logo_optimized.svg';
+  static const String splashLogoBlack ='${AppConstants.imagePath}/logo/splash_logo_black.svg';
+  static const String getStartedImage ='${AppConstants.imagePath}/logo/get_started.jpg';
+  static const String getStartedLogo ='${AppConstants.imagePath}/logo/start_logo.svg';
 
   static const String onBoarding1 ='${AppConstants.imagePath}/onboarding/onboarding1.svg';
   static const String onBoarding2 ='${AppConstants.imagePath}/onboarding/onboarding2.svg';
