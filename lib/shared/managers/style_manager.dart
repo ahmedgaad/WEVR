@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wevr_app/presentation/resources/font_manager.dart';
+import 'package:wevr_app/shared/managers/font_manager.dart';
 
 TextStyle _getTextStyleInter(double fontSize, FontWeight fontWeight, Color color){
   return TextStyle(
@@ -44,7 +44,7 @@ TextStyle getRegularStyleInter({double fontSize = FontSize.s12, required Color c
 }
 
 //light style Inter
-TextStyle getLightStyleInter({double fontSize = FontSize.s12, required Color color, }){
+TextStyle getLightStyleInter({double fontSize = FontSize.s10, required Color color, }){
   return _getTextStyleInter(
       fontSize,
       FontWeightManager.bold,
@@ -73,7 +73,7 @@ TextStyle getBoldStylePoppins({double fontSize = FontSize.s20,required Color col
 }
 
 //semiBold style Poppins
-TextStyle getSemiBoldStylePoppins({double fontSize = FontSize.s12, required Color color, }){
+TextStyle getSemiBoldStylePoppins({double fontSize = FontSize.s22, required Color color, }){
   return _getTextStylePoppins(
       fontSize,
       FontWeightManager.semiBold,

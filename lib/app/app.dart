@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
-import 'package:wevr_app/presentation/resources/routes_manager.dart';
-import 'package:wevr_app/presentation/resources/theme_manager.dart';
+import 'package:wevr_app/shared/managers/routes_manager.dart';
+import 'package:wevr_app/shared/managers/theme_manager.dart';
 
 class MyApp extends StatefulWidget {
   MyApp._internal(); //named constructor

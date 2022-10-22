@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:wevr_app/presentation/resources/assets_manager.dart';
+import 'package:wevr_app/shared/managers/assets_manager.dart';
 import 'package:wevr_app/presentation/resources/constants_manager.dart';
-import 'package:wevr_app/presentation/resources/font_manager.dart';
-import 'package:wevr_app/presentation/resources/routes_manager.dart';
-import 'package:wevr_app/presentation/resources/strings_manager.dart';
-import 'package:wevr_app/presentation/resources/style_manager.dart';
-import 'package:wevr_app/presentation/resources/values_manager.dart';
+import 'package:wevr_app/shared/managers/font_manager.dart';
+import 'package:wevr_app/shared/managers/routes_manager.dart';
+import 'package:wevr_app/shared/managers/strings_manager.dart';
+import 'package:wevr_app/shared/managers/style_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../resources/color_manager.dart';
+import '../../shared/components/constants.dart';
+import '../../shared/managers/color_manager.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+
+import '../../shared/managers/values_manager.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({Key? key}) : super(key: key);

@@ -10,6 +10,9 @@ class AppStrings{
   static const String signIn = "sign in";
   static const String signUp = "sign up";
   static const String asGuest = "Continue as a guest";
+  static const String loginAccount = "Login account";
+  static const String or = "OR";
+  static const String emailOrMobile = "email or mobile";
 
   static const String onBoardingSubTitle1 =
   """

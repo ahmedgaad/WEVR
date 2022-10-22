@@ -72,21 +72,8 @@ flutter:
   assets:
     - assets/images/onboarding/
     - assets/images/logo/
-    - assets/images/logo/get_started.jpg
     - assets/images/reset_password/
-    - assets/images/icons/apple_ic.svg
-    - assets/images/icons/back_arrow_ic.svg
-    - assets/images/icons/check_ic.svg
-    - assets/images/icons/email_ic.svg
-    - assets/images/icons/eye_hidden_ic.svg
-    - assets/images/icons/eye_ic.svg
-    - assets/images/icons/facebook_ic.svg
-    - assets/images/icons/google_ic.svg
-    - assets/images/icons/info_ic.svg
-    - assets/images/icons/phone_ic.svg
-    - assets/images/icons/right_arrow_ic.svg
-    - assets/images/icons/left_arrow_ic.svg
-
+    - assets/images/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

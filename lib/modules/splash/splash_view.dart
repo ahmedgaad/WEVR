@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wevr_app/presentation/resources/assets_manager.dart';
-import 'package:wevr_app/presentation/resources/color_manager.dart';
-import 'package:wevr_app/presentation/resources/constants_manager.dart';
-import 'package:wevr_app/presentation/resources/routes_manager.dart';
+import 'package:wevr_app/shared/managers/assets_manager.dart';
+import 'package:wevr_app/shared/managers/color_manager.dart';
+import 'package:wevr_app/shared/managers/routes_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wevr_app/presentation/resources/values_manager.dart';
+
+import '../../shared/components/constants.dart';
+import '../../shared/managers/values_manager.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -34,6 +35,7 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
+
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: ColorManager.transparent,
       statusBarBrightness: Brightness.dark,

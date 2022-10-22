@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wevr_app/presentation/resources/color_manager.dart';
-import 'package:wevr_app/presentation/resources/font_manager.dart';
-import 'package:wevr_app/presentation/resources/style_manager.dart';
-import 'package:wevr_app/presentation/resources/values_manager.dart';
+import 'package:wevr_app/shared/managers/color_manager.dart';
+import 'package:wevr_app/shared/managers/style_manager.dart';
+
 
 Widget defaultButton({
   double width = double.infinity,

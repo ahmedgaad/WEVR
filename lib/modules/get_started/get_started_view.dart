@@ -1,16 +1,14 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wevr_app/presentation/resources/assets_manager.dart';
-import 'package:wevr_app/presentation/resources/color_manager.dart';
-import 'package:wevr_app/presentation/resources/components.dart';
-import 'package:wevr_app/presentation/resources/routes_manager.dart';
-import 'package:wevr_app/presentation/resources/strings_manager.dart';
-import 'package:wevr_app/presentation/resources/style_manager.dart';
-import 'package:wevr_app/presentation/resources/values_manager.dart';
-
-import '../resources/font_manager.dart';
+import 'package:wevr_app/shared/managers/assets_manager.dart';
+import 'package:wevr_app/shared/managers/color_manager.dart';
+import 'package:wevr_app/shared/managers/routes_manager.dart';
+import 'package:wevr_app/shared/managers/strings_manager.dart';
+import 'package:wevr_app/shared/managers/style_manager.dart';
+import 'package:wevr_app/shared/managers/values_manager.dart';
+import '../../shared/components/components.dart';
+import '../../shared/managers/font_manager.dart';
 
 class GetStartedView extends StatefulWidget {
   const GetStartedView({Key? key}) : super(key: key);
@@ -34,25 +32,24 @@ class _GetStartedViewState extends State<GetStartedView> {
                   fit: BoxFit.cover,
                 )
             ),
-
           ),
           Padding(
             padding: const EdgeInsets.all(PaddingSize.p40),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(41),
-              child:  Stack(
-                alignment: Alignment.center,
-                children: [
-                  BackdropFilter(
-                      filter: ImageFilter.blur
-                        (
-                        sigmaX: AppSize.s20,
-                        sigmaY: AppSize.s20,
-                      ),
-                    child: Container(),
-                  ),
-                  SingleChildScrollView(
-                    child: Column(
+              borderRadius: BorderRadius.circular(AppRadius.r41),
+              child: SingleChildScrollView(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    BackdropFilter(
+                        filter: ImageFilter.blur
+                          (
+                          sigmaX: AppSize.s20,
+                          sigmaY: AppSize.s20,
+                        ),
+                      child: Container(),
+                    ),
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -90,23 +87,22 @@ class _GetStartedViewState extends State<GetStartedView> {
                                 height: AppSize.s20,
                               ),
                               defaultButton(
+                                borderColor: ColorManager.primary,
+                                borderRadius: AppRadius.r2,
+                                background: ColorManager.transparent,
                                 function: (){
                                   Navigator.pushReplacementNamed(context, Routes.registerRoute);
+
                                 },
-                                borderColor: ColorManager.primary,
-                                borderRadius: AppSize.s2,
-                                background: ColorManager.transparent,
                                 isUpperCase: true,
                                 text: AppStrings.signUp,
                                 textColor: ColorManager.black,
                               ),
                               const SizedBox(
-                                height: AppSize.s44,
+                                height: AppSize.s20,
                               ),
                               TextButton(
-                                  onPressed: (){
-                                    Navigator.pushReplacementNamed(context, Routes.homeRoute);
-                                  },
+                                  onPressed: (){},
                                   child: const Text(
                                     AppStrings.asGuest,
                                     style: TextStyle(
@@ -119,15 +115,13 @@ class _GetStartedViewState extends State<GetStartedView> {
                             ],
                           ),
                         ),
-
                       ],
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
-
         ],
       ),
     );

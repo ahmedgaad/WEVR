@@ -1,4 +1,4 @@
-import 'package:wevr_app/presentation/resources/constants_manager.dart';
+import '../components/constants.dart';
 
 class ImagesAssetsManager{
 
@@ -12,7 +12,7 @@ class ImagesAssetsManager{
   static const String onBoarding3 ='${AppConstants.imagePath}/onboarding/onboarding3.svg';
   static const String onBoarding4 ='${AppConstants.imagePath}/onboarding/onboarding4.svg';
 
-  static const String appleIc ='${AppConstants.imagePath}/icons/apple_ic.svg';
+  static const String appleIc ='${AppConstants.imagePath}/icons/apple_logo.svg';
   static const String backArrowIc ='${AppConstants.imagePath}/icons/back_arrow_ic.svg';
   static const String checkIc ='${AppConstants.imagePath}/icons/check_ic.svg';
   static const String emailIc ='${AppConstants.imagePath}/icons/email_ic.svg';

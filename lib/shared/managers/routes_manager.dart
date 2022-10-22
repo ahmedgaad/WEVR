@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:wevr_app/presentation/forgot_password/forgot_password_view.dart';
-import 'package:wevr_app/presentation/get_started/get_started_view.dart';
-import 'package:wevr_app/presentation/home/home_view.dart';
-import 'package:wevr_app/presentation/login/login_view.dart';
-import 'package:wevr_app/presentation/register/register_view.dart';
-import 'package:wevr_app/presentation/resources/strings_manager.dart';
-import 'package:wevr_app/presentation/splash/splash_view.dart';
+import 'package:wevr_app/shared/managers/strings_manager.dart';
 
-import '../onboarding/onboarding_view.dart';
+import '../../modules/forgot_password/forgot_password_view.dart';
+import '../../modules/get_started/get_started_view.dart';
+import '../../modules/home/home_view.dart';
+import '../../modules/login/login_view.dart';
+import '../../modules/onboarding/onboarding_view.dart';
+import '../../modules/register/register_view.dart';
+import '../../modules/splash/splash_view.dart';
 
 class Routes{
   static const String splashRoute = "/";
