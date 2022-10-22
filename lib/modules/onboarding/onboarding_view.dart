@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:wevr_app/shared/managers/assets_manager.dart';
-import 'package:wevr_app/presentation/resources/constants_manager.dart';
 import 'package:wevr_app/shared/managers/font_manager.dart';
 import 'package:wevr_app/shared/managers/routes_manager.dart';
 import 'package:wevr_app/shared/managers/strings_manager.dart';
