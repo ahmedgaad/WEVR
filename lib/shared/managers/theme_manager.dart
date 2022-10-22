@@ -13,14 +13,14 @@ ThemeData getThemeData() {
     primarySwatch: Colors.grey,
 
     //appBar theme
-    appBarTheme: const AppBarTheme(
+    /*appBarTheme: const AppBarTheme(
         color: ColorManager.white,
         elevation: AppSize.s0,
         systemOverlayStyle: SystemUiOverlayStyle(
             statusBarBrightness: Brightness.dark,
             statusBarColor: Colors.transparent
         ),
-    ),
+    ),*/
 
     //text theme 2021, cause i can't mix between 2018 and 2021 themes..
     textTheme: TextTheme(
