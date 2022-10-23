@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wevr_app/modules/register/register_successfuly.dart';
+import 'package:wevr_app/modules/reset_via_email/reset_email_view.dart';
+import 'package:wevr_app/modules/reset_via_phone/reset_phone_view.dart';
 import 'package:wevr_app/shared/managers/strings_manager.dart';
 
 import '../../modules/forgot_password/forgot_password_view.dart';
@@ -19,6 +21,8 @@ class Routes{
   static const String registerSuccessRoute = "/registerSuccess";
   static const String forgetPasswordRoute = "/forgetPassword";
   static const String homeRoute = "/home";
+  static const String resetPhoneRoute = "/resetPhone";
+  static const String resetEmailRoute = "/resetEmail";
 }
 
 class RouteGenerator{
@@ -38,6 +42,10 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_) => const RegisterSuccessfully());
       case Routes.forgetPasswordRoute:
         return MaterialPageRoute(builder: (_) => const ForgotPasswordView());
+      case Routes.resetPhoneRoute:
+        return MaterialPageRoute(builder: (_) => const ResetPhoneView());
+      case Routes.resetEmailRoute:
+        return MaterialPageRoute(builder: (_) => const ResetEmailView());
       case Routes.homeRoute:
         return MaterialPageRoute(builder: (_) => const HomeView());
       default:

@@ -13,6 +13,7 @@ import '../../shared/managers/values_manager.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -26,7 +27,8 @@ class LoginView extends StatelessWidget {
       body: Stack(
         alignment: Alignment.center,
         children: [
-          Column(children: [
+          Column(
+            children: [
             Expanded(
               flex: AppSize.s2.toInt(),
               child: Container(
@@ -40,49 +42,49 @@ class LoginView extends StatelessWidget {
               ),
             ),
             Expanded(
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(PaddingSize.p50),
-                      child: Text(
-                        AppStrings.haveAccount,
-                        style: getRegularStyleInter(
-                          color: ColorManager.darkGrey,
-                          fontSize: AppSize.s16,
-                        ),
+              child: Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(PaddingSize.p70),
+                    child: Text(
+                      AppStrings.haveAccount,
+                      style: getRegularStyleInter(
+                        color: ColorManager.darkGrey,
+                        fontSize: AppSize.s16,
                       ),
                     ),
-                    const SizedBox(
-                      height: AppSize.s24,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(PaddingSize.p10),
-                      child: TextButton(
-                          onPressed: (){
-                            Navigator.pushReplacementNamed(context, Routes.registerRoute);
-                          },
-                          child: Text(
-                              AppStrings.signUp,
-                            style: getRegularStyleInter(
-                                color: ColorManager.primary,
-                              fontSize: FontSize.s16,
-                            ),
-                          )
-                      ),
-                    )
-
-                  ],
-                ),
+                  ),
+                  const SizedBox(
+                    height: AppSize.s24,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(PaddingSize.p30),
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, Routes.registerRoute);
+                        },
+                        child: Text(
+                          AppStrings.signUp,
+                          style: getRegularStyleInter(
+                            color: ColorManager.primary,
+                            fontSize: FontSize.s16,
+                          ),
+                        )),
+                  ),
+                ],
+              ),
             ),
-          ]),
+          ]
+          ),
           Material(
             borderRadius: BorderRadius.circular(AppRadius.r41),
             elevation: AppSize.s8,
             color: ColorManager.transparent,
             child: Container(
-              height: 600.0,
-              width: 300.0,
+              height: AppSize.s600,
+              width: AppSize.s300,
               decoration: BoxDecoration(
                 color: ColorManager.white,
                 borderRadius: BorderRadius.circular(AppRadius.r41),
@@ -151,23 +153,29 @@ class LoginView extends StatelessWidget {
                           alignment: Alignment.center,
                           children: [
                             Container(
-                              height: 1.0,
-                              width: 200.0,
+                              height: AppSize.s1,
+                              width: AppSize.s200,
                               color: ColorManager.lightGrey,
                             ),
                             Container(
                               width: 30.0,
-                              height: AppSize.s24,
+                              height: 12.0,
                               decoration: BoxDecoration(
                                 color: ColorManager.orBackground,
                                 borderRadius:
                                     BorderRadius.circular(AppRadius.r20),
                               ),
-                              child: const Padding(
-                                padding: EdgeInsets.all(PaddingSize.p4),
+                              child: Padding(
+                                padding: const EdgeInsets.all(
+                                    PaddingSize.p0
+                                ),
                                 child: Center(
                                   child: Text(
                                     AppStrings.or,
+                                    style: getRegularStyleInter(
+                                        color: ColorManager.black,
+                                      fontSize: FontSize.s10,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -190,8 +198,8 @@ class LoginView extends StatelessWidget {
                       ],
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: PaddingSize.p40),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: PaddingSize.p40),
                       child: defaultFormField(
                         controller: TextEditingController(),
                         type: TextInputType.emailAddress,
@@ -203,8 +211,8 @@ class LoginView extends StatelessWidget {
                       height: AppSize.s24,
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: PaddingSize.p40),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: PaddingSize.p40),
                       child: defaultFormField(
                         controller: TextEditingController(),
                         type: TextInputType.visiblePassword,
@@ -216,13 +224,20 @@ class LoginView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            AppStrings.forgetPassword,
-                            style: getLightStyleInter(
-                              color: ColorManager.darkGrey,
-                              fontSize: FontSize.s16,
+                        Padding(
+                          padding: const EdgeInsetsDirectional.only(
+                              end: PaddingSize.p14
+                          ),
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(context, Routes.forgetPasswordRoute);
+                            },
+                            child: Text(
+                              AppStrings.forgetPassword,
+                              style: getLightStyleInter(
+                                color: ColorManager.darkGrey,
+                                fontSize: FontSize.s16,
+                              ),
                             ),
                           ),
                         ),

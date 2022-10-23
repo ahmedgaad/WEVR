@@ -15,7 +15,6 @@ class ImagesAssetsManager{
   static const String appleIc ='${AppConstants.imagePath}/icons/apple_logo.svg';
   static const String backArrowIc ='${AppConstants.imagePath}/icons/back_arrow_ic.svg';
   static const String checkIc ='${AppConstants.imagePath}/icons/check_ic.svg';
-  static const String emailIc ='${AppConstants.imagePath}/icons/email_ic.svg';
   static const String eyeIc ='${AppConstants.imagePath}/icons/eye_ic.svg';
   static const String eyeHiddenIc ='${AppConstants.imagePath}/icons/eye_hidden_ic.svg';
   static const String facebookLogoIc ='${AppConstants.imagePath}/icons/facebook_ic.svg';
@@ -23,6 +22,8 @@ class ImagesAssetsManager{
   static const String infoIc ='${AppConstants.imagePath}/icons/info_ic.svg';
   static const String rightArrowIc ='${AppConstants.imagePath}/icons/right_arrow_ic.svg';
   static const String leftArrowIc ='${AppConstants.imagePath}/icons/left_arrow_ic.svg';
+  static const String phoneIc ='${AppConstants.imagePath}/icons/phone_icon.svg';
+  static const String emailIc ='${AppConstants.imagePath}/icons/email_icon.svg';
 
   static const String createNewPass ='${AppConstants.imagePath}/reset_password/create_new_pass.svg';
   static const String emailReset ='${AppConstants.imagePath}/reset_password/email_reset.svg';

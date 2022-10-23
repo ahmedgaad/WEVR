@@ -9,11 +9,12 @@ class AppStrings{
   static const String welcomeTo = "Welcome to";
   static const String signIn = "Login";
   static const String signUp = "Register";
+  static const String submit = "Submit";
   static const String asGuest = "Continue as a guest";
   static const String loginAccount = "Login account";
   static const String loginWord = "login with email";
   static const String registerWord = "register with email";
-  static const String registerSuccessfully = 'Registired successfully';
+  static const String registerSuccessfully = 'Registered successfully';
   static const String or = "OR";
   static const String continueExploring = "Continue Exploring";
   static const String emailOrMobile = "email or mobile";
@@ -24,6 +25,8 @@ class AppStrings{
   static const String forgetPassword = "forget password?";
   static const String haveAccount = "Don\'t have an account?";
   static const String alreadyHaveAccount = "Already have an account?";
+  static const String viaPhone = "via phone number";
+  static const String viaEmail = "via email";
 
   static const String onBoardingSubTitle1 =
   """
@@ -53,4 +56,32 @@ class AppStrings{
   sell your property
   easily
   """;
+  static const String forgotPass =
+  """
+  Forgot 
+  Password
+  """;
+
+  static const String subTitleForgotPass =
+  """
+  select which contact details
+  should we use to reset your 
+  password
+  """;
+
+  static const String recoveryCode =
+  """
+  Enter 4-Digit
+  Recovery Code
+  """;
+
+  static const String subTitleRecoveryCode =
+  """
+  the recovery code was sent to
+  your mobile number . Please 
+  enter the code 
+  """;
+
+
+
 }
