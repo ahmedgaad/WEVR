@@ -78,7 +78,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                             children: [
                               defaultButton(
                                   function: (){
-                                    Navigator.pushReplacementNamed(context, Routes.loginRoute);
+                                   navigateTo(context, Routes.loginRoute);
                                   },
                                 isUpperCase: false,
                                   text: AppStrings.signIn,
@@ -91,8 +91,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                                 borderRadius: AppRadius.r2,
                                 background: ColorManager.transparent,
                                 function: (){
-                                  Navigator.pushReplacementNamed(context, Routes.registerRoute);
-
+                                  navigateTo(context, Routes.registerRoute);
                                 },
                                 isUpperCase: false,
                                 text: AppStrings.signUp,
@@ -101,17 +100,24 @@ class _GetStartedViewState extends State<GetStartedView> {
                               const SizedBox(
                                 height: AppSize.s20,
                               ),
-                              TextButton(
+                              defaultTextButton(
+                                textColor: ColorManager.black,
+                                  fontSize: FontSize.s18,
+                                  textDecoration: TextDecoration.underline,
+                                  text: AppStrings.asGuest,
                                   onPressed: (){},
-                                  child: const Text(
-                                    AppStrings.asGuest,
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: ColorManager.black,
-                                      fontSize: AppSize.s16,
-                                    ),
-                                  ),
                               ),
+                              // TextButton(
+                              //     onPressed: (){},
+                              //     child: const Text(
+                              //       AppStrings.asGuest,
+                              //       style: TextStyle(
+                              //         decoration: TextDecoration.underline,
+                              //         color: ColorManager.black,
+                              //         fontSize: AppSize.s16,
+                              //       ),
+                              //     ),
+                              // ),
                             ],
                           ),
                         ),

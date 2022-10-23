@@ -58,18 +58,26 @@ class RegisterView extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(PaddingSize.p10),
-                    child: TextButton(
+                    child:defaultTextButton(
+                        textColor: ColorManager.primary,
+                        text: AppStrings.signIn,
                         onPressed: (){
-                          Navigator.pushReplacementNamed(context, Routes.loginRoute);
-                        },
-                        child: Text(
-                          AppStrings.signIn,
-                          style: getRegularStyleInter(
-                            color: ColorManager.primary,
-                            fontSize: FontSize.s16,
-                          ),
-                        )
+                          navigateTo(context, Routes.loginRoute);
+                        }
                     ),
+
+                    // TextButton(
+                    //     onPressed: (){
+                    //       Navigator.pushReplacementNamed(context, Routes.loginRoute);
+                    //     },
+                    //     child: Text(
+                    //       AppStrings.signIn,
+                    //       style: getRegularStyleInter(
+                    //         color: ColorManager.primary,
+                    //         fontSize: FontSize.s16,
+                    //       ),
+                    //     )
+                    // ),
                   )
 
                 ],
@@ -232,7 +240,7 @@ class RegisterView extends StatelessWidget {
                       child: defaultButton(
                         function: ()
                         {
-                          Navigator.pushReplacementNamed(context, Routes.registerSuccessRoute);
+                         navigateTo(context, Routes.registerSuccessRoute);
                         },
                         text: AppStrings.signUp,
                         width: AppSize.s200,

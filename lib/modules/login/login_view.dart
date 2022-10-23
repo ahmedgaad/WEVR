@@ -60,18 +60,24 @@ class LoginView extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(PaddingSize.p30),
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, Routes.registerRoute);
-                        },
-                        child: Text(
-                          AppStrings.signUp,
-                          style: getRegularStyleInter(
-                            color: ColorManager.primary,
-                            fontSize: FontSize.s16,
-                          ),
-                        )),
+                    child: defaultTextButton(
+                      textColor: ColorManager.primary,
+                        text: AppStrings.signUp,
+                        onPressed: (){
+                          navigateTo(context, Routes.registerRoute);
+                        }
+                    ),
+                    // TextButton(
+                    //     onPressed: () {
+                    //       navigateTo(context, Routes.registerRoute);
+                    //     },
+                    //     child: Text(
+                    //       AppStrings.signUp,
+                    //       style: getRegularStyleInter(
+                    //         color: ColorManager.primary,
+                    //         fontSize: FontSize.s16,
+                    //       ),
+                    //     )),
                   ),
                 ],
               ),
@@ -228,17 +234,11 @@ class LoginView extends StatelessWidget {
                           padding: const EdgeInsetsDirectional.only(
                               end: PaddingSize.p14
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.pushReplacementNamed(context, Routes.forgetPasswordRoute);
-                            },
-                            child: Text(
-                              AppStrings.forgetPassword,
-                              style: getLightStyleInter(
-                                color: ColorManager.darkGrey,
-                                fontSize: FontSize.s16,
-                              ),
-                            ),
+                          child: defaultTextButton(
+                              text: AppStrings.forgetPassword,
+                              onPressed: (){
+                                navigateTo(context, Routes.forgetPasswordRoute);
+                              },
                           ),
                         ),
                       ],
@@ -265,3 +265,15 @@ class LoginView extends StatelessWidget {
     );
   }
 }
+//TextButton(
+//                             onPressed: () {
+//                               navigateTo(context, Routes.forgetPasswordRoute);
+//                             },
+//                             child: Text(
+//                               AppStrings.forgetPassword,
+//                               style: getLightStyleInter(
+//                                 color: ColorManager.darkGrey,
+//                                 fontSize: FontSize.s16,
+//                               ),
+//                             ),
+//                           ),

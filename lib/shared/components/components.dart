@@ -68,6 +68,32 @@ Widget defaultFormField({
       obscureText: isPassword ?? false,
       decoration: InputDecoration(
         labelText: label,
-        suffixIcon: suffix != null ? IconButton(icon: Icon(suffix), onPressed: suffixPressed,) : null,
+        suffixIcon: suffix != null
+            ? IconButton(
+                icon: Icon(suffix),
+                onPressed: suffixPressed,
+              )
+            : null,
       ),
     );
+
+void navigateTo(context, String routeName) =>
+    Navigator.pushReplacementNamed(context, routeName);
+
+Widget defaultTextButton({
+  required String text,
+  TextDecoration? textDecoration,
+  Color textColor = ColorManager.darkGrey,
+  required VoidCallback onPressed,
+  double fontSize = AppSize.s16,
+})=> TextButton(
+  onPressed: onPressed ,
+  child: Text(
+    text,
+    style: TextStyle(
+      decoration: textDecoration,
+      color: textColor,
+      fontSize: fontSize,
+    ),
+  ),
+);

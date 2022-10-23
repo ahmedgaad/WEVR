@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wevr_app/shared/components/components.dart';
 import 'package:wevr_app/shared/managers/font_manager.dart';
 import 'package:wevr_app/shared/managers/strings_manager.dart';
 import 'package:wevr_app/shared/managers/style_manager.dart';
@@ -89,7 +90,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                 padding: const EdgeInsets.all(PaddingSize.p10),
                 child: GestureDetector(
                   onTap: (){
-                    Navigator.pushReplacementNamed(context, Routes.resetPhoneRoute);
+                    navigateTo(context, Routes.resetPhoneRoute);
                   },
                   child: Align(
                     alignment: Alignment.center,
@@ -153,7 +154,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                 padding: const EdgeInsets.all(PaddingSize.p10),
                 child: GestureDetector(
                   onTap: (){
-                    Navigator.pushReplacementNamed(context, Routes.resetEmailRoute);
+                    navigateTo(context, Routes.resetEmailRoute);
                   },
                   child: Align(
                     alignment: Alignment.center,
