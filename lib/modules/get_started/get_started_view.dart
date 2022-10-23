@@ -94,7 +94,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                                   Navigator.pushReplacementNamed(context, Routes.registerRoute);
 
                                 },
-                                isUpperCase: true,
+                                isUpperCase: false,
                                 text: AppStrings.signUp,
                                 textColor: ColorManager.black,
                               ),

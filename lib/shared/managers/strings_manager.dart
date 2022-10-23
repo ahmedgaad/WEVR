@@ -7,18 +7,34 @@ class AppStrings{
   static const String onBoardingTitle3 = "online auction";
   static const String onBoardingTitle4 = "property owner";
   static const String welcomeTo = "Welcome to";
-  static const String signIn = "sign in";
-  static const String signUp = "sign up";
+  static const String signIn = "Login";
+  static const String signUp = "Register";
   static const String asGuest = "Continue as a guest";
   static const String loginAccount = "Login account";
+  static const String loginWord = "login with email";
+  static const String registerWord = "register with email";
+  static const String registerSuccessfully = 'Registired successfully';
   static const String or = "OR";
+  static const String continueExploring = "Continue Exploring";
   static const String emailOrMobile = "email or mobile";
+  static const String emailValidate = "Please enter your email";
+  static const String passwordValidate = "Please enter your password";
+  static const String password = "Password";
+  static const String confirmPassword = "Confirm Password";
+  static const String forgetPassword = "forget password?";
+  static const String haveAccount = "Don\'t have an account?";
+  static const String alreadyHaveAccount = "Already have an account?";
 
   static const String onBoardingSubTitle1 =
   """
   Easily search for any home 
   and select your own search
   options 
+  """;
+  static const String registerSuccess =
+  """
+  congratulations, your account 
+  has been successfully created 
   """;
   static const String onBoardingSubTitle2 =
   """

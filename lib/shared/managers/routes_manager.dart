@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wevr_app/modules/register/register_successfuly.dart';
 import 'package:wevr_app/shared/managers/strings_manager.dart';
 
 import '../../modules/forgot_password/forgot_password_view.dart';
@@ -15,6 +16,7 @@ class Routes{
   static const String getStarted = '/getStarted';
   static const String loginRoute = "/login";
   static const String registerRoute = "/register";
+  static const String registerSuccessRoute = "/registerSuccess";
   static const String forgetPasswordRoute = "/forgetPassword";
   static const String homeRoute = "/home";
 }
@@ -32,6 +34,8 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.registerRoute:
         return MaterialPageRoute(builder: (_) => const RegisterView());
+      case Routes.registerSuccessRoute:
+        return MaterialPageRoute(builder: (_) => const RegisterSuccessfully());
       case Routes.forgetPasswordRoute:
         return MaterialPageRoute(builder: (_) => const ForgotPasswordView());
       case Routes.homeRoute:
