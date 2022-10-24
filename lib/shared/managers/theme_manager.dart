@@ -4,6 +4,8 @@ import 'package:wevr_app/shared/managers/color_manager.dart';
 import 'package:wevr_app/shared/managers/font_manager.dart';
 import 'package:wevr_app/shared/managers/style_manager.dart';
 import 'package:wevr_app/shared/managers/values_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 ThemeData getThemeData() {
   return ThemeData(
@@ -25,9 +27,9 @@ ThemeData getThemeData() {
     //text theme 2021, cause i can't mix between 2018 and 2021 themes..
     textTheme: TextTheme(
       headlineMedium: getRegularStylePoppins(
-          color: ColorManager.black, fontSize: FontSize.s24),
+          color: ColorManager.black, fontSize: FontSize.s24.sp),
       bodyLarge: getRegularStyleInter(
-          color: ColorManager.darkGrey, fontSize: FontSize.s20),
+          color: ColorManager.darkGrey, fontSize: FontSize.s20.sp),
     ),
   );
 }

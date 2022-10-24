@@ -9,6 +9,7 @@ import 'package:wevr_app/shared/managers/style_manager.dart';
 import 'package:wevr_app/shared/managers/values_manager.dart';
 import '../../shared/components/components.dart';
 import '../../shared/managers/font_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GetStartedView extends StatefulWidget {
   const GetStartedView({Key? key}) : super(key: key);

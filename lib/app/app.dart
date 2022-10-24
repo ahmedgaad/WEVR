@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:wevr_app/shared/managers/routes_manager.dart';
 import 'package:wevr_app/shared/managers/theme_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyApp extends StatefulWidget {
   MyApp._internal(); //named constructor
@@ -17,11 +18,18 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: RouteGenerator.getRoute,
-      initialRoute: Routes.splashRoute,
-      theme: getThemeData(),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (BuildContext context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: RouteGenerator.getRoute,
+          initialRoute: Routes.splashRoute,
+          theme: getThemeData(),
+        );
+      },
     );
   }
 }

@@ -53,7 +53,9 @@ class _SplashViewState extends State<SplashView> {
         end: Alignment.bottomLeft,
       )),
       child: Padding(
-        padding: const EdgeInsets.all(PaddingSize.p70),
+        padding: EdgeInsets.all(
+            MediaQuery.of(context).size.width /8
+        ),
         child: SvgPicture.asset(
           ImagesAssetsManager.splashLogoBlack,
         ),

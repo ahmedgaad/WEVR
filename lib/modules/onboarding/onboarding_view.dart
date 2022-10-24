@@ -10,7 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../shared/components/constants.dart';
 import '../../shared/managers/color_manager.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../shared/managers/values_manager.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -19,6 +19,7 @@ class OnBoardingView extends StatefulWidget {
   @override
   State<OnBoardingView> createState() => _OnBoardingViewState();
 }
+
 
 class _OnBoardingViewState extends State<OnBoardingView> {
   final PageController _pageController = PageController();
@@ -74,8 +75,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 Navigator.pushReplacementNamed(context, Routes.getStarted);
               },
               child: Padding(
-                padding: const EdgeInsetsDirectional.only(
-                    end: PaddingSize.p20
+                padding:  EdgeInsetsDirectional.only(
+                    end: PaddingSize.p20.w
                 ),
                 child: Text(
                   AppStrings.skip,
@@ -89,7 +90,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(AppSize.s4),
+        padding:  EdgeInsets.all(
+            AppSize.s6.w
+        ),
         child: Column(
           children: [
             Expanded(
@@ -114,104 +117,104 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   itemBuilder: (context, index) => itemSlider(_list[index]),
               ),
             ),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(
-                bottom: AppSize.s12
-              ),
-              child: SmoothPageIndicator(
-                  controller: _pageController,
-                  effect: const ExpandingDotsEffect(
-                    dotColor: ColorManager.lightPrimary,
-                    activeDotColor: ColorManager.primary,
-                    dotHeight: AppSize.s7,
-                    dotWidth: AppSize.s10,
-                    expansionFactor: AppSize.s5,
-                    spacing: AppSize.s6,
-
-                  ),
-                  count: _list.length,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(PaddingSize.p8),
-              child: Row(
+            SizedBox(
+              // height: MediaQuery.of(context).size.height / 6,
+              // width: MediaQuery.of(context).size.height / 2,
+              child: Column(
                 children: [
-                  ConditionalBuilder(
-                    condition: currentIndex > 0,
-                    builder: (BuildContext context) {
-                      return Padding(
+                  SmoothPageIndicator(
+                      controller: _pageController,
+                      effect:  const ExpandingDotsEffect(
+                        dotColor: ColorManager.lightPrimary,
+                        activeDotColor: ColorManager.primary,
+                        dotHeight: AppSize.s7,
+                        dotWidth: AppSize.s24,
+                        expansionFactor: AppSize.s2,
+                        spacing: AppSize.s6,
+
+                      ),
+                      count: _list.length,
+                  ),
+                  /*SizedBox(
+                    height: AppSize.s6.h,
+                  ),*/
+                  Row(
+                    children: [
+                      ConditionalBuilder(
+                        condition: currentIndex > 0,
+                        builder: (BuildContext context) {
+                          return Padding(
+                            padding: const EdgeInsets.all(PaddingSize.p40),
+                            child: GestureDetector(
+                              onTap: (){
+                                _pageController.previousPage(
+                                  duration: const Duration(
+                                      seconds: AppConstants.previousPageTime
+                                  ),
+                                  curve: Curves.fastLinearToSlowEaseIn,
+                                );
+                              },
+                              child: Container(
+                                height: AppSize.s44.h,
+                                width: AppSize.s44.w,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: ColorManager.lightGrey,
+                                      width: AppSize.s4,
+                                    )
+                                ),
+                                child: SvgPicture.asset(ImagesAssetsManager.leftArrowIc,
+                                  color: ColorManager.lightGrey,
+                                  fit: BoxFit.scaleDown,
+                                  height: AppSize.s25_33.h,
+                                  width: AppSize.s14_67.w,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        fallback: (BuildContext context) {
+                          return Container();
+                        },
+                      ),
+                      const Spacer(),
+                      Padding(
                         padding: const EdgeInsets.all(PaddingSize.p40),
                         child: GestureDetector(
                           onTap: (){
-                            _pageController.previousPage(
-                              duration: const Duration(
-                                  seconds: AppConstants.previousPageTime
-                              ),
-                              curve: Curves.fastLinearToSlowEaseIn,
+                            if(isLast){
+                              Navigator.pushReplacementNamed(context, Routes.getStarted);
+                            }
+                            _pageController.nextPage(
+                                duration: const Duration(
+                                  seconds: AppConstants.nextPageTime,
+                                ),
+                                curve: Curves.fastLinearToSlowEaseIn,
                             );
                           },
                           child: Container(
-                            height: AppSize.s44,
-                            width: AppSize.s44,
+                            height: AppSize.s44.h,
+                            width: AppSize.s44.w,
                             decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: ColorManager.lightGrey,
-                                  width: AppSize.s4,
-                                )
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: ColorManager.primary,
+                                width: AppSize.s4,
+                              ),
                             ),
-                            child: SvgPicture.asset(ImagesAssetsManager.leftArrowIc,
-                              color: ColorManager.lightGrey,
+                            child: SvgPicture.asset(ImagesAssetsManager.rightArrowIc,
                               fit: BoxFit.scaleDown,
                               height: AppSize.s25_33,
                               width: AppSize.s14_67,
                             ),
                           ),
                         ),
-                      );
-                    },
-                    fallback: (BuildContext context) {
-                      return Container();
-                    },
-                  ),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.all(PaddingSize.p40),
-                    child: GestureDetector(
-                      onTap: (){
-                        if(isLast){
-                          Navigator.pushReplacementNamed(context, Routes.getStarted);
-                        }
-                        _pageController.nextPage(
-                            duration: const Duration(
-                              seconds: AppConstants.nextPageTime,
-                            ),
-                            curve: Curves.fastLinearToSlowEaseIn,
-                        );
-                      },
-                      child: Container(
-                        height: AppSize.s44,
-                        width: AppSize.s44,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: ColorManager.primary,
-                            width: AppSize.s4,
-                          ),
-                        ),
-                        child: SvgPicture.asset(ImagesAssetsManager.rightArrowIc,
-                          fit: BoxFit.scaleDown,
-                          height: AppSize.s25_33,
-                          width: AppSize.s14_67,
-                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),
-            ),
-            const SizedBox(
-              height: AppMargin.m24,
             ),
           ],
         ),
@@ -232,8 +235,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   Widget itemSlider(SliderObject object) => Column(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
-      const SizedBox(
-        height: AppSize.s36,
+       SizedBox(
+        height: AppSize.s36.h,
       ),
       SvgPicture.asset(
           object.image,
@@ -241,33 +244,25 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         width: AppSize.s281_25,
         fit: BoxFit.scaleDown,
       ),
-      const SizedBox(
-        height: AppSize.s24,
+       SizedBox(
+        height: AppSize.s24.h,
       ),
       Text(
         object.title,
         textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.headlineMedium,
       ),
-      const SizedBox(
-        height: AppSize.s10,
+       SizedBox(
+        height: AppSize.s10.h,
       ),
-      Padding(
-        padding: const EdgeInsets.all(PaddingSize.p8),
-        child: Text(
-          object.subTitle,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
+      Text(
+        object.subTitle,
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.bodyLarge,
       ),
     ],
   );
 }
-
-
-
-
-
 class SliderObject{
   String image;
   String title;
@@ -279,3 +274,4 @@ class SliderObject{
       this.subTitle,
       );
 }
+
