@@ -9,6 +9,7 @@ import '../../shared/managers/color_manager.dart';
 import '../../shared/managers/routes_manager.dart';
 import '../../shared/managers/values_manager.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgotPasswordView extends StatefulWidget {
   const ForgotPasswordView({Key? key}) : super(key: key);
@@ -69,7 +70,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                   AppStrings.forgotPass,
                   style: getBoldStylePoppins(
                       color: ColorManager.black,
-                    fontSize: FontSize.s24
+                    fontSize: FontSize.s24.sp
                   ),
                 ),
               ),
@@ -81,7 +82,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                   AppStrings.subTitleForgotPass,
                   style: getRegularStyleInter(
                       color: ColorManager.darkGrey,
-                      fontSize: FontSize.s20,
+                      fontSize: FontSize.s20.sp,
                   ),
                 ),
               ),
@@ -127,7 +128,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                                   AppStrings.viaPhone,
                                   style: getRegularStyleInter(
                                       color: ColorManager.viaPhone,
-                                    fontSize: FontSize.s16,
+                                    fontSize: FontSize.s16.sp,
                                   ),
                                 ),
                                 const SizedBox(
@@ -137,7 +138,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                                   "... ...1234",
                                   style: getRegularStyleInter(
                                     color: ColorManager.viaPhone,
-                                    fontSize: FontSize.s16,
+                                    fontSize: FontSize.s16.sp,
                                   ),
                                 ),
                               ],
@@ -191,7 +192,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                                   AppStrings.viaEmail,
                                   style: getRegularStyleInter(
                                     color: ColorManager.viaPhone,
-                                    fontSize: FontSize.s16,
+                                    fontSize: FontSize.s16.sp,
                                   ),
                                 ),
                                 const SizedBox(
@@ -201,7 +202,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                                   "... ...ab@mail.com",
                                   style: getRegularStyleInter(
                                     color: ColorManager.viaPhone,
-                                    fontSize: FontSize.s16,
+                                    fontSize: FontSize.s16.sp,
                                   ),
                                 ),
                               ],

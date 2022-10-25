@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:wevr_app/shared/managers/font_manager.dart';
 import 'package:wevr_app/shared/managers/strings_manager.dart';
 import 'package:wevr_app/shared/managers/style_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../shared/components/components.dart';
 import '../../shared/managers/assets_manager.dart';
@@ -72,7 +73,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                   AppStrings.recoveryCode,
                   style: getBoldStylePoppins(
                       color: ColorManager.black,
-                      fontSize: FontSize.s24
+                      fontSize: FontSize.s24.sp
                   ),
                 ),
               ),
@@ -84,7 +85,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                   AppStrings.subTitleRecoveryCode,
                   style: getRegularStyleInter(
                     color: ColorManager.darkGrey,
-                    fontSize: FontSize.s20,
+                    fontSize: FontSize.s20.sp,
                   ),
                 ),
               ),
@@ -118,7 +119,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                           ),
                           style: getBoldStylePoppins(
                               color: ColorManager.black,
-                            fontSize: FontSize.s24,
+                            fontSize: FontSize.s24.sp,
                           ),
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
@@ -150,7 +151,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                           ),
                           style: getBoldStylePoppins(
                             color: ColorManager.black,
-                            fontSize: FontSize.s24,
+                            fontSize: FontSize.s24.sp,
                           ),
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
@@ -182,7 +183,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                           ),
                           style: getBoldStylePoppins(
                             color: ColorManager.black,
-                            fontSize: FontSize.s24,
+                            fontSize: FontSize.s24.sp,
                           ),
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,
@@ -214,7 +215,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                           ),
                           style: getBoldStylePoppins(
                             color: ColorManager.black,
-                            fontSize: FontSize.s24,
+                            fontSize: FontSize.s24.sp,
                           ),
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.center,

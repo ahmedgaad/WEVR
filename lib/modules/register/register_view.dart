@@ -10,6 +10,7 @@ import 'package:wevr_app/shared/managers/style_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../shared/managers/values_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -49,7 +50,7 @@ class RegisterView extends StatelessWidget {
                       AppStrings.alreadyHaveAccount,
                       style: getRegularStyleInter(
                         color: ColorManager.darkGrey,
-                        fontSize: AppSize.s16,
+                        fontSize: AppSize.s16.sp,
                       ),
                     ),
                   ),
@@ -189,7 +190,7 @@ class RegisterView extends StatelessWidget {
                           AppStrings.registerWord,
                           style: getRegularStyleInter(
                             color: ColorManager.darkGrey,
-                            fontSize: FontSize.s16,
+                            fontSize: FontSize.s16.sp,
                           ),
                         ),
                         const SizedBox(

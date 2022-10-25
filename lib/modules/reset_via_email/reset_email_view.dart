@@ -10,6 +10,7 @@ import '../../shared/managers/assets_manager.dart';
 import '../../shared/managers/color_manager.dart';
 import '../../shared/managers/values_manager.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ResetEmailView extends StatefulWidget {
   const ResetEmailView({Key? key}) : super(key: key);
@@ -72,7 +73,7 @@ class _ResetEmailViewState extends State<ResetEmailView> {
                   AppStrings.recoveryCode,
                   style: getBoldStylePoppins(
                       color: ColorManager.black,
-                      fontSize: FontSize.s24
+                      fontSize: FontSize.s24.sp
                   ),
                 ),
               ),
@@ -84,7 +85,7 @@ class _ResetEmailViewState extends State<ResetEmailView> {
                   AppStrings.subTitleRecoveryCode,
                   style: getRegularStyleInter(
                     color: ColorManager.darkGrey,
-                    fontSize: FontSize.s20,
+                    fontSize: FontSize.s20.sp,
                   ),
                 ),
               ),
@@ -117,7 +118,7 @@ class _ResetEmailViewState extends State<ResetEmailView> {
                         ),
                         style: getBoldStylePoppins(
                           color: ColorManager.black,
-                          fontSize: FontSize.s24,
+                          fontSize: FontSize.s24.sp,
                         ),
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.center,
@@ -146,7 +147,7 @@ class _ResetEmailViewState extends State<ResetEmailView> {
                         ),
                         style: getBoldStylePoppins(
                           color: ColorManager.black,
-                          fontSize: FontSize.s24,
+                          fontSize: FontSize.s24.sp,
                         ),
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.center,
@@ -175,7 +176,7 @@ class _ResetEmailViewState extends State<ResetEmailView> {
                         ),
                         style: getBoldStylePoppins(
                           color: ColorManager.black,
-                          fontSize: FontSize.s24,
+                          fontSize: FontSize.s24.sp,
                         ),
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.center,
@@ -204,7 +205,7 @@ class _ResetEmailViewState extends State<ResetEmailView> {
                         ),
                         style: getBoldStylePoppins(
                           color: ColorManager.black,
-                          fontSize: FontSize.s24,
+                          fontSize: FontSize.s24.sp,
                         ),
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.center,

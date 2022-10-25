@@ -10,6 +10,7 @@ import 'package:wevr_app/shared/managers/style_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../shared/managers/values_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -51,7 +52,7 @@ class LoginView extends StatelessWidget {
                       AppStrings.haveAccount,
                       style: getRegularStyleInter(
                         color: ColorManager.darkGrey,
-                        fontSize: AppSize.s16,
+                        fontSize: AppSize.s16.sp,
                       ),
                     ),
                   ),
@@ -180,7 +181,7 @@ class LoginView extends StatelessWidget {
                                     AppStrings.or,
                                     style: getRegularStyleInter(
                                         color: ColorManager.black,
-                                      fontSize: FontSize.s10,
+                                      fontSize: FontSize.s10.sp,
                                     ),
                                   ),
                                 ),
@@ -195,7 +196,7 @@ class LoginView extends StatelessWidget {
                           AppStrings.loginWord,
                           style: getRegularStyleInter(
                             color: ColorManager.darkGrey,
-                            fontSize: FontSize.s16,
+                            fontSize: FontSize.s16.sp,
                           ),
                         ),
                         const SizedBox(

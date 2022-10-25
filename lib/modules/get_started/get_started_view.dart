@@ -61,7 +61,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                           AppStrings.welcomeTo,
                           style: getRegularStylePoppins(
                               color: ColorManager.black,
-                              fontSize: FontSize.s24
+                              fontSize: FontSize.s24.sp
                           ),
                         ),
                         Padding(
@@ -103,7 +103,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                               ),
                               defaultTextButton(
                                 textColor: ColorManager.black,
-                                  fontSize: FontSize.s18,
+                                  fontSize: FontSize.s18.sp,
                                   textDecoration: TextDecoration.underline,
                                   text: AppStrings.asGuest,
                                   onPressed: (){},

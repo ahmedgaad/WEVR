@@ -82,7 +82,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   AppStrings.skip,
                   style: getRegularStyleInter(
                       color: ColorManager.black,
-                      fontSize: FontSize.s20
+                      fontSize: FontSize.s20.sp
                   ),
                 ),
               ),

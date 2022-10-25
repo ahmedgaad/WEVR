@@ -7,6 +7,7 @@ import 'package:wevr_app/shared/managers/font_manager.dart';
 import 'package:wevr_app/shared/managers/strings_manager.dart';
 import 'package:wevr_app/shared/managers/style_manager.dart';
 import 'package:wevr_app/shared/managers/values_manager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterSuccessfully extends StatelessWidget {
   const RegisterSuccessfully({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class RegisterSuccessfully extends StatelessWidget {
                 AppStrings.registerSuccessfully,
               style: getBoldStylePoppins(
                   color: ColorManager.black,
-                fontSize: FontSize.s24,
+                fontSize: FontSize.s24.sp,
               ),
             ),
             const SizedBox(
@@ -47,7 +48,7 @@ class RegisterSuccessfully extends StatelessWidget {
               AppStrings.registerSuccess,
               style: getRegularStyleInter(
                 color: ColorManager.darkGrey,
-                fontSize: FontSize.s20,
+                fontSize: FontSize.s20.sp,
               ),
             ),
             const SizedBox(

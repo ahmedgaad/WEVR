@@ -5,9 +5,7 @@ import 'package:wevr_app/shared/managers/assets_manager.dart';
 import 'package:wevr_app/shared/managers/color_manager.dart';
 import 'package:wevr_app/shared/managers/routes_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../shared/components/constants.dart';
-import '../../shared/managers/values_manager.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
