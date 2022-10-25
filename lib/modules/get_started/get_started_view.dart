@@ -35,7 +35,7 @@ class _GetStartedViewState extends State<GetStartedView> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(PaddingSize.p40),
+            padding: EdgeInsets.all(PaddingSize.p40.w),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(AppRadius.r41),
               child: SingleChildScrollView(
@@ -45,8 +45,8 @@ class _GetStartedViewState extends State<GetStartedView> {
                     BackdropFilter(
                         filter: ImageFilter.blur
                           (
-                          sigmaX: AppSize.s20,
-                          sigmaY: AppSize.s20,
+                          sigmaX: AppSize.s20.w,
+                          sigmaY: AppSize.s20.h,
                         ),
                       child: Container(),
                     ),
@@ -54,8 +54,8 @@ class _GetStartedViewState extends State<GetStartedView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                         const SizedBox(
-                          height: AppSize.s44,
+                        SizedBox(
+                          height: AppSize.s44.h,
                         ),
                         Text(
                           AppStrings.welcomeTo,
@@ -65,16 +65,16 @@ class _GetStartedViewState extends State<GetStartedView> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(PaddingSize.p50),
+                          padding: EdgeInsets.all(PaddingSize.p50.w),
                           child: SvgPicture.asset(
                               ImagesAssetsManager.getStartedLogo,
                           ),
                         ),
-                        const SizedBox(
-                          height: AppSize.s44,
+                        SizedBox(
+                          height: AppSize.s44.h,
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(PaddingSize.p20),
+                          padding: EdgeInsets.all(PaddingSize.p20.w),
                           child: Column(
                             children: [
                               defaultButton(
@@ -84,8 +84,8 @@ class _GetStartedViewState extends State<GetStartedView> {
                                 isUpperCase: false,
                                   text: AppStrings.signIn,
                               ),
-                              const SizedBox(
-                                height: AppSize.s20,
+                              SizedBox(
+                                height: AppSize.s20.h,
                               ),
                               defaultButton(
                                 borderColor: ColorManager.primary,
@@ -98,8 +98,8 @@ class _GetStartedViewState extends State<GetStartedView> {
                                 text: AppStrings.signUp,
                                 textColor: ColorManager.black,
                               ),
-                              const SizedBox(
-                                height: AppSize.s20,
+                               SizedBox(
+                                height: AppSize.s20.h,
                               ),
                               defaultTextButton(
                                 textColor: ColorManager.black,
