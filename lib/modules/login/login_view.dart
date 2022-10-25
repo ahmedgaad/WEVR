@@ -11,7 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../shared/managers/values_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
 
@@ -47,7 +47,9 @@ class LoginView extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(PaddingSize.p70),
+                    padding: const EdgeInsets.all(
+                        PaddingSize.p70,
+                    ),
                     child: Text(
                       AppStrings.haveAccount,
                       style: getRegularStyleInter(
@@ -56,8 +58,8 @@ class LoginView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: AppSize.s24,
+                  SizedBox(
+                    height: AppSize.s24.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(PaddingSize.p30),
@@ -90,8 +92,8 @@ class LoginView extends StatelessWidget {
             elevation: AppSize.s8,
             color: ColorManager.transparent,
             child: Container(
-              height: AppSize.s600,
-              width: AppSize.s300,
+              height: AppSize.s600.h,
+              width: AppSize.s300.w,
               decoration: BoxDecoration(
                 color: ColorManager.white,
                 borderRadius: BorderRadius.circular(AppRadius.r41),
@@ -110,8 +112,8 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: AppSize.s24,
+                    SizedBox(
+                      height: AppSize.s24.h,
                     ),
                     Column(
                       children: [
@@ -121,8 +123,8 @@ class LoginView extends StatelessWidget {
                             color: ColorManager.primary,
                           ),
                         ),
-                        const SizedBox(
-                          height: AppSize.s24,
+                        SizedBox(
+                          height: AppSize.s24.h,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -133,8 +135,8 @@ class LoginView extends StatelessWidget {
                                 ImagesAssetsManager.googleIc,
                               ),
                             ),
-                            const SizedBox(
-                              width: AppSize.s20,
+                            SizedBox(
+                              width: AppSize.s20.w,
                             ),
                             IconButton(
                               onPressed: () {},
@@ -142,8 +144,8 @@ class LoginView extends StatelessWidget {
                                 ImagesAssetsManager.appleIc,
                               ),
                             ),
-                            const SizedBox(
-                              width: AppSize.s20,
+                            SizedBox(
+                              width: AppSize.s20.w,
                             ),
                             IconButton(
                               onPressed: () {},
@@ -153,20 +155,20 @@ class LoginView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: AppSize.s24,
+                        SizedBox(
+                          height: AppSize.s24.h,
                         ),
                         Stack(
                           alignment: Alignment.center,
                           children: [
                             Container(
-                              height: AppSize.s1,
-                              width: AppSize.s200,
+                              height: AppSize.s1.h,
+                              width: AppSize.s200.w,
                               color: ColorManager.lightGrey,
                             ),
                             Container(
-                              width: 30.0,
-                              height: 12.0,
+                              width: AppSize.s30.w,
+                              height: AppSize.s12.h,
                               decoration: BoxDecoration(
                                 color: ColorManager.orBackground,
                                 borderRadius:
@@ -189,8 +191,8 @@ class LoginView extends StatelessWidget {
                             )
                           ],
                         ),
-                        const SizedBox(
-                          height: AppSize.s24,
+                        SizedBox(
+                          height: AppSize.s24.h,
                         ),
                         Text(
                           AppStrings.loginWord,
@@ -199,14 +201,14 @@ class LoginView extends StatelessWidget {
                             fontSize: FontSize.s16.sp,
                           ),
                         ),
-                        const SizedBox(
-                          height: AppSize.s24,
+                        SizedBox(
+                          height: AppSize.s24.h,
                         ),
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: PaddingSize.p40),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: PaddingSize.p40.w),
                       child: defaultFormField(
                         controller: TextEditingController(),
                         type: TextInputType.emailAddress,
@@ -214,12 +216,13 @@ class LoginView extends StatelessWidget {
                         validate: AppStrings.emailValidate,
                       ),
                     ),
-                    const SizedBox(
-                      height: AppSize.s24,
+                    SizedBox(
+                      height: AppSize.s24.h,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: PaddingSize.p40),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: PaddingSize.p40.w
+                      ),
                       child: defaultFormField(
                         controller: TextEditingController(),
                         type: TextInputType.visiblePassword,
@@ -244,15 +247,15 @@ class LoginView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: AppSize.s24,
+                    SizedBox(
+                      height: AppSize.s24.h,
                     ),
                     Center(
                       child: defaultButton(
                         function: () {},
                         text: AppStrings.signIn,
-                        width: AppSize.s200,
-                        height: AppSize.s44,
+                        width: AppSize.s200.w,
+                        height: AppSize.s44.h,
                         isUpperCase: false,
                       ),
                     )

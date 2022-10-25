@@ -43,7 +43,9 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  navigateTo(context, Routes.loginRoute);
+                },
                 icon: const Padding(
                   padding: EdgeInsets.all(PaddingSize.p25),
                   child: Icon(
@@ -56,8 +58,8 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                 child: SvgPicture.asset(
                   ImagesAssetsManager.forgotPass,
                   fit: BoxFit.scaleDown,
-                  width: AppSize.s304,
-                  height: AppSize.s264,
+                  width: AppSize.s304.w,
+                  height: AppSize.s264.h,
                   alignment: Alignment.center,
                 ),
               ),
@@ -88,7 +90,9 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
               ),
               //via phone number
               Padding(
-                padding: const EdgeInsets.all(PaddingSize.p10),
+                padding: const EdgeInsets.all(
+                    PaddingSize.p10
+                ),
                 child: GestureDetector(
                   onTap: (){
                     navigateTo(context, Routes.resetPhoneRoute);
@@ -96,12 +100,12 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                   child: Align(
                     alignment: Alignment.center,
                     child: Container(
-                      width: AppSize.s320,
-                      height: AppSize.s96,
+                      width: AppSize.s320.w,
+                      height: AppSize.s96.h,
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: ColorManager.darkGrey,
-                          width: AppSize.s1,
+                          width: AppSize.s1.w,
                         ),
                         borderRadius: BorderRadius.circular(
                             AppSize.s10,
@@ -109,17 +113,20 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                       ),
                       child: Row(
                         children: [
-                          const SizedBox(
-                            width: AppSize.s15,
+                          SizedBox(
+                            width: AppSize.s15.w,
                           ),
                           SvgPicture.asset(
                             ImagesAssetsManager.phoneIc,
-                            width: AppSize.s56,
-                            height: AppSize.s56,
+                            width: AppSize.s56.w,
+                            height: AppSize.s56.h,
                             fit: BoxFit.scaleDown,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(PaddingSize.p20),
+                            padding: EdgeInsets.symmetric(
+                               horizontal:  AppSize.s20.w,
+                              vertical: AppSize.s20.h,
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children:
@@ -131,8 +138,8 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                                     fontSize: FontSize.s16.sp,
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: AppSize.s10,
+                                SizedBox(
+                                  height: AppSize.s10.h,
                                 ),
                                 Text(
                                   "... ...1234",
@@ -160,12 +167,12 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                   child: Align(
                     alignment: Alignment.center,
                     child: Container(
-                      width: AppSize.s320,
-                      height: AppSize.s96,
+                      width: AppSize.s320.w,
+                      height: AppSize.s96.h,
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: ColorManager.darkGrey,
-                          width: AppSize.s1,
+                          width: AppSize.s1.w,
                         ),
                         borderRadius: BorderRadius.circular(
                           AppSize.s10,
@@ -173,17 +180,20 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                       ),
                       child: Row(
                         children: [
-                          const SizedBox(
-                            width: AppSize.s15,
+                          SizedBox(
+                            width: AppSize.s15.w,
                           ),
                           SvgPicture.asset(
                             ImagesAssetsManager.emailIc,
-                            width: 70,
-                            height: 70,
+                            width: AppSize.s70.w,
+                            height: AppSize.s70.h,
                             fit: BoxFit.scaleDown,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(PaddingSize.p20),
+                            padding:  EdgeInsets.symmetric(
+                              horizontal:  AppSize.s20.w,
+                              vertical: AppSize.s20.h,
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children:
@@ -195,8 +205,8 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                                     fontSize: FontSize.s16.sp,
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: AppSize.s10,
+                                SizedBox(
+                                  height: AppSize.s10.h,
                                 ),
                                 Text(
                                   "... ...ab@mail.com",

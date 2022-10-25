@@ -8,7 +8,6 @@ import 'package:wevr_app/shared/managers/routes_manager.dart';
 import 'package:wevr_app/shared/managers/strings_manager.dart';
 import 'package:wevr_app/shared/managers/style_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../shared/managers/values_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -54,8 +53,8 @@ class RegisterView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: AppSize.s24,
+                  SizedBox(
+                    height: AppSize.s24.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(PaddingSize.p10),
@@ -90,8 +89,8 @@ class RegisterView extends StatelessWidget {
             elevation: AppSize.s8,
             color: ColorManager.transparent,
             child: Container(
-              height: 600.0,
-              width: 300.0,
+              height: AppSize.s600.h,
+              width: AppSize.s300.w,
               decoration: BoxDecoration(
                 color: ColorManager.white,
                 borderRadius: BorderRadius.circular(AppRadius.r41),
@@ -110,8 +109,8 @@ class RegisterView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: AppSize.s24,
+                    SizedBox(
+                      height: AppSize.s24.h,
                     ),
                     Column(
                       children: [
@@ -121,8 +120,8 @@ class RegisterView extends StatelessWidget {
                             color: ColorManager.primary,
                           ),
                         ),
-                        const SizedBox(
-                          height: AppSize.s24,
+                        SizedBox(
+                          height: AppSize.s24.h,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -133,8 +132,8 @@ class RegisterView extends StatelessWidget {
                                 ImagesAssetsManager.googleIc,
                               ),
                             ),
-                            const SizedBox(
-                              width: AppSize.s20,
+                            SizedBox(
+                              width: AppSize.s20.w,
                             ),
                             IconButton(
                               onPressed: () {},
@@ -142,8 +141,8 @@ class RegisterView extends StatelessWidget {
                                 ImagesAssetsManager.appleIc,
                               ),
                             ),
-                            const SizedBox(
-                              width: AppSize.s20,
+                            SizedBox(
+                              width: AppSize.s20.w,
                             ),
                             IconButton(
                               onPressed: () {},
@@ -153,20 +152,20 @@ class RegisterView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: AppSize.s24,
+                        SizedBox(
+                          height: AppSize.s24.h,
                         ),
                         Stack(
                           alignment: Alignment.center,
                           children: [
                             Container(
-                              height: 1.0,
-                              width: 200.0,
+                              height: AppSize.s1.h,
+                              width: AppSize.s200.w,
                               color: ColorManager.lightGrey,
                             ),
                             Container(
-                              width: 30.0,
-                              height: AppSize.s24,
+                              width: AppSize.s30.w,
+                              height: AppSize.s24.h,
                               decoration: BoxDecoration(
                                 color: ColorManager.orBackground,
                                 borderRadius:
@@ -183,8 +182,8 @@ class RegisterView extends StatelessWidget {
                             )
                           ],
                         ),
-                        const SizedBox(
-                          height: AppSize.s24,
+                        SizedBox(
+                          height: AppSize.s24.h,
                         ),
                         Text(
                           AppStrings.registerWord,
@@ -193,14 +192,16 @@ class RegisterView extends StatelessWidget {
                             fontSize: FontSize.s16.sp,
                           ),
                         ),
-                        const SizedBox(
-                          height: AppSize.s24,
+                        SizedBox(
+                          height: AppSize.s24.h,
                         ),
                       ],
                     ),
                     Padding(
                       padding:
-                      const EdgeInsets.symmetric(horizontal: PaddingSize.p40),
+                      EdgeInsets.symmetric(
+                          horizontal: PaddingSize.p40.w
+                      ),
                       child: defaultFormField(
                         controller: TextEditingController(),
                         type: TextInputType.emailAddress,
@@ -208,12 +209,14 @@ class RegisterView extends StatelessWidget {
                         validate: AppStrings.emailValidate,
                       ),
                     ),
-                    const SizedBox(
-                      height: AppSize.s20,
+                    SizedBox(
+                      height: AppSize.s20.h,
                     ),
                     Padding(
                       padding:
-                      const EdgeInsets.symmetric(horizontal: PaddingSize.p40),
+                      EdgeInsets.symmetric(
+                          horizontal: PaddingSize.p40.w
+                      ),
                       child: defaultFormField(
                         controller: TextEditingController(),
                         type: TextInputType.visiblePassword,
@@ -221,12 +224,14 @@ class RegisterView extends StatelessWidget {
                         validate: AppStrings.passwordValidate,
                       ),
                     ),
-                    const SizedBox(
-                      height: AppSize.s20,
+                    SizedBox(
+                      height: AppSize.s20.h,
                     ),
                     Padding(
                       padding:
-                      const EdgeInsets.symmetric(horizontal: PaddingSize.p40),
+                      EdgeInsets.symmetric(
+                          horizontal: PaddingSize.p40.w
+                      ),
                       child: defaultFormField(
                         controller: TextEditingController(),
                         type: TextInputType.visiblePassword,
@@ -234,8 +239,8 @@ class RegisterView extends StatelessWidget {
                         validate: AppStrings.passwordValidate,
                       ),
                     ),
-                    const SizedBox(
-                      height: AppSize.s20,
+                    SizedBox(
+                      height: AppSize.s20.h,
                     ),
                     Center(
                       child: defaultButton(
@@ -244,11 +249,12 @@ class RegisterView extends StatelessWidget {
                          navigateTo(context, Routes.registerSuccessRoute);
                         },
                         text: AppStrings.signUp,
-                        width: AppSize.s200,
-                        height: AppSize.s44,
+                        width: AppSize.s200.w,
+                        height: AppSize.s44.h,
                         isUpperCase: false,
                       ),
                     ),
+
                   ],
                 ),
               ),

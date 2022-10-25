@@ -26,13 +26,13 @@ class RegisterSuccessfully extends StatelessWidget {
             Center(
               child: SvgPicture.asset(
                 ImagesAssetsManager.success,
-                width: AppSize.s192,
-                height: AppSize.s192,
+                width: AppSize.s192.w,
+                height: AppSize.s192.h,
                 fit: BoxFit.scaleDown,
               ),
             ),
-            const SizedBox(
-              height: AppSize.s44,
+            SizedBox(
+              height: AppSize.s44.h,
             ),
             Text(
                 AppStrings.registerSuccessfully,
@@ -41,8 +41,8 @@ class RegisterSuccessfully extends StatelessWidget {
                 fontSize: FontSize.s24.sp,
               ),
             ),
-            const SizedBox(
-              height: AppSize.s44,
+            SizedBox(
+              height: AppSize.s44.h,
             ),
             Text(
               AppStrings.registerSuccess,
@@ -51,11 +51,11 @@ class RegisterSuccessfully extends StatelessWidget {
                 fontSize: FontSize.s20.sp,
               ),
             ),
-            const SizedBox(
-              height: AppSize.s100,
+            SizedBox(
+              height: AppSize.s100.h,
             ),
             defaultButton(
-              width: AppSize.s281_25,
+              width: AppSize.s281_25.w,
                 function: (){},
                 text: AppStrings.continueExploring,
             ),
