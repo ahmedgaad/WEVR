@@ -95,9 +95,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         ),
         child: Column(
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height *0.66,
+            Expanded(
+              flex: 2,
               child: PageView.builder(
                 physics: const BouncingScrollPhysics(),
                 controller: _pageController,
@@ -119,36 +118,89 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 itemBuilder: (context, index) => itemSlider(_list[index]),
               ),
             ),
-            Column(
-              children: [
-                SmoothPageIndicator(
-                  controller: _pageController,
-                  effect:  ExpandingDotsEffect(
-                    dotColor: ColorManager.lightPrimary,
-                    activeDotColor: ColorManager.primary,
-                    dotHeight: AppSize.s7.h,
-                    dotWidth: AppSize.s24.w,
-                    expansionFactor: AppSize.s2.w,
-                    spacing: AppSize.s6.w,
-
-                  ),
-                  count: _list.length,
-                ),
-                Row(
+            SizedBox(
+              height: AppSize.s10.h,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
-                    ConditionalBuilder(
-                      condition: currentIndex > 0,
-                      builder: (BuildContext context) {
-                        return Padding(
-                          padding: EdgeInsets.all
-                            (
-                              PaddingSize.p40.w
+                    SmoothPageIndicator(
+                      controller: _pageController,
+                      effect:  ExpandingDotsEffect(
+                        dotColor: ColorManager.lightPrimary,
+                        activeDotColor: ColorManager.primary,
+                        dotHeight: AppSize.s7.h,
+                        dotWidth: AppSize.s24.w,
+                        expansionFactor: AppSize.s2.w,
+                        spacing: AppSize.s6.w,
+                      ),
+                      count: _list.length,
+                    ),
+                    Row(
+                      children: [
+                        ConditionalBuilder(
+                          condition: currentIndex > 0,
+                          builder: (BuildContext context) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric
+                                (
+                                horizontal: AppSize.s40.w,
+                                vertical: AppSize.s40.h,
+                              ),
+                              child: GestureDetector(
+                                onTap: (){
+                                  _pageController.previousPage(
+                                    duration: const Duration(
+                                        seconds: AppConstants.previousPageTime
+                                    ),
+                                    curve: Curves.fastLinearToSlowEaseIn,
+                                  );
+                                },
+                                child: Container(
+                                  height: AppSize.s44.h,
+                                  width: AppSize.s44.w,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: ColorManager.lightGrey,
+                                        width: AppSize.s4,
+                                      )
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: AppSize.s6.w,
+                                      vertical: AppSize.s6.h,
+                                    ),
+                                    child: SvgPicture.asset(ImagesAssetsManager.leftArrowIc,
+                                      color: ColorManager.lightGrey,
+                                      fit: BoxFit.scaleDown,
+                                      height: AppSize.s25_33.h,
+                                      width: AppSize.s14_67.w,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          fallback: (BuildContext context) {
+                            return Container();
+                          },
+                        ),
+                        const Spacer(),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: AppSize.s40.w,
+                              vertical: AppSize.s40.h,
                           ),
                           child: GestureDetector(
                             onTap: (){
-                              _pageController.previousPage(
+                              if(isLast){
+                                Navigator.pushReplacementNamed(context, Routes.getStarted);
+                              }
+                              _pageController.nextPage(
                                 duration: const Duration(
-                                    seconds: AppConstants.previousPageTime
+                                  seconds: AppConstants.nextPageTime,
                                 ),
                                 curve: Curves.fastLinearToSlowEaseIn,
                               );
@@ -157,64 +209,31 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                               height: AppSize.s44.h,
                               width: AppSize.s44.w,
                               decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: ColorManager.lightGrey,
-                                    width: AppSize.s4,
-                                  )
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: ColorManager.primary,
+                                  width: AppSize.s4,
+                                ),
                               ),
-                              child: SvgPicture.asset(ImagesAssetsManager.leftArrowIc,
-                                color: ColorManager.lightGrey,
-                                fit: BoxFit.scaleDown,
-                                height: AppSize.s25_33.h,
-                                width: AppSize.s14_67.w,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: AppSize.s6.w,
+                                  vertical: AppSize.s6.h,
+                                ),
+                                child: SvgPicture.asset( ImagesAssetsManager.rightArrowIc,
+                                  fit: BoxFit.scaleDown,
+                                  height: AppSize.s25_33.h,
+                                  width: AppSize.s14_67.w,
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      },
-                      fallback: (BuildContext context) {
-                        return Container();
-                      },
-                    ),
-                    const Spacer(),
-                    Padding(
-                      padding: EdgeInsets.all(
-                          PaddingSize.p40.w
-                      ),
-                      child: GestureDetector(
-                        onTap: (){
-                          if(isLast){
-                            Navigator.pushReplacementNamed(context, Routes.getStarted);
-                          }
-                          _pageController.nextPage(
-                            duration: const Duration(
-                              seconds: AppConstants.nextPageTime,
-                            ),
-                            curve: Curves.fastLinearToSlowEaseIn,
-                          );
-                        },
-                        child: Container(
-                          height: AppSize.s44.h,
-                          width: AppSize.s44.w,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: ColorManager.primary,
-                              width: AppSize.s4,
-                            ),
-                          ),
-                          child: SvgPicture.asset(ImagesAssetsManager.rightArrowIc,
-                            fit: BoxFit.scaleDown,
-                            height: AppSize.s25_33.h,
-                            width: AppSize.s14_67.w,
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
             // Column(
             //   children: [
@@ -245,9 +264,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        // SizedBox(
-        //   height: AppSize.s36.h,
-        // ),
+        SizedBox(
+          height: AppSize.s36.h,
+        ),
         SvgPicture.asset(
           object.image,
           height: AppSize.s300.h,
