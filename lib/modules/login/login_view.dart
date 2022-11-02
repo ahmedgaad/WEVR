@@ -8,9 +8,7 @@ import 'package:wevr_app/shared/managers/routes_manager.dart';
 import 'package:wevr_app/shared/managers/strings_manager.dart';
 import 'package:wevr_app/shared/managers/style_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../shared/managers/values_manager.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
