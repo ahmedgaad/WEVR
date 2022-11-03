@@ -137,99 +137,104 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                       ),
                       count: _list.length,
                     ),
-                    Row(
-                      children: [
-                        ConditionalBuilder(
-                          condition: currentIndex > 0,
-                          builder: (BuildContext context) {
-                            return Padding(
-                              padding: EdgeInsets.symmetric
-                                (
-                                horizontal: AppSize.s40.w,
-                                vertical: AppSize.s40.h,
-                              ),
-                              child: GestureDetector(
-                                onTap: (){
-                                  _pageController.previousPage(
-                                    duration: const Duration(
-                                        seconds: AppConstants.previousPageTime
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: PaddingSize.p60.h
+                      ),
+                      child: Row(
+                        children: [
+                          ConditionalBuilder(
+                            condition: currentIndex > 0,
+                            builder: (BuildContext context) {
+                              return Padding(
+                                padding: EdgeInsets.symmetric
+                                  (
+                                  horizontal: AppSize.s40.w,
+                                  vertical: AppSize.s40.h,
+                                ),
+                                child: GestureDetector(
+                                  onTap: (){
+                                    _pageController.previousPage(
+                                      duration: const Duration(
+                                          seconds: AppConstants.previousPageTime
+                                      ),
+                                      curve: Curves.fastLinearToSlowEaseIn,
+                                    );
+                                  },
+                                  child: Container(
+                                    height: AppSize.s44.h,
+                                    width: AppSize.s44.w,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                          color: ColorManager.lightGrey,
+                                          width: AppSize.s4,
+                                        )
                                     ),
-                                    curve: Curves.fastLinearToSlowEaseIn,
-                                  );
-                                },
-                                child: Container(
-                                  height: AppSize.s44.h,
-                                  width: AppSize.s44.w,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: AppSize.s6.w,
+                                        vertical: AppSize.s6.h,
+                                      ),
+                                      child: SvgPicture.asset(ImagesAssetsManager.leftArrowIc,
                                         color: ColorManager.lightGrey,
-                                        width: AppSize.s4,
-                                      )
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: AppSize.s6.w,
-                                      vertical: AppSize.s6.h,
-                                    ),
-                                    child: SvgPicture.asset(ImagesAssetsManager.leftArrowIc,
-                                      color: ColorManager.lightGrey,
-                                      fit: BoxFit.scaleDown,
-                                      height: AppSize.s25_33.h,
-                                      width: AppSize.s14_67.w,
+                                        fit: BoxFit.scaleDown,
+                                        height: AppSize.s25_33.h,
+                                        width: AppSize.s14_67.w,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
-                          fallback: (BuildContext context) {
-                            return Container();
-                          },
-                        ),
-                        const Spacer(),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: AppSize.s40.w,
-                              vertical: AppSize.s40.h,
-                          ),
-                          child: GestureDetector(
-                            onTap: (){
-                              if(isLast){
-                                Navigator.pushReplacementNamed(context, Routes.getStarted);
-                              }
-                              _pageController.nextPage(
-                                duration: const Duration(
-                                  seconds: AppConstants.nextPageTime,
-                                ),
-                                curve: Curves.fastLinearToSlowEaseIn,
                               );
                             },
-                            child: Container(
-                              height: AppSize.s44.h,
-                              width: AppSize.s44.w,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: ColorManager.primary,
-                                  width: AppSize.s4,
+                            fallback: (BuildContext context) {
+                              return Container();
+                            },
+                          ),
+                          const Spacer(),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: AppSize.s40.w,
+                                vertical: AppSize.s40.h,
+                            ),
+                            child: GestureDetector(
+                              onTap: (){
+                                if(isLast){
+                                  Navigator.pushReplacementNamed(context, Routes.getStarted);
+                                }
+                                _pageController.nextPage(
+                                  duration: const Duration(
+                                    seconds: AppConstants.nextPageTime,
+                                  ),
+                                  curve: Curves.fastLinearToSlowEaseIn,
+                                );
+                              },
+                              child: Container(
+                                height: AppSize.s44.h,
+                                width: AppSize.s44.w,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: ColorManager.primary,
+                                    width: AppSize.s4,
+                                  ),
                                 ),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: AppSize.s6.w,
-                                  vertical: AppSize.s6.h,
-                                ),
-                                child: SvgPicture.asset( ImagesAssetsManager.rightArrowIc,
-                                  fit: BoxFit.scaleDown,
-                                  height: AppSize.s25_33.h,
-                                  width: AppSize.s14_67.w,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: AppSize.s6.w,
+                                    vertical: AppSize.s6.h,
+                                  ),
+                                  child: SvgPicture.asset( ImagesAssetsManager.rightArrowIc,
+                                    fit: BoxFit.scaleDown,
+                                    height: AppSize.s25_33.h,
+                                    width: AppSize.s14_67.w,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

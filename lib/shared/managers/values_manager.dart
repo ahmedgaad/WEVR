@@ -29,6 +29,7 @@ class PaddingSize {
   static const double p30 = 30.0;
   static const double p40 = 40.0;
   static const double p50 = 50.0;
+  static const double p60 = 60.0;
   static const double p70 = 70.0;
   static const double p78 = 78.0;
 }
