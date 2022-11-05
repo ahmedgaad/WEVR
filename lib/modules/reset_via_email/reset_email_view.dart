@@ -24,37 +24,37 @@ class _ResetEmailViewState extends State<ResetEmailView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.white,
-      /*appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: ColorManager.white,
         elevation: AppSize.s0,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Padding(
-            padding: EdgeInsets.all(PaddingSize.p20),
-            child: Icon(
-              Icons.arrow_back_ios,
-              size: AppSize.s24,
-            ),
-          ),
-        ),
-      ),*/
+        // leading: IconButton(
+        //   onPressed: () {},
+        //   icon: const Padding(
+        //     padding: EdgeInsets.all(PaddingSize.p20),
+        //     child: Icon(
+        //       Icons.arrow_back_ios,
+        //       size: AppSize.s24,
+        //     ),
+        //   ),
+        // ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, Routes.forgetPasswordRoute);
-                },
-                icon: const Padding(
-                  padding: EdgeInsets.all(PaddingSize.p25),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: AppSize.s24,
-                  ),
-                ),
-              ),
+              // IconButton(
+              //   onPressed: () {
+              //     Navigator.pushReplacementNamed(context, Routes.forgetPasswordRoute);
+              //   },
+              //   icon: const Padding(
+              //     padding: EdgeInsets.all(PaddingSize.p25),
+              //     child: Icon(
+              //       Icons.arrow_back_ios,
+              //       size: AppSize.s24,
+              //     ),
+              //   ),
+              // ),
               Align(
                 child: SvgPicture.asset(
                   ImagesAssetsManager.emailReset,

@@ -70,7 +70,7 @@ Widget defaultFormField({
         labelText: label,
         suffixIcon: suffix != null
             ? IconButton(
-                icon: Icon(suffix),
+                icon: Icon(suffix , size: AppSize.s20,),
                 onPressed: suffixPressed,
               )
             : null,
@@ -79,6 +79,10 @@ Widget defaultFormField({
 
 void navigateTo(context, String routeName) =>
     Navigator.pushReplacementNamed(context, routeName);
+
+void navigatePush(context, Widget widget) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => widget));
 
 Widget defaultTextButton({
   required String text,

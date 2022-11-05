@@ -13,6 +13,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../shared/managers/values_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../forgot_password/forgot_password_view.dart';
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
 
@@ -253,7 +255,7 @@ class LoginView extends StatelessWidget {
                                   child: defaultTextButton(
                                     text: AppStrings.forgetPassword,
                                     onPressed: (){
-                                      navigateTo( context, Routes.forgetPasswordRoute);
+                                      navigatePush( context, const ForgotPasswordView());
                                     },
                                   ),
                                 ),

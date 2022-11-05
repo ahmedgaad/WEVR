@@ -119,7 +119,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               ),
             ),
             SizedBox(
-              height: AppSize.s10.h,
+              height: AppSize.s50.h,
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -139,7 +139,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                        vertical: PaddingSize.p60.h
+                        vertical: PaddingSize.p40.h
                       ),
                       child: Row(
                         children: [

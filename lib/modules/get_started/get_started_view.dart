@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wevr_app/modules/home/home_view.dart';
 import 'package:wevr_app/shared/managers/assets_manager.dart';
 import 'package:wevr_app/shared/managers/color_manager.dart';
 import 'package:wevr_app/shared/managers/routes_manager.dart';
@@ -29,10 +30,9 @@ class _GetStartedViewState extends State<GetStartedView> {
             width: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(ImagesAssetsManager.getStartedImage),
-                  fit: BoxFit.cover,
-                )
-            ),
+              image: AssetImage(ImagesAssetsManager.getStartedImage),
+              fit: BoxFit.cover,
+            )),
           ),
           Padding(
             padding: EdgeInsets.all(PaddingSize.p40.w),
@@ -43,11 +43,10 @@ class _GetStartedViewState extends State<GetStartedView> {
                   alignment: Alignment.center,
                   children: [
                     BackdropFilter(
-                        filter: ImageFilter.blur
-                          (
-                          sigmaX: AppSize.s20.w,
-                          sigmaY: AppSize.s20.h,
-                        ),
+                      filter: ImageFilter.blur(
+                        sigmaX: AppSize.s20.w,
+                        sigmaY: AppSize.s20.h,
+                      ),
                       child: Container(),
                     ),
                     Column(
@@ -61,13 +60,12 @@ class _GetStartedViewState extends State<GetStartedView> {
                           AppStrings.welcomeTo,
                           style: getRegularStylePoppins(
                               color: ColorManager.black,
-                              fontSize: FontSize.s24.sp
-                          ),
+                              fontSize: FontSize.s24.sp),
                         ),
                         Padding(
                           padding: EdgeInsets.all(PaddingSize.p50.w),
                           child: SvgPicture.asset(
-                              ImagesAssetsManager.getStartedLogo,
+                            ImagesAssetsManager.getStartedLogo,
                           ),
                         ),
                         SizedBox(
@@ -78,11 +76,11 @@ class _GetStartedViewState extends State<GetStartedView> {
                           child: Column(
                             children: [
                               defaultButton(
-                                  function: (){
-                                   navigateTo(context, Routes.loginRoute);
-                                  },
+                                function: () {
+                                  navigateTo(context, Routes.loginRoute);
+                                },
                                 isUpperCase: false,
-                                  text: AppStrings.signIn,
+                                text: AppStrings.signIn,
                               ),
                               SizedBox(
                                 height: AppSize.s20.h,
@@ -91,22 +89,24 @@ class _GetStartedViewState extends State<GetStartedView> {
                                 borderColor: ColorManager.primary,
                                 borderRadius: AppRadius.r2,
                                 background: ColorManager.transparent,
-                                function: (){
+                                function: () {
                                   navigateTo(context, Routes.registerRoute);
                                 },
                                 isUpperCase: false,
                                 text: AppStrings.signUp,
                                 textColor: ColorManager.black,
                               ),
-                               SizedBox(
+                              SizedBox(
                                 height: AppSize.s20.h,
                               ),
                               defaultTextButton(
                                 textColor: ColorManager.black,
-                                  fontSize: FontSize.s18.sp,
-                                  textDecoration: TextDecoration.underline,
-                                  text: AppStrings.asGuest,
-                                  onPressed: (){},
+                                fontSize: FontSize.s18.sp,
+                                textDecoration: TextDecoration.underline,
+                                text: AppStrings.asGuest,
+                                onPressed: () {
+                                  navigatePush(context, const HomeView());
+                                },
                               ),
                               // TextButton(
                               //     onPressed: (){},
@@ -134,5 +134,3 @@ class _GetStartedViewState extends State<GetStartedView> {
     );
   }
 }
-
-
