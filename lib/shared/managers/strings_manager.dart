@@ -27,6 +27,8 @@ class AppStrings{
   static const String alreadyHaveAccount = "Already have an account?";
   static const String viaPhone = "via phone number";
   static const String viaEmail = "via email";
+  static const String resendCode = "Not received Code?";
+  static const String resend = "Resend";
 
   static const String onBoardingSubTitle1 =
   """

@@ -117,7 +117,7 @@ class LoginView extends StatelessWidget {
                               icon: const Padding(
                                 padding: EdgeInsets.all(PaddingSize.p20),
                                 child: Icon(
-                                  Icons.arrow_back_ios,
+                                  Icons.arrow_back,
                                   size: AppSize.s24,
                                 ),
                               ),

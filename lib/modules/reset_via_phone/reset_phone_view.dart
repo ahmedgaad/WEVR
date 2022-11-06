@@ -239,11 +239,28 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                     child: defaultButton(
                       function: () {},
                       text: AppStrings.submit,
-                      width: AppSize.s250,
-                      height: AppSize.s60,
+                      width: AppSize.s200.w,
+                      height: AppSize.s60.h,
                       isUpperCase: false,
                     ),
                   ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      AppStrings.resendCode,
+                      style: getRegularStyleInter(
+                        color: ColorManager.darkGrey,
+                        fontSize: FontSize.s14,
+                      ),
+                    ),
+                    defaultTextButton(
+                      text: AppStrings.resend,
+                      textColor: ColorManager.primary,
+                      onPressed: (){},
+                    )
+                  ],
                 ),
               ],
             ),
