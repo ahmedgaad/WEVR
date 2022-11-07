@@ -29,6 +29,10 @@ class AppStrings{
   static const String viaEmail = "via email";
   static const String resendCode = "Not received Code?";
   static const String resend = "Resend";
+  static const String explore = "Explore";
+  static const String saved = "Saved";
+  static const String homes = "Homes";
+  static const String auction = "Auction";
 
   static const String onBoardingSubTitle1 =
   """

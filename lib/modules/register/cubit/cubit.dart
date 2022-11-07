@@ -18,6 +18,7 @@ class RegisterCubit extends Cubit<RegisterStates>{
 
       emit(ChangeRegisterPasswordVisibilityState());
    }
+
    IconData confirmSuffix = Icons.visibility;
 
    void changeSuffixPasswordVisibility() {
