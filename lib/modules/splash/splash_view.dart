@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wevr_app/shared/managers/assets_manager.dart';
-import 'package:wevr_app/shared/managers/color_manager.dart';
-import 'package:wevr_app/shared/managers/routes_manager.dart';
+import '../../shared/managers/assets_manager.dart';
+import '../../shared/managers/color_manager.dart';
+import '../../shared/managers/routes_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../shared/components/constants.dart';
 

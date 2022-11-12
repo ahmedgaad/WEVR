@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wevr_app/shared/managers/color_manager.dart';
-import 'package:wevr_app/shared/managers/style_manager.dart';
-import 'package:wevr_app/shared/managers/values_manager.dart';
+import '../managers/color_manager.dart';
+import '../managers/style_manager.dart';
+import '../managers/values_manager.dart';
 
 import '../managers/strings_manager.dart';
 
@@ -34,7 +34,7 @@ Widget defaultButton({
         onPressed: function,
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
-          style: getBoldStylePoppins(color: textColor),
+          style: getBoldStylePoppins(color: textColor, fontSize: AppSize.s24),
         ),
       ),
     );
@@ -42,11 +42,14 @@ Widget defaultButton({
 Widget defaultFormField({
   final TextEditingController? controller,
   required final TextInputType type,
-  String? validate,
+  Widget? labelWidget,
+  Widget? suffixWidget,
+  // String? validate,
+  String? Function(String?)? validate,
   ValueChanged<String>? onSubmit,
   ValueChanged<String>? onChange,
   GestureTapCallback? onTap,
-  required final String label,
+  String? label,
   final IconData? prefix,
   bool? isPassword = false,
   IconData? suffix,
@@ -55,22 +58,25 @@ Widget defaultFormField({
 }) =>
     TextFormField(
       keyboardType: type,
+      validator: validate,
       controller: controller,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return '${validate}';
-        }
-        return null;
-      },
+      // validator: (value) {
+      //   if (value!.isEmpty) {
+      //     return '$validate';
+      //   }
+      //   return null;
+      // },
       onTap: onTap,
       onChanged: onChange,
       onFieldSubmitted: onSubmit,
       obscureText: isPassword ?? false,
       decoration: InputDecoration(
+        suffix: suffixWidget,
         labelText: label,
+        label: labelWidget,
         suffixIcon: suffix != null
             ? IconButton(
-                icon: Icon(suffix , size: AppSize.s20,),
+                icon: Icon(suffix , size: AppSize.s25, color: ColorManager.black,),
                 onPressed: suffixPressed,
               )
             : null,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wevr_app/modules/register/register_successfuly.dart';
-import 'package:wevr_app/modules/reset_via_email/reset_email_view.dart';
-import 'package:wevr_app/modules/reset_via_phone/reset_phone_view.dart';
-import 'package:wevr_app/shared/managers/strings_manager.dart';
+import '../../modules/register/register_successfuly.dart';
+import '../../modules/otp_process/reset_via_email/reset_email_view.dart';
+import '../../modules/otp_process/reset_via_phone/reset_phone_view.dart';
+import 'strings_manager.dart';
 
-import '../../modules/forgot_password/forgot_password_view.dart';
+import '../../modules/otp_process/forgot_password/forgot_password_view.dart';
 import '../../modules/get_started/get_started_view.dart';
 import '../../modules/home/home_view.dart';
 import '../../modules/login/login_view.dart';

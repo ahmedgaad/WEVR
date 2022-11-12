@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:wevr_app/shared/managers/color_manager.dart';
+
+import '../../shared/managers/color_manager.dart';
 
 class AuctionView extends StatelessWidget {
   const AuctionView({Key? key}) : super(key: key);

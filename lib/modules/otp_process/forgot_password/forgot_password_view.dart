@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:wevr_app/modules/reset_via_email/reset_email_view.dart';
-import 'package:wevr_app/shared/components/components.dart';
-import 'package:wevr_app/shared/managers/font_manager.dart';
-import 'package:wevr_app/shared/managers/strings_manager.dart';
-import 'package:wevr_app/shared/managers/style_manager.dart';
+import '../reset_via_email/reset_email_view.dart';
+import '../../../shared/components/components.dart';
+import '../../../shared/managers/font_manager.dart';
+import '../../../shared/managers/strings_manager.dart';
+import '../../../shared/managers/style_manager.dart';
 
-import '../../shared/managers/assets_manager.dart';
-import '../../shared/managers/color_manager.dart';
-import '../../shared/managers/routes_manager.dart';
-import '../../shared/managers/values_manager.dart';
+import '../../../shared/managers/assets_manager.dart';
+import '../../../shared/managers/color_manager.dart';
+import '../../../shared/managers/routes_manager.dart';
+import '../../../shared/managers/values_manager.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

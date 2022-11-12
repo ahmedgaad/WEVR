@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:wevr_app/shared/managers/assets_manager.dart';
-import 'package:wevr_app/shared/managers/font_manager.dart';
-import 'package:wevr_app/shared/managers/routes_manager.dart';
-import 'package:wevr_app/shared/managers/strings_manager.dart';
-import 'package:wevr_app/shared/managers/style_manager.dart';
+import '../../shared/managers/assets_manager.dart';
+import '../../shared/managers/font_manager.dart';
+import '../../shared/managers/routes_manager.dart';
+import '../../shared/managers/strings_manager.dart';
+import '../../shared/managers/style_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../shared/components/constants.dart';
 import '../../shared/managers/color_manager.dart';

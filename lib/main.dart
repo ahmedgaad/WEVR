@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:wevr_app/shared/bloc_observer.dart';
 import 'package:bloc/bloc.dart';
-import 'package:wevr_app/shared/network/local/cache_helper.dart';
-import 'package:wevr_app/shared/network/remote/dio_helper.dart';
+import 'package:flutter/material.dart';
+
 import 'app/app.dart';
+import 'shared/bloc_observer.dart';
+import 'shared/network/local/cache_helper.dart';
+import 'shared/network/remote/dio_helper.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_constructors_in_immutables, depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
 import 'package:wevr_app/shared/managers/routes_manager.dart';

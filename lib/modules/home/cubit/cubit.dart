@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wevr_app/modules/auction/auction_view.dart';
-import 'package:wevr_app/modules/explore/explore_view.dart';
-import 'package:wevr_app/modules/home/cubit/states.dart';
-import 'package:wevr_app/modules/homes/homes_view.dart';
-import 'package:wevr_app/modules/saved/saved_view.dart';
+import '../../auction/auction_view.dart';
+import '../../explore/explore_view.dart';
+import 'states.dart';
+import '../../homes/homes_view.dart';
+import '../../saved/saved_view.dart';
 class HomeLayOutCubit extends Cubit<HomeLayOutStates>{
   HomeLayOutCubit() : super(HomeLayOutInitialState());
 

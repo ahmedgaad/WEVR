@@ -10,8 +10,8 @@ import '../../shared/managers/style_manager.dart';
 import '../../shared/managers/values_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class RegisterSuccessfully extends StatelessWidget {
-  const RegisterSuccessfully({Key? key}) : super(key: key);
+class ResetSuccessfully extends StatelessWidget {
+  const ResetSuccessfully({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +40,7 @@ class RegisterSuccessfully extends StatelessWidget {
                 height: AppSize.s44.h,
               ),
               Text(
-                  AppStrings.registerSuccessfully,
+                  AppStrings.resetSuccessfullyTitle,
                 style: getBoldStylePoppins(
                     color: ColorManager.black,
                   fontSize: FontSize.s24.sp,
@@ -50,7 +50,7 @@ class RegisterSuccessfully extends StatelessWidget {
                 height: AppSize.s44.h,
               ),
               Text(
-                AppStrings.registerSuccess,
+                AppStrings.resetSuccessfullySubTitle,
                 style: getRegularStyleInter(
                   color: ColorManager.darkGrey,
                   fontSize: FontSize.s20.sp,

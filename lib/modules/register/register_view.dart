@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wevr_app/modules/register/cubit/cubit.dart';
-import 'package:wevr_app/modules/register/cubit/states.dart';
-import 'package:wevr_app/modules/register/register_successfuly.dart';
-import 'package:wevr_app/shared/components/components.dart';
-import 'package:wevr_app/shared/managers/assets_manager.dart';
-import 'package:wevr_app/shared/managers/color_manager.dart';
-import 'package:wevr_app/shared/managers/font_manager.dart';
-import 'package:wevr_app/shared/managers/routes_manager.dart';
-import 'package:wevr_app/shared/managers/strings_manager.dart';
-import 'package:wevr_app/shared/managers/style_manager.dart';
+import 'cubit/cubit.dart';
+import 'cubit/states.dart';
+import 'register_successfuly.dart';
+import '../../shared/components/components.dart';
+import '../../shared/managers/assets_manager.dart';
+import '../../shared/managers/color_manager.dart';
+import '../../shared/managers/font_manager.dart';
+import '../../shared/managers/routes_manager.dart';
+import '../../shared/managers/strings_manager.dart';
+import '../../shared/managers/style_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../shared/managers/values_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,9 +34,9 @@ class _RegisterViewState extends State<RegisterView> {
     return BlocProvider(
         create: (BuildContext context) => RegisterCubit(),
         child: BlocConsumer<RegisterCubit, RegisterStates>(
-
           listener: (context, state) {},
           builder: (context, state) {
+            var cubit = RegisterCubit.get(context);
             return Scaffold(
               backgroundColor: ColorManager.white,
               body: Stack(
@@ -222,11 +222,17 @@ class _RegisterViewState extends State<RegisterView> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: PaddingSize.p40.w),
                                 child: defaultFormField(
-                                  controller:
-                                      RegisterCubit.get(context).emailController,
+                                  controller: cubit
+                                      .emailController,
                                   type: TextInputType.emailAddress,
                                   label: AppStrings.emailOrMobile,
-                                  validate: AppStrings.emailValidate,
+                                  //validate: AppStrings.emailValidate,
+                                  validate: (value) {
+                                      if (value!.isEmpty) {
+                                        return AppStrings.emailValidate;
+                                      }
+                                      return null;
+                                    },
                                 ),
                               ),
                               SizedBox(
@@ -236,17 +242,24 @@ class _RegisterViewState extends State<RegisterView> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: PaddingSize.p40.w),
                                 child: defaultFormField(
-                                  controller: RegisterCubit.get(context)
-                                      .passwordController,
-                                  type: TextInputType.visiblePassword,
-                                  label: AppStrings.password,
-                                  validate: AppStrings.passwordValidate,
-                                  isPassword: RegisterCubit.get(context).isPassword,
-                                  suffix: RegisterCubit.get(context).suffix,
-                                  suffixPressed: (){
-                                      RegisterCubit.get(context).changePasswordVisibility();
-                                  }
-                                ),
+                                    controller: cubit
+                                        .passwordController,
+                                    type: TextInputType.visiblePassword,
+                                    label: AppStrings.password,
+                                    //validate: AppStrings.passwordValidate,
+                                    validate: (value) {
+                                      if (value!.isEmpty) {
+                                        return AppStrings.passwordValidate;
+                                      }
+                                      return null;
+                                    },
+                                    isPassword:
+                                        cubit.isPassword,
+                                    suffix: cubit.suffix,
+                                    suffixPressed: () {
+                                      cubit
+                                          .changePasswordVisibility();
+                                    }),
                               ),
                               SizedBox(
                                 height: AppSize.s20.h,
@@ -255,17 +268,25 @@ class _RegisterViewState extends State<RegisterView> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: PaddingSize.p40.w),
                                 child: defaultFormField(
-                                  controller: RegisterCubit.get(context)
-                                      .confirmPasswordController,
-                                  type: TextInputType.visiblePassword,
-                                  label: AppStrings.confirmPassword,
-                                  validate: AppStrings.passwordValidate,
-                                  isPassword: RegisterCubit.get(context).isPassword,
-                                  suffix: RegisterCubit.get(context).confirmSuffix,
-                                  suffixPressed: (){
-                                    RegisterCubit.get(context).changeSuffixPasswordVisibility();
-                                  }
-                                ),
+                                    controller: cubit
+                                        .confirmPasswordController,
+                                    type: TextInputType.visiblePassword,
+                                    label: AppStrings.confirmPassword,
+                                    //validate: AppStrings.passwordValidate,
+                                    validate: (value) {
+                                      if (value!.isEmpty) {
+                                        return AppStrings.passwordValidate;
+                                      }
+                                      return null;
+                                    },
+                                    isPassword:
+                                        cubit.isPassword,
+                                    suffix: cubit
+                                        .confirmSuffix,
+                                    suffixPressed: () {
+                                      cubit
+                                          .changeSuffixPasswordVisibility();
+                                    }),
                               ),
                               SizedBox(
                                 height: AppSize.s20.h,
@@ -274,7 +295,8 @@ class _RegisterViewState extends State<RegisterView> {
                                 child: defaultButton(
                                   function: () {
                                     if (formKey.currentState!.validate()) {
-                                      navigatePush(context, const RegisterSuccessfully());
+                                      navigatePush(context,
+                                          const RegisterSuccessfully());
                                     }
                                   },
                                   text: AppStrings.signUp,

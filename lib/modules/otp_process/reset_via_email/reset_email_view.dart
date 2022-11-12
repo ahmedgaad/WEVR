@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wevr_app/shared/managers/font_manager.dart';
-import 'package:wevr_app/shared/managers/strings_manager.dart';
-import 'package:wevr_app/shared/managers/style_manager.dart';
+import 'package:wevr_app/modules/otp_process/create_new_password/create_new_password.dart';
+import '../../../shared/managers/font_manager.dart';
+import '../../../shared/managers/strings_manager.dart';
+import '../../../shared/managers/style_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../shared/components/components.dart';
-import '../../shared/managers/assets_manager.dart';
-import '../../shared/managers/color_manager.dart';
-import '../../shared/managers/routes_manager.dart';
-import '../../shared/managers/values_manager.dart';
+import '../../../shared/components/components.dart';
+import '../../../shared/managers/assets_manager.dart';
+import '../../../shared/managers/color_manager.dart';
+import '../../../shared/managers/routes_manager.dart';
+import '../../../shared/managers/values_manager.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ResetPhoneView extends StatefulWidget {
-  const ResetPhoneView({Key? key}) : super(key: key);
+class ResetEmailView extends StatefulWidget {
+  const ResetEmailView({Key? key}) : super(key: key);
 
   @override
-  State<ResetPhoneView> createState() => _ResetPhoneViewState();
+  State<ResetEmailView> createState() => _ResetEmailViewState();
 }
 
-class _ResetPhoneViewState extends State<ResetPhoneView> {
+class _ResetEmailViewState extends State<ResetEmailView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,8 +42,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding:  EdgeInsets.symmetric(
-                vertical: AppSize.s20.h),
+            padding: EdgeInsets.symmetric(vertical: AppSize.s20.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -59,12 +59,17 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                 //   ),
                 // ),
                 Align(
-                  child: SvgPicture.asset(
-                    ImagesAssetsManager.mobileReset,
-                    fit: BoxFit.scaleDown,
-                    width: AppSize.s128,
-                    height: AppSize.s224,
-                    alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppSize.s83.w,
+                    ),
+                    child: SvgPicture.asset(
+                      ImagesAssetsManager.emailReset,
+                      fit: BoxFit.scaleDown,
+                      width: AppSize.s128.w,
+                      height: AppSize.s224.h,
+                      alignment: Alignment.center,
+                    ),
                   ),
                 ),
                 Padding(
@@ -75,9 +80,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                   child: Text(
                     AppStrings.recoveryCode,
                     style: getBoldStylePoppins(
-                        color: ColorManager.black,
-                        fontSize: FontSize.s24.sp
-                    ),
+                        color: ColorManager.black, fontSize: FontSize.s24.sp),
                   ),
                 ),
                 Padding(
@@ -111,17 +114,15 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                             color: ColorManager.viaPhoneContainer,
                           ),
                           child: TextFormField(
-                            onChanged: (value){
-                              if(value.length == 1){
+                            onChanged: (value) {
+                              if (value.length == 1) {
                                 FocusScope.of(context).nextFocus();
                               }
                             },
                             decoration: const InputDecoration(
-                              hintText: "8",
-                              border: InputBorder.none
-                            ),
+                                hintText: "8", border: InputBorder.none),
                             style: getBoldStylePoppins(
-                                color: ColorManager.black,
+                              color: ColorManager.black,
                               fontSize: FontSize.s24.sp,
                             ),
                             keyboardType: TextInputType.number,
@@ -133,7 +134,9 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: AppSize.s15,),
+                      const SizedBox(
+                        width: AppSize.s15,
+                      ),
                       Expanded(
                         child: Container(
                           width: AppSize.s60,
@@ -143,8 +146,8 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                             color: ColorManager.viaPhoneContainer,
                           ),
                           child: TextFormField(
-                            onChanged: (value){
-                              if(value.length == 1){
+                            onChanged: (value) {
+                              if (value.length == 1) {
                                 FocusScope.of(context).nextFocus();
                               }
                             },
@@ -165,7 +168,9 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: AppSize.s15,),
+                      const SizedBox(
+                        width: AppSize.s15,
+                      ),
                       Expanded(
                         child: Container(
                           width: AppSize.s60,
@@ -175,8 +180,8 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                             color: ColorManager.viaPhoneContainer,
                           ),
                           child: TextFormField(
-                            onChanged: (value){
-                              if(value.length == 1){
+                            onChanged: (value) {
+                              if (value.length == 1) {
                                 FocusScope.of(context).nextFocus();
                               }
                             },
@@ -197,7 +202,9 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: AppSize.s15,),
+                      const SizedBox(
+                        width: AppSize.s15,
+                      ),
                       Expanded(
                         child: Container(
                           width: AppSize.s60,
@@ -207,8 +214,8 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                             color: ColorManager.viaPhoneContainer,
                           ),
                           child: TextFormField(
-                            onChanged: (value){
-                              if(value.length == 1){
+                            onChanged: (value) {
+                              if (value.length == 1) {
                                 FocusScope.of(context).nextFocus();
                               }
                             },
@@ -237,7 +244,9 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                   child: Align(
                     alignment: Alignment.center,
                     child: defaultButton(
-                      function: () {},
+                      function: () {
+                        navigatePush(context, CreateNewPassword());
+                      },
                       text: AppStrings.submit,
                       width: AppSize.s200.w,
                       height: AppSize.s60.h,
@@ -258,7 +267,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                     defaultTextButton(
                       text: AppStrings.resend,
                       textColor: ColorManager.primary,
-                      onPressed: (){},
+                      onPressed: () {},
                     )
                   ],
                 ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wevr_app/shared/managers/color_manager.dart';
-import 'package:wevr_app/shared/managers/font_manager.dart';
-import 'package:wevr_app/shared/managers/style_manager.dart';
-import 'package:wevr_app/shared/managers/values_manager.dart';
+import 'color_manager.dart';
+import 'font_manager.dart';
+import 'style_manager.dart';
+import 'values_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
