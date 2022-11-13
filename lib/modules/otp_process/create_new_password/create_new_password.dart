@@ -109,9 +109,13 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                           ),
                           child: defaultFormField(
                             onChange: (value) {
-                              if (value == cubit.passwordController.text) {
+                              if (cubit.confirmPasswordController.text == cubit.passwordController.text) {
                                 setState(() {
                                   cubit.isPasswordMatchCharacter = true;
+                                });
+                              }else{
+                                setState(() {
+                                  cubit.isPasswordMatchCharacter = false;
                                 });
                               }
                             },
@@ -141,7 +145,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                               if (value!.isEmpty) {
                                 return "Must be not empty";
                               }
-                              if (value.characters.length !=
+                              if (cubit.passwordController.text !=
                                   cubit.confirmPasswordController.text) {
                                 return "Both passwords must match";
                               }
