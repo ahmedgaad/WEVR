@@ -7,5 +7,4 @@ class CreateNewPasswordInitial extends CreateNewPasswordState {}
 
 class ChangePasswordVisibilityState extends CreateNewPasswordState {}
 
-class ConfirmSuccessState extends CreateNewPasswordState {}
-class ConfirmFailState extends CreateNewPasswordState {}
+

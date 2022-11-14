@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wevr_app/modules/otp_process/create_new_password/cubit/create_new_password_cubit.dart';
-import 'package:wevr_app/modules/otp_process/reset_pass_successfuly.dart';
+import 'package:wevr_app/modules/otp_process/reset_pass_successfully.dart';
 import 'package:wevr_app/shared/components/components.dart';
 import 'package:wevr_app/shared/managers/assets_manager.dart';
 import 'package:wevr_app/shared/managers/color_manager.dart';
@@ -13,14 +11,9 @@ import 'package:wevr_app/shared/managers/style_manager.dart';
 import 'package:wevr_app/shared/managers/values_manager.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CreateNewPassword extends StatefulWidget {
+class CreateNewPassword extends StatelessWidget {
   const CreateNewPassword({super.key});
 
-  @override
-  State<CreateNewPassword> createState() => _CreateNewPasswordState();
-}
-
-class _CreateNewPasswordState extends State<CreateNewPassword> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -47,11 +40,15 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.only(
-                      start: PaddingSize.p25.w, top: PaddingSize.p40.h),
+                    start: PaddingSize.p25.w,
+                    top: PaddingSize.p40.h,
+                  ),
                   child: Text(
                     AppStrings.createNewPasswordTitle,
                     style: getBoldStylePoppins(
-                        color: ColorManager.black, fontSize: AppSize.s24),
+                      color: ColorManager.black,
+                      fontSize: AppSize.s24.sp,
+                    ),
                   ),
                 ),
                 Padding(
@@ -60,7 +57,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                     AppStrings.createNewPasswordSubTitle,
                     style: getRegularStyleInter(
                       color: ColorManager.darkGrey,
-                      fontSize: AppSize.s20,
+                      fontSize: AppSize.s20.sp,
                     ),
                   ),
                 ),
@@ -81,19 +78,20 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                             labelWidget: Text(
                               AppStrings.password,
                               style: getRegularStyleInter(
-                                  color: ColorManager.darkGrey,
-                                  fontSize: AppSize.s20),
+                                color: ColorManager.darkGrey,
+                                fontSize: AppSize.s20.sp,
+                              ),
                             ),
                             isPassword: cubit.isPassword,
                             suffix: cubit.suffix,
                             suffixPressed: cubit.ChangePasswordVisibility,
-                            //validate: "Must be at leaste 8 characters",
+                            //validate: "Must be at least 8 characters",
                             validate: (value) {
                               if (value!.isEmpty) {
                                 return "Must be not empty";
                               }
                               if (value.length < 8) {
-                                return "Must be at leaste 8 characters";
+                                return "Must be at least 8 characters";
                               }
                               return null;
                             },
@@ -107,51 +105,59 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                             start: PaddingSize.p25.w,
                             end: PaddingSize.p40.w,
                           ),
-                          child: defaultFormField(
-                            onChange: (value) {
-                              if (cubit.confirmPasswordController.text == cubit.passwordController.text) {
-                                setState(() {
-                                  cubit.isPasswordMatchCharacter = true;
-                                });
-                              }else{
-                                setState(() {
-                                  cubit.isPasswordMatchCharacter = false;
-                                });
-                              }
+                          child: StatefulBuilder(
+                            builder:
+                                (BuildContext context, StateSetter setState) {
+                              return defaultFormField(
+                                onChange: (value) {
+                                  if (cubit.confirmPasswordController.text ==
+                                      cubit.passwordController.text) {
+                                    setState(() {
+                                      cubit.isPasswordMatchCharacter = true;
+                                    });
+                                  } else {
+                                    setState(() {
+                                      cubit.isPasswordMatchCharacter = false;
+                                    });
+                                  }
+                                },
+                                controller: cubit.confirmPasswordController,
+                                type: TextInputType.visiblePassword,
+                                labelWidget: Text(
+                                  AppStrings.confirmPassword,
+                                  style: getRegularStyleInter(
+                                    color: ColorManager.darkGrey,
+                                    fontSize: AppSize.s20.sp,
+                                  ),
+                                ),
+                                isPassword: cubit.isPassword,
+                                suffixWidget: cubit.isPasswordMatchCharacter
+                                    ? Padding(
+                                        padding:
+                                             EdgeInsetsDirectional.only(
+                                          end: PaddingSize.p10.w,
+                                        ),
+                                        child: SvgPicture.asset(
+                                          ImagesAssetsManager.checkIc,
+                                          width: AppSize.s24.w,
+                                          height: AppSize.s24.h,
+                                        ),
+                                      )
+                                    : const SizedBox.shrink(),
+                                //validate: "Both passwords must match",
+                                validate: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Must be not empty";
+                                  }
+                                  if (cubit.passwordController.text !=
+                                      cubit.confirmPasswordController.text) {
+                                    return "Both passwords must match";
+                                  }
+                                  return null;
+                                },
+                                // suffix: Icons.check_circle_outline,
+                              );
                             },
-                            controller: cubit.confirmPasswordController,
-                            type: TextInputType.visiblePassword,
-                            labelWidget: Text(
-                              AppStrings.confirmPassword,
-                              style: getRegularStyleInter(
-                                  color: ColorManager.darkGrey,
-                                  fontSize: AppSize.s20),
-                            ),
-                            isPassword: cubit.isPassword,
-                            suffixWidget: cubit.isPasswordMatchCharacter
-                                ? Padding(
-                                    padding: const EdgeInsetsDirectional.only(
-                                      end: PaddingSize.p11,
-                                    ),
-                                    child: SvgPicture.asset(
-                                      ImagesAssetsManager.checkIc,
-                                      width: AppSize.s24.w,
-                                      height: AppSize.s24.h,
-                                    ),
-                                  )
-                                : const SizedBox.shrink(),
-                            //validate: "Both passwords must match",
-                            validate: (value) {
-                              if (value!.isEmpty) {
-                                return "Must be not empty";
-                              }
-                              if (cubit.passwordController.text !=
-                                  cubit.confirmPasswordController.text) {
-                                return "Both passwords must match";
-                              }
-                              return null;
-                            },
-                            // suffix: Icons.check_circle_outline,
                           ),
                         ),
                         SizedBox(
@@ -160,7 +166,8 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                         defaultButton(
                             function: () {
                               if (cubit.formKey.currentState!.validate()) {
-                                navigatePush(context, ResetSuccessfully());
+                                navigatePush(
+                                    context, const ResetSuccessfully());
                               }
                             },
                             text: AppStrings.resetPassword,

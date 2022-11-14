@@ -25,7 +25,4 @@ class CreateNewPasswordCubit extends Cubit<CreateNewPasswordState> {
     emit(ChangePasswordVisibilityState());
   }
 
-  void ShowSuffixSuccess() {
-    if (passwordController.text == confirmPasswordController.text) {}
-  }
 }
