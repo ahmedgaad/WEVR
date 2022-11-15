@@ -34,7 +34,8 @@ Widget defaultButton({
         onPressed: function,
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
-          style: getBoldStylePoppins(color: textColor, fontSize: AppSize.s24),
+          style: getMediumStylePoppins(color: textColor, fontSize: AppSize.s20 ),
+          textAlign: TextAlign.center,
         ),
       ),
     );

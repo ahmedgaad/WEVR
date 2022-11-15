@@ -27,6 +27,8 @@ class ImagesAssetsManager{
   static const String explore ='${AppConstants.imagePath}/icons/explore.svg';
   static const String auction ='${AppConstants.imagePath}/icons/auction.svg';
   static const String map ='${AppConstants.imagePath}/icons/map.svg';
+  static const String signOut ='${AppConstants.imagePath}/icons/sign-out-icon.svg';
+  static const String filters ='${AppConstants.imagePath}/icons/filters.svg';
 
   static const String createNewPass ='${AppConstants.imagePath}/reset_password/create_new_pass.svg';
   static const String emailReset ='${AppConstants.imagePath}/reset_password/email_reset.svg';

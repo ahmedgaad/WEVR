@@ -211,7 +211,14 @@ class LoginView extends StatelessWidget {
                                 child: defaultFormField(
                                   controller: cubit.emailController,
                                   type: TextInputType.emailAddress,
-                                  label: AppStrings.emailOrMobile,
+                                  // label: AppStrings.emailOrMobile,
+                                  labelWidget: Text(
+                                    AppStrings.emailOrMobile,
+                                    style: getRegularStylePoppins(
+                                        color: ColorManager.darkGrey,
+                                      fontSize: AppSize.s20.sp,
+                                    ),
+                                  ),
                                   validate: (value) {
                                       if (value!.isEmpty) {
                                         return AppStrings.emailValidate;
@@ -229,7 +236,14 @@ class LoginView extends StatelessWidget {
                                 child: defaultFormField(
                                     controller: cubit.passwordController,
                                     type: TextInputType.visiblePassword,
-                                    label: AppStrings.password,
+                                    // label: AppStrings.password,
+                                    labelWidget: Text(
+                                      AppStrings.password,
+                                      style: getRegularStylePoppins(
+                                        color: ColorManager.darkGrey,
+                                        fontSize: AppSize.s20.sp,
+                                      ),
+                                    ),
                                     isPassword: cubit.isPassword,
                                     // validate: AppStrings.passwordValidate,
                                     validate: (value) {

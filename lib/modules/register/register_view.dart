@@ -225,7 +225,14 @@ class _RegisterViewState extends State<RegisterView> {
                                   controller: cubit
                                       .emailController,
                                   type: TextInputType.emailAddress,
-                                  label: AppStrings.emailOrMobile,
+                                  // label: AppStrings.emailOrMobile,
+                                  labelWidget: Text(
+                                    AppStrings.emailOrMobile,
+                                    style: getRegularStyleInter(
+                                      color: ColorManager.darkGrey,
+                                      fontSize: AppSize.s20.sp,
+                                    ),
+                                  ),
                                   //validate: AppStrings.emailValidate,
                                   validate: (value) {
                                       if (value!.isEmpty) {
@@ -242,24 +249,30 @@ class _RegisterViewState extends State<RegisterView> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: PaddingSize.p40.w),
                                 child: defaultFormField(
-                                    controller: cubit
-                                        .passwordController,
-                                    type: TextInputType.visiblePassword,
-                                    label: AppStrings.password,
-                                    //validate: AppStrings.passwordValidate,
-                                    validate: (value) {
-                                      if (value!.isEmpty) {
-                                        return AppStrings.passwordValidate;
-                                      }
-                                      return null;
-                                    },
-                                    isPassword:
-                                        cubit.isPassword,
-                                    suffix: cubit.suffix,
-                                    suffixPressed: () {
-                                      cubit
-                                          .changePasswordVisibility();
-                                    }),
+                                  onChange: (String value) {},
+                                  controller: cubit.passwordController,
+                                  type: TextInputType.visiblePassword,
+                                  labelWidget: Text(
+                                    AppStrings.password,
+                                    style: getRegularStyleInter(
+                                      color: ColorManager.darkGrey,
+                                      fontSize: AppSize.s20.sp,
+                                    ),
+                                  ),
+                                  isPassword: cubit.isPassword,
+                                  suffix: cubit.suffix,
+                                  suffixPressed: cubit.changePasswordVisibility,
+                                  //validate: "Must be at least 8 characters",
+                                  validate: (value) {
+                                    if (value!.isEmpty) {
+                                      return "Must be not empty";
+                                    }
+                                    if (value.length < 8) {
+                                      return "Must be at least 8 characters";
+                                    }
+                                    return null;
+                                  },
+                                ),
                               ),
                               SizedBox(
                                 height: AppSize.s20.h,
@@ -267,42 +280,129 @@ class _RegisterViewState extends State<RegisterView> {
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: PaddingSize.p40.w),
-                                child: defaultFormField(
-                                    controller: cubit
-                                        .confirmPasswordController,
-                                    type: TextInputType.visiblePassword,
-                                    label: AppStrings.confirmPassword,
-                                    //validate: AppStrings.passwordValidate,
-                                    validate: (value) {
-                                      if (value!.isEmpty) {
-                                        return AppStrings.passwordValidate;
-                                      }
-                                      return null;
-                                    },
-                                    isPassword:
-                                        cubit.isPassword,
-                                    suffix: cubit
-                                        .confirmSuffix,
-                                    suffixPressed: () {
-                                      cubit
-                                          .changeSuffixPasswordVisibility();
-                                    }),
+                                child: StatefulBuilder(
+                                  builder:
+                                      (BuildContext context, StateSetter setState) {
+                                    return defaultFormField(
+                                      onChange: (value) {
+                                        if (cubit.confirmPasswordController.text ==
+                                            cubit.passwordController.text) {
+                                          setState(() {
+                                            cubit.isPasswordMatchCharacter = true;
+                                          });
+                                        } else {
+                                          setState(() {
+                                            cubit.isPasswordMatchCharacter = false;
+                                          });
+                                        }
+                                      },
+                                      controller: cubit.confirmPasswordController,
+                                      type: TextInputType.visiblePassword,
+                                      labelWidget: Text(
+                                        AppStrings.confirmPassword,
+                                        style: getRegularStyleInter(
+                                          color: ColorManager.darkGrey,
+                                          fontSize: AppSize.s20.sp,
+                                        ),
+                                      ),
+                                      isPassword: cubit.isPassword,
+                                      suffixWidget: cubit.isPasswordMatchCharacter
+                                          ? Padding(
+                                        padding:
+                                        EdgeInsetsDirectional.only(
+                                          end: PaddingSize.p10.w,
+                                        ),
+                                        child: SvgPicture.asset(
+                                          ImagesAssetsManager.checkIc,
+                                          width: AppSize.s24.w,
+                                          height: AppSize.s24.h,
+                                        ),
+                                      )
+                                          : const SizedBox.shrink(),
+                                      //validate: "Both passwords must match",
+                                      validate: (value) {
+                                        if (value!.isEmpty) {
+                                          return "Must be not empty";
+                                        }
+                                        if (cubit.passwordController.text !=
+                                            cubit.confirmPasswordController.text) {
+                                          return "Both passwords must match";
+                                        }
+                                        return null;
+                                      },
+                                      // suffix: Icons.check_circle_outline,
+                                    );
+                                  },
+                                ),
                               ),
+                              // Padding(
+                              //   padding: EdgeInsets.symmetric(
+                              //       horizontal: PaddingSize.p40.w),
+                              //   child: defaultFormField(
+                              //       controller: cubit
+                              //           .passwordController,
+                              //       type: TextInputType.visiblePassword,
+                              //       label: AppStrings.password,
+                              //       //validate: AppStrings.passwordValidate,
+                              //       validate: (value) {
+                              //         if (value!.isEmpty) {
+                              //           return AppStrings.passwordValidate;
+                              //         }
+                              //         return null;
+                              //       },
+                              //       isPassword:
+                              //           cubit.isPassword,
+                              //       suffix: cubit.suffix,
+                              //       suffixPressed: () {
+                              //         cubit
+                              //             .changePasswordVisibility();
+                              //       }),
+                              // ),
+                              // SizedBox(
+                              //   height: AppSize.s20.h,
+                              // ),
+                              // Padding(
+                              //   padding: EdgeInsets.symmetric(
+                              //       horizontal: PaddingSize.p40.w),
+                              //   child: defaultFormField(
+                              //       controller: cubit
+                              //           .confirmPasswordController,
+                              //       type: TextInputType.visiblePassword,
+                              //       label: AppStrings.confirmPassword,
+                              //       //validate: AppStrings.passwordValidate,
+                              //       validate: (value) {
+                              //         if (value!.isEmpty) {
+                              //           return AppStrings.passwordValidate;
+                              //         }
+                              //         return null;
+                              //       },
+                              //       isPassword:
+                              //           cubit.isPassword,
+                              //       suffix: cubit
+                              //           .confirmSuffix,
+                              //       suffixPressed: () {
+                              //         cubit
+                              //             .changeSuffixPasswordVisibility();
+                              //       }),
+                              // ),
                               SizedBox(
                                 height: AppSize.s20.h,
                               ),
                               Center(
-                                child: defaultButton(
-                                  function: () {
-                                    if (formKey.currentState!.validate()) {
-                                      navigatePush(context,
-                                          const RegisterSuccessfully());
-                                    }
-                                  },
-                                  text: AppStrings.signUp,
-                                  width: AppSize.s200.w,
-                                  height: AppSize.s44.h,
-                                  isUpperCase: false,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(0),
+                                  child: defaultButton(
+                                    function: () {
+                                      if (formKey.currentState!.validate()) {
+                                        navigatePush(context,
+                                            const RegisterSuccessfully());
+                                      }
+                                    },
+                                    text: AppStrings.signUp,
+                                    width: AppSize.s200.w,
+                                    height: AppSize.s44.h,
+                                    isUpperCase: false,
+                                  ),
                                 ),
                               ),
                             ],

@@ -28,41 +28,41 @@ class CreateNewPassword extends StatelessWidget {
               backgroundColor: ColorManager.white,
               elevation: AppSize.s0,
             ),
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Align(
-                  child: SvgPicture.asset(
-                    ImagesAssetsManager.createNewPass,
-                    width: AppSize.s192.w,
-                    height: AppSize.s192.h,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.only(
-                    start: PaddingSize.p25.w,
-                    top: PaddingSize.p40.h,
-                  ),
-                  child: Text(
-                    AppStrings.createNewPasswordTitle,
-                    style: getBoldStylePoppins(
-                      color: ColorManager.black,
-                      fontSize: AppSize.s24.sp,
+            body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    child: SvgPicture.asset(
+                      ImagesAssetsManager.createNewPass,
+                      width: AppSize.s192.w,
+                      height: AppSize.s192.h,
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.only(start: PaddingSize.p25.w),
-                  child: Text(
-                    AppStrings.createNewPasswordSubTitle,
-                    style: getRegularStyleInter(
-                      color: ColorManager.darkGrey,
-                      fontSize: AppSize.s20.sp,
+                  Padding(
+                    padding: EdgeInsetsDirectional.only(
+                      start: PaddingSize.p25.w,
+                      top: PaddingSize.p40.h,
+                    ),
+                    child: Text(
+                      AppStrings.createNewPasswordTitle,
+                      style: getBoldStylePoppins(
+                        color: ColorManager.black,
+                        fontSize: AppSize.s24.sp,
+                      ),
                     ),
                   ),
-                ),
-                SingleChildScrollView(
-                  child: Form(
+                  Padding(
+                    padding: EdgeInsetsDirectional.only(start: PaddingSize.p25.w),
+                    child: Text(
+                      AppStrings.createNewPasswordSubTitle,
+                      style: getRegularStyleInter(
+                        color: ColorManager.darkGrey,
+                        fontSize: AppSize.s20.sp,
+                      ),
+                    ),
+                  ),
+                  Form(
                     key: cubit.formKey,
                     child: Column(
                       children: [
@@ -176,9 +176,9 @@ class CreateNewPassword extends StatelessWidget {
                             height: 60.h),
                       ],
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           );
         },

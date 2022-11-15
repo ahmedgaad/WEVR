@@ -10,6 +10,7 @@ class RegisterCubit extends Cubit<RegisterStates>{
 
    IconData suffix = Icons.visibility;
    bool isPassword = true;
+   bool isPasswordMatchCharacter = false;
 
    void changePasswordVisibility() {
       isPassword = !isPassword;

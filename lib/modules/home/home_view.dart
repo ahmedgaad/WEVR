@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../auction/auction_view.dart';
 import '../explore/explore_view.dart';
 import 'cubit/cubit.dart';
@@ -25,6 +26,11 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: ColorManager.transparent,
+      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark,
+    ));
     return BlocProvider(
       create: (BuildContext context) => HomeLayOutCubit(),
       child: BlocConsumer<HomeLayOutCubit, HomeLayOutStates>(
@@ -33,15 +39,20 @@ class _HomeViewState extends State<HomeView> {
           var cubit = HomeLayOutCubit.get(context);
           return Scaffold(
             backgroundColor: ColorManager.exploreBackground,
-            appBar: AppBar(
-              backgroundColor: ColorManager.exploreBackground,
-              elevation: AppSize.s0,
+            // appBar: AppBar(
+            //   backgroundColor: ColorManager.exploreBackground,
+            //   elevation: AppSize.s0,
+            // ),
+            body: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.all(PaddingSize.p20.sp),
+                child: PageStorage(
+                  bucket: cubit.bucket,
+                  child: cubit.currentScreen,
+                ),
+              ),
             ),
-            body: PageStorage(
-              child: cubit.currentScreen,
-              bucket: cubit.bucket,
-            ),
-            floatingActionButton: Container(
+            floatingActionButton: SizedBox(
               height: AppSize.s80.h,
               width: AppSize.s80.w,
               child: FloatingActionButton(
@@ -55,7 +66,7 @@ class _HomeViewState extends State<HomeView> {
             bottomNavigationBar: BottomAppBar(
               shape: const CircularNotchedRectangle(),
               notchMargin: AppSize.s10.sp,
-              child: Container(
+              child: SizedBox(
                 height: AppSize.s83.h,
                 width: double.infinity,
                 child: Row(
@@ -67,7 +78,7 @@ class _HomeViewState extends State<HomeView> {
                         MaterialButton(
                           onPressed: () {
                             setState(() {
-                              cubit.currentScreen = ExploreView();
+                              cubit.currentScreen = const ExploreView();
                               cubit.currentTap = 0;
                             });
                           },
@@ -98,7 +109,7 @@ class _HomeViewState extends State<HomeView> {
                         MaterialButton(
                           onPressed: () {
                             setState(() {
-                              cubit.currentScreen = SavedView();
+                              cubit.currentScreen = const SavedView();
                               cubit.currentTap = 1;
                             });
                           },
@@ -131,7 +142,7 @@ class _HomeViewState extends State<HomeView> {
                         MaterialButton(
                           onPressed: () {
                             setState(() {
-                              cubit.currentScreen = HomesView();
+                              cubit.currentScreen = const HomesView();
                               cubit.currentTap = 3;
                             });
                           },
@@ -159,7 +170,7 @@ class _HomeViewState extends State<HomeView> {
                         MaterialButton(
                           onPressed: () {
                             setState(() {
-                              cubit.currentScreen = AuctionView();
+                              cubit.currentScreen = const AuctionView();
                               cubit.currentTap = 4;
                             });
                           },

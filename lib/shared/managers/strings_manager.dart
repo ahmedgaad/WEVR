@@ -34,6 +34,8 @@ class AppStrings {
   static const String saved = "Saved";
   static const String homes = "Homes";
   static const String auction = "Auction";
+  static const String allHomes = "All Homes";
+  static const String viewAll = "View All";
 
   static const String onBoardingSubTitle1 = """
   Easily search for any home 
