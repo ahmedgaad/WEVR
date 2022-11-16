@@ -65,6 +65,7 @@ flutter:
     - assets/images/logo/
     - assets/images/reset_password/
     - assets/images/icons/
+    - assets/images/logo/get_started.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
