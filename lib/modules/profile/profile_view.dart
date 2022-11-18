@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wevr_app/shared/managers/color_manager.dart';
-import 'package:wevr_app/shared/managers/values_manager.dart';
+import '../../shared/managers/color_manager.dart';
+import '../../shared/managers/values_manager.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);

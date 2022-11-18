@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wevr_app/modules/otp_process/create_new_password/cubit/create_new_password_cubit.dart';
-import 'package:wevr_app/modules/otp_process/reset_pass_successfully.dart';
-import 'package:wevr_app/shared/components/components.dart';
-import 'package:wevr_app/shared/managers/assets_manager.dart';
-import 'package:wevr_app/shared/managers/color_manager.dart';
-import 'package:wevr_app/shared/managers/strings_manager.dart';
-import 'package:wevr_app/shared/managers/style_manager.dart';
-import 'package:wevr_app/shared/managers/values_manager.dart';
+import 'cubit/create_new_password_cubit.dart';
+import '../reset_pass_successfully.dart';
+import '../../../shared/components/components.dart';
+import '../../../shared/managers/assets_manager.dart';
+import '../../../shared/managers/color_manager.dart';
+import '../../../shared/managers/strings_manager.dart';
+import '../../../shared/managers/style_manager.dart';
+import '../../../shared/managers/values_manager.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CreateNewPassword extends StatelessWidget {

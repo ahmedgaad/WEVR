@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
-import 'package:wevr_app/shared/managers/assets_manager.dart';
 import 'package:wevr_app/shared/managers/routes_manager.dart';
 import 'package:wevr_app/shared/managers/theme_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -13,7 +13,7 @@ class HomeLayOutCubit extends Cubit<HomeLayOutStates>{
   // int currentIndex=0;
   int currentTap =0;
 
-  List<Widget> screens =[
+  List<Widget> screens = const[
     ExploreView(),
     SavedView(),
     HomesView(),
