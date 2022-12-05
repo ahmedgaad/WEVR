@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import '../../shared/components/components.dart';
-import '../../shared/managers/assets_manager.dart';
-import '../../shared/managers/color_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../shared/managers/font_manager.dart';
-import '../../shared/managers/routes_manager.dart';
-import '../../shared/managers/strings_manager.dart';
-import '../../shared/managers/style_manager.dart';
-import '../../shared/managers/values_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../shared/components/components.dart';
+import '../../../shared/managers/assets_manager.dart';
+import '../../../shared/managers/color_manager.dart';
+import '../../../shared/managers/font_manager.dart';
+import '../../../shared/managers/routes_manager.dart';
+import '../../../shared/managers/strings_manager.dart';
+import '../../../shared/managers/style_manager.dart';
+import '../../../shared/managers/values_manager.dart';
 
 class ResetSuccessfully extends StatelessWidget {
   const ResetSuccessfully({Key? key}) : super(key: key);

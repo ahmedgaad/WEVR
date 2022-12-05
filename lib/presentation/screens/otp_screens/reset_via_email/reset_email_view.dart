@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../../../shared/components/components.dart';
+import '../../../../shared/managers/assets_manager.dart';
+import '../../../../shared/managers/color_manager.dart';
+import '../../../../shared/managers/font_manager.dart';
+import '../../../../shared/managers/strings_manager.dart';
+import '../../../../shared/managers/style_manager.dart';
+import '../../../../shared/managers/values_manager.dart';
 import '../create_new_password/create_new_password.dart';
-import '../../../shared/managers/font_manager.dart';
-import '../../../shared/managers/strings_manager.dart';
-import '../../../shared/managers/style_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../shared/components/components.dart';
-import '../../../shared/managers/assets_manager.dart';
-import '../../../shared/managers/color_manager.dart';
-import '../../../shared/managers/values_manager.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ResetEmailView extends StatefulWidget {

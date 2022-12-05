@@ -2,21 +2,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../../shared/components/components.dart';
+import '../../../shared/managers/color_manager.dart';
+import '../../../shared/managers/font_manager.dart';
+import '../../../shared/managers/routes_manager.dart';
+import '../../../shared/managers/strings_manager.dart';
+import '../../../shared/managers/style_manager.dart';
+import '../../../shared/managers/values_manager.dart';
+import '../../widgets/login_widgets/social_icon.dart';
+import '../otp_screens/forgot_password/forgot_password_view.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
-import '../../shared/components/components.dart';
-import '../../shared/managers/assets_manager.dart';
-import '../../shared/managers/color_manager.dart';
-import '../../shared/managers/font_manager.dart';
-import '../../shared/managers/routes_manager.dart';
-import '../../shared/managers/strings_manager.dart';
-import '../../shared/managers/style_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../shared/managers/values_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../otp_process/forgot_password/forgot_password_view.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -97,6 +96,7 @@ class LoginView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(AppRadius.r41),
                       ),
                       child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
                         child: Form(
                           key: cubit.formKey,
                           child: Column(
@@ -126,35 +126,7 @@ class LoginView extends StatelessWidget {
                                   SizedBox(
                                     height: AppSize.s24.h,
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: SvgPicture.asset(
-                                          ImagesAssetsManager.googleIc,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: AppSize.s20.w,
-                                      ),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: SvgPicture.asset(
-                                          ImagesAssetsManager.appleIc,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: AppSize.s20.w,
-                                      ),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: SvgPicture.asset(
-                                          ImagesAssetsManager.facebookLogoIc,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                  SocialButtons(),
                                   SizedBox(
                                     height: AppSize.s24.h,
                                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../shared/managers/color_manager.dart';
 
 class HomesView extends StatelessWidget {

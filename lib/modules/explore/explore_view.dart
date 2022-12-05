@@ -129,7 +129,6 @@ class ExploreView extends StatelessWidget {
               height: AppSize.s1.h,
               width: AppSize.s300.w,
               color: ColorManager.lightGrey,
-
             ),
             SizedBox(
               height: AppSize.s15.h,
@@ -139,23 +138,22 @@ class ExploreView extends StatelessWidget {
                 Text(
                   AppStrings.allHomes,
                   style: getRegularStylePoppins(
-                      color: ColorManager.black,
-                      fontSize: AppSize.s16.sp
-                  ),
+                      color: ColorManager.black, fontSize: AppSize.s16.sp),
                 ),
                 Spacer(),
                 Container(
                   width: AppSize.s66.w,
                   height: AppSize.s36.h,
                   decoration: BoxDecoration(
-                    color: ColorManager.orBackground,
-                    borderRadius: BorderRadius.circular(AppRadius.r20)
-                  ),
-                  child: IconButton(
-                      onPressed: (){},
-                      icon: Text(
-                        AppStrings.viewAll,
-                      )
+                      color: ColorManager.orBackground,
+                      borderRadius: BorderRadius.circular(AppRadius.r20)),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: Text(
+                          AppStrings.viewAll,
+                        )),
                   ),
                 )
               ],

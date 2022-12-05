@@ -1,8 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
-import 'states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'states.dart';
 
 class LoginCubit extends Cubit<LoginStates>{
   LoginCubit() : super(LoginInitialState());

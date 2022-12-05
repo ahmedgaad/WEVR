@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'cubit/create_new_password_cubit.dart';
-import '../reset_pass_successfully.dart';
-import '../../../shared/components/components.dart';
-import '../../../shared/managers/assets_manager.dart';
-import '../../../shared/managers/color_manager.dart';
-import '../../../shared/managers/strings_manager.dart';
-import '../../../shared/managers/style_manager.dart';
-import '../../../shared/managers/values_manager.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../../shared/components/components.dart';
+import '../../../../shared/managers/assets_manager.dart';
+import '../../../../shared/managers/color_manager.dart';
+import '../../../../shared/managers/strings_manager.dart';
+import '../../../../shared/managers/style_manager.dart';
+import '../../../../shared/managers/values_manager.dart';
+import '../reset_pass_successfully.dart';
+import 'cubit/create_new_password_cubit.dart';
 
 class CreateNewPassword extends StatelessWidget {
   const CreateNewPassword({super.key});

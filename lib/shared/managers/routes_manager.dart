@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../modules/register/register_successfuly.dart';
-import '../../modules/otp_process/reset_via_email/reset_email_view.dart';
-import '../../modules/otp_process/reset_via_phone/reset_phone_view.dart';
+import '../../presentation/screens/login/login_view.dart';
+import '../../presentation/screens/otp_screens/forgot_password/forgot_password_view.dart';
+import '../../presentation/screens/otp_screens/reset_via_email/reset_email_view.dart';
+import '../../presentation/screens/otp_screens/reset_via_phone/reset_phone_view.dart';
 import 'strings_manager.dart';
 
-import '../../modules/otp_process/forgot_password/forgot_password_view.dart';
 import '../../modules/get_started/get_started_view.dart';
 import '../../modules/home/home_view.dart';
-import '../../modules/login/login_view.dart';
 import '../../modules/onboarding/onboarding_view.dart';
 import '../../modules/register/register_view.dart';
-import '../../modules/splash/splash_view.dart';
+import '../../presentation/screens/splash_view.dart';
 
 class Routes{
   static const String splashRoute = "/";
