@@ -13,7 +13,6 @@ import '../../widgets/login_widgets/social_icon.dart';
 import '../otp_screens/forgot_password/forgot_password_view.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -95,176 +94,154 @@ class LoginView extends StatelessWidget {
                         color: ColorManager.white,
                         borderRadius: BorderRadius.circular(AppRadius.r41),
                       ),
-                      child: SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        child: Form(
-                          key: cubit.formKey,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Padding(
-                                  padding: EdgeInsets.all(PaddingSize.p20),
-                                  child: Icon(
-                                    Icons.arrow_back,
-                                    size: AppSize.s24,
-                                  ),
+                      child: Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Padding(
+                                padding: EdgeInsets.all(PaddingSize.p20),
+                                child: Icon(
+                                  Icons.arrow_back,
+                                  size: AppSize.s24,
                                 ),
                               ),
-                              SizedBox(
-                                height: AppSize.s24.h,
-                              ),
-                              Column(
-                                children: [
-                                  Text(
-                                    AppStrings.loginAccount,
-                                    style: getSemiBoldStylePoppins(
-                                      color: ColorManager.primary,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: AppSize.s24.h,
-                                  ),
-                                  SocialButtons(),
-                                  SizedBox(
-                                    height: AppSize.s24.h,
-                                  ),
-                                  Stack(
-                                    alignment: Alignment.center,
+                            ),
+                            SizedBox(
+                              height: AppSize.s10.h,
+                            ),
+                            Expanded(
+                              child: SingleChildScrollView(
+                                physics: const BouncingScrollPhysics(),
+                                child: Form(
+                                  key: cubit.formKey,
+                                  child: Column(
                                     children: [
-                                      Container(
-                                        height: AppSize.s1.h,
-                                        width: AppSize.s200.w,
-                                        color: ColorManager.lightGrey,
-                                      ),
-                                      Container(
-                                        width: AppSize.s30.w,
-                                        height: AppSize.s12.h,
-                                        decoration: BoxDecoration(
-                                          color: ColorManager.orBackground,
-                                          borderRadius: BorderRadius.circular(
-                                              AppRadius.r20),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(
-                                              PaddingSize.p0),
-                                          child: Center(
-                                            child: Text(
-                                              AppStrings.or,
-                                              style: getRegularStyleInter(
-                                                color: ColorManager.black,
-                                                fontSize: FontSize.s10.sp,
-                                              ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            AppStrings.loginAccount,
+                                            style: getSemiBoldStylePoppins(
+                                              color: ColorManager.primary,
                                             ),
                                           ),
+                                          SizedBox(
+                                            height: AppSize.s24.h,
+                                          ),
+                                          const SocialButtons(),
+                                          SizedBox(
+                                            height: AppSize.s24.h,
+                                          ),
+                                          emailStack(),
+                                          SizedBox(
+                                            height: AppSize.s24.h,
+                                          ),
+                                          Text(
+                                            AppStrings.loginWord,
+                                            style: getRegularStyleInter(
+                                              color: ColorManager.darkGrey,
+                                              fontSize: FontSize.s16.sp,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: AppSize.s24.h,
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: PaddingSize.p40.w),
+                                        child: defaultFormField(
+                                          controller: cubit.emailController,
+                                          type: TextInputType.emailAddress,
+                                          // label: AppStrings.emailOrMobile,
+                                          labelWidget: Text(
+                                            AppStrings.emailOrMobile,
+                                            style: getRegularStylePoppins(
+                                                color: ColorManager.darkGrey,
+                                              fontSize: AppSize.s20.sp,
+                                            ),
+                                          ),
+                                          validate: (value) {
+                                              if (value!.isEmpty) {
+                                                return AppStrings.emailValidate;
+                                              }
+                                              return null;
+                                            },
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: AppSize.s20.h,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: PaddingSize.p40.w),
+                                        child: defaultFormField(
+                                            controller: cubit.passwordController,
+                                            type: TextInputType.visiblePassword,
+                                            // label: AppStrings.password,
+                                            labelWidget: Text(
+                                              AppStrings.password,
+                                              style: getRegularStylePoppins(
+                                                color: ColorManager.darkGrey,
+                                                fontSize: AppSize.s20.sp,
+                                              ),
+                                            ),
+                                            isPassword: cubit.isPassword,
+                                            // validate: AppStrings.passwordValidate,
+                                            validate: (value) {
+                                              if (value!.isEmpty) {
+                                                return AppStrings.passwordValidate;
+                                              }
+                                              return null;
+                                            },
+                                            suffix: cubit.suffix,
+                                            suffixPressed: () {
+                                              cubit.changePasswordVisibility();
+                                            }),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsetsDirectional.only(
+                                                end: PaddingSize.p14),
+                                            child: defaultTextButton(
+                                              text: AppStrings.forgetPassword,
+                                              onPressed: () {
+                                                navigatePush(context,
+                                                    const ForgotPasswordView());
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: AppSize.s20.h,
+                                      ),
+                                      Center(
+                                        child: defaultButton(
+                                          function: () {
+                                            if (cubit.formKey.currentState!
+                                                .validate()) {
+                                              print('Login done');
+                                              navigateTo(context, Routes.homeRoute);
+                                            }
+                                          },
+                                          text: AppStrings.signIn,
+                                          width: AppSize.s200.w,
+                                          height: AppSize.s44.h,
+                                          isUpperCase: false,
                                         ),
                                       )
                                     ],
                                   ),
-                                  SizedBox(
-                                    height: AppSize.s24.h,
-                                  ),
-                                  Text(
-                                    AppStrings.loginWord,
-                                    style: getRegularStyleInter(
-                                      color: ColorManager.darkGrey,
-                                      fontSize: FontSize.s16.sp,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: AppSize.s24.h,
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: PaddingSize.p40.w),
-                                child: defaultFormField(
-                                  controller: cubit.emailController,
-                                  type: TextInputType.emailAddress,
-                                  // label: AppStrings.emailOrMobile,
-                                  labelWidget: Text(
-                                    AppStrings.emailOrMobile,
-                                    style: getRegularStylePoppins(
-                                        color: ColorManager.darkGrey,
-                                      fontSize: AppSize.s20.sp,
-                                    ),
-                                  ),
-                                  validate: (value) {
-                                      if (value!.isEmpty) {
-                                        return AppStrings.emailValidate;
-                                      }
-                                      return null;
-                                    },
                                 ),
                               ),
-                              SizedBox(
-                                height: AppSize.s24.h,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: PaddingSize.p40.w),
-                                child: defaultFormField(
-                                    controller: cubit.passwordController,
-                                    type: TextInputType.visiblePassword,
-                                    // label: AppStrings.password,
-                                    labelWidget: Text(
-                                      AppStrings.password,
-                                      style: getRegularStylePoppins(
-                                        color: ColorManager.darkGrey,
-                                        fontSize: AppSize.s20.sp,
-                                      ),
-                                    ),
-                                    isPassword: cubit.isPassword,
-                                    // validate: AppStrings.passwordValidate,
-                                    validate: (value) {
-                                      if (value!.isEmpty) {
-                                        return AppStrings.passwordValidate;
-                                      }
-                                      return null;
-                                    },
-                                    suffix: cubit.suffix,
-                                    suffixPressed: () {
-                                      cubit.changePasswordVisibility();
-                                    }),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.only(
-                                        end: PaddingSize.p14),
-                                    child: defaultTextButton(
-                                      text: AppStrings.forgetPassword,
-                                      onPressed: () {
-                                        navigatePush(context,
-                                            const ForgotPasswordView());
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: AppSize.s24.h,
-                              ),
-                              Center(
-                                child: defaultButton(
-                                  function: () {
-                                    if (cubit.formKey.currentState!
-                                        .validate()) {
-                                      print('Login done');
-                                      navigateTo(context, Routes.homeRoute);
-                                    }
-                                  },
-                                  text: AppStrings.signIn,
-                                  width: AppSize.s200.w,
-                                  height: AppSize.s44.h,
-                                  isUpperCase: false,
-                                ),
-                              )
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -275,4 +252,39 @@ class LoginView extends StatelessWidget {
           }),
     );
   }
+}
+
+Widget emailStack(){
+  return Stack(
+    alignment: Alignment.center,
+    children: [
+      Container(
+        height: AppSize.s1.h,
+        width: AppSize.s200.w,
+        color: ColorManager.lightGrey,
+      ),
+      Container(
+        width: AppSize.s30.w,
+        height: AppSize.s12.h,
+        decoration: BoxDecoration(
+          color: ColorManager.orBackground,
+          borderRadius: BorderRadius.circular(
+              AppRadius.r20),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(
+              PaddingSize.p0),
+          child: Center(
+            child: Text(
+              AppStrings.or,
+              style: getRegularStyleInter(
+                color: ColorManager.black,
+                fontSize: FontSize.s10.sp,
+              ),
+            ),
+          ),
+        ),
+      )
+    ],
+  );
 }
