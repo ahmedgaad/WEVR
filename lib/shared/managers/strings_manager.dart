@@ -17,9 +17,13 @@ class AppStrings {
   static const String registerSuccessfully = 'Registered successfully';
   static const String or = "OR";
   static const String continueExploring = "Continue Exploring";
-  static const String emailOrMobile = "email or mobile";
+  static const String emailAddress = "Email Address";
+  static const String userName = "Username";
+  static const String mobile = "Mobile Phone";
   static const String emailValidate = "Please enter your email";
   static const String passwordValidate = "Please enter your password";
+  static const String phoneValidate = "Please enter your phone";
+  static const String userNameValidate = "Please enter your password";
   static const String password = "Password";
   static const String confirmPassword = "Confirm Password";
   static const String resetPassword = "Reset Password";
@@ -36,6 +40,7 @@ class AppStrings {
   static const String auction = "Auction";
   static const String allHomes = "All Homes";
   static const String viewAll = "View All";
+  static const String searchBar = "city,hometype.....";
 
   static const String onBoardingSubTitle1 = """
   Easily search for any home 

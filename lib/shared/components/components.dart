@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '../managers/assets_manager.dart';
 import '../managers/color_manager.dart';
 import '../managers/style_manager.dart';
 import '../managers/values_manager.dart';
-
-import '../managers/strings_manager.dart';
 
 Widget defaultButton({
   double width = double.infinity,
@@ -50,6 +51,7 @@ Widget defaultFormField({
   ValueChanged<String>? onSubmit,
   ValueChanged<String>? onChange,
   GestureTapCallback? onTap,
+  GlobalKey<FormState>? formFieldKey,
   String? label,
   final IconData? prefix,
   bool? isPassword = false,
@@ -67,6 +69,7 @@ Widget defaultFormField({
       //   }
       //   return null;
       // },
+      key: formFieldKey,
       onTap: onTap,
       onChanged: onChange,
       onFieldSubmitted: onSubmit,
@@ -108,3 +111,23 @@ Widget defaultTextButton({
     ),
   ),
 );
+
+Widget filterWidget(){
+  return Padding(
+    padding: EdgeInsetsDirectional.only(
+      end: AppSize.s10.w,
+    ),
+    child: Container(
+      width: AppSize.s40.w,
+      height: AppSize.s40.h,
+      decoration: BoxDecoration(
+        color: ColorManager.white,
+        borderRadius:
+        BorderRadius.all(Radius.circular(AppRadius.r10)),
+      ),
+      child: IconButton(
+          onPressed: () {},
+          icon: SvgPicture.asset(ImagesAssetsManager.filters)),
+    ),
+  );
+}

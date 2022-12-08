@@ -8,6 +8,7 @@ class ColorManager{
   static const Color orBackground = Color(0xffD9D9D9);
   static const Color exploreBackground = Color(0xffF7F7F6);
   static const Color viaPhone = Color(0xff666666);
+  static const Color smokyGray = Color(0xff555555);
   static const Color viaPhoneContainer = Color(0xffF0EBD6);
   static const Color black = Color(0xff000000);
   static const Color white = Color(0xffFDFDFD);

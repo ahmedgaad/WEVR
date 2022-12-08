@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wevr_app/shared/managers/values_manager.dart';
 
 import 'color_manager.dart';
 import 'font_manager.dart';
 import 'style_manager.dart';
-
 
 ThemeData getThemeData() {
   return ThemeData(
     //main colors
     primaryColor: ColorManager.primary,
     primaryColorLight: ColorManager.lightPrimary,
+    canvasColor: ColorManager.exploreBackground,
     primarySwatch: Colors.grey,
-
+    appBarTheme: const AppBarTheme(
+        color: ColorManager.exploreBackground,
+        elevation: AppSize.s0,
+    ),
     //appBar theme
     /*appBarTheme: const AppBarTheme(
         color: ColorManager.white,

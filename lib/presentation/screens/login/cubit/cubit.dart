@@ -8,7 +8,8 @@ import 'states.dart';
 class LoginCubit extends Cubit<LoginStates>{
   LoginCubit() : super(LoginInitialState());
   static LoginCubit get(context) => BlocProvider.of(context);
-  var formKey = GlobalKey<FormState>();
+  var emailFormKey = GlobalKey<FormState>();
+  var passFieldKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
 

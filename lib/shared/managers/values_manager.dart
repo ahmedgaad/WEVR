@@ -65,6 +65,7 @@ class AppSize {
   static const double s44 = 44.0;
   static const double s50 = 50.0;
   static const double s56 = 56.0;
+  static const double s57 = 57.0;
   static const double s60 = 60.0;
   static const double s66 = 66.0;
   static const double s70 = 70.0;
@@ -88,6 +89,7 @@ class AppSize {
   static const double s320 = 320.0;
   static const double s360 = 360.0;
   static const double s600 = 600.0;
+  static const double s700 = 700.0;
 }
 
 class AppRadius{
