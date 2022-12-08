@@ -8,6 +8,8 @@ class RegisterCubit extends Cubit<RegisterStates>{
    var emailController = TextEditingController();
    var passwordController = TextEditingController();
    var confirmPasswordController = TextEditingController();
+   var phoneController = TextEditingController();
+   var userNameController = TextEditingController();
 
    IconData suffix = Icons.visibility;
    bool isPassword = true;

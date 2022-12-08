@@ -103,7 +103,7 @@ class _RegisterViewState extends State<RegisterView> {
                     elevation: AppSize.s8,
                     color: ColorManager.transparent,
                     child: Container(
-                      height: AppSize.s600.h,
+                      height: AppSize.s700.h,
                       width: AppSize.s300.w,
                       decoration: BoxDecoration(
                         color: ColorManager.white,
@@ -124,7 +124,7 @@ class _RegisterViewState extends State<RegisterView> {
                               ),
                             ),
                             SizedBox(
-                              height: AppSize.s24.h,
+                              height: AppSize.s10.h,
                             ),
                             Expanded(
                               child: SingleChildScrollView(
@@ -219,9 +219,36 @@ class _RegisterViewState extends State<RegisterView> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height: AppSize.s24.h,
+                                            height: AppSize.s10.h,
                                           ),
                                         ],
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: PaddingSize.p40.w),
+                                        child: defaultFormField(
+                                          controller: cubit
+                                              .userNameController,
+                                          type: TextInputType.name,
+                                          // label: AppStrings.emailOrMobile,
+                                          labelWidget: Text(
+                                            AppStrings.userName,
+                                            style: getRegularStyleInter(
+                                              color: ColorManager.darkGrey,
+                                              fontSize: AppSize.s20.sp,
+                                            ),
+                                          ),
+                                          //validate: AppStrings.emailValidate,
+                                          validate: (value) {
+                                              if (value!.isEmpty) {
+                                                return AppStrings.userName;
+                                              }
+                                              return null;
+                                            },
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: AppSize.s10.h,
                                       ),
                                       Padding(
                                         padding: EdgeInsets.symmetric(
@@ -232,7 +259,7 @@ class _RegisterViewState extends State<RegisterView> {
                                           type: TextInputType.emailAddress,
                                           // label: AppStrings.emailOrMobile,
                                           labelWidget: Text(
-                                            AppStrings.emailOrMobile,
+                                            AppStrings.emailAddress,
                                             style: getRegularStyleInter(
                                               color: ColorManager.darkGrey,
                                               fontSize: AppSize.s20.sp,
@@ -240,15 +267,42 @@ class _RegisterViewState extends State<RegisterView> {
                                           ),
                                           //validate: AppStrings.emailValidate,
                                           validate: (value) {
-                                              if (value!.isEmpty) {
-                                                return AppStrings.emailValidate;
-                                              }
-                                              return null;
-                                            },
+                                            if (value!.isEmpty) {
+                                              return AppStrings.emailValidate;
+                                            }
+                                            return null;
+                                          },
                                         ),
                                       ),
                                       SizedBox(
-                                        height: AppSize.s20.h,
+                                        height: AppSize.s10.h,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: PaddingSize.p40.w),
+                                        child: defaultFormField(
+                                          controller: cubit
+                                              .phoneController,
+                                          type: TextInputType.phone,
+                                          // label: AppStrings.emailOrMobile,
+                                          labelWidget: Text(
+                                            AppStrings.mobile,
+                                            style: getRegularStyleInter(
+                                              color: ColorManager.darkGrey,
+                                              fontSize: AppSize.s20.sp,
+                                            ),
+                                          ),
+                                          //validate: AppStrings.emailValidate,
+                                          validate: (value) {
+                                            if (value!.isEmpty) {
+                                              return AppStrings.phoneValidate;
+                                            }
+                                            return null;
+                                          },
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: AppSize.s10.h,
                                       ),
                                       Padding(
                                         padding: EdgeInsets.symmetric(
@@ -280,7 +334,7 @@ class _RegisterViewState extends State<RegisterView> {
                                         ),
                                       ),
                                       SizedBox(
-                                        height: AppSize.s20.h,
+                                        height: AppSize.s10.h,
                                       ),
                                       Padding(
                                         padding: EdgeInsets.symmetric(

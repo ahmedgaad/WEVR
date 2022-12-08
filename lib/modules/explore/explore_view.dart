@@ -13,6 +13,7 @@ import 'package:wevr_app/shared/managers/style_manager.dart';
 import 'package:wevr_app/shared/managers/values_manager.dart';
 import '../../shared/managers/assets_manager.dart';
 import '../../shared/managers/color_manager.dart';
+import '../search/search_view.dart';
 
 class ExploreView extends StatelessWidget {
   const ExploreView({Key? key}) : super(key: key);
@@ -54,49 +55,11 @@ class ExploreView extends StatelessWidget {
             SizedBox(
               height: AppSize.s27.h,
             ),
-            Row(
-              children: [
-                Container(
-                  width: AppSize.s255.w,
-                  height: AppSize.s41.h,
-                  decoration: BoxDecoration(
-                    color: ColorManager.white,
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(AppRadius.r10)),
-                  ),
-                  child: Row(
-                    children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.search,
-                            color: ColorManager.black,
-                          )),
-                      SizedBox(
-                        width: AppSize.s10.w,
-                      ),
-                    ],
-                  ),
-                ),
-                Spacer(),
-                Padding(
-                  padding: EdgeInsetsDirectional.only(
-                    end: AppSize.s10.w,
-                  ),
-                  child: Container(
-                    width: AppSize.s40.w,
-                    height: AppSize.s41.h,
-                    decoration: BoxDecoration(
-                      color: ColorManager.white,
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(AppRadius.r10)),
-                    ),
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(ImagesAssetsManager.filters)),
-                  ),
-                )
-              ],
+            GestureDetector(
+              onTap: (){
+                navigatePush(context, SearchView());
+              },
+              child: searchBar(),
             ),
             SizedBox(
               height: AppSize.s27.h,
@@ -133,31 +96,7 @@ class ExploreView extends StatelessWidget {
             SizedBox(
               height: AppSize.s15.h,
             ),
-            Row(
-              children: [
-                Text(
-                  AppStrings.allHomes,
-                  style: getRegularStylePoppins(
-                      color: ColorManager.black, fontSize: AppSize.s16.sp),
-                ),
-                Spacer(),
-                Container(
-                  width: AppSize.s66.w,
-                  height: AppSize.s36.h,
-                  decoration: BoxDecoration(
-                      color: ColorManager.orBackground,
-                      borderRadius: BorderRadius.circular(AppRadius.r20)),
-                  child: Material(
-                    color: Colors.transparent,
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: Text(
-                          AppStrings.viewAll,
-                        )),
-                  ),
-                )
-              ],
-            ),
+            allHomesRow(),
             SizedBox(
               height: AppSize.s15.h,
             ),
@@ -174,4 +113,65 @@ class ExploreView extends StatelessWidget {
       ),
     );
   }
+}
+Widget searchBar(){
+  return Row(
+    children: [
+      Container(
+        width: AppSize.s255.w,
+        height: AppSize.s41.h,
+        decoration: BoxDecoration(
+          color: ColorManager.white,
+          borderRadius:
+          BorderRadius.all(Radius.circular(AppRadius.r10)),
+        ),
+        child: Row(
+          children: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.search,
+                  color: ColorManager.black,
+                )),
+            SizedBox(
+              width: AppSize.s10.w,
+            ),
+            Text( AppStrings.searchBar , style: getRegularStyleInter(
+              color: ColorManager.smokyGray,
+              fontSize: AppSize.s16,
+            ),),
+          ],
+        ),
+      ),
+      Spacer(),
+      filterWidget(),
+    ],
+  );
+}
+Widget allHomesRow(){
+  return Row(
+    children: [
+      Text(
+        AppStrings.allHomes,
+        style: getRegularStylePoppins(
+            color: ColorManager.black, fontSize: AppSize.s16.sp),
+      ),
+      Spacer(),
+      Container(
+        width: AppSize.s66.w,
+        height: AppSize.s36.h,
+        decoration: BoxDecoration(
+            color: ColorManager.orBackground,
+            borderRadius: BorderRadius.circular(AppRadius.r20)),
+        child: Material(
+          color: Colors.transparent,
+          child: IconButton(
+              onPressed: () {},
+              icon: Text(
+                AppStrings.viewAll,
+              )),
+        ),
+      )
+    ],
+  );
 }

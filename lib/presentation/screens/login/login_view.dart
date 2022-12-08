@@ -114,51 +114,51 @@ class LoginView extends StatelessWidget {
                             Expanded(
                               child: SingleChildScrollView(
                                 physics: const BouncingScrollPhysics(),
-                                child: Form(
-                                  key: cubit.formKey,
-                                  child: Column(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            AppStrings.loginAccount,
-                                            style: getSemiBoldStylePoppins(
-                                              color: ColorManager.primary,
-                                            ),
+                                child: Column(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          AppStrings.loginAccount,
+                                          style: getSemiBoldStylePoppins(
+                                            color: ColorManager.primary,
                                           ),
-                                          SizedBox(
-                                            height: AppSize.s24.h,
+                                        ),
+                                        SizedBox(
+                                          height: AppSize.s24.h,
+                                        ),
+                                        const SocialButtons(),
+                                        SizedBox(
+                                          height: AppSize.s24.h,
+                                        ),
+                                        emailStack(),
+                                        SizedBox(
+                                          height: AppSize.s24.h,
+                                        ),
+                                        Text(
+                                          AppStrings.loginWord,
+                                          style: getRegularStyleInter(
+                                            color: ColorManager.darkGrey,
+                                            fontSize: FontSize.s16.sp,
                                           ),
-                                          const SocialButtons(),
-                                          SizedBox(
-                                            height: AppSize.s24.h,
-                                          ),
-                                          emailStack(),
-                                          SizedBox(
-                                            height: AppSize.s24.h,
-                                          ),
-                                          Text(
-                                            AppStrings.loginWord,
-                                            style: getRegularStyleInter(
-                                              color: ColorManager.darkGrey,
-                                              fontSize: FontSize.s16.sp,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: AppSize.s24.h,
-                                          ),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: PaddingSize.p40.w),
+                                        ),
+                                        SizedBox(
+                                          height: AppSize.s24.h,
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: PaddingSize.p40.w),
+                                      child: Form(
+                                        key: cubit.emailFormKey,
                                         child: defaultFormField(
                                           controller: cubit.emailController,
                                           type: TextInputType.emailAddress,
                                           // label: AppStrings.emailOrMobile,
                                           labelWidget: Text(
-                                            AppStrings.emailOrMobile,
+                                            AppStrings.emailAddress,
                                             style: getRegularStylePoppins(
                                                 color: ColorManager.darkGrey,
                                               fontSize: AppSize.s20.sp,
@@ -172,12 +172,15 @@ class LoginView extends StatelessWidget {
                                             },
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: AppSize.s20.h,
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: PaddingSize.p40.w),
+                                    ),
+                                    SizedBox(
+                                      height: AppSize.s20.h,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: PaddingSize.p40.w),
+                                      child: Form(
+                                        key: cubit.passFieldKey,
                                         child: defaultFormField(
                                             controller: cubit.passwordController,
                                             type: TextInputType.visiblePassword,
@@ -202,42 +205,46 @@ class LoginView extends StatelessWidget {
                                               cubit.changePasswordVisibility();
                                             }),
                                       ),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsetsDirectional.only(
-                                                end: PaddingSize.p14),
-                                            child: defaultTextButton(
-                                              text: AppStrings.forgetPassword,
-                                              onPressed: () {
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsetsDirectional.only(
+                                              end: PaddingSize.p14),
+                                          child: defaultTextButton(
+                                            text: AppStrings.forgetPassword,
+                                            onPressed: () {
+                                              if (cubit.emailFormKey.currentState!.validate()) {
                                                 navigatePush(context,
-                                                    const ForgotPasswordView());
-                                              },
-                                            ),
+                                                     ForgotPasswordView());
+                                              }
+                                            },
                                           ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: AppSize.s20.h,
-                                      ),
-                                      Center(
-                                        child: defaultButton(
-                                          function: () {
-                                            if (cubit.formKey.currentState!
-                                                .validate()) {
-                                              print('Login done');
-                                              navigateTo(context, Routes.homeRoute);
-                                            }
-                                          },
-                                          text: AppStrings.signIn,
-                                          width: AppSize.s200.w,
-                                          height: AppSize.s44.h,
-                                          isUpperCase: false,
                                         ),
-                                      )
-                                    ],
-                                  ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: AppSize.s20.h,
+                                    ),
+                                    Center(
+                                      child: defaultButton(
+                                        function: () {
+                                          if (cubit.emailFormKey.currentState!
+                                              .validate()) {
+                                            navigateTo(context, Routes.homeRoute);
+                                          }
+                                          if(cubit.passFieldKey.currentState!.validate()){
+                                            navigateTo(context, Routes.homeRoute);
+                                          }
+                                        },
+                                        text: AppStrings.signIn,
+                                        width: AppSize.s200.w,
+                                        height: AppSize.s44.h,
+                                        isUpperCase: false,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
