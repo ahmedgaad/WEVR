@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wevr_app/shared/managers/routes_manager.dart';
-import 'package:wevr_app/shared/managers/theme_manager.dart';
+import 'package:wevr_app/core/managers/routes_manager.dart';
+import 'package:wevr_app/core/managers/theme_manager.dart';
 
 class MyApp extends StatefulWidget {
   MyApp._internal(); //named constructor

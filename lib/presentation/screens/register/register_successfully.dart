@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../core/components/components.dart';
 import '../../../core/managers/assets_manager.dart';
 import '../../../core/managers/color_manager.dart';
@@ -10,9 +7,11 @@ import '../../../core/managers/routes_manager.dart';
 import '../../../core/managers/strings_manager.dart';
 import '../../../core/managers/style_manager.dart';
 import '../../../core/managers/values_manager.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ResetSuccessfully extends StatelessWidget {
-  const ResetSuccessfully({Key? key}) : super(key: key);
+class RegisterSuccessfully extends StatelessWidget {
+  const RegisterSuccessfully({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +40,7 @@ class ResetSuccessfully extends StatelessWidget {
                 height: AppSize.s44.h,
               ),
               Text(
-                  AppStrings.resetSuccessfullyTitle,
+                  AppStrings.registerSuccessfully,
                 style: getBoldStylePoppins(
                     color: ColorManager.black,
                   fontSize: FontSize.s24.sp,
@@ -51,7 +50,7 @@ class ResetSuccessfully extends StatelessWidget {
                 height: AppSize.s44.h,
               ),
               Text(
-                AppStrings.resetSuccessfullySubTitle,
+                AppStrings.registerSuccess,
                 style: getRegularStyleInter(
                   color: ColorManager.darkGrey,
                   fontSize: FontSize.s20.sp,

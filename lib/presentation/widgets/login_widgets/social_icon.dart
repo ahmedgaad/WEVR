@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../shared/managers/assets_manager.dart';
-import '../../../shared/managers/values_manager.dart';
+import '../../../core/managers/assets_manager.dart';
+import '../../../core/managers/values_manager.dart';
 
 class SocialButtons extends StatelessWidget {
   const SocialButtons({

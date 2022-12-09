@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../shared/components/components.dart';
-import '../../../shared/managers/color_manager.dart';
-import '../../../shared/managers/font_manager.dart';
-import '../../../shared/managers/routes_manager.dart';
-import '../../../shared/managers/strings_manager.dart';
-import '../../../shared/managers/style_manager.dart';
-import '../../../shared/managers/values_manager.dart';
+import '../../../core/components/components.dart';
+import '../../../core/managers/color_manager.dart';
+import '../../../core/managers/font_manager.dart';
+import '../../../core/managers/routes_manager.dart';
+import '../../../core/managers/strings_manager.dart';
+import '../../../core/managers/style_manager.dart';
+import '../../../core/managers/values_manager.dart';
 import '../../widgets/login_widgets/social_icon.dart';
 import '../otp_screens/forgot_password/forgot_password_view.dart';
 import 'cubit/cubit.dart';

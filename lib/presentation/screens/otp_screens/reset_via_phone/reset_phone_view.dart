@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../../shared/components/components.dart';
-import '../../../../shared/managers/assets_manager.dart';
-import '../../../../shared/managers/color_manager.dart';
-import '../../../../shared/managers/font_manager.dart';
-import '../../../../shared/managers/strings_manager.dart';
-import '../../../../shared/managers/style_manager.dart';
-import '../../../../shared/managers/values_manager.dart';
+import '../../../../core/components/components.dart';
+import '../../../../core/managers/assets_manager.dart';
+import '../../../../core/managers/color_manager.dart';
+import '../../../../core/managers/font_manager.dart';
+import '../../../../core/managers/strings_manager.dart';
+import '../../../../core/managers/style_manager.dart';
+import '../../../../core/managers/values_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
