@@ -18,7 +18,7 @@ ThemeData getThemeData() {
         color: ColorManager.exploreBackground,
         elevation: AppSize.s0,
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light,
         // statusBarColor: ColorManager.primary
       )
