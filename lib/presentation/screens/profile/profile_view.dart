@@ -19,11 +19,11 @@ class ProfileView extends StatelessWidget {
         elevation: AppSize.s0,
         backgroundColor: ColorManager.exploreBackground,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const BuildUserImageAndName(),
-            SingleChildScrollView(
+      body: Column(
+        children: [
+          const BuildUserImageAndName(),
+          Expanded(
+            child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Padding(
                 padding: EdgeInsets.symmetric(
@@ -81,8 +81,8 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

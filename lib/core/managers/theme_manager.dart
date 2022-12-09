@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wevr_app/core/managers/values_manager.dart';
 
@@ -16,6 +17,11 @@ ThemeData getThemeData() {
     appBarTheme: const AppBarTheme(
         color: ColorManager.exploreBackground,
         elevation: AppSize.s0,
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
+        // statusBarColor: ColorManager.primary
+      )
     ),
     //appBar theme
     /*appBarTheme: const AppBarTheme(

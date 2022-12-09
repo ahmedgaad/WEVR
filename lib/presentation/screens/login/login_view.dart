@@ -21,11 +21,11 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: ColorManager.transparent,
-      statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.light,
-    ));
+    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    //   statusBarColor: ColorManager.transparent,
+    //   statusBarBrightness: Brightness.light,
+    //   statusBarIconBrightness: Brightness.light,
+    // ));
 
     return BlocProvider(
       create: (BuildContext context) => LoginCubit(),

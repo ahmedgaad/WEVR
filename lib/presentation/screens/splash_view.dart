@@ -34,11 +34,11 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
 
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: ColorManager.transparent,
-      statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.dark,
-    ));
+    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    //   statusBarColor: ColorManager.transparent,
+    //   statusBarBrightness: Brightness.light,
+    //   statusBarIconBrightness: Brightness.dark,
+    // ));
 
     return Container(
       decoration: const BoxDecoration(

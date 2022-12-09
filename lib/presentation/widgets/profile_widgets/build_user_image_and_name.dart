@@ -16,6 +16,7 @@ class BuildUserImageAndName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
+      height: AppSize.s144.h,
       child: Column(
         children: [
           CircleAvatar(
