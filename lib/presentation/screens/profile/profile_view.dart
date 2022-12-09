@@ -65,6 +65,7 @@ class ProfileView extends StatelessWidget {
                       icon: ImagesAssetsManager.privacy,
                       onTap: () {},
                     ),
+                    const BuildDivider(),
                     BuildListItem(
                       label: AppStrings.myProperties,
                       icon: ImagesAssetsManager.myProperties,
