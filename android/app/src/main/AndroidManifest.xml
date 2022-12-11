@@ -4,7 +4,9 @@
         android:label="Wevr"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <activity
+        <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyCMkk_sxmZiswgK9u3-BvcKoRHXzRnWEk8"/>
+       <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"

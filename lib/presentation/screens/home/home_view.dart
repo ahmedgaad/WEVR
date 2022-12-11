@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wevr_app/core/components/components.dart';
 import '../../../core/managers/assets_manager.dart';
 import '../../../core/managers/color_manager.dart';
 import '../../../core/managers/font_manager.dart';
@@ -9,6 +10,7 @@ import '../../../core/managers/values_manager.dart';
 import '../auction/auction_view.dart';
 import '../explore/explore_view.dart';
 import '../homes/homes_view.dart';
+import '../map/google_map.dart';
 import '../saved/saved_view.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
@@ -56,7 +58,9 @@ class _HomeViewState extends State<HomeView> {
               height: AppSize.s80.h,
               width: AppSize.s80.w,
               child: FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  navigatePush(context, const Map());
+                },
                 backgroundColor: ColorManager.white,
                 child: SvgPicture.asset(ImagesAssetsManager.map),
               ),
