@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:wevr_app/core/managers/color_manager.dart';
 
@@ -12,11 +13,17 @@ class Map extends StatefulWidget {
 class _MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light
+      ),
+    );
     return Scaffold(
       body: SafeArea(
         child: Stack(
           children: [
-            GoogleMap(
+            const GoogleMap(
               initialCameraPosition: CameraPosition(
                 target: LatLng(30.0444, 31.2357),
                 zoom: 14,
@@ -36,7 +43,7 @@ class _MapState extends State<Map> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_back,
                     size: 35,
                   ),
