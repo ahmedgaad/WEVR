@@ -1,7 +1,5 @@
 // ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../../../core/components/components.dart';
 import '../../../core/managers/color_manager.dart';
 import '../../../core/managers/font_manager.dart';
@@ -38,51 +36,12 @@ class LoginView extends StatelessWidget {
               body: Stack(
                 alignment: Alignment.center,
                 children: [
-                  Column(children: [
-                    Expanded(
-                      flex: AppSize.s2.toInt(),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          color: ColorManager.primary,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(AppRadius.r93),
-                            bottomRight: Radius.circular(AppRadius.r93),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(
-                              PaddingSize.p70,
-                            ),
-                            child: Text(
-                              AppStrings.haveAccount,
-                              style: getRegularStyleInter(
-                                color: ColorManager.darkGrey,
-                                fontSize: AppSize.s16.sp,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: AppSize.s24.h,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(PaddingSize.p30),
-                            child: defaultTextButton(
-                                textColor: ColorManager.primary,
-                                text: AppStrings.signUp,
-                                onPressed: () {
-                                  navigateTo(context, Routes.registerRoute);
-                                }),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ]),
+                  background(
+                    context,
+                    buttonText: AppStrings.signUp,
+                    route: Routes.registerRoute,
+                    questionText: AppStrings.haveAccount,
+                  ),
                   Material(
                     borderRadius: BorderRadius.circular(AppRadius.r41),
                     elevation: AppSize.s8,
@@ -98,22 +57,12 @@ class LoginView extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Padding(
-                                padding: EdgeInsets.all(PaddingSize.p20),
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  size: AppSize.s24,
-                                ),
-                              ),
-                            ),
+                            backButton(function: (){}),
                             SizedBox(
                               height: AppSize.s10.h,
                             ),
                             Expanded(
                               child: SingleChildScrollView(
-                                physics: const BouncingScrollPhysics(),
                                 child: Column(
                                   children: [
                                     Column(
@@ -217,7 +166,7 @@ class LoginView extends StatelessWidget {
                                             onPressed: () {
                                               if (cubit.emailFormKey.currentState!.validate()) {
                                                 navigatePush(context,
-                                                     ForgotPasswordView());
+                                                     const ForgotPasswordView());
                                               }
                                             },
                                           ),
@@ -232,10 +181,13 @@ class LoginView extends StatelessWidget {
                                         function: () {
                                           if (cubit.emailFormKey.currentState!
                                               .validate()) {
-                                            navigateTo(context, Routes.homeRoute);
-                                          }
-                                          if(cubit.passFieldKey.currentState!.validate()){
-                                            navigateTo(context, Routes.homeRoute);
+                                            if(cubit.passFieldKey.currentState!.validate())
+                                            {
+                                              navigateTo(context, Routes.homeRoute);
+                                              LoginCubit.get(context).userLogin(
+                                                  email: LoginCubit.get(context).emailController.text,
+                                                  password: LoginCubit.get(context).passwordController.text);
+                                            }
                                           }
                                         },
                                         text: AppStrings.signIn,
@@ -261,37 +213,5 @@ class LoginView extends StatelessWidget {
   }
 }
 
-Widget emailStack(){
-  return Stack(
-    alignment: Alignment.center,
-    children: [
-      Container(
-        height: AppSize.s1.h,
-        width: AppSize.s200.w,
-        color: ColorManager.lightGrey,
-      ),
-      Container(
-        width: AppSize.s30.w,
-        height: AppSize.s12.h,
-        decoration: BoxDecoration(
-          color: ColorManager.orBackground,
-          borderRadius: BorderRadius.circular(
-              AppRadius.r20),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(
-              PaddingSize.p0),
-          child: Center(
-            child: Text(
-              AppStrings.or,
-              style: getRegularStyleInter(
-                color: ColorManager.black,
-                fontSize: FontSize.s10.sp,
-              ),
-            ),
-          ),
-        ),
-      )
-    ],
-  );
-}
+
+

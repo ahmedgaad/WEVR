@@ -3,6 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../managers/assets_manager.dart';
 import '../managers/color_manager.dart';
+import '../managers/font_manager.dart';
+import '../managers/routes_manager.dart';
+import '../managers/strings_manager.dart';
 import '../managers/style_manager.dart';
 import '../managers/values_manager.dart';
 
@@ -130,4 +133,106 @@ Widget filterWidget(){
           icon: SvgPicture.asset(ImagesAssetsManager.filters)),
     ),
   );
+}
+
+Widget backButton({
+  required VoidCallback function,
+}){
+  return IconButton(
+    onPressed: function,
+    icon: const Padding(
+      padding: EdgeInsets.all(PaddingSize.p20),
+      child: Icon(
+        Icons.arrow_back,
+        size: AppSize.s24,
+      ),
+    ),
+  );
+}
+
+Widget emailStack(){
+  return Stack(
+    alignment: Alignment.center,
+    children: [
+      Container(
+        height: AppSize.s1.h,
+        width: AppSize.s200.w,
+        color: ColorManager.lightGrey,
+      ),
+      Container(
+        width: AppSize.s30.w,
+        height: AppSize.s12.h,
+        decoration: BoxDecoration(
+          color: ColorManager.orBackground,
+          borderRadius: BorderRadius.circular(
+              AppRadius.r20),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(
+              PaddingSize.p0),
+          child: Center(
+            child: Text(
+              AppStrings.or,
+              style: getRegularStyleInter(
+                color: ColorManager.black,
+                fontSize: FontSize.s10.sp,
+              ),
+            ),
+          ),
+        ),
+      )
+    ],
+  );
+}
+
+Widget background(context, {
+  required String buttonText,
+  required String questionText,
+  required String route,
+}){
+  return Column(children: [
+    Expanded(
+      flex: AppSize.s2.toInt(),
+      child: Container(
+        decoration: const BoxDecoration(
+          color: ColorManager.primary,
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(AppRadius.r93),
+            bottomRight: Radius.circular(AppRadius.r93),
+          ),
+        ),
+      ),
+    ),
+    Expanded(
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(
+              PaddingSize.p70,
+            ),
+            child: Text(
+              questionText,
+              style: getRegularStyleInter(
+                color: ColorManager.darkGrey,
+                fontSize: AppSize.s16.sp,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: AppSize.s24.h,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(PaddingSize.p30),
+            child: defaultTextButton(
+                textColor: ColorManager.primary,
+                text: buttonText,
+                onPressed: () {
+                  navigateTo(context, route);
+                }),
+          ),
+        ],
+      ),
+    ),
+  ]);
 }

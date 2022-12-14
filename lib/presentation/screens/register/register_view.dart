@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wevr_app/presentation/widgets/login_widgets/social_icon.dart';
 import '../../../core/components/components.dart';
 import '../../../core/managers/assets_manager.dart';
 import '../../../core/managers/color_manager.dart';
@@ -42,62 +43,12 @@ class _RegisterViewState extends State<RegisterView> {
               body: Stack(
                 alignment: Alignment.center,
                 children: [
-                  Column(children: [
-                    Expanded(
-                      flex: AppSize.s2.toInt(),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          color: ColorManager.primary,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(AppRadius.r93),
-                            bottomRight: Radius.circular(AppRadius.r93),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(PaddingSize.p50),
-                            child: Text(
-                              AppStrings.alreadyHaveAccount,
-                              style: getRegularStyleInter(
-                                color: ColorManager.darkGrey,
-                                fontSize: AppSize.s16.sp,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: AppSize.s24.h,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(PaddingSize.p10),
-                            child: defaultTextButton(
-                                textColor: ColorManager.primary,
-                                text: AppStrings.signIn,
-                                onPressed: () {
-                                  navigateTo(context, Routes.loginRoute);
-                                }),
-
-                            // TextButton(
-                            //     onPressed: (){
-                            //       Navigator.pushReplacementNamed(context, Routes.loginRoute);
-                            //     },
-                            //     child: Text(
-                            //       AppStrings.signIn,
-                            //       style: getRegularStyleInter(
-                            //         color: ColorManager.primary,
-                            //         fontSize: FontSize.s16,
-                            //       ),
-                            //     )
-                            // ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ]),
+                  background(
+                    context,
+                    buttonText: AppStrings.signIn,
+                    route: Routes.loginRoute,
+                    questionText: AppStrings.alreadyHaveAccount,
+                  ),
                   Material(
                     borderRadius: BorderRadius.circular(AppRadius.r41),
                     elevation: AppSize.s8,
@@ -113,18 +64,9 @@ class _RegisterViewState extends State<RegisterView> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Padding(
-                                padding: EdgeInsets.all(PaddingSize.p20),
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  size: AppSize.s24,
-                                ),
-                              ),
-                            ),
+                            backButton(function: (){}),
                             SizedBox(
-                              height: AppSize.s10.h,
+                              height: AppSize.s2.h,
                             ),
                             Expanded(
                               child: SingleChildScrollView(
@@ -142,39 +84,11 @@ class _RegisterViewState extends State<RegisterView> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height: AppSize.s24.h,
+                                            height: AppSize.s20.h,
                                           ),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              IconButton(
-                                                onPressed: () {},
-                                                icon: SvgPicture.asset(
-                                                  ImagesAssetsManager.googleIc,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: AppSize.s20.w,
-                                              ),
-                                              IconButton(
-                                                onPressed: () {},
-                                                icon: SvgPicture.asset(
-                                                  ImagesAssetsManager.appleIc,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: AppSize.s20.w,
-                                              ),
-                                              IconButton(
-                                                onPressed: () {},
-                                                icon: SvgPicture.asset(
-                                                  ImagesAssetsManager.facebookLogoIc,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+                                          const SocialButtons(),
                                           SizedBox(
-                                            height: AppSize.s24.h,
+                                            height: AppSize.s20.h,
                                           ),
                                           Stack(
                                             alignment: Alignment.center,
@@ -209,7 +123,7 @@ class _RegisterViewState extends State<RegisterView> {
                                             ],
                                           ),
                                           SizedBox(
-                                            height: AppSize.s24.h,
+                                            height: AppSize.s20.h,
                                           ),
                                           Text(
                                             AppStrings.registerWord,
@@ -394,56 +308,6 @@ class _RegisterViewState extends State<RegisterView> {
                                           },
                                         ),
                                       ),
-                                      // Padding(
-                                      //   padding: EdgeInsets.symmetric(
-                                      //       horizontal: PaddingSize.p40.w),
-                                      //   child: defaultFormField(
-                                      //       controller: cubit
-                                      //           .passwordController,
-                                      //       type: TextInputType.visiblePassword,
-                                      //       label: AppStrings.password,
-                                      //       //validate: AppStrings.passwordValidate,
-                                      //       validate: (value) {
-                                      //         if (value!.isEmpty) {
-                                      //           return AppStrings.passwordValidate;
-                                      //         }
-                                      //         return null;
-                                      //       },
-                                      //       isPassword:
-                                      //           cubit.isPassword,
-                                      //       suffix: cubit.suffix,
-                                      //       suffixPressed: () {
-                                      //         cubit
-                                      //             .changePasswordVisibility();
-                                      //       }),
-                                      // ),
-                                      // SizedBox(
-                                      //   height: AppSize.s20.h,
-                                      // ),
-                                      // Padding(
-                                      //   padding: EdgeInsets.symmetric(
-                                      //       horizontal: PaddingSize.p40.w),
-                                      //   child: defaultFormField(
-                                      //       controller: cubit
-                                      //           .confirmPasswordController,
-                                      //       type: TextInputType.visiblePassword,
-                                      //       label: AppStrings.confirmPassword,
-                                      //       //validate: AppStrings.passwordValidate,
-                                      //       validate: (value) {
-                                      //         if (value!.isEmpty) {
-                                      //           return AppStrings.passwordValidate;
-                                      //         }
-                                      //         return null;
-                                      //       },
-                                      //       isPassword:
-                                      //           cubit.isPassword,
-                                      //       suffix: cubit
-                                      //           .confirmSuffix,
-                                      //       suffixPressed: () {
-                                      //         cubit
-                                      //             .changeSuffixPasswordVisibility();
-                                      //       }),
-                                      // ),
                                       SizedBox(
                                         height: AppSize.s20.h,
                                       ),
