@@ -9,8 +9,11 @@ import 'package:wevr_app/core/components/components.dart';
 import 'package:wevr_app/core/managers/strings_manager.dart';
 import 'package:wevr_app/core/managers/style_manager.dart';
 import 'package:wevr_app/core/managers/values_manager.dart';
+import 'package:wevr_app/presentation/screens/explore/virtual_tour.dart';
 import '../../../core/managers/assets_manager.dart';
 import '../../../core/managers/color_manager.dart';
+import '../../widgets/explore/carousal_slider.dart';
+import '../../widgets/explore/profile_row.dart';
 import '../get_started/get_started_view.dart';
 import '../profile/profile_view.dart';
 import '../search/search_view.dart';
@@ -25,33 +28,13 @@ class ExploreView extends StatelessWidget {
       statusBarBrightness: Brightness.dark,
       statusBarIconBrightness: Brightness.dark,
     ));
+
     return Scaffold(
       backgroundColor: ColorManager.exploreBackground,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    navigatePush(context, ProfileView());
-                  },
-                  child: CircleAvatar(
-                    backgroundColor: ColorManager.primary,
-                    radius: AppSize.s25.sp,
-                  ),
-                ),
-                Spacer(),
-                IconButton(
-                  onPressed: () {
-                    navigatePush(context, GetStartedView());
-                  },
-                  icon: SvgPicture.asset(
-                    ImagesAssetsManager.signOut,
-                  ),
-                )
-              ],
-            ),
+            ProfileRow(),
             SizedBox(
               height: AppSize.s27.h,
             ),
@@ -64,27 +47,7 @@ class ExploreView extends StatelessWidget {
             SizedBox(
               height: AppSize.s27.h,
             ),
-            CarouselSlider(
-              items: [
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: ColorManager.primary),
-                )
-              ],
-              options: CarouselOptions(
-                height: AppSize.s184.h,
-                initialPage: 0,
-                enableInfiniteScroll: true,
-                reverse: false,
-                autoPlay: true,
-                autoPlayInterval: Duration(seconds: 3),
-                autoPlayAnimationDuration: Duration(seconds: 1),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                scrollDirection: Axis.horizontal,
-                viewportFraction: 1.0,
-              ),
-            ),
+            CarousalSlider(),
             SizedBox(
               height: AppSize.s15.h,
             ),
@@ -100,13 +63,29 @@ class ExploreView extends StatelessWidget {
             SizedBox(
               height: AppSize.s15.h,
             ),
-            Container(
-              width: AppSize.s300.w,
-              height: AppSize.s300.h,
-              decoration: BoxDecoration(
-                color: ColorManager.white,
-                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-              ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: (){
+                    navigatePush(context, VirtualTour());
+                  },
+                  child: Container(
+                    width: AppSize.s250.w,
+                    height: AppSize.s250.h,
+                    decoration: BoxDecoration(
+                      color: ColorManager.white,
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        ImagesAssetsManager.apartment,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             )
           ],
         ),

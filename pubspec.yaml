@@ -41,8 +41,9 @@ dependencies:
   internet_connection_checker: ^1.0.0+1
   shared_preferences: ^2.0.15
   smooth_page_indicator: ^1.0.0+2
-  carousel_slider: ^4.2.0
-  google_maps_flutter: ^2.2.1
+  carousel_slider: ^4.2.1
+  google_maps_flutter: ^2.2.2
+  webview_flutter: ^3.0.4
 
 dev_dependencies:
   flutter_lints: ^2.0.1
@@ -64,6 +65,7 @@ flutter:
   assets:
     - assets/images/onboarding/
     - assets/images/logo/
+    - assets/images/home/
     - assets/images/reset_password/
     - assets/images/icons/
     - assets/images/logo/get_started.jpg

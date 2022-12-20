@@ -7,6 +7,11 @@ class ImagesAssetsManager{
   static const String getStartedImage ='${AppConstants.imagePath}/logo/get_started.jpg';
   static const String getStartedLogo ='${AppConstants.imagePath}/logo/start_logo.svg';
 
+  static const String userPic ='${AppConstants.imagePath}/home/userPic.png';
+  static const String virtualButton ='${AppConstants.imagePath}/home/virtualTour.svg';
+  static const String apartment ='${AppConstants.imagePath}/home/apartment.png';
+  static const String slider ='${AppConstants.imagePath}/home/slider.png';
+
   static const String onBoarding1 ='${AppConstants.imagePath}/onboarding/onboarding1.svg';
   static const String onBoarding2 ='${AppConstants.imagePath}/onboarding/onboarding2.svg';
   static const String onBoarding3 ='${AppConstants.imagePath}/onboarding/onboarding3.svg';
