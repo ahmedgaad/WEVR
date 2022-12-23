@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/managers/color_manager.dart';
+import '../../../core/utils/color_manager.dart';
 
 class SavedView extends StatelessWidget {
   const SavedView({Key? key}) : super(key: key);

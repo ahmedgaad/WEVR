@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:wevr_app/core/managers/color_manager.dart';
+import '../../../core/utils/color_manager.dart';
 
 class Map extends StatefulWidget {
   const Map({Key? key}) : super(key: key);

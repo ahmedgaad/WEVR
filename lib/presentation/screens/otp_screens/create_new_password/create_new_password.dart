@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/components/components.dart';
-import '../../../../core/managers/assets_manager.dart';
-import '../../../../core/managers/color_manager.dart';
-import '../../../../core/managers/strings_manager.dart';
-import '../../../../core/managers/style_manager.dart';
-import '../../../../core/managers/values_manager.dart';
+import '../../../../core/utils/assets_manager.dart';
+import '../../../../core/utils/color_manager.dart';
+import '../../../../core/utils/strings_manager.dart';
+import '../../../../core/utils/styles_manager.dart';
+import '../../../../core/utils/values_manager.dart';
 import '../reset_pass_successfully.dart';
 import 'cubit/create_new_password_cubit.dart';
 

@@ -1,17 +1,18 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../../../core/components/constants.dart';
-import '../../../core/managers/assets_manager.dart';
-import '../../../core/managers/color_manager.dart';
-import '../../../core/managers/font_manager.dart';
-import '../../../core/managers/routes_manager.dart';
-import '../../../core/managers/strings_manager.dart';
-import '../../../core/managers/style_manager.dart';
-import '../../../core/managers/values_manager.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../core/utils/constants_manager.dart';
+import '../../../core/utils/assets_manager.dart';
+import '../../../core/utils/color_manager.dart';
+import '../../../core/utils/fonts_manager.dart';
+import '../../../core/utils/routes_manager.dart';
+import '../../../core/utils/strings_manager.dart';
+import '../../../core/utils/styles_manager.dart';
+import '../../../core/utils/values_manager.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({Key? key}) : super(key: key);

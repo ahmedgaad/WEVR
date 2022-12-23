@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wevr_app/core/managers/strings_manager.dart';
-import '../../../core/managers/assets_manager.dart';
-import '../../../core/managers/color_manager.dart';
-import '../../../core/managers/values_manager.dart';
+
+import '../../../core/utils/assets_manager.dart';
+import '../../../core/utils/color_manager.dart';
+import '../../../core/utils/strings_manager.dart';
+import '../../../core/utils/values_manager.dart';
 import '../../widgets/profile_widgets/build_divider.dart';
 import '../../widgets/profile_widgets/build_list_item.dart';
 import '../../widgets/profile_widgets/build_user_image_and_name.dart';

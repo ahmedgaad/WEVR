@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../managers/assets_manager.dart';
-import '../managers/color_manager.dart';
-import '../managers/style_manager.dart';
-import '../managers/values_manager.dart';
+import '../utils/assets_manager.dart';
+import '../utils/color_manager.dart';
+import '../utils/styles_manager.dart';
+import '../utils/values_manager.dart';
 
 Widget defaultButton({
   double width = double.infinity,

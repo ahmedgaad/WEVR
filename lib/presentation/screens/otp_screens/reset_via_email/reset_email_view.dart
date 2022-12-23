@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../core/components/components.dart';
-import '../../../../core/managers/assets_manager.dart';
-import '../../../../core/managers/color_manager.dart';
-import '../../../../core/managers/font_manager.dart';
-import '../../../../core/managers/strings_manager.dart';
-import '../../../../core/managers/style_manager.dart';
-import '../../../../core/managers/values_manager.dart';
+import '../../../../core/utils/assets_manager.dart';
+import '../../../../core/utils/color_manager.dart';
+import '../../../../core/utils/fonts_manager.dart';
+import '../../../../core/utils/strings_manager.dart';
+import '../../../../core/utils/styles_manager.dart';
+import '../../../../core/utils/values_manager.dart';
 import '../create_new_password/create_new_password.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

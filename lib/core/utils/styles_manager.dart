@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'font_manager.dart';
+import 'fonts_manager.dart';
 
 TextStyle _getTextStyleInter(double fontSize, FontWeight fontWeight, Color color){
   return TextStyle(

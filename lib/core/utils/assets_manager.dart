@@ -1,4 +1,4 @@
-import '../components/constants.dart';
+import 'constants_manager.dart';
 
 class ImagesAssetsManager{
 

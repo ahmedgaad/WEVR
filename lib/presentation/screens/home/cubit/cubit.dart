@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../auction/auction_view.dart';
 import '../../explore/explore_view.dart';
 import '../../homes/homes_view.dart';

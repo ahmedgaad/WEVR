@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wevr_app/core/components/components.dart';
-import 'package:wevr_app/core/managers/values_manager.dart';
+import '../../../core/components/components.dart';
+import '../../../core/utils/values_manager.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({Key? key}) : super(key: key);

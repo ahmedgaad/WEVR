@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../core/managers/color_manager.dart';
+import '../../../core/utils/color_manager.dart';
 
 class AuctionView extends StatelessWidget {
   const AuctionView({Key? key}) : super(key: key);
