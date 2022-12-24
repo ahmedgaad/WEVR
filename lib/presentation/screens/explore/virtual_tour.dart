@@ -6,13 +6,11 @@ class VirtualTour extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        height: 500,
-        child: const WebView(
-          initialUrl: "https://eyes360.cloud/lacville/twinhousedecor/",
-          javascriptMode: JavascriptMode.unrestricted,
-        ),
+    return Container(
+      height: 500,
+      child: const WebView(
+        initialUrl: "https://eyes360.cloud/lacville/twinhousedecor/",
+        javascriptMode: JavascriptMode.unrestricted,
       ),
     );
   }

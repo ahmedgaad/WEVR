@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../core/components/components.dart';
-import '../../../core/managers/assets_manager.dart';
-import '../../../core/managers/values_manager.dart';
+import '../../../core/utils/assets_manager.dart';
+import '../../../core/utils/values_manager.dart';
 import '../../screens/get_started/get_started_view.dart';
 import '../../screens/profile/profile_view.dart';
 

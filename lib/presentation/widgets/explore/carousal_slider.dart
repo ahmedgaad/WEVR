@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wevr_app/core/managers/assets_manager.dart';
-import '../../../core/managers/values_manager.dart';
+import 'package:wevr_app/core/utils/assets_manager.dart';
+import '../../../core/utils/values_manager.dart';
 
 class CarousalSlider extends StatelessWidget {
   const CarousalSlider({Key? key}) : super(key: key);
