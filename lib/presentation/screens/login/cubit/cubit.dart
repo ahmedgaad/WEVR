@@ -3,13 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wevr_app/presentation/screens/login/cubit/states.dart';
-import '../../../../core/network/end_points.dart';
-import '../../../../core/network/remote/dio_helper.dart';
-import '../../../../data/models/login_model.dart';
 
 
-class LoginCubit extends Cubit<LoginStates>{
-  LoginCubit() : super(LoginInitialState());
+class LoginCubit extends Cubit<ResultState>{
+  LoginCubit() : super(const Initial());
   static LoginCubit get(context) => BlocProvider.of(context);
   var emailFormKey = GlobalKey<FormState>();
   var passFieldKey = GlobalKey<FormState>();
@@ -24,12 +21,12 @@ class LoginCubit extends Cubit<LoginStates>{
 
     suffix = isPassword ? Icons.visibility : Icons.visibility_off;
 
-    emit(ChangePasswordVisibilityState());
+    emit(const ResultState.change());
   }
 
-  late LoginModel loginModel;
+  //late LoginModel loginModel;
 
-  void userLogin({
+  /*void userLogin({
     required String email,
     required String password,
   }) async {
@@ -49,5 +46,5 @@ class LoginCubit extends Cubit<LoginStates>{
       print(error.toString());
       emit(ErrorLoginLoadingState(error.toString()));
     });
-  }
+  }*/
 }

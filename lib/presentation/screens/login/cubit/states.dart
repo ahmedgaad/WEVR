@@ -1,22 +1,12 @@
-import '../../../../data/models/login_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:wevr_app/core/errors/network_exceptions.dart';
 
-abstract class LoginStates{}
-
-class LoginInitialState extends LoginStates{}
-
-class ChangePasswordVisibilityState extends LoginStates{}
-
-class UserLoginLoadingState extends LoginStates{
-
-}
-class SuccessLoginLoadingState extends LoginStates{
-  final LoginModel loginModel;
-
-  SuccessLoginLoadingState(this.loginModel);
-}
-class ErrorLoginLoadingState extends LoginStates{
-
-  late final String error;
-
-  ErrorLoginLoadingState(this.error);
+part 'states.freezed.dart';
+@freezed
+class ResultState<T> with _$ResultState<T>{
+  const factory ResultState.initial() = Initial<T>;
+  const factory ResultState.loading() = Loading<T>;
+  const factory ResultState.success(T data) = Success<T>;
+  const factory ResultState.change() = Change<T>;
+  const factory ResultState.error(NetworkExceptions networkExceptions) = Error<T>;
 }

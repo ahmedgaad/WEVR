@@ -27,7 +27,7 @@ class LoginView extends StatelessWidget {
 
     return BlocProvider(
       create: (BuildContext context) => LoginCubit(),
-      child: BlocConsumer<LoginCubit, LoginStates>(
+      child: BlocConsumer<LoginCubit, ResultState>(
           listener: (context, state) {},
           builder: (context, state) {
             var cubit = LoginCubit.get(context);
@@ -184,9 +184,9 @@ class LoginView extends StatelessWidget {
                                             if(cubit.passFieldKey.currentState!.validate())
                                             {
                                               navigateTo(context, Routes.homeRoute);
-                                              LoginCubit.get(context).userLogin(
+                                              /*LoginCubit.get(context).userLogin(
                                                   email: LoginCubit.get(context).emailController.text,
-                                                  password: LoginCubit.get(context).passwordController.text);
+                                                  password: LoginCubit.get(context).passwordController.text);*/
                                             }
                                           }
                                         },
