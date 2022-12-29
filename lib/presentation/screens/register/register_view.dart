@@ -1,5 +1,8 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wevr_app/core/injection_container.dart';
+import 'package:wevr_app/data/models/register_model/register_model.dart';
 import 'package:wevr_app/presentation/widgets/login_widgets/social_icon.dart';
 import '../../../core/components/components.dart';
 import '../../../core/utils/assets_manager.dart';
@@ -33,7 +36,7 @@ class _RegisterViewState extends State<RegisterView> {
       statusBarIconBrightness: Brightness.light,
     ));
     return BlocProvider(
-        create: (BuildContext context) => RegisterCubit(),
+        create: (BuildContext context) => RegisterCubit(registerNewUserUseCase: getIt()),
         child: BlocConsumer<RegisterCubit, RegisterStates>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -314,17 +317,28 @@ class _RegisterViewState extends State<RegisterView> {
                                       Center(
                                         child: Padding(
                                           padding: const EdgeInsets.all(0),
-                                          child: defaultButton(
-                                            function: () {
-                                              if (formKey.currentState!.validate()) {
-                                                navigatePush(context,
-                                                    const RegisterSuccessfully());
-                                              }
+                                          child: ConditionalBuilder(
+                                            condition: state is! RegisterLoadingState,
+                                            builder: (BuildContext context) {
+                                              return  defaultButton(
+                                                function: () {
+                                                  if (formKey.currentState!.validate()) {
+                                                    cubit.userRegister(RegisterModel(
+                                                      data: [
+
+                                                      ]
+                                                    ));
+                                                  }
+                                                },
+                                                text: AppStrings.signUp,
+                                                width: AppSize.s200.w,
+                                                height: AppSize.s44.h,
+                                                isUpperCase: false,
+                                              );
                                             },
-                                            text: AppStrings.signUp,
-                                            width: AppSize.s200.w,
-                                            height: AppSize.s44.h,
-                                            isUpperCase: false,
+                                            fallback: (BuildContext context) {
+                                              return const Center(child: CircularProgressIndicator(),);
+                                            },
                                           ),
                                         ),
                                       ),
