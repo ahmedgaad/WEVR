@@ -5,10 +5,15 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wevr_app/domain/usecases/login_user.dart';
 import 'package:wevr_app/presentation/screens/login/cubit/states.dart';
 
-class LoginCubit extends Cubit<ResultState> {
-  LoginCubit() : super(const Initial());
+class LoginCubit extends Cubit<LoginStates> {
+  final LoginUserUseCase loginUserUseCase;
+
+  LoginCubit({
+    required this.loginUserUseCase,
+  }) : super(LoginInitialState());
   static LoginCubit get(context) => BlocProvider.of(context);
   var emailFormKey = GlobalKey<FormState>();
   var passFieldKey = GlobalKey<FormState>();
@@ -23,7 +28,7 @@ class LoginCubit extends Cubit<ResultState> {
 
     suffix = isPassword ? Icons.visibility : Icons.visibility_off;
 
-    emit(const ResultState.change());
+    emit(ChangeLoginPasswordVisibilityState());
   }
 
   //late LoginModel loginModel;

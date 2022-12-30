@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:wevr_app/data/data_sources/remote_data_source/web_services.dart';
+import 'package:wevr_app/domain/usecases/login_user.dart';
+import 'package:wevr_app/presentation/screens/login/cubit/cubit.dart';
 import 'package:wevr_app/presentation/screens/register/cubit/cubit.dart';
 
 import '../data/repository_implementation/repository_impl.dart';
@@ -11,10 +13,13 @@ GetIt getIt = GetIt.instance;
 void initializeInjector() {
   //Cubit
   getIt.registerLazySingleton(
-      () => RegisterCubit(registerNewUserUseCase: getIt()));
+          () => LoginCubit(loginUserUseCase: getIt()));
+  getIt.registerLazySingleton(
+          () => RegisterCubit(registerNewUserUseCase: getIt()));
 
   //Usecase
   getIt.registerLazySingleton(() => RegisterNewUserUseCase(getIt()));
+  getIt.registerLazySingleton(() => LoginUserUseCase(getIt()));
 
   //Repository
   getIt.registerLazySingleton<UsersRepository>(

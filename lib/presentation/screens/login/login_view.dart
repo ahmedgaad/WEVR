@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 import '../../../core/components/components.dart';
+import '../../../core/injection_container.dart';
 import '../../../core/utils/color_manager.dart';
 import '../../../core/utils/fonts_manager.dart';
 import '../../../core/utils/routes_manager.dart';
@@ -26,8 +27,8 @@ class LoginView extends StatelessWidget {
     // ));
 
     return BlocProvider(
-      create: (BuildContext context) => LoginCubit(),
-      child: BlocConsumer<LoginCubit, ResultState>(
+      create: (BuildContext context) => LoginCubit(loginUserUseCase: getIt()),
+      child: BlocConsumer<LoginCubit, LoginStates>(
           listener: (context, state) {},
           builder: (context, state) {
             var cubit = LoginCubit.get(context);

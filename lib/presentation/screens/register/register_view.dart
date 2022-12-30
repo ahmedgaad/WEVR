@@ -1,7 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wevr_app/core/injection_container.dart';
+import 'package:wevr_app/core/utils/constants_manager.dart';
+import 'package:wevr_app/data/data_sources/local_data_source/cache_helper.dart';
 import 'package:wevr_app/data/models/register_model/register_model.dart';
 import 'package:wevr_app/presentation/widgets/login_widgets/social_icon.dart';
 import '../../../core/components/components.dart';
@@ -41,8 +45,17 @@ class _RegisterViewState extends State<RegisterView> {
         child: BlocConsumer<RegisterCubit, RegisterStates>(
           listener: (context, state) {
             if (state is RegisterSuccessState) {
-              print("Register Sucesssssssssssss");
-              Navigator.pushReplacementNamed(context, Routes.loginRoute);
+              if (state.registerModel.status != null) {
+                print(state.registerModel.message);
+                print(state.registerModel.token);
+
+                CacheHelper.saveData(
+                    key: 'token',
+                    value: state.registerModel.token).then((value){
+                      AppConstants.token = state.registerModel.token!;
+                      Navigator.pushReplacementNamed(context, Routes.registerSuccessRoute);
+                });
+              }
             }
           },
           builder: (context, state) {
@@ -345,7 +358,7 @@ class _RegisterViewState extends State<RegisterView> {
                                                 state is! RegisterLoadingState,
                                             builder: (BuildContext context) {
                                               return defaultButton(
-                                                function: () {
+                                                function: () async{
                                                   if (formKey.currentState!
                                                       .validate()) {
                                                     cubit.userRegister(RegisterModel(
@@ -353,7 +366,8 @@ class _RegisterViewState extends State<RegisterView> {
                                                       email: cubit.emailController.text,
                                                       phone: cubit.phoneController.text,
                                                       password: cubit.passwordController.text,
-                                                      confirmPassword: cubit.confirmPasswordController.text
+                                                      confirmPassword: cubit.confirmPasswordController.text,
+                                                      deviceName: await cubit.getDeviceInfo(),
                                                     ));
                                                   }
                                                 },
