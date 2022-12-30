@@ -42,7 +42,6 @@ class _RegisterViewState extends State<RegisterView> {
           listener: (context, state) {
             if (state is RegisterSuccessState) {
               print("Register Sucesssssssssssss");
-
               Navigator.pushReplacementNamed(context, Routes.loginRoute);
             }
           },

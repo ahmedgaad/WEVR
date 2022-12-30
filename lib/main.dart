@@ -7,12 +7,14 @@ import 'package:wevr_app/core/injection_container.dart';
 import 'app/app.dart';
 import 'core/bloc_observer.dart';
 import 'core/utils/languages_manager.dart';
+import 'data/data_sources/local_data_source/cache_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   initializeInjector();
+  await CacheHelper.init();
   runApp(EasyLocalization(
       supportedLocales: const [ARABIC_LOCALE, ENGLISH_LOCALE],
       path: ASSET_PATH_LOCALIZATION,

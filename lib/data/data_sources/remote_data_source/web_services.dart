@@ -3,6 +3,8 @@ import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:wevr_app/data/models/register_model/register_model.dart';
 
+import '../../models/login_model/login_model.dart';
+
 part 'web_services.g.dart';
 
 @RestApi(baseUrl: "https://college.makkah-tech.com/api/")
@@ -13,4 +15,9 @@ abstract class WebService {
   Future<RegisterModel> register(
     @Body() RegisterModel registerModel,
   );
+
+  @POST("login")
+  Future<LoginModel> login(
+      @Body() LoginModel loginModel,
+      );
 }
