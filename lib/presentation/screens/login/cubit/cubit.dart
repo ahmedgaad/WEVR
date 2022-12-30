@@ -1,11 +1,13 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, avoid_print
 
+import 'dart:io';
+
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wevr_app/presentation/screens/login/cubit/states.dart';
 
-
-class LoginCubit extends Cubit<ResultState>{
+class LoginCubit extends Cubit<ResultState> {
   LoginCubit() : super(const Initial());
   static LoginCubit get(context) => BlocProvider.of(context);
   var emailFormKey = GlobalKey<FormState>();
