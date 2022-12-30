@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../core/components/components.dart';
+import '../../../core/injection_container.dart';
 import '../../../core/utils/assets_manager.dart';
 import '../../../core/utils/color_manager.dart';
 import '../../../core/utils/fonts_manager.dart';
@@ -34,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
       statusBarIconBrightness: Brightness.dark,
     ));
     return BlocProvider(
-      create: (BuildContext context) => HomeLayOutCubit(),
+      create: (BuildContext context) => HomeLayOutCubit(logoutUseCase: getIt()),
       child: BlocConsumer<HomeLayOutCubit, HomeLayOutStates>(
         listener: (context, state) {},
         builder: (context, state) {

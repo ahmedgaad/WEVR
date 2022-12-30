@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:wevr_app/data/data_sources/remote_data_source/web_services.dart';
 import 'package:wevr_app/domain/usecases/login.dart';
+import 'package:wevr_app/domain/usecases/logout.dart';
+import 'package:wevr_app/presentation/screens/home/cubit/cubit.dart';
 import 'package:wevr_app/presentation/screens/login/cubit/cubit.dart';
 import 'package:wevr_app/presentation/screens/register/cubit/cubit.dart';
 
@@ -16,10 +18,12 @@ void initializeInjector() {
           () => LoginCubit(loginUserUseCase: getIt()));
   getIt.registerLazySingleton(
           () => RegisterCubit(registerNewUserUseCase: getIt()));
+  getIt.registerLazySingleton(() => HomeLayOutCubit(logoutUseCase: getIt())) ;
 
   //Usecase
   getIt.registerLazySingleton(() => RegisterUseCase(getIt()));
   getIt.registerLazySingleton(() => LoginUseCase(getIt()));
+  getIt.registerLazySingleton(() => LogoutUseCase(getIt()));
 
   //Repository
   getIt.registerLazySingleton<UsersRepository>(
