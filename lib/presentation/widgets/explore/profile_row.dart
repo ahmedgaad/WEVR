@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../core/components/components.dart';
 import '../../../core/utils/assets_manager.dart';
 import '../../../core/utils/values_manager.dart';
+import '../../../data/data_sources/local_data_source/cache_helper.dart';
 import '../../screens/get_started/get_started_view.dart';
 import '../../screens/profile/profile_view.dart';
 
@@ -27,10 +28,11 @@ class ProfileRow extends StatelessWidget {
             ),
           ),
         ),
-        Spacer(),
+        const Spacer(),
         IconButton(
           onPressed: () {
-            navigatePush(context, const GetStartedView());
+            signOut(context);
+            print("Deleted Successfully ****************");
           },
           icon: SvgPicture.asset(
             ImagesAssetsManager.signOut,

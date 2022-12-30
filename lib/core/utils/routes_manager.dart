@@ -17,7 +17,7 @@ import '../../presentation/screens/otp_screens/reset_via_phone/reset_phone_view.
 import '../../presentation/screens/register/register_successfully.dart';
 import '../../presentation/screens/register/register_view.dart';
 import 'strings_manager.dart';
-import '../../presentation/screens/splash_view.dart';
+import '../../presentation/screens/splash/splash_view.dart';
 
 class Routes {
   static const String splashRoute = "/";

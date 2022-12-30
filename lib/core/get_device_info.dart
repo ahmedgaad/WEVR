@@ -7,22 +7,22 @@ Future<String?> getDeviceInfo() async {
   //DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   if (Platform.isAndroid) {
     var androidInfo = await DeviceInfoPlugin().androidInfo;
-    print(androidInfo.id);
-    return androidInfo.id;
+    print(androidInfo.device);
+    return androidInfo.device;
   } else if (Platform.isIOS) {
     var iosInfo = await DeviceInfoPlugin().iosInfo;
-    print(iosInfo.identifierForVendor);
-    return iosInfo.identifierForVendor;
+    print(iosInfo.name);
+    return iosInfo.name;
   } else if (Platform.isWindows) {
     var windowsInfo = await DeviceInfoPlugin().windowsInfo;
-    return windowsInfo.productId;
+    return windowsInfo.computerName;
   } else if (Platform.isMacOS) {
     var macOsInfo = await DeviceInfoPlugin().macOsInfo;
-    return macOsInfo.systemGUID;
+    return macOsInfo.computerName;
   } else if (Platform.isLinux) {
     var linuxInfo = await DeviceInfoPlugin().linuxInfo;
-    return linuxInfo.id;
+    return linuxInfo.name;
   } else {
-    return "A7A";
+    return "***";
   }
 }

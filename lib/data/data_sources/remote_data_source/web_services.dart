@@ -18,6 +18,11 @@ abstract class WebService {
 
   @POST("login")
   Future<LoginModel> login(
-      @Body() LoginModel loginModel,
-      );
+    @Body() LoginModel loginModel,
+  );
+
+  @DELETE("logout")
+  Future<HttpResponse> logout(
+    @Header('Authorization') String token,
+  );
 }

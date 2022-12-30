@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:wevr_app/data/data_sources/local_data_source/cache_helper.dart';
 
 import '../../../core/utils/constants_manager.dart';
 import '../../../core/utils/assets_manager.dart';
@@ -27,6 +28,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   late final List<SliderObject> _list = _getSliderData();
   int currentIndex = 0;
   bool isLast = false;
+
+  void submit(){
+    CacheHelper.saveData(key: 'onBoarding', value: true).then((value){
+      Navigator.pushReplacementNamed(context, Routes.getStarted);
+    });
+  }
 
   List<SliderObject> _getSliderData() => [
     SliderObject(
@@ -201,7 +208,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                             child: GestureDetector(
                               onTap: (){
                                 if(isLast){
-                                  Navigator.pushReplacementNamed(context, Routes.getStarted);
+                                  submit();
                                 }
                                 _pageController.nextPage(
                                   duration: const Duration(

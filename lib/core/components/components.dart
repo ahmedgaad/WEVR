@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../../data/data_sources/local_data_source/cache_helper.dart';
+import '../../presentation/screens/get_started/get_started_view.dart';
 import '../utils/assets_manager.dart';
 import '../utils/color_manager.dart';
 import '../utils/fonts_manager.dart';
@@ -268,4 +270,10 @@ Color chooseToastColor(ToastStates state) {
       break;
   }
   return color;
+}
+
+void signOut(context) {
+  CacheHelper.removeData(key: 'token').then((value) {
+    navigatePush(context, const GetStartedView());
+  });
 }

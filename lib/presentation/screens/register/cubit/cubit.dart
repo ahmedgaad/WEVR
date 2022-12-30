@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wevr_app/core/errors/network_exceptions.dart';
 import 'package:wevr_app/data/models/register_model/register_model.dart';
-import 'package:wevr_app/domain/usecases/register_new_user.dart';
+import 'package:wevr_app/domain/usecases/register.dart';
 import 'states.dart';
 import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 
 
 class RegisterCubit extends Cubit<RegisterStates> {
-  final RegisterNewUserUseCase registerNewUserUseCase;
+  final RegisterUseCase registerNewUserUseCase;
 
   RegisterCubit({
     required this.registerNewUserUseCase,
@@ -28,21 +28,21 @@ class RegisterCubit extends Cubit<RegisterStates> {
     //DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     if (Platform.isAndroid) {
       var androidInfo = await DeviceInfoPlugin().androidInfo;
-      print(androidInfo.id);
-      return androidInfo.id;
+      print(androidInfo.device);
+      return androidInfo.device;
     } else if (Platform.isIOS) {
       var iosInfo = await DeviceInfoPlugin().iosInfo;
-      print(iosInfo.identifierForVendor);
-      return iosInfo.identifierForVendor;
+      print(iosInfo.name);
+      return iosInfo.name;
     } else if (Platform.isWindows) {
       var windowsInfo = await DeviceInfoPlugin().windowsInfo;
-      return windowsInfo.productId;
+      return windowsInfo.computerName;
     } else if (Platform.isMacOS) {
       var macOsInfo = await DeviceInfoPlugin().macOsInfo;
-      return macOsInfo.systemGUID;
+      return macOsInfo.computerName;
     } else if (Platform.isLinux) {
       var linuxInfo = await DeviceInfoPlugin().linuxInfo;
-      return linuxInfo.id;
+      return linuxInfo.name;
     } else {
       return "";
     }

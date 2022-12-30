@@ -3,10 +3,10 @@ import 'package:wevr_app/domain/repository/users_repository.dart';
 
 import '../../core/errors/api_result.dart';
 
-class LoginUserUseCase{
+class LoginUseCase{
   final UsersRepository usersRepository;
 
-  LoginUserUseCase(this.usersRepository);
+  LoginUseCase(this.usersRepository);
 
   Future<ApiResult<LoginModel>> call(LoginModel loginModel) async{
     return await usersRepository.loginUser(loginModel);

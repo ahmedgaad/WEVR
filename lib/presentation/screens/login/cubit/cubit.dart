@@ -5,11 +5,13 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wevr_app/domain/usecases/login_user.dart';
+import 'package:wevr_app/core/errors/network_exceptions.dart';
+import 'package:wevr_app/data/models/login_model/login_model.dart';
+import 'package:wevr_app/domain/usecases/login.dart';
 import 'package:wevr_app/presentation/screens/login/cubit/states.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
-  final LoginUserUseCase loginUserUseCase;
+  final LoginUseCase loginUserUseCase;
 
   LoginCubit({
     required this.loginUserUseCase,
@@ -19,6 +21,45 @@ class LoginCubit extends Cubit<LoginStates> {
   var passFieldKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+
+
+
+
+  Future<String?> getDeviceInfo() async {
+    //DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    if (Platform.isAndroid) {
+      var androidInfo = await DeviceInfoPlugin().androidInfo;
+      print(androidInfo.device);
+      return androidInfo.device;
+    } else if (Platform.isIOS) {
+      var iosInfo = await DeviceInfoPlugin().iosInfo;
+      print(iosInfo.name);
+      return iosInfo.name;
+    } else if (Platform.isWindows) {
+      var windowsInfo = await DeviceInfoPlugin().windowsInfo;
+      return windowsInfo.computerName;
+    } else if (Platform.isMacOS) {
+      var macOsInfo = await DeviceInfoPlugin().macOsInfo;
+      return macOsInfo.computerName;
+    } else if (Platform.isLinux) {
+      var linuxInfo = await DeviceInfoPlugin().linuxInfo;
+      return linuxInfo.name;
+    } else {
+      return "";
+    }
+  }
+
+
+  void userLogin(LoginModel loginModel) async{
+    var response = await loginUserUseCase(loginModel);
+    response.when(
+        success: (LoginModel loginModel){
+          emit(LoginSuccessState(loginModel));
+        },
+        failure: (NetworkExceptions networkExceptions){
+          emit(LoginErrorState(networkExceptions));
+        });
+  }
 
   IconData suffix = Icons.visibility;
   bool isPassword = true;

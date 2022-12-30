@@ -1,13 +1,16 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
+import 'package:wevr_app/data/models/login_model/login_model.dart';
 import '../../../core/components/components.dart';
 import '../../../core/injection_container.dart';
 import '../../../core/utils/color_manager.dart';
+import '../../../core/utils/constants_manager.dart';
 import '../../../core/utils/fonts_manager.dart';
 import '../../../core/utils/routes_manager.dart';
 import '../../../core/utils/strings_manager.dart';
 import '../../../core/utils/styles_manager.dart';
 import '../../../core/utils/values_manager.dart';
+import '../../../data/data_sources/local_data_source/cache_helper.dart';
 import '../../widgets/login_widgets/social_icon.dart';
 import '../otp_screens/forgot_password/forgot_password_view.dart';
 import 'cubit/cubit.dart';
@@ -29,7 +32,21 @@ class LoginView extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => LoginCubit(loginUserUseCase: getIt()),
       child: BlocConsumer<LoginCubit, LoginStates>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state is LoginSuccessState) {
+              if (state.loginModel.status != null) {
+                print(state.loginModel.message);
+                print(state.loginModel.token);
+
+                CacheHelper.saveData(
+                    key: 'token',
+                    value: state.loginModel.token).then((value){
+                  AppConstants.token = state.loginModel.token!;
+                  Navigator.pushReplacementNamed(context, Routes.homeRoute);
+                });
+              }
+            }
+          },
           builder: (context, state) {
             var cubit = LoginCubit.get(context);
             return Scaffold(
@@ -179,15 +196,16 @@ class LoginView extends StatelessWidget {
                                     ),
                                     Center(
                                       child: defaultButton(
-                                        function: () {
+                                        function: () async{
                                           if (cubit.emailFormKey.currentState!
                                               .validate()) {
                                             if(cubit.passFieldKey.currentState!.validate())
                                             {
-                                              navigateTo(context, Routes.homeRoute);
-                                              /*LoginCubit.get(context).userLogin(
-                                                  email: LoginCubit.get(context).emailController.text,
-                                                  password: LoginCubit.get(context).passwordController.text);*/
+                                              cubit.userLogin(LoginModel(
+                                                email: cubit.emailController.text,
+                                                password: cubit.passwordController.text,
+                                                deviceName: await cubit.getDeviceInfo(),
+                                              ));
                                             }
                                           }
                                         },

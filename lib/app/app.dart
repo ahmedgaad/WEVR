@@ -5,17 +5,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wevr_app/core/utils/routes_manager.dart';
 import 'package:wevr_app/core/utils/themes_manager.dart';
 
-class MyApp extends StatefulWidget {
-  MyApp._internal(); //named constructor
+class Wevr extends StatefulWidget {
+  const Wevr({super.key});
 
-  static final MyApp _instance = MyApp._internal(); //singleton or single instance
-  factory MyApp() => _instance;
+  //final Widget? startWidget;
+
+  //const MyApp({super.key, this.startWidget});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<Wevr> createState() => _WevrState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _WevrState extends State<Wevr> {
+  //MyApp._internal(this.startWidget); //named constructor
   @override
   Widget build(BuildContext context) {
     precacheImage(const AssetImage("assets/images/logo/get_started.jpg"), context);
@@ -28,6 +30,7 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteGenerator.getRoute,
           initialRoute: Routes.splashRoute,
+          //home: startWidget,
           theme: getThemeData(),
         );
       },
