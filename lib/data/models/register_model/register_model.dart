@@ -4,40 +4,42 @@ part 'register_model.g.dart';
 @JsonSerializable()
 class RegisterModel {
   int? status;
-  String? massage;
-  List<Data>? data;
-
-  RegisterModel({
-    this.status,
-    this.massage,
-    this.data,
-  });
-
-  factory RegisterModel.fromJson(Map<String, dynamic> json) =>
-      _$RegisterModelFromJson(json);
-  Map<String, dynamic> toJson() => _$RegisterModelToJson(this);
-}
-
-@JsonSerializable()
-class Data {
+  @JsonKey(name: "massage")
+  String? message;
+  int? id;
   String? name;
   String? email;
+  //Null? emailVerifiedAt;
   String? phone;
-  int? pinCode;
-  String? updatedAt;
+  String? password;
+  @JsonKey(name: "password_confirmation")
+  String? confirmPassword;
+  //Null? photo;
+  //Null? rememberToken;
   String? createdAt;
-  int? id;
+  String? updatedAt;
+  int? pinCode;
+  int? pinTry;
 
-  Data({
-    this.name,
-    this.email,
-    this.phone,
-    this.pinCode,
-    this.updatedAt,
-    this.createdAt,
-    this.id,
-  });
+  RegisterModel(
+      {this.status,
+        this.message,
+        this.password,
+        this.confirmPassword,
+        this.id,
+        this.name,
+        this.email,
+        //this.emailVerifiedAt,
+        this.phone,
+        //this.photo,
+        //this.rememberToken,
+        this.createdAt,
+        this.updatedAt,
+        this.pinCode,
+        this.pinTry});
 
-  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  factory RegisterModel.fromJson(Map<String, dynamic> json) => _$RegisterModelFromJson(json);
+  Map<String, dynamic> toJson() => _$RegisterModelToJson(this);
+
+
 }

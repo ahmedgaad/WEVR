@@ -36,9 +36,16 @@ class _RegisterViewState extends State<RegisterView> {
       statusBarIconBrightness: Brightness.light,
     ));
     return BlocProvider(
-        create: (BuildContext context) => RegisterCubit(registerNewUserUseCase: getIt()),
+        create: (BuildContext context) =>
+            RegisterCubit(registerNewUserUseCase: getIt()),
         child: BlocConsumer<RegisterCubit, RegisterStates>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state is RegisterSuccessState) {
+              print("Register Sucesssssssssssss");
+
+              Navigator.pushReplacementNamed(context, Routes.loginRoute);
+            }
+          },
           builder: (context, state) {
             var cubit = RegisterCubit.get(context);
             return Scaffold(
@@ -67,7 +74,7 @@ class _RegisterViewState extends State<RegisterView> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            backButton(function: (){}),
+                            backButton(function: () {}),
                             SizedBox(
                               height: AppSize.s2.h,
                             ),
@@ -76,7 +83,8 @@ class _RegisterViewState extends State<RegisterView> {
                                 child: Form(
                                   key: formKey,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Column(
                                         children: [
@@ -105,9 +113,11 @@ class _RegisterViewState extends State<RegisterView> {
                                                 width: AppSize.s30.w,
                                                 height: AppSize.s12.h,
                                                 decoration: BoxDecoration(
-                                                  color: ColorManager.orBackground,
-                                                  borderRadius: BorderRadius.circular(
-                                                      AppRadius.r20),
+                                                  color:
+                                                      ColorManager.orBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          AppRadius.r20),
                                                 ),
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(
@@ -115,9 +125,12 @@ class _RegisterViewState extends State<RegisterView> {
                                                   child: Center(
                                                     child: Text(
                                                       AppStrings.or,
-                                                      style: getRegularStyleInter(
-                                                        color: ColorManager.black,
-                                                        fontSize: FontSize.s10.sp,
+                                                      style:
+                                                          getRegularStyleInter(
+                                                        color:
+                                                            ColorManager.black,
+                                                        fontSize:
+                                                            FontSize.s10.sp,
                                                       ),
                                                     ),
                                                   ),
@@ -144,8 +157,7 @@ class _RegisterViewState extends State<RegisterView> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: PaddingSize.p40.w),
                                         child: defaultFormField(
-                                          controller: cubit
-                                              .userNameController,
+                                          controller: cubit.userNameController,
                                           type: TextInputType.name,
                                           // label: AppStrings.emailOrMobile,
                                           labelWidget: Text(
@@ -157,11 +169,11 @@ class _RegisterViewState extends State<RegisterView> {
                                           ),
                                           //validate: AppStrings.emailValidate,
                                           validate: (value) {
-                                              if (value!.isEmpty) {
-                                                return AppStrings.userName;
-                                              }
-                                              return null;
-                                            },
+                                            if (value!.isEmpty) {
+                                              return AppStrings.userName;
+                                            }
+                                            return null;
+                                          },
                                         ),
                                       ),
                                       SizedBox(
@@ -171,8 +183,7 @@ class _RegisterViewState extends State<RegisterView> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: PaddingSize.p40.w),
                                         child: defaultFormField(
-                                          controller: cubit
-                                              .emailController,
+                                          controller: cubit.emailController,
                                           type: TextInputType.emailAddress,
                                           // label: AppStrings.emailOrMobile,
                                           labelWidget: Text(
@@ -198,8 +209,7 @@ class _RegisterViewState extends State<RegisterView> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: PaddingSize.p40.w),
                                         child: defaultFormField(
-                                          controller: cubit
-                                              .phoneController,
+                                          controller: cubit.phoneController,
                                           type: TextInputType.phone,
                                           // label: AppStrings.emailOrMobile,
                                           labelWidget: Text(
@@ -237,7 +247,8 @@ class _RegisterViewState extends State<RegisterView> {
                                           ),
                                           isPassword: cubit.isPassword,
                                           suffix: cubit.suffix,
-                                          suffixPressed: cubit.changePasswordVisibility,
+                                          suffixPressed:
+                                              cubit.changePasswordVisibility,
                                           //validate: "Must be at least 8 characters",
                                           validate: (value) {
                                             if (value!.isEmpty) {
@@ -257,23 +268,30 @@ class _RegisterViewState extends State<RegisterView> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: PaddingSize.p40.w),
                                         child: StatefulBuilder(
-                                          builder:
-                                              (BuildContext context, StateSetter setState) {
+                                          builder: (BuildContext context,
+                                              StateSetter setState) {
                                             return defaultFormField(
                                               onChange: (value) {
-                                                if (cubit.confirmPasswordController.text ==
-                                                    cubit.passwordController.text) {
+                                                if (cubit
+                                                        .confirmPasswordController
+                                                        .text ==
+                                                    cubit.passwordController
+                                                        .text) {
                                                   setState(() {
-                                                    cubit.isPasswordMatchCharacter = true;
+                                                    cubit.isPasswordMatchCharacter =
+                                                        true;
                                                   });
                                                 } else {
                                                   setState(() {
-                                                    cubit.isPasswordMatchCharacter = false;
+                                                    cubit.isPasswordMatchCharacter =
+                                                        false;
                                                   });
                                                 }
                                               },
-                                              controller: cubit.confirmPasswordController,
-                                              type: TextInputType.visiblePassword,
+                                              controller: cubit
+                                                  .confirmPasswordController,
+                                              type:
+                                                  TextInputType.visiblePassword,
                                               labelWidget: Text(
                                                 AppStrings.confirmPassword,
                                                 style: getRegularStyleInter(
@@ -282,26 +300,32 @@ class _RegisterViewState extends State<RegisterView> {
                                                 ),
                                               ),
                                               isPassword: cubit.isPassword,
-                                              suffixWidget: cubit.isPasswordMatchCharacter
+                                              suffixWidget: cubit
+                                                      .isPasswordMatchCharacter
                                                   ? Padding(
-                                                padding:
-                                                EdgeInsetsDirectional.only(
-                                                  end: PaddingSize.p10.w,
-                                                ),
-                                                child: SvgPicture.asset(
-                                                  ImagesAssetsManager.checkIc,
-                                                  width: AppSize.s24.w,
-                                                  height: AppSize.s24.h,
-                                                ),
-                                              )
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .only(
+                                                        end: PaddingSize.p10.w,
+                                                      ),
+                                                      child: SvgPicture.asset(
+                                                        ImagesAssetsManager
+                                                            .checkIc,
+                                                        width: AppSize.s24.w,
+                                                        height: AppSize.s24.h,
+                                                      ),
+                                                    )
                                                   : const SizedBox.shrink(),
                                               //validate: "Both passwords must match",
                                               validate: (value) {
                                                 if (value!.isEmpty) {
                                                   return "Must be not empty";
                                                 }
-                                                if (cubit.passwordController.text !=
-                                                    cubit.confirmPasswordController.text) {
+                                                if (cubit.passwordController
+                                                        .text !=
+                                                    cubit
+                                                        .confirmPasswordController
+                                                        .text) {
                                                   return "Both passwords must match";
                                                 }
                                                 return null;
@@ -318,15 +342,19 @@ class _RegisterViewState extends State<RegisterView> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(0),
                                           child: ConditionalBuilder(
-                                            condition: state is! RegisterLoadingState,
+                                            condition:
+                                                state is! RegisterLoadingState,
                                             builder: (BuildContext context) {
-                                              return  defaultButton(
+                                              return defaultButton(
                                                 function: () {
-                                                  if (formKey.currentState!.validate()) {
+                                                  if (formKey.currentState!
+                                                      .validate()) {
                                                     cubit.userRegister(RegisterModel(
-                                                      data: [
-
-                                                      ]
+                                                      name: cubit.userNameController.text,
+                                                      email: cubit.emailController.text,
+                                                      phone: cubit.phoneController.text,
+                                                      password: cubit.passwordController.text,
+                                                      confirmPassword: cubit.confirmPasswordController.text
                                                     ));
                                                   }
                                                 },
@@ -337,7 +365,10 @@ class _RegisterViewState extends State<RegisterView> {
                                               );
                                             },
                                             fallback: (BuildContext context) {
-                                              return const Center(child: CircularProgressIndicator(),);
+                                              return const Center(
+                                                child:
+                                                    CircularProgressIndicator(),
+                                              );
                                             },
                                           ),
                                         ),
