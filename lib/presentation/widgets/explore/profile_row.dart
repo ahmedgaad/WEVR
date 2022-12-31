@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:wevr_app/presentation/screens/home/cubit/cubit.dart';
+import 'package:wevr_app/presentation/screens/home/cubit/states.dart';
 
 import '../../../core/components/components.dart';
 import '../../../core/utils/assets_manager.dart';
@@ -29,14 +32,18 @@ class ProfileRow extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        IconButton(
-          onPressed: () {
-            signOut(context);
-            print("Deleted Successfully ****************");
+        BlocBuilder<HomeLayOutCubit, HomeLayOutStates>(
+          builder: (context, state) {
+            return IconButton(
+              onPressed: () {
+                HomeLayOutCubit.get(context).signOut(context);
+                print("Deleted Successfully ****************");
+              },
+              icon: SvgPicture.asset(
+                ImagesAssetsManager.signOut,
+              ),
+            );
           },
-          icon: SvgPicture.asset(
-            ImagesAssetsManager.signOut,
-          ),
         )
       ],
     );

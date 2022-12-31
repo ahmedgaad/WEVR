@@ -273,9 +273,3 @@ Color chooseToastColor(ToastStates state) {
   }
   return color;
 }
-
-void signOut(context) {
-  CacheHelper.removeData(key: 'token').then((value) {
-    navigatePush(context, const GetStartedView());
-  });
-}
