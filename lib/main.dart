@@ -39,7 +39,9 @@ void main() async {
   runApp(EasyLocalization(
       supportedLocales: const [ARABIC_LOCALE, ENGLISH_LOCALE],
       path: ASSET_PATH_LOCALIZATION,
-      child: const Wevr(
-        //startWidget: widget,
+      child: Phoenix(
+        child: const Wevr(
+          //startWidget: widget,
+        ),
       )));
 }

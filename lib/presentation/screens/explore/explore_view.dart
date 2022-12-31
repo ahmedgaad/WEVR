@@ -17,6 +17,8 @@ import '../../widgets/explore/profile_row.dart';
 import '../get_started/get_started_view.dart';
 import '../profile/profile_view.dart';
 import '../search/search_view.dart';
+import 'department_details.dart';
+import 'product_container.dart';
 
 class ExploreView extends StatelessWidget {
   const ExploreView({Key? key}) : super(key: key);
@@ -63,36 +65,27 @@ class ExploreView extends StatelessWidget {
             SizedBox(
               height: AppSize.s15.h,
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  onTap: (){
-                    navigatePush(context, VirtualTour());
-                  },
-                  child: Container(
-                    width: AppSize.s250.w,
-                    height: AppSize.s250.h,
-                    decoration: BoxDecoration(
-                      color: ColorManager.white,
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(
-                        ImagesAssetsManager.apartment,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            )
+            Container(
+              width: AppSize.s250.w,
+              height: AppSize.s320.h,
+              decoration: BoxDecoration(
+                color: ColorManager.white,
+                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+              ),
+              child: GestureDetector(
+                onTap:(){
+                  navigatePush(context, DepartmentDetails());
+                } ,
+                  child: ProductContainer(),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
 Widget searchBar(){
   return Row(
     children: [
@@ -127,6 +120,7 @@ Widget searchBar(){
     ],
   );
 }
+
 Widget allHomesRow(){
   return Row(
     children: [

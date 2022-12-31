@@ -9,10 +9,12 @@ import '../../saved/saved_view.dart';
 import 'states.dart';
 
 class HomeLayOutCubit extends Cubit<HomeLayOutStates> {
-  final LogoutUseCase logoutUseCase;
-  HomeLayOutCubit({
-    required this.logoutUseCase,
-  }) : super(HomeLayOutInitialState());
+  // final LogoutUseCase logoutUseCase;
+  HomeLayOutCubit(
+      // {
+    // required this.logoutUseCase,
+  // }
+  ) : super(HomeLayOutInitialState());
 
   static HomeLayOutCubit get(context) => BlocProvider.of(context);
 

@@ -8,5 +8,5 @@ import '../../data/models/login_model/login_model.dart';
 abstract class UsersRepository{
   Future<ApiResult<RegisterModel>> registerNewUser(RegisterModel registerModel);
   Future<ApiResult<LoginModel>> loginUser(LoginModel loginModel);
-  Future<ApiResult<HttpResponse>> logout(String token);
+  // Future<ApiResult<HttpResponse>> logout(String token);
 }

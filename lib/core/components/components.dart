@@ -192,6 +192,8 @@ Widget background(context, {
   required String buttonText,
   required String questionText,
   required String route,
+  required double p1,
+  required double p2,
 }){
   return Column(children: [
     Expanded(
@@ -211,8 +213,8 @@ Widget background(context, {
         alignment: Alignment.bottomCenter,
         children: [
           Padding(
-            padding: const EdgeInsets.all(
-              PaddingSize.p70,
+            padding:  EdgeInsets.all(
+              p1,
             ),
             child: Text(
               questionText,
@@ -223,10 +225,10 @@ Widget background(context, {
             ),
           ),
           SizedBox(
-            height: AppSize.s24.h,
+            height: AppSize.s30.h,
           ),
           Padding(
-            padding: const EdgeInsets.all(PaddingSize.p30),
+            padding:  EdgeInsets.all(p2),
             child: defaultTextButton(
                 textColor: ColorManager.primary,
                 text: buttonText,

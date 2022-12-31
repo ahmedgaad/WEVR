@@ -70,6 +70,8 @@ class _RegisterViewState extends State<RegisterView> {
                     buttonText: AppStrings.signIn,
                     route: Routes.loginRoute,
                     questionText: AppStrings.alreadyHaveAccount,
+                    p1: PaddingSize.p60,
+                    p2: PaddingSize.p24,
                   ),
                   Material(
                     borderRadius: BorderRadius.circular(AppRadius.r41),
@@ -82,317 +84,321 @@ class _RegisterViewState extends State<RegisterView> {
                         color: ColorManager.white,
                         borderRadius: BorderRadius.circular(AppRadius.r41),
                       ),
-                      child: Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            backButton(function: () {}),
-                            SizedBox(
-                              height: AppSize.s2.h,
-                            ),
-                            Expanded(
-                              child: SingleChildScrollView(
-                                child: Form(
-                                  key: formKey,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Column(
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                backButton(function: () {}),
+                                SizedBox(
+                                  height: AppSize.s2.h,
+                                ),
+                                Expanded(
+                                  child: SingleChildScrollView(
+                                    child: Form(
+                                      key: formKey,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
-                                          Text(
-                                            AppStrings.signUp,
-                                            style: getSemiBoldStylePoppins(
-                                              color: ColorManager.primary,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: AppSize.s20.h,
-                                          ),
-                                          const SocialButtons(),
-                                          SizedBox(
-                                            height: AppSize.s20.h,
-                                          ),
-                                          Stack(
-                                            alignment: Alignment.center,
+                                          Column(
                                             children: [
-                                              Container(
-                                                height: AppSize.s1.h,
-                                                width: AppSize.s200.w,
-                                                color: ColorManager.lightGrey,
-                                              ),
-                                              Container(
-                                                width: AppSize.s30.w,
-                                                height: AppSize.s12.h,
-                                                decoration: BoxDecoration(
-                                                  color:
-                                                      ColorManager.orBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          AppRadius.r20),
+                                              Text(
+                                                AppStrings.signUp,
+                                                style: getSemiBoldStylePoppins(
+                                                  color: ColorManager.primary,
                                                 ),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      PaddingSize.p0),
-                                                  child: Center(
-                                                    child: Text(
-                                                      AppStrings.or,
-                                                      style:
-                                                          getRegularStyleInter(
-                                                        color:
-                                                            ColorManager.black,
-                                                        fontSize:
-                                                            FontSize.s10.sp,
+                                              ),
+                                              SizedBox(
+                                                height: AppSize.s20.h,
+                                              ),
+                                              const SocialButtons(),
+                                              SizedBox(
+                                                height: AppSize.s20.h,
+                                              ),
+                                              Stack(
+                                                alignment: Alignment.center,
+                                                children: [
+                                                  Container(
+                                                    height: AppSize.s1.h,
+                                                    width: AppSize.s200.w,
+                                                    color: ColorManager.lightGrey,
+                                                  ),
+                                                  Container(
+                                                    width: AppSize.s30.w,
+                                                    height: AppSize.s12.h,
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          ColorManager.orBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              AppRadius.r20),
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.all(
+                                                          PaddingSize.p0),
+                                                      child: Center(
+                                                        child: Text(
+                                                          AppStrings.or,
+                                                          style:
+                                                              getRegularStyleInter(
+                                                            color:
+                                                                ColorManager.black,
+                                                            fontSize:
+                                                                FontSize.s10.sp,
+                                                          ),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
+                                                  )
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: AppSize.s20.h,
+                                              ),
+                                              Text(
+                                                AppStrings.registerWord,
+                                                style: getRegularStyleInter(
+                                                  color: ColorManager.darkGrey,
+                                                  fontSize: FontSize.s16.sp,
                                                 ),
-                                              )
+                                              ),
+                                              SizedBox(
+                                                height: AppSize.s10.h,
+                                              ),
                                             ],
                                           ),
-                                          SizedBox(
-                                            height: AppSize.s20.h,
-                                          ),
-                                          Text(
-                                            AppStrings.registerWord,
-                                            style: getRegularStyleInter(
-                                              color: ColorManager.darkGrey,
-                                              fontSize: FontSize.s16.sp,
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: PaddingSize.p40.w),
+                                            child: defaultFormField(
+                                              controller: cubit.userNameController,
+                                              type: TextInputType.name,
+                                              // label: AppStrings.emailOrMobile,
+                                              labelWidget: Text(
+                                                AppStrings.userName,
+                                                style: getRegularStyleInter(
+                                                  color: ColorManager.darkGrey,
+                                                  fontSize: AppSize.s20.sp,
+                                                ),
+                                              ),
+                                              //validate: AppStrings.emailValidate,
+                                              validate: (value) {
+                                                if (value!.isEmpty) {
+                                                  return AppStrings.userName;
+                                                }
+                                                return null;
+                                              },
                                             ),
                                           ),
                                           SizedBox(
                                             height: AppSize.s10.h,
                                           ),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: PaddingSize.p40.w),
-                                        child: defaultFormField(
-                                          controller: cubit.userNameController,
-                                          type: TextInputType.name,
-                                          // label: AppStrings.emailOrMobile,
-                                          labelWidget: Text(
-                                            AppStrings.userName,
-                                            style: getRegularStyleInter(
-                                              color: ColorManager.darkGrey,
-                                              fontSize: AppSize.s20.sp,
-                                            ),
-                                          ),
-                                          //validate: AppStrings.emailValidate,
-                                          validate: (value) {
-                                            if (value!.isEmpty) {
-                                              return AppStrings.userName;
-                                            }
-                                            return null;
-                                          },
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: AppSize.s10.h,
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: PaddingSize.p40.w),
-                                        child: defaultFormField(
-                                          controller: cubit.emailController,
-                                          type: TextInputType.emailAddress,
-                                          // label: AppStrings.emailOrMobile,
-                                          labelWidget: Text(
-                                            AppStrings.emailAddress,
-                                            style: getRegularStyleInter(
-                                              color: ColorManager.darkGrey,
-                                              fontSize: AppSize.s20.sp,
-                                            ),
-                                          ),
-                                          //validate: AppStrings.emailValidate,
-                                          validate: (value) {
-                                            if (value!.isEmpty) {
-                                              return AppStrings.emailValidate;
-                                            }
-                                            return null;
-                                          },
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: AppSize.s10.h,
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: PaddingSize.p40.w),
-                                        child: defaultFormField(
-                                          controller: cubit.phoneController,
-                                          type: TextInputType.phone,
-                                          // label: AppStrings.emailOrMobile,
-                                          labelWidget: Text(
-                                            AppStrings.mobile,
-                                            style: getRegularStyleInter(
-                                              color: ColorManager.darkGrey,
-                                              fontSize: AppSize.s20.sp,
-                                            ),
-                                          ),
-                                          //validate: AppStrings.emailValidate,
-                                          validate: (value) {
-                                            if (value!.isEmpty) {
-                                              return AppStrings.phoneValidate;
-                                            }
-                                            return null;
-                                          },
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: AppSize.s10.h,
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: PaddingSize.p40.w),
-                                        child: defaultFormField(
-                                          onChange: (String value) {},
-                                          controller: cubit.passwordController,
-                                          type: TextInputType.visiblePassword,
-                                          labelWidget: Text(
-                                            AppStrings.password,
-                                            style: getRegularStyleInter(
-                                              color: ColorManager.darkGrey,
-                                              fontSize: AppSize.s20.sp,
-                                            ),
-                                          ),
-                                          isPassword: cubit.isPassword,
-                                          suffix: cubit.suffix,
-                                          suffixPressed:
-                                              cubit.changePasswordVisibility,
-                                          //validate: "Must be at least 8 characters",
-                                          validate: (value) {
-                                            if (value!.isEmpty) {
-                                              return "Must be not empty";
-                                            }
-                                            if (value.length < 8) {
-                                              return "Must be at least 8 characters";
-                                            }
-                                            return null;
-                                          },
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: AppSize.s10.h,
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: PaddingSize.p40.w),
-                                        child: StatefulBuilder(
-                                          builder: (BuildContext context,
-                                              StateSetter setState) {
-                                            return defaultFormField(
-                                              onChange: (value) {
-                                                if (cubit
-                                                        .confirmPasswordController
-                                                        .text ==
-                                                    cubit.passwordController
-                                                        .text) {
-                                                  setState(() {
-                                                    cubit.isPasswordMatchCharacter =
-                                                        true;
-                                                  });
-                                                } else {
-                                                  setState(() {
-                                                    cubit.isPasswordMatchCharacter =
-                                                        false;
-                                                  });
-                                                }
-                                              },
-                                              controller: cubit
-                                                  .confirmPasswordController,
-                                              type:
-                                                  TextInputType.visiblePassword,
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: PaddingSize.p40.w),
+                                            child: defaultFormField(
+                                              controller: cubit.emailController,
+                                              type: TextInputType.emailAddress,
+                                              // label: AppStrings.emailOrMobile,
                                               labelWidget: Text(
-                                                AppStrings.confirmPassword,
+                                                AppStrings.emailAddress,
+                                                style: getRegularStyleInter(
+                                                  color: ColorManager.darkGrey,
+                                                  fontSize: AppSize.s20.sp,
+                                                ),
+                                              ),
+                                              //validate: AppStrings.emailValidate,
+                                              validate: (value) {
+                                                if (value!.isEmpty) {
+                                                  return AppStrings.emailValidate;
+                                                }
+                                                return null;
+                                              },
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: AppSize.s10.h,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: PaddingSize.p40.w),
+                                            child: defaultFormField(
+                                              controller: cubit.phoneController,
+                                              type: TextInputType.phone,
+                                              // label: AppStrings.emailOrMobile,
+                                              labelWidget: Text(
+                                                AppStrings.mobile,
+                                                style: getRegularStyleInter(
+                                                  color: ColorManager.darkGrey,
+                                                  fontSize: AppSize.s20.sp,
+                                                ),
+                                              ),
+                                              //validate: AppStrings.emailValidate,
+                                              validate: (value) {
+                                                if (value!.isEmpty) {
+                                                  return AppStrings.phoneValidate;
+                                                }
+                                                return null;
+                                              },
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: AppSize.s10.h,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: PaddingSize.p40.w),
+                                            child: defaultFormField(
+                                              onChange: (String value) {},
+                                              controller: cubit.passwordController,
+                                              type: TextInputType.visiblePassword,
+                                              labelWidget: Text(
+                                                AppStrings.password,
                                                 style: getRegularStyleInter(
                                                   color: ColorManager.darkGrey,
                                                   fontSize: AppSize.s20.sp,
                                                 ),
                                               ),
                                               isPassword: cubit.isPassword,
-                                              suffixWidget: cubit
-                                                      .isPasswordMatchCharacter
-                                                  ? Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .only(
-                                                        end: PaddingSize.p10.w,
-                                                      ),
-                                                      child: SvgPicture.asset(
-                                                        ImagesAssetsManager
-                                                            .checkIc,
-                                                        width: AppSize.s24.w,
-                                                        height: AppSize.s24.h,
-                                                      ),
-                                                    )
-                                                  : const SizedBox.shrink(),
-                                              //validate: "Both passwords must match",
+                                              suffix: cubit.suffix,
+                                              suffixPressed:
+                                                  cubit.changePasswordVisibility,
+                                              //validate: "Must be at least 8 characters",
                                               validate: (value) {
                                                 if (value!.isEmpty) {
                                                   return "Must be not empty";
                                                 }
-                                                if (cubit.passwordController
-                                                        .text !=
-                                                    cubit
-                                                        .confirmPasswordController
-                                                        .text) {
-                                                  return "Both passwords must match";
+                                                if (value.length < 8) {
+                                                  return "Must be at least 8 characters";
                                                 }
                                                 return null;
                                               },
-                                              // suffix: Icons.check_circle_outline,
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: AppSize.s20.h,
-                                      ),
-                                      Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(0),
-                                          child: ConditionalBuilder(
-                                            condition:
-                                                state is! RegisterLoadingState,
-                                            builder: (BuildContext context) {
-                                              return defaultButton(
-                                                function: () async{
-                                                  if (formKey.currentState!
-                                                      .validate()) {
-                                                    cubit.userRegister(RegisterModel(
-                                                      name: cubit.userNameController.text,
-                                                      email: cubit.emailController.text,
-                                                      phone: cubit.phoneController.text,
-                                                      password: cubit.passwordController.text,
-                                                      confirmPassword: cubit.confirmPasswordController.text,
-                                                      deviceName: await cubit.getDeviceInfo(),
-                                                    ));
-                                                  }
-                                                },
-                                                text: AppStrings.signUp,
-                                                width: AppSize.s200.w,
-                                                height: AppSize.s44.h,
-                                                isUpperCase: false,
-                                              );
-                                            },
-                                            fallback: (BuildContext context) {
-                                              return const Center(
-                                                child:
-                                                    CircularProgressIndicator(),
-                                              );
-                                            },
+                                            ),
                                           ),
-                                        ),
+                                          SizedBox(
+                                            height: AppSize.s10.h,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: PaddingSize.p40.w),
+                                            child: StatefulBuilder(
+                                              builder: (BuildContext context,
+                                                  StateSetter setState) {
+                                                return defaultFormField(
+                                                  onChange: (value) {
+                                                    if (cubit
+                                                            .confirmPasswordController
+                                                            .text ==
+                                                        cubit.passwordController
+                                                            .text) {
+                                                      setState(() {
+                                                        cubit.isPasswordMatchCharacter =
+                                                            true;
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        cubit.isPasswordMatchCharacter =
+                                                            false;
+                                                      });
+                                                    }
+                                                  },
+                                                  controller: cubit
+                                                      .confirmPasswordController,
+                                                  type:
+                                                      TextInputType.visiblePassword,
+                                                  labelWidget: Text(
+                                                    AppStrings.confirmPassword,
+                                                    style: getRegularStyleInter(
+                                                      color: ColorManager.darkGrey,
+                                                      fontSize: AppSize.s20.sp,
+                                                    ),
+                                                  ),
+                                                  isPassword: cubit.isPassword,
+                                                  suffixWidget: cubit
+                                                          .isPasswordMatchCharacter
+                                                      ? Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .only(
+                                                            end: PaddingSize.p10.w,
+                                                          ),
+                                                          child: SvgPicture.asset(
+                                                            ImagesAssetsManager
+                                                                .checkIc,
+                                                            width: AppSize.s24.w,
+                                                            height: AppSize.s24.h,
+                                                          ),
+                                                        )
+                                                      : const SizedBox.shrink(),
+                                                  //validate: "Both passwords must match",
+                                                  validate: (value) {
+                                                    if (value!.isEmpty) {
+                                                      return "Must be not empty";
+                                                    }
+                                                    if (cubit.passwordController
+                                                            .text !=
+                                                        cubit
+                                                            .confirmPasswordController
+                                                            .text) {
+                                                      return "Both passwords must match";
+                                                    }
+                                                    return null;
+                                                  },
+                                                  // suffix: Icons.check_circle_outline,
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: AppSize.s20.h,
+                                          ),
+                                          Center(
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(0),
+                                              child: ConditionalBuilder(
+                                                condition:
+                                                    state is! RegisterLoadingState,
+                                                builder: (BuildContext context) {
+                                                  return defaultButton(
+                                                    function: () async{
+                                                      if (formKey.currentState!
+                                                          .validate()) {
+                                                        cubit.userRegister(RegisterModel(
+                                                          name: cubit.userNameController.text,
+                                                          email: cubit.emailController.text,
+                                                          phone: cubit.phoneController.text,
+                                                          password: cubit.passwordController.text,
+                                                          confirmPassword: cubit.confirmPasswordController.text,
+                                                          deviceName: await cubit.getDeviceInfo(),
+                                                        ));
+                                                      }
+                                                    },
+                                                    text: AppStrings.signUp,
+                                                    width: AppSize.s200.w,
+                                                    height: AppSize.s44.h,
+                                                    isUpperCase: false,
+                                                  );
+                                                },
+                                                fallback: (BuildContext context) {
+                                                  return const Center(
+                                                    child:
+                                                        CircularProgressIndicator(),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

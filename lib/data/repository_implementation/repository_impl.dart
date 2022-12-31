@@ -1,4 +1,4 @@
-import 'dart:_http';
+//import 'dart:_http';
 
 import 'package:wevr_app/core/errors/api_result.dart';
 import 'package:wevr_app/core/errors/network_exceptions.dart';
@@ -32,13 +32,13 @@ class UsersRepositoryImpl implements UsersRepository {
     }
   }
 
-  @override
-  Future<ApiResult<HttpResponse>> logout(String token) async {
-    try {
-      var response = await webService.logout(token);
-      return ApiResult.success(response);
-    } catch (error) {
-      return ApiResult.failure(NetworkExceptions.getDioException(error));
-    }
-  }
+  // @override
+  // Future<ApiResult<HttpResponse>> logout(String token) async {
+  //   try {
+  //     var response = await webService.logout(token);
+  //     return ApiResult.success(response);
+  //   } catch (error) {
+  //     return ApiResult.failure(NetworkExceptions.getDioException(error));
+  //   }
+  // }
 }

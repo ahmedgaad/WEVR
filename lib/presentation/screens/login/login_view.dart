@@ -59,6 +59,8 @@ class LoginView extends StatelessWidget {
                     buttonText: AppStrings.signUp,
                     route: Routes.registerRoute,
                     questionText: AppStrings.haveAccount,
+                    p1: PaddingSize.p60,
+                    p2: PaddingSize.p24,
                   ),
                   Material(
                     borderRadius: BorderRadius.circular(AppRadius.r41),
@@ -71,156 +73,160 @@ class LoginView extends StatelessWidget {
                         color: ColorManager.white,
                         borderRadius: BorderRadius.circular(AppRadius.r41),
                       ),
-                      child: Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            backButton(function: (){}),
-                            SizedBox(
-                              height: AppSize.s10.h,
-                            ),
-                            Expanded(
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                      child: Column(
+                        children:[
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                backButton(function: (){}),
+                                SizedBox(
+                                  height: AppSize.s10.h,
+                                ),
+                                Expanded(
+                                  child: SingleChildScrollView(
+                                    child: Column(
                                       children: [
-                                        Text(
-                                          AppStrings.loginAccount,
-                                          style: getSemiBoldStylePoppins(
-                                            color: ColorManager.primary,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: AppSize.s24.h,
-                                        ),
-                                        const SocialButtons(),
-                                        SizedBox(
-                                          height: AppSize.s24.h,
-                                        ),
-                                        emailStack(),
-                                        SizedBox(
-                                          height: AppSize.s24.h,
-                                        ),
-                                        Text(
-                                          AppStrings.loginWord,
-                                          style: getRegularStyleInter(
-                                            color: ColorManager.darkGrey,
-                                            fontSize: FontSize.s16.sp,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: AppSize.s24.h,
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: PaddingSize.p40.w),
-                                      child: Form(
-                                        key: cubit.emailFormKey,
-                                        child: defaultFormField(
-                                          controller: cubit.emailController,
-                                          type: TextInputType.emailAddress,
-                                          // label: AppStrings.emailOrMobile,
-                                          labelWidget: Text(
-                                            AppStrings.emailAddress,
-                                            style: getRegularStylePoppins(
-                                                color: ColorManager.darkGrey,
-                                              fontSize: AppSize.s20.sp,
-                                            ),
-                                          ),
-                                          validate: (value) {
-                                              if (value!.isEmpty) {
-                                                return AppStrings.emailValidate;
-                                              }
-                                              return null;
-                                            },
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: AppSize.s20.h,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: PaddingSize.p40.w),
-                                      child: Form(
-                                        key: cubit.passFieldKey,
-                                        child: defaultFormField(
-                                            controller: cubit.passwordController,
-                                            type: TextInputType.visiblePassword,
-                                            // label: AppStrings.password,
-                                            labelWidget: Text(
-                                              AppStrings.password,
-                                              style: getRegularStylePoppins(
-                                                color: ColorManager.darkGrey,
-                                                fontSize: AppSize.s20.sp,
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              AppStrings.loginAccount,
+                                              style: getSemiBoldStylePoppins(
+                                                color: ColorManager.primary,
                                               ),
                                             ),
-                                            isPassword: cubit.isPassword,
-                                            // validate: AppStrings.passwordValidate,
-                                            validate: (value) {
-                                              if (value!.isEmpty) {
-                                                return AppStrings.passwordValidate;
-                                              }
-                                              return null;
-                                            },
-                                            suffix: cubit.suffix,
-                                            suffixPressed: () {
-                                              cubit.changePasswordVisibility();
-                                            }),
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
+                                            SizedBox(
+                                              height: AppSize.s24.h,
+                                            ),
+                                            const SocialButtons(),
+                                            SizedBox(
+                                              height: AppSize.s24.h,
+                                            ),
+                                            emailStack(),
+                                            SizedBox(
+                                              height: AppSize.s24.h,
+                                            ),
+                                            Text(
+                                              AppStrings.loginWord,
+                                              style: getRegularStyleInter(
+                                                color: ColorManager.darkGrey,
+                                                fontSize: FontSize.s16.sp,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: AppSize.s24.h,
+                                            ),
+                                          ],
+                                        ),
                                         Padding(
-                                          padding: const EdgeInsetsDirectional.only(
-                                              end: PaddingSize.p14),
-                                          child: defaultTextButton(
-                                            text: AppStrings.forgetPassword,
-                                            onPressed: () {
-                                              if (cubit.emailFormKey.currentState!.validate()) {
-                                                navigatePush(context,
-                                                     const ForgotPasswordView());
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: PaddingSize.p40.w),
+                                          child: Form(
+                                            key: cubit.emailFormKey,
+                                            child: defaultFormField(
+                                              controller: cubit.emailController,
+                                              type: TextInputType.emailAddress,
+                                              // label: AppStrings.emailOrMobile,
+                                              labelWidget: Text(
+                                                AppStrings.emailAddress,
+                                                style: getRegularStylePoppins(
+                                                  color: ColorManager.darkGrey,
+                                                  fontSize: AppSize.s20.sp,
+                                                ),
+                                              ),
+                                              validate: (value) {
+                                                if (value!.isEmpty) {
+                                                  return AppStrings.emailValidate;
+                                                }
+                                                return null;
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: AppSize.s20.h,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: PaddingSize.p40.w),
+                                          child: Form(
+                                            key: cubit.passFieldKey,
+                                            child: defaultFormField(
+                                                controller: cubit.passwordController,
+                                                type: TextInputType.visiblePassword,
+                                                // label: AppStrings.password,
+                                                labelWidget: Text(
+                                                  AppStrings.password,
+                                                  style: getRegularStylePoppins(
+                                                    color: ColorManager.darkGrey,
+                                                    fontSize: AppSize.s20.sp,
+                                                  ),
+                                                ),
+                                                isPassword: cubit.isPassword,
+                                                // validate: AppStrings.passwordValidate,
+                                                validate: (value) {
+                                                  if (value!.isEmpty) {
+                                                    return AppStrings.passwordValidate;
+                                                  }
+                                                  return null;
+                                                },
+                                                suffix: cubit.suffix,
+                                                suffixPressed: () {
+                                                  cubit.changePasswordVisibility();
+                                                }),
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional.only(
+                                                  end: PaddingSize.p14),
+                                              child: defaultTextButton(
+                                                text: AppStrings.forgetPassword,
+                                                onPressed: () {
+                                                  if (cubit.emailFormKey.currentState!.validate()) {
+                                                    navigatePush(context,
+                                                        const ForgotPasswordView());
+                                                  }
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: AppSize.s20.h,
+                                        ),
+                                        Center(
+                                          child: defaultButton(
+                                            function: () async{
+                                              if (cubit.emailFormKey.currentState!
+                                                  .validate()) {
+                                                if(cubit.passFieldKey.currentState!.validate())
+                                                {
+                                                  cubit.userLogin(LoginModel(
+                                                    email: cubit.emailController.text,
+                                                    password: cubit.passwordController.text,
+                                                    deviceName: await cubit.getDeviceInfo(),
+                                                  ));
+                                                }
                                               }
                                             },
+                                            text: AppStrings.signIn,
+                                            width: AppSize.s200.w,
+                                            height: AppSize.s44.h,
+                                            isUpperCase: false,
                                           ),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      height: AppSize.s20.h,
-                                    ),
-                                    Center(
-                                      child: defaultButton(
-                                        function: () async{
-                                          if (cubit.emailFormKey.currentState!
-                                              .validate()) {
-                                            if(cubit.passFieldKey.currentState!.validate())
-                                            {
-                                              cubit.userLogin(LoginModel(
-                                                email: cubit.emailController.text,
-                                                password: cubit.passwordController.text,
-                                                deviceName: await cubit.getDeviceInfo(),
-                                              ));
-                                            }
-                                          }
-                                        },
-                                        text: AppStrings.signIn,
-                                        width: AppSize.s200.w,
-                                        height: AppSize.s44.h,
-                                        isUpperCase: false,
-                                      ),
-                                    ),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ]
                       ),
                     ),
                   ),

@@ -18,12 +18,12 @@ void initializeInjector() {
           () => LoginCubit(loginUserUseCase: getIt()));
   getIt.registerLazySingleton(
           () => RegisterCubit(registerNewUserUseCase: getIt()));
-  getIt.registerLazySingleton(() => HomeLayOutCubit(logoutUseCase: getIt())) ;
+  // getIt.registerLazySingleton(() => HomeLayOutCubit(logoutUseCase: getIt())) ;
 
   //Usecase
   getIt.registerLazySingleton(() => RegisterUseCase(getIt()));
   getIt.registerLazySingleton(() => LoginUseCase(getIt()));
-  getIt.registerLazySingleton(() => LogoutUseCase(getIt()));
+  // getIt.registerLazySingleton(() => LogoutUseCase(getIt()));
 
   //Repository
   getIt.registerLazySingleton<UsersRepository>(

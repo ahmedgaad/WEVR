@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
       statusBarIconBrightness: Brightness.dark,
     ));
     return BlocProvider(
-      create: (BuildContext context) => HomeLayOutCubit(logoutUseCase: getIt()),
+      create: (BuildContext context) => HomeLayOutCubit(), //logoutUseCase: getIt()
       child: BlocConsumer<HomeLayOutCubit, HomeLayOutStates>(
         listener: (context, state) {},
         builder: (context, state) {

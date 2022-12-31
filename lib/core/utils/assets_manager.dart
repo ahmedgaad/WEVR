@@ -10,6 +10,7 @@ class ImagesAssetsManager{
   static const String userPic ='${AppConstants.imagePath}/home/userPic.png';
   static const String virtualButton ='${AppConstants.imagePath}/home/virtualTour.svg';
   static const String apartment ='${AppConstants.imagePath}/home/apartment.png';
+  static const String apartment2 ='${AppConstants.imagePath}/home/apartment2.png';
   static const String slider ='${AppConstants.imagePath}/home/slider.png';
 
   static const String onBoarding1 ='${AppConstants.imagePath}/onboarding/onboarding1.svg';

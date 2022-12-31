@@ -14,5 +14,6 @@ class ColorManager{
   static const Color white = Color(0xffFDFDFD);
   static const Color offWhite = Color(0xffF1F1F1);
   static const Color error = Color(0xffCC3300);
+  static const Color lightPink = Color(0xffD2977C);
   static const Color transparent = Colors.transparent;
 }
