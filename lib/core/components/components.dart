@@ -273,3 +273,11 @@ Color chooseToastColor(ToastStates state) {
   }
   return color;
 }
+
+Widget moneyIcon(){
+  return Container(
+    width: AppSize.s30,
+    height: AppSize.s25,
+    child: SvgPicture.asset(ImagesAssetsManager.moneyIcon),
+  );
+}

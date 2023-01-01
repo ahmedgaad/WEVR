@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColorManager{
   static const Color primary = Color(0xff638a66);
+  static const Color borderColor = Color(0xff72A07F);
   static const Color lightPrimary = Color(0xffC8F1D4);
   static const Color darkGrey = Color(0xff878181);
   static const Color lightGrey = Color(0xffC6BEBE);
@@ -15,5 +16,6 @@ class ColorManager{
   static const Color offWhite = Color(0xffF1F1F1);
   static const Color error = Color(0xffCC3300);
   static const Color lightPink = Color(0xffD2977C);
+  static const Color elevatedButton = Color(0xffFBF9F9);
   static const Color transparent = Colors.transparent;
 }

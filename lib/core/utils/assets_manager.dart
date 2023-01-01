@@ -9,6 +9,13 @@ class ImagesAssetsManager{
 
   static const String userPic ='${AppConstants.imagePath}/home/userPic.png';
   static const String virtualButton ='${AppConstants.imagePath}/home/virtualTour.svg';
+  static const String moneyIcon ='${AppConstants.imagePath}/home/money_icon.svg';
+  static const String bathrooms ='${AppConstants.imagePath}/home/bathrooms.svg';
+  static const String bedrooms ='${AppConstants.imagePath}/home/bedRooms.svg';
+  static const String floors ='${AppConstants.imagePath}/home/floors.svg';
+  static const String livingRooms ='${AppConstants.imagePath}/home/living_rooms.svg';
+  static const String parking ='${AppConstants.imagePath}/home/parking.svg';
+  static const String squareMeter ='${AppConstants.imagePath}/home/squaremeter.svg';
   static const String apartment ='${AppConstants.imagePath}/home/apartment.png';
   static const String apartment2 ='${AppConstants.imagePath}/home/apartment2.png';
   static const String slider ='${AppConstants.imagePath}/home/slider.png';

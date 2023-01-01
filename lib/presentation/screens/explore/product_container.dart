@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wevr_app/core/utils/color_manager.dart';
 import 'package:wevr_app/core/utils/styles_manager.dart';
 
+import '../../../core/components/components.dart';
 import '../../../core/utils/assets_manager.dart';
 import '../../../core/utils/values_manager.dart';
 
@@ -57,9 +58,7 @@ class ProductContainer extends StatelessWidget {
             spaceH(),
             Row(
               children: [
-                icon(
-                  icon: Icons.location_on_outlined,
-                ),
+                moneyIcon(),
                 spaceW(),
                 Text(
                   '1.700EGP',
