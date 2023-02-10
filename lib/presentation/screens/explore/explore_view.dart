@@ -14,7 +14,6 @@ import '../../../core/utils/assets_manager.dart';
 import '../../../core/utils/color_manager.dart';
 import '../../widgets/explore/carousal_slider.dart';
 import '../../widgets/explore/profile_row.dart';
-import '../get_started/get_started_view.dart';
 import '../profile/profile_view.dart';
 import '../search/search_view.dart';
 import 'department_details.dart';

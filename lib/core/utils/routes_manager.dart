@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import '../../presentation/screens/contact_us.dart';
+import '../../features/authentication/presentation/screens/login/login_view.dart';
+import '../../features/authentication/presentation/screens/register/register_successfully.dart';
+import '../../features/authentication/presentation/screens/register/register_view.dart';
+  import '../../features/introduction/presentation/screens/get_started/get_started_view.dart';
+import '../../features/introduction/presentation/screens/onboarding/onboarding_view.dart';
+import '../../features/introduction/presentation/screens/splash/splash_view.dart';
+ import '../../presentation/screens/contact_us.dart';
 import '../../presentation/screens/language.dart';
 import '../../presentation/screens/my_properties.dart';
-import '../../presentation/screens/onboarding/onboarding_view.dart';
 import '../../presentation/screens/payment.dart';
 import '../../presentation/screens/personal_information.dart';
 import '../../presentation/screens/privacy_policy.dart';
 import '../../presentation/screens/show_your_properties.dart';
 import '../../presentation/screens/account_setting.dart';
-import '../../presentation/screens/get_started/get_started_view.dart';
 import '../../presentation/screens/home/home_view.dart';
-import '../../presentation/screens/login/login_view.dart';
 import '../../presentation/screens/otp_screens/forgot_password/forgot_password_view.dart';
 import '../../presentation/screens/otp_screens/reset_via_email/reset_email_view.dart';
 import '../../presentation/screens/otp_screens/reset_via_phone/reset_phone_view.dart';
-import '../../presentation/screens/register/register_successfully.dart';
-import '../../presentation/screens/register/register_view.dart';
 import 'strings_manager.dart';
-import '../../presentation/screens/splash/splash_view.dart';
 
 class Routes {
   static const String splashRoute = "/";

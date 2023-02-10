@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:wevr_app/data/models/register_model/register_model_error.dart';
+import '../../features/authentication/data/models/register_model/register_model_error.dart';
+
 part 'network_exceptions.freezed.dart';
 
 @freezed

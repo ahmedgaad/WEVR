@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../core/components/components.dart';
-import '../../../core/injection_container.dart';
+import '../../../core/dependency_injection/injection_container.dart';
 import '../../../core/utils/assets_manager.dart';
 import '../../../core/utils/color_manager.dart';
 import '../../../core/utils/fonts_manager.dart';
