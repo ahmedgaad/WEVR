@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:wevr_app/core/helpers/cache_helper/cache_helper.dart';
+import 'package:wevr_app/features/authentication/presentation/screens/OTP/forgot_password/forgot_password_view.dart';
  import '../../../../../core/components/components.dart';
 import '../../../../../core/dependency_injection/injection_container.dart';
 import '../../../../../core/utils/color_manager.dart';
@@ -10,7 +12,6 @@ import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
- import '../../../../../presentation/screens/otp_screens/forgot_password/forgot_password_view.dart';
  import '../../../data/models/login_model/login_model.dart';
 import '../../widgets/login/social_icon.dart';
 import 'cubit/cubit.dart';
@@ -56,9 +57,9 @@ class LoginView extends StatelessWidget {
                 children: [
                   background(
                     context,
-                    buttonText: AppStrings.signUp,
+                    buttonText: AppStrings.signUp.tr(),
                     route: Routes.registerRoute,
-                    questionText: AppStrings.haveAccount,
+                    questionText: AppStrings.haveAccount.tr(),
                     p1: PaddingSize.p60,
                     p2: PaddingSize.p24,
                   ),
@@ -91,7 +92,7 @@ class LoginView extends StatelessWidget {
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              AppStrings.loginAccount,
+                                              AppStrings.loginAccount.tr(),
                                               style: getSemiBoldStylePoppins(
                                                 color: ColorManager.primary,
                                               ),
@@ -108,7 +109,7 @@ class LoginView extends StatelessWidget {
                                               height: AppSize.s24.h,
                                             ),
                                             Text(
-                                              AppStrings.loginWord,
+                                              AppStrings.loginWord.tr(),
                                               style: getRegularStyleInter(
                                                 color: ColorManager.darkGrey,
                                                 fontSize: FontSize.s16.sp,
@@ -129,7 +130,7 @@ class LoginView extends StatelessWidget {
                                               type: TextInputType.emailAddress,
                                               // label: AppStrings.emailOrMobile,
                                               labelWidget: Text(
-                                                AppStrings.emailAddress,
+                                                AppStrings.emailAddress.tr(),
                                                 style: getRegularStylePoppins(
                                                   color: ColorManager.darkGrey,
                                                   fontSize: AppSize.s20.sp,
@@ -137,7 +138,7 @@ class LoginView extends StatelessWidget {
                                               ),
                                               validate: (value) {
                                                 if (value!.isEmpty) {
-                                                  return AppStrings.emailValidate;
+                                                  return AppStrings.emailValidate.tr();
                                                 }
                                                 return null;
                                               },
@@ -157,7 +158,7 @@ class LoginView extends StatelessWidget {
                                                 type: TextInputType.visiblePassword,
                                                 // label: AppStrings.password,
                                                 labelWidget: Text(
-                                                  AppStrings.password,
+                                                  AppStrings.password.tr(),
                                                   style: getRegularStylePoppins(
                                                     color: ColorManager.darkGrey,
                                                     fontSize: AppSize.s20.sp,
@@ -167,7 +168,7 @@ class LoginView extends StatelessWidget {
                                                 // validate: AppStrings.passwordValidate,
                                                 validate: (value) {
                                                   if (value!.isEmpty) {
-                                                    return AppStrings.passwordValidate;
+                                                    return AppStrings.passwordValidate.tr();
                                                   }
                                                   return null;
                                                 },
@@ -184,7 +185,7 @@ class LoginView extends StatelessWidget {
                                               padding: const EdgeInsetsDirectional.only(
                                                   end: PaddingSize.p14),
                                               child: defaultTextButton(
-                                                text: AppStrings.forgetPassword,
+                                                text: AppStrings.forgetPassword.tr(),
                                                 onPressed: () {
                                                   if (cubit.emailFormKey.currentState!.validate()) {
                                                     navigatePush(context,
@@ -213,7 +214,7 @@ class LoginView extends StatelessWidget {
                                                 }
                                               }
                                             },
-                                            text: AppStrings.signIn,
+                                            text: AppStrings.signIn.tr(),
                                             width: AppSize.s200.w,
                                             height: AppSize.s44.h,
                                             isUpperCase: false,

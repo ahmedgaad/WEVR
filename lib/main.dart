@@ -1,17 +1,17 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:wevr_app/core/get_device_info.dart';
+
 import 'package:wevr_app/core/dependency_injection/injection_container.dart';
+import 'package:wevr_app/core/get_device_info.dart';
 import 'package:wevr_app/core/helpers/cache_helper/cache_helper.dart';
-import 'package:wevr_app/core/utils/constants_manager.dart';
-import 'package:wevr_app/presentation/screens/home/home_view.dart';
 
 import 'app.dart';
 import 'core/bloc_observer.dart';
 import 'core/utils/languages_manager.dart';
 
+late String initialRoute;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
@@ -34,12 +34,14 @@ void main() async {
   // }
 
   runApp(
+
     EasyLocalization(
       supportedLocales: const [ARABIC_LOCALE, ENGLISH_LOCALE],
+      saveLocale: true,
+      startLocale: ARABIC_LOCALE,
+      fallbackLocale: ENGLISH_LOCALE,
       path: ASSET_PATH_LOCALIZATION,
-      child: const Wevr(
-          //startWidget: widget,
-          ),
+      child: const Wevr(),
     ),
   );
 }

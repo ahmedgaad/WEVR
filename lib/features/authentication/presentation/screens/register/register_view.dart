@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wevr_app/core/dependency_injection/injection_container.dart';
@@ -67,9 +68,9 @@ class _RegisterViewState extends State<RegisterView> {
                 children: [
                   background(
                     context,
-                    buttonText: AppStrings.signIn,
+                    buttonText: AppStrings.signIn.tr(),
                     route: Routes.loginRoute,
-                    questionText: AppStrings.alreadyHaveAccount,
+                    questionText: AppStrings.alreadyHaveAccount.tr(),
                     p1: PaddingSize.p60,
                     p2: PaddingSize.p24,
                   ),
@@ -105,7 +106,7 @@ class _RegisterViewState extends State<RegisterView> {
                                           Column(
                                             children: [
                                               Text(
-                                                AppStrings.signUp,
+                                                AppStrings.signUp.tr(),
                                                 style: getSemiBoldStylePoppins(
                                                   color: ColorManager.primary,
                                                 ),
@@ -140,7 +141,7 @@ class _RegisterViewState extends State<RegisterView> {
                                                           PaddingSize.p0),
                                                       child: Center(
                                                         child: Text(
-                                                          AppStrings.or,
+                                                          AppStrings.or.tr(),
                                                           style:
                                                               getRegularStyleInter(
                                                             color:
@@ -158,7 +159,7 @@ class _RegisterViewState extends State<RegisterView> {
                                                 height: AppSize.s20.h,
                                               ),
                                               Text(
-                                                AppStrings.registerWord,
+                                                AppStrings.registerWord.tr(),
                                                 style: getRegularStyleInter(
                                                   color: ColorManager.darkGrey,
                                                   fontSize: FontSize.s16.sp,
@@ -177,7 +178,7 @@ class _RegisterViewState extends State<RegisterView> {
                                               type: TextInputType.name,
                                               // label: AppStrings.emailOrMobile,
                                               labelWidget: Text(
-                                                AppStrings.userName,
+                                                AppStrings.userName.tr(),
                                                 style: getRegularStyleInter(
                                                   color: ColorManager.darkGrey,
                                                   fontSize: AppSize.s20.sp,
@@ -186,7 +187,7 @@ class _RegisterViewState extends State<RegisterView> {
                                               //validate: AppStrings.emailValidate,
                                               validate: (value) {
                                                 if (value!.isEmpty) {
-                                                  return AppStrings.userName;
+                                                  return AppStrings.userName.tr();
                                                 }
                                                 return null;
                                               },
@@ -203,7 +204,7 @@ class _RegisterViewState extends State<RegisterView> {
                                               type: TextInputType.emailAddress,
                                               // label: AppStrings.emailOrMobile,
                                               labelWidget: Text(
-                                                AppStrings.emailAddress,
+                                                AppStrings.emailAddress.tr(),
                                                 style: getRegularStyleInter(
                                                   color: ColorManager.darkGrey,
                                                   fontSize: AppSize.s20.sp,
@@ -212,7 +213,7 @@ class _RegisterViewState extends State<RegisterView> {
                                               //validate: AppStrings.emailValidate,
                                               validate: (value) {
                                                 if (value!.isEmpty) {
-                                                  return AppStrings.emailValidate;
+                                                  return AppStrings.emailValidate.tr();
                                                 }
                                                 return null;
                                               },
@@ -229,7 +230,7 @@ class _RegisterViewState extends State<RegisterView> {
                                               type: TextInputType.phone,
                                               // label: AppStrings.emailOrMobile,
                                               labelWidget: Text(
-                                                AppStrings.mobile,
+                                                AppStrings.mobile.tr(),
                                                 style: getRegularStyleInter(
                                                   color: ColorManager.darkGrey,
                                                   fontSize: AppSize.s20.sp,
@@ -238,7 +239,7 @@ class _RegisterViewState extends State<RegisterView> {
                                               //validate: AppStrings.emailValidate,
                                               validate: (value) {
                                                 if (value!.isEmpty) {
-                                                  return AppStrings.phoneValidate;
+                                                  return AppStrings.phoneValidate.tr();
                                                 }
                                                 return null;
                                               },
@@ -255,7 +256,7 @@ class _RegisterViewState extends State<RegisterView> {
                                               controller: cubit.passwordController,
                                               type: TextInputType.visiblePassword,
                                               labelWidget: Text(
-                                                AppStrings.password,
+                                                AppStrings.password.tr(),
                                                 style: getRegularStyleInter(
                                                   color: ColorManager.darkGrey,
                                                   fontSize: AppSize.s20.sp,
@@ -309,7 +310,7 @@ class _RegisterViewState extends State<RegisterView> {
                                                   type:
                                                       TextInputType.visiblePassword,
                                                   labelWidget: Text(
-                                                    AppStrings.confirmPassword,
+                                                    AppStrings.confirmPassword.tr(),
                                                     style: getRegularStyleInter(
                                                       color: ColorManager.darkGrey,
                                                       fontSize: AppSize.s20.sp,
@@ -375,7 +376,7 @@ class _RegisterViewState extends State<RegisterView> {
                                                         ));
                                                       }
                                                     },
-                                                    text: AppStrings.signUp,
+                                                    text: AppStrings.signUp.tr(),
                                                     width: AppSize.s200.w,
                                                     height: AppSize.s44.h,
                                                     isUpperCase: false,

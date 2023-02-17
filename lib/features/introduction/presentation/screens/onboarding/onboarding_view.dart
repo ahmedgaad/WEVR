@@ -1,18 +1,19 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:wevr_app/core/helpers/cache_helper/cache_helper.dart';
-import 'package:wevr_app/core/utils/assets_manager.dart';
-import 'package:wevr_app/core/utils/color_manager.dart';
-import 'package:wevr_app/core/utils/constants_manager.dart';
-import 'package:wevr_app/core/utils/fonts_manager.dart';
-import 'package:wevr_app/core/utils/routes_manager.dart';
-import 'package:wevr_app/core/utils/strings_manager.dart';
-import 'package:wevr_app/core/utils/styles_manager.dart';
-import 'package:wevr_app/core/utils/values_manager.dart';
+import '../../../../../core/helpers/cache_helper/cache_helper.dart';
+import '../../../../../core/utils/assets_manager.dart';
+import '../../../../../core/utils/color_manager.dart';
+import '../../../../../core/utils/constants_manager.dart';
+import '../../../../../core/utils/fonts_manager.dart';
+import '../../../../../core/utils/routes_manager.dart';
+import '../../../../../core/utils/strings_manager.dart';
+import '../../../../../core/utils/styles_manager.dart';
+import '../../../../../core/utils/values_manager.dart';
 
 
 class OnBoardingView extends StatefulWidget {
@@ -38,23 +39,23 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   List<SliderObject> _getSliderData() => [
     SliderObject(
       ImagesAssetsManager.onBoarding1,
-      AppStrings.onBoardingTitle1,
-      AppStrings.onBoardingSubTitle1,
+      AppStrings.onBoardingTitle1.tr(),
+      AppStrings.onBoardingSubTitle1.tr(),
     ),
     SliderObject(
       ImagesAssetsManager.onBoarding2,
-      AppStrings.onBoardingTitle2,
-      AppStrings.onBoardingSubTitle2,
+      AppStrings.onBoardingTitle2.tr(),
+      AppStrings.onBoardingSubTitle2.tr(),
     ),
     SliderObject(
       ImagesAssetsManager.onBoarding3,
-      AppStrings.onBoardingTitle3,
-      AppStrings.onBoardingSubTitle3,
+      AppStrings.onBoardingTitle3.tr(),
+      AppStrings.onBoardingSubTitle3.tr(),
     ),
     SliderObject(
       ImagesAssetsManager.onBoarding4,
-      AppStrings.onBoardingTitle4,
-      AppStrings.onBoardingSubTitle4,
+      AppStrings.onBoardingTitle4.tr(),
+      AppStrings.onBoardingSubTitle4.tr(),
     ),
   ];
 
@@ -87,7 +88,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   end: PaddingSize.p20.w
               ),
               child: Text(
-                AppStrings.skip,
+                AppStrings.skip.tr(),
                 style: getRegularStyleInter(
                     color: ColorManager.black,
                     fontSize: FontSize.s20.sp
@@ -184,7 +185,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                         horizontal: AppSize.s6.w,
                                         vertical: AppSize.s6.h,
                                       ),
-                                      child: SvgPicture.asset(ImagesAssetsManager.leftArrowIc,
+                                      child: SvgPicture.asset(
+                                        ImagesAssetsManager.leftArrowIc,
                                         color: ColorManager.lightGrey,
                                         fit: BoxFit.scaleDown,
                                         height: AppSize.s25_33.h,

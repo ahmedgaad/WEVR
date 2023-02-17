@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/assets_manager.dart';
@@ -41,7 +42,7 @@ class RegisterSuccessfully extends StatelessWidget {
                 height: AppSize.s44.h,
               ),
               Text(
-                  AppStrings.registerSuccessfully,
+                  AppStrings.registerSuccessfully.tr(),
                 style: getBoldStylePoppins(
                     color: ColorManager.black,
                   fontSize: FontSize.s24.sp,
@@ -51,7 +52,7 @@ class RegisterSuccessfully extends StatelessWidget {
                 height: AppSize.s44.h,
               ),
               Text(
-                AppStrings.registerSuccess,
+                AppStrings.registerSuccess.tr(),
                 style: getRegularStyleInter(
                   color: ColorManager.darkGrey,
                   fontSize: FontSize.s20.sp,
@@ -65,7 +66,7 @@ class RegisterSuccessfully extends StatelessWidget {
                   function: (){
                   navigateTo(context, Routes.homeRoute);
                   },
-                  text: AppStrings.continueExploring,
+                  text: AppStrings.continueExploring.tr(),
               ),
             ],
           ),

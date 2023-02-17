@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import '../../features/authentication/presentation/screens/OTP/forgot_password/forgot_password_view.dart';
+import '../../features/authentication/presentation/screens/OTP/reset_via_email/reset_email_view.dart';
+import '../../features/authentication/presentation/screens/OTP/reset_via_phone/reset_phone_view.dart';
+import '../../features/user_dashboard/presentation/screens/home/home_view.dart';
 import '../../features/authentication/presentation/screens/login/login_view.dart';
 import '../../features/authentication/presentation/screens/register/register_successfully.dart';
 import '../../features/authentication/presentation/screens/register/register_view.dart';
   import '../../features/introduction/presentation/screens/get_started/get_started_view.dart';
 import '../../features/introduction/presentation/screens/onboarding/onboarding_view.dart';
 import '../../features/introduction/presentation/screens/splash/splash_view.dart';
- import '../../presentation/screens/contact_us.dart';
-import '../../presentation/screens/language.dart';
-import '../../presentation/screens/my_properties.dart';
-import '../../presentation/screens/payment.dart';
-import '../../presentation/screens/personal_information.dart';
-import '../../presentation/screens/privacy_policy.dart';
-import '../../presentation/screens/show_your_properties.dart';
-import '../../presentation/screens/account_setting.dart';
-import '../../presentation/screens/home/home_view.dart';
-import '../../presentation/screens/otp_screens/forgot_password/forgot_password_view.dart';
-import '../../presentation/screens/otp_screens/reset_via_email/reset_email_view.dart';
-import '../../presentation/screens/otp_screens/reset_via_phone/reset_phone_view.dart';
+ import '../../features/user_profile/presentation/screens/contact_us/contact_us.dart';
+import '../../features/user_profile/presentation/screens/language/language.dart';
+import '../../features/user_profile/presentation/screens/my_properties/my_properties.dart';
+import '../../features/user_profile/presentation/screens/payment/payment.dart';
+import '../../features/user_profile/presentation/screens/personal_info/personal_information.dart';
+import '../../features/user_profile/presentation/screens/privacy_policy/privacy_policy.dart';
+import '../../features/user_profile/presentation/screens/show_your_properties/show_your_properties.dart';
+import '../../features/user_profile/presentation/screens/account_setting/account_setting.dart';
 import 'strings_manager.dart';
 
 class Routes {

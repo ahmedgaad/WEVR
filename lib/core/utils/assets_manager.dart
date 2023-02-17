@@ -37,6 +37,7 @@ class ImagesAssetsManager{
   static const String leftArrowIc ='${AppConstants.imagePath}/icons/left_arrow_ic.svg';
   static const String phoneIc ='${AppConstants.imagePath}/icons/phone_icon.svg';
   static const String emailIc ='${AppConstants.imagePath}/icons/email_icon.svg';
+  static const String uploadIc ='${AppConstants.imagePath}/icons/upload_ic.svg';
   static const String explore ='${AppConstants.imagePath}/icons/explore.svg';
   static const String auction ='${AppConstants.imagePath}/icons/auction.svg';
   static const String map ='${AppConstants.imagePath}/icons/map.svg';
@@ -57,5 +58,9 @@ class ImagesAssetsManager{
   static const String privacy ='${AppConstants.imagePath}/personal_icons/privacy.svg';
   static const String myProperties ='${AppConstants.imagePath}/personal_icons/my_properties.svg';
   static const String showYourProperty ='${AppConstants.imagePath}/personal_icons/seller.svg';
+
+  static const String changeLang ='${AppConstants.imagePath}/change_lang/change_lang.svg';
+  static const String usIc ='${AppConstants.imagePath}/change_lang/us.svg';
+  static const String egIc ='${AppConstants.imagePath}/change_lang/eg.svg';
 
 }

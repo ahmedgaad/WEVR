@@ -1,11 +1,13 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wevr_app/core/utils/assets_manager.dart';
-import 'package:wevr_app/core/utils/color_manager.dart';
-import 'package:wevr_app/core/utils/constants_manager.dart';
-import 'package:wevr_app/core/utils/routes_manager.dart';
+
+import '../../../../../core/utils/assets_manager.dart';
+import '../../../../../core/utils/color_manager.dart';
+import '../../../../../core/utils/constants_manager.dart';
+import '../../../../../core/utils/routes_manager.dart';
 
 
 class SplashView extends StatefulWidget {

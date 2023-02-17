@@ -3,5 +3,5 @@ class AppConstants {
   static const int splashDelay = 3;
   static const int nextPageTime = 2;
   static const int previousPageTime = 2;
-  static  String token = "";
+  static String? token;
 }

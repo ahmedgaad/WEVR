@@ -1,17 +1,19 @@
 import 'dart:ui';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wevr_app/core/components/components.dart';
-import 'package:wevr_app/core/utils/assets_manager.dart';
-import 'package:wevr_app/core/utils/color_manager.dart';
-import 'package:wevr_app/core/utils/fonts_manager.dart';
-import 'package:wevr_app/core/utils/routes_manager.dart';
-import 'package:wevr_app/core/utils/strings_manager.dart';
-import 'package:wevr_app/core/utils/styles_manager.dart';
-import 'package:wevr_app/core/utils/values_manager.dart';
-import 'package:wevr_app/presentation/screens/home/home_view.dart';
+
+import '../../../../../core/components/components.dart';
+import '../../../../../core/utils/assets_manager.dart';
+import '../../../../../core/utils/color_manager.dart';
+import '../../../../../core/utils/fonts_manager.dart';
+import '../../../../../core/utils/routes_manager.dart';
+import '../../../../../core/utils/strings_manager.dart';
+import '../../../../../core/utils/styles_manager.dart';
+import '../../../../../core/utils/values_manager.dart';
+import '../../../../user_dashboard/presentation/screens/home/home_view.dart';
 
 class GetStartedView extends StatefulWidget {
   const GetStartedView({Key? key}) : super(key: key);
@@ -58,7 +60,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                           height: AppSize.s44.h,
                         ),
                         Text(
-                          AppStrings.welcomeTo,
+                          AppStrings.welcomeTo.tr(),
                           style: getRegularStylePoppins(
                               color: ColorManager.black,
                               fontSize: FontSize.s24.sp),
@@ -81,7 +83,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                                   navigateTo(context, Routes.loginRoute);
                                 },
                                 isUpperCase: false,
-                                text: AppStrings.signIn,
+                                text: AppStrings.signIn.tr(),
                               ),
                               SizedBox(
                                 height: AppSize.s20.h,
@@ -94,7 +96,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                                   navigateTo(context, Routes.registerRoute);
                                 },
                                 isUpperCase: false,
-                                text: AppStrings.signUp,
+                                text: AppStrings.signUp.tr(),
                                 textColor: ColorManager.black,
                               ),
                               SizedBox(
@@ -104,7 +106,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                                 textColor: ColorManager.black,
                                 fontSize: FontSize.s18.sp,
                                 textDecoration: TextDecoration.underline,
-                                text: AppStrings.asGuest,
+                                text: AppStrings.asGuest.tr(),
                                 onPressed: () {
                                   navigatePush(context, const HomeView());
                                 },

@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:io';
+
 import 'package:device_info_plus/device_info_plus.dart';
 
 Future<String?> getDeviceInfo() async {

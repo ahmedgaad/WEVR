@@ -1,8 +1,8 @@
-import 'package:wevr_app/core/errors/api_result.dart';
-import 'package:wevr_app/core/errors/network_exceptions.dart';
- import 'package:wevr_app/features/authentication/data/data_sources/remote_data_source/web_services.dart';
-import 'package:wevr_app/features/authentication/data/models/login_model/login_model.dart';
-import 'package:wevr_app/features/authentication/data/models/register_model/register_model.dart';
+import '../../../../core/errors/api_result.dart';
+import '../../../../core/errors/network_exceptions.dart';
+import '../data_sources/remote_data_source/web_services.dart';
+import '../models/login_model/login_model.dart';
+import '../models/register_model/register_model.dart';
 
 import '../../domain/repository/users_repository.dart';
 

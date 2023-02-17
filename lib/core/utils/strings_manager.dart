@@ -1,120 +1,65 @@
 class AppStrings {
-  static const String noRouteFound = "No Route Found";
+  static const String noRouteFound = "no_route_found";
   static const String skip = "skip";
 
-  static const String onBoardingTitle1 = "Explore homes";
-  static const String onBoardingTitle2 = "virtual tour";
-  static const String onBoardingTitle3 = "online auction";
-  static const String onBoardingTitle4 = "property owner";
-  static const String welcomeTo = "Welcome to";
-  static const String signIn = "Login";
-  static const String signUp = "Register";
-  static const String submit = "Submit";
-  static const String asGuest = "Continue as a guest";
-  static const String loginAccount = "Login account";
-  static const String loginWord = "login with email";
-  static const String registerWord = "register with email";
-  static const String registerSuccessfully = 'Registered successfully';
-  static const String or = "OR";
-  static const String continueExploring = "Continue Exploring";
-  static const String emailAddress = "Email Address";
-  static const String userName = "Username";
-  static const String mobile = "Mobile Phone";
-  static const String emailValidate = "Please enter your email";
-  static const String passwordValidate = "Please enter your password";
-  static const String phoneValidate = "Please enter your phone";
-  static const String userNameValidate = "Please enter your password";
-  static const String password = "Password";
-  static const String confirmPassword = "Confirm Password";
-  static const String resetPassword = "Reset Password";
-  static const String forgetPassword = "forget password?";
-  static const String haveAccount = "Don\'t have an account?";
-  static const String alreadyHaveAccount = "Already have an account?";
-  static const String viaPhone = "via phone number";
-  static const String viaEmail = "via email";
-  static const String resendCode = "Not received Code?";
-  static const String resend = "Resend";
-  static const String explore = "Explore";
-  static const String saved = "Saved";
-  static const String homes = "Homes";
-  static const String auction = "Auction";
-  static const String allHomes = "All Homes";
-  static const String viewAll = "View All";
-  static const String searchBar = "city,hometype.....";
-
-
-  static const String personalInfo = "Personal Information";
-  static const String accountSetting = "Account Setting";
-  static const String payment = "Payment";
-  static const String lang = "Language";
-  static const String contactUs = "Contact Us";
-  static const String privacy = "Privacy Policy";
-  static const String myProperties = "My Properties";
-  static const String showYourProperties = "Show Your Property";
-
-  static const String onBoardingSubTitle1 = """
-  Easily search for any home 
-  and select your own search
-  options 
-  """;
-  static const String registerSuccess = """
-  congratulations, your account 
-  has been successfully created 
-  """;
-  static const String onBoardingSubTitle2 = """
-  virtual tour for each house 
-  to give a clear view of
-  all details
-  """;
-  static const String onBoardingSubTitle3 = """
-  ease in participating in 
-  real estate auctions as 
-  a bidder or buyer
-  """;
-  static const String onBoardingSubTitle4 = """
-  sell your property
-  easily
-  """;
-  static const String forgotPass = """
-  Forgot 
-  Password
-  """;
-
-  static const String subTitleForgotPass = """
-  select which contact details
-  should we use to reset your 
-  password
-  """;
-
-  static const String recoveryCode = """
-  Enter 4-Digit
-  Recovery Code
-  """;
-
-  static const String subTitleRecoveryCode = """
-  the recovery code was sent to
-  your mobile number . Please 
-  enter the code 
-  """;
-
-  static const String createNewPasswordTitle = """
-Create New
-Password
-""";
-
-  static const String createNewPasswordSubTitle = """
-your new password must be different 
-from previous used passwords
-""";
-
-  static const String resetSuccessfullyTitle = """
-Password Reset
-Successfully
-""";
-
-  static const String resetSuccessfullySubTitle = """
-you have successfully reset your
-password. Please use your new 
-password when logging in
-""";
+  static const String onBoardingTitle1 = "on_boarding_title1";
+  static const String onBoardingTitle2 = "on_boarding_title2";
+  static const String onBoardingTitle3 = "on_boarding_title3";
+  static const String onBoardingTitle4 = "on_boarding_title4";
+  static const String welcomeTo = "welcome_to";
+  static const String signIn = "sign_in";
+  static const String signUp = "sign_up";
+  static const String submit = "submit";
+  static const String asGuest = "as_guest";
+  static const String loginAccount = "login_account";
+  static const String loginWord = "login_word";
+  static const String registerWord = "register_word";
+  static const String registerSuccessfully = "register_successfully";
+  static const String or = "or";
+  static const String continueExploring = "continue_exploring";
+  static const String emailAddress = "email_address";
+  static const String userName = "username";
+  static const String mobile = "mobile";
+  static const String emailValidate = "email_validate";
+  static const String passwordValidate = "password_validate";
+  static const String phoneValidate = "phone_validate";
+  static const String userNameValidate = "username_validate";
+  static const String password = "password";
+  static const String confirmPassword = "confirm_password";
+  static const String resetPassword = "reset_password";
+  static const String forgetPassword = "forget_password";
+  static const String haveAccount = "have_account";
+  static const String alreadyHaveAccount = "already_have_account";
+  static const String viaPhone = "via_phone";
+  static const String viaEmail = "via_email";
+  static const String resendCode = "resend_code";
+  static const String resend = "resend";
+  static const String explore = "explore";
+  static const String saved = "saved";
+  static const String homes = "homes";
+  static const String auction = "auction";
+  static const String allHomes = "all_homes";
+  static const String viewAll = "view_all";
+  static const String searchBar = "search_bar";
+  static const String personalInfo = "personal_info";
+  static const String accountSetting = "account_setting";
+  static const String payment = "payment";
+  static const String lang = "lang";
+  static const String contactUs = "contact_us";
+  static const String privacy = "privacy";
+  static const String myProperties = "my_properties";
+  static const String showYourProperties = "show_your_properties";
+  static const String registerSuccess = "register_success";
+  static const String onBoardingSubTitle1 = "on_boarding_sub_title1";
+  static const String onBoardingSubTitle2 = "on_boarding_sub_title2";
+  static const String onBoardingSubTitle3 = "on_boarding_sub_title3";
+  static const String onBoardingSubTitle4 = "on_boarding_sub_title4";
+  static const String forgotPass = "forgot_pass";
+  static const String subTitleForgotPass = "sub_title_forgot_pass";
+  static const String recoveryCode = "recovery_code";
+  static const String subTitleRecoveryCode = "sub_title_recovery_code";
+  static const String createNewPasswordTitle = "create_new_password_title";
+  static const String createNewPasswordSubTitle = "create_new_password_sub_title";
+  static const String resetSuccessfullyTitle = "reset_successfully_title";
+  static const String resetSuccessfullySubTitle = "reset_successfully_sub_title";
 }

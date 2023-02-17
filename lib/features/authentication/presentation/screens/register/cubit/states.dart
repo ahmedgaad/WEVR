@@ -1,4 +1,4 @@
-import 'package:wevr_app/core/errors/network_exceptions.dart';
+import '../../../../../../core/errors/network_exceptions.dart';
 
 import '../../../../data/models/register_model/register_model.dart';
 

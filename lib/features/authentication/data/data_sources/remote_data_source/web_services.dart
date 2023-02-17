@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
-import 'package:wevr_app/features/authentication/data/models/register_model/register_model.dart';
+import '../../models/register_model/register_model.dart';
 
 import '../../models/login_model/login_model.dart';
 
