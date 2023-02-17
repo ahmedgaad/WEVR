@@ -33,7 +33,7 @@ class _GetStartedViewState extends State<GetStartedView> {
             width: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-              image: AssetImage(ImagesAssetsManager.getStartedImage),
+              image: AssetImage(AssetsImagesManager.getStartedImage),
               fit: BoxFit.cover,
             )),
           ),
@@ -68,7 +68,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                         Padding(
                           padding: EdgeInsets.all(PaddingSize.p50.w),
                           child: SvgPicture.asset(
-                            ImagesAssetsManager.getStartedLogo,
+                            AssetsImagesManager.getStartedLogo,
                           ),
                         ),
                         SizedBox(

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/assets_manager.dart';
@@ -23,14 +22,14 @@ class BuildUserImageAndName extends StatelessWidget {
             backgroundColor: ColorManager.primary,
             radius: AppSize.s44.sp,
             child: Image.asset(
-              ImagesAssetsManager.userPic,
+              AssetsImagesManager.userPic,
             ),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height / 70,
           ),
           Text(
-            'user1',
+            'Ahmed Gad',
             style: getMediumStylePoppins(
               color: ColorManager.black,
               fontSize: FontSize.s20.sp,

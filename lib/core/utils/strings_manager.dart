@@ -59,7 +59,13 @@ class AppStrings {
   static const String recoveryCode = "recovery_code";
   static const String subTitleRecoveryCode = "sub_title_recovery_code";
   static const String createNewPasswordTitle = "create_new_password_title";
-  static const String createNewPasswordSubTitle = "create_new_password_sub_title";
+  static const String createNewPasswordSubTitle =
+      "create_new_password_sub_title";
   static const String resetSuccessfullyTitle = "reset_successfully_title";
-  static const String resetSuccessfullySubTitle = "reset_successfully_sub_title";
+  static const String resetSuccessfullySubTitle =
+      "reset_successfully_sub_title";
+  static const String changeLanguage = "language";
+  static const String pleaseSelectYourLang = "please_select_your_lang";
+  static const String continuee = "continue";
+  static const String policyTopic = "policy_topic";
 }

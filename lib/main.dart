@@ -34,11 +34,10 @@ void main() async {
   // }
 
   runApp(
-
     EasyLocalization(
       supportedLocales: const [ARABIC_LOCALE, ENGLISH_LOCALE],
       saveLocale: true,
-      startLocale: ARABIC_LOCALE,
+      startLocale: ENGLISH_LOCALE,
       fallbackLocale: ENGLISH_LOCALE,
       path: ASSET_PATH_LOCALIZATION,
       child: const Wevr(),

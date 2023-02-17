@@ -64,7 +64,7 @@ class _ResetEmailViewState extends State<ResetEmailView> {
                       horizontal: AppSize.s83.w,
                     ),
                     child: SvgPicture.asset(
-                      ImagesAssetsManager.emailReset,
+                      AssetsImagesManager.emailReset,
                       fit: BoxFit.scaleDown,
                       width: AppSize.s128.w,
                       height: AppSize.s224.h,

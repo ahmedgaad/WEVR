@@ -1,10 +1,55 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wevr_app/core/components/components.dart';
+import 'package:wevr_app/core/utils/assets_manager.dart';
+import 'package:wevr_app/core/utils/strings_manager.dart';
+import 'package:wevr_app/core/utils/styles_manager.dart';
 
-class Language extends StatelessWidget {
-  const Language({Key? key}) : super(key: key);
+import '../../widgets/language/radio_lang.dart';
+
+class LanguageView extends StatelessWidget {
+  const LanguageView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          AppStrings.changeLanguage.tr(),
+          style: getBoldStylePoppins(),
+        ),
+      ),
+      body: Align(
+        alignment: Alignment.center,
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              AssetsImagesManager.changeLang,
+              fit: BoxFit.scaleDown,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 30,
+            ),
+            Text(
+              AppStrings.pleaseSelectYourLang.tr(),
+              style: getBoldStylePoppins(),
+            ),
+            const RadioLang(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 35),
+              child: defaultButton(
+                function: () {
+                  Navigator.of(context).pop();
+                },
+                text: AppStrings.continuee.tr(),
+                isUpperCase: false,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

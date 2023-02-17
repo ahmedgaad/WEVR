@@ -36,7 +36,8 @@ class _HomeViewState extends State<HomeView> {
       statusBarIconBrightness: Brightness.dark,
     ));
     return BlocProvider(
-      create: (BuildContext context) => HomeLayOutCubit(logoutUseCase: getIt()), //logoutUseCase: getIt()
+      create: (BuildContext context) =>
+          HomeLayOutCubit(logoutUseCase: getIt()), //logoutUseCase: getIt()
       child: BlocConsumer<HomeLayOutCubit, HomeLayOutStates>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -64,7 +65,7 @@ class _HomeViewState extends State<HomeView> {
                   navigatePush(context, const MapView());
                 },
                 backgroundColor: ColorManager.white,
-                child: SvgPicture.asset(ImagesAssetsManager.map),
+                child: SvgPicture.asset(AssetsImagesManager.map),
               ),
             ),
             floatingActionButtonLocation:
@@ -92,7 +93,7 @@ class _HomeViewState extends State<HomeView> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SvgPicture.asset(
-                                ImagesAssetsManager.explore,
+                                AssetsImagesManager.explore,
                                 color: cubit.currentTap == 0
                                     ? ColorManager.primary
                                     : ColorManager.darkGrey,
@@ -184,7 +185,7 @@ class _HomeViewState extends State<HomeView> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SvgPicture.asset(
-                                ImagesAssetsManager.auction,
+                                AssetsImagesManager.auction,
                                 color: cubit.currentTap == 4
                                     ? ColorManager.primary
                                     : ColorManager.darkGrey,

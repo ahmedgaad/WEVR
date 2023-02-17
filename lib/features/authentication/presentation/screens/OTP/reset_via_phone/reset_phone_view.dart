@@ -60,7 +60,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                 // ),
                 Align(
                   child: SvgPicture.asset(
-                    ImagesAssetsManager.mobileReset,
+                    AssetsImagesManager.mobileReset,
                     fit: BoxFit.scaleDown,
                     width: AppSize.s128.w,
                     height: AppSize.s224.h,

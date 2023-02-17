@@ -15,7 +15,6 @@ import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 
-
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({Key? key}) : super(key: key);
 
@@ -23,42 +22,40 @@ class OnBoardingView extends StatefulWidget {
   State<OnBoardingView> createState() => _OnBoardingViewState();
 }
 
-
 class _OnBoardingViewState extends State<OnBoardingView> {
   final PageController _pageController = PageController();
   late final List<SliderObject> _list = _getSliderData();
   int currentIndex = 0;
   bool isLast = false;
 
-  void submit(){
-    CacheHelper.saveData(key: 'onBoarding', value: true).then((value){
+  void submit() {
+    CacheHelper.saveData(key: 'onBoarding', value: true).then((value) {
       Navigator.pushReplacementNamed(context, Routes.getStarted);
     });
   }
 
   List<SliderObject> _getSliderData() => [
-    SliderObject(
-      ImagesAssetsManager.onBoarding1,
-      AppStrings.onBoardingTitle1.tr(),
-      AppStrings.onBoardingSubTitle1.tr(),
-    ),
-    SliderObject(
-      ImagesAssetsManager.onBoarding2,
-      AppStrings.onBoardingTitle2.tr(),
-      AppStrings.onBoardingSubTitle2.tr(),
-    ),
-    SliderObject(
-      ImagesAssetsManager.onBoarding3,
-      AppStrings.onBoardingTitle3.tr(),
-      AppStrings.onBoardingSubTitle3.tr(),
-    ),
-    SliderObject(
-      ImagesAssetsManager.onBoarding4,
-      AppStrings.onBoardingTitle4.tr(),
-      AppStrings.onBoardingSubTitle4.tr(),
-    ),
-  ];
-
+        SliderObject(
+          AssetsImagesManager.onBoarding1,
+          AppStrings.onBoardingTitle1.tr(),
+          AppStrings.onBoardingSubTitle1.tr(),
+        ),
+        SliderObject(
+          AssetsImagesManager.onBoarding2,
+          AppStrings.onBoardingTitle2.tr(),
+          AppStrings.onBoardingSubTitle2.tr(),
+        ),
+        SliderObject(
+          AssetsImagesManager.onBoarding3,
+          AppStrings.onBoardingTitle3.tr(),
+          AppStrings.onBoardingSubTitle3.tr(),
+        ),
+        SliderObject(
+          AssetsImagesManager.onBoarding4,
+          AppStrings.onBoardingTitle4.tr(),
+          AppStrings.onBoardingSubTitle4.tr(),
+        ),
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -80,28 +77,22 @@ class _OnBoardingViewState extends State<OnBoardingView> {
          */
         actions: [
           TextButton(
-            onPressed: (){
+            onPressed: () {
               Navigator.pushReplacementNamed(context, Routes.getStarted);
             },
             child: Padding(
-              padding:  EdgeInsetsDirectional.only(
-                  end: PaddingSize.p20.w
-              ),
+              padding: EdgeInsetsDirectional.only(end: PaddingSize.p20.w),
               child: Text(
                 AppStrings.skip.tr(),
                 style: getRegularStyleInter(
-                    color: ColorManager.black,
-                    fontSize: FontSize.s20.sp
-                ),
+                    color: ColorManager.black, fontSize: FontSize.s20.sp),
               ),
             ),
           ),
         ],
       ),
       body: Padding(
-        padding:  EdgeInsets.all(
-            AppSize.s6.w
-        ),
+        padding: EdgeInsets.all(AppSize.s6.w),
         child: Column(
           children: [
             Expanded(
@@ -110,15 +101,15 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 physics: const BouncingScrollPhysics(),
                 controller: _pageController,
                 itemCount: _list.length,
-                onPageChanged: (int index){
+                onPageChanged: (int index) {
                   setState(() {
                     currentIndex = index;
                   });
-                  if(index == _list.length -1){
+                  if (index == _list.length - 1) {
                     setState(() {
                       isLast = true;
                     });
-                  }else{
+                  } else {
                     setState(() {
                       isLast = false;
                     });
@@ -136,7 +127,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   children: [
                     SmoothPageIndicator(
                       controller: _pageController,
-                      effect:  ExpandingDotsEffect(
+                      effect: ExpandingDotsEffect(
                         dotColor: ColorManager.lightPrimary,
                         activeDotColor: ColorManager.primary,
                         dotHeight: AppSize.s7.h,
@@ -147,26 +138,24 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                       count: _list.length,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: PaddingSize.p40.h
-                      ),
+                      padding:
+                          EdgeInsets.symmetric(vertical: PaddingSize.p40.h),
                       child: Row(
                         children: [
                           ConditionalBuilder(
                             condition: currentIndex > 0,
                             builder: (BuildContext context) {
                               return Padding(
-                                padding: EdgeInsets.symmetric
-                                  (
+                                padding: EdgeInsets.symmetric(
                                   horizontal: AppSize.s40.w,
                                   vertical: AppSize.s40.h,
                                 ),
                                 child: GestureDetector(
-                                  onTap: (){
+                                  onTap: () {
                                     _pageController.previousPage(
                                       duration: const Duration(
-                                          seconds: AppConstants.previousPageTime
-                                      ),
+                                          seconds:
+                                              AppConstants.previousPageTime),
                                       curve: Curves.fastLinearToSlowEaseIn,
                                     );
                                   },
@@ -178,15 +167,14 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                         border: Border.all(
                                           color: ColorManager.lightGrey,
                                           width: AppSize.s4,
-                                        )
-                                    ),
+                                        )),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
                                         horizontal: AppSize.s6.w,
                                         vertical: AppSize.s6.h,
                                       ),
                                       child: SvgPicture.asset(
-                                        ImagesAssetsManager.leftArrowIc,
+                                        AssetsImagesManager.leftArrowIc,
                                         color: ColorManager.lightGrey,
                                         fit: BoxFit.scaleDown,
                                         height: AppSize.s25_33.h,
@@ -204,12 +192,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                           const Spacer(),
                           Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: AppSize.s40.w,
-                                vertical: AppSize.s40.h,
+                              horizontal: AppSize.s40.w,
+                              vertical: AppSize.s40.h,
                             ),
                             child: GestureDetector(
-                              onTap: (){
-                                if(isLast){
+                              onTap: () {
+                                if (isLast) {
                                   submit();
                                 }
                                 _pageController.nextPage(
@@ -234,7 +222,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                     horizontal: AppSize.s6.w,
                                     vertical: AppSize.s6.h,
                                   ),
-                                  child: SvgPicture.asset( ImagesAssetsManager.rightArrowIc,
+                                  child: SvgPicture.asset(
+                                    AssetsImagesManager.rightArrowIc,
                                     fit: BoxFit.scaleDown,
                                     height: AppSize.s25_33.h,
                                     width: AppSize.s14_67.w,
@@ -265,58 +254,48 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     );
   }
 
-
-
-
-
-
-
-
-
-
-
   Widget itemSlider(SliderObject object) => SingleChildScrollView(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: AppSize.s36.h,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: AppSize.s36.h,
+            ),
+            SvgPicture.asset(
+              object.image,
+              height: AppSize.s300.h,
+              width: AppSize.s281_25.w,
+              fit: BoxFit.scaleDown,
+            ),
+            SizedBox(
+              height: AppSize.s24.h,
+            ),
+            Text(
+              object.title,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            SizedBox(
+              height: AppSize.s10.h,
+            ),
+            Text(
+              object.subTitle,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ],
         ),
-        SvgPicture.asset(
-          object.image,
-          height: AppSize.s300.h,
-          width: AppSize.s281_25.w,
-          fit: BoxFit.scaleDown,
-        ),
-        SizedBox(
-          height: AppSize.s24.h,
-        ),
-        Text(
-          object.title,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        SizedBox(
-          height: AppSize.s10.h,
-        ),
-        Text(
-          object.subTitle,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
-      ],
-    ),
-  );
+      );
 }
-class SliderObject{
+
+class SliderObject {
   String image;
   String title;
   String subTitle;
 
   SliderObject(
-      this.image,
-      this.title,
-      this.subTitle,
-      );
+    this.image,
+    this.title,
+    this.subTitle,
+  );
 }
-

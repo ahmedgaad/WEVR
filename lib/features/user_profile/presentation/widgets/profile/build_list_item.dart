@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,9 +22,7 @@ class BuildListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(
-          AppMargin.m6.sp
-      ),
+      margin: EdgeInsets.all(AppMargin.m6.sp),
       child: ListTile(
         leading: SvgPicture.asset(icon),
         title: Text(
@@ -36,7 +33,7 @@ class BuildListItem extends StatelessWidget {
           ),
         ),
         trailing: SvgPicture.asset(
-          ImagesAssetsManager.rightArrowIc,
+          AssetsImagesManager.rightArrowIc,
           fit: BoxFit.scaleDown,
           width: AppSize.s18.w,
           height: AppSize.s18.h,

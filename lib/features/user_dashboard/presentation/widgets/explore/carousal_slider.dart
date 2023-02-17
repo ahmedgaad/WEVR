@@ -13,9 +13,9 @@ class CarousalSlider extends StatelessWidget {
       items: [
         Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppRadius.r10),
-              ),
-          child: Image.asset(ImagesAssetsManager.slider),
+            borderRadius: BorderRadius.circular(AppRadius.r10),
+          ),
+          child: Image.asset(AssetsImagesManager.slider),
         )
       ],
       options: CarouselOptions(

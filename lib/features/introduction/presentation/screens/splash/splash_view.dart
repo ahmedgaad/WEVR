@@ -9,7 +9,6 @@ import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/constants_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';
 
-
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
 
@@ -36,7 +35,6 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: ColorManager.transparent,
       statusBarBrightness: Brightness.light,
@@ -54,11 +52,9 @@ class _SplashViewState extends State<SplashView> {
         end: Alignment.bottomLeft,
       )),
       child: Padding(
-        padding: EdgeInsets.all(
-            MediaQuery.of(context).size.width /8
-        ),
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width / 8),
         child: SvgPicture.asset(
-          ImagesAssetsManager.splashLogoBlack,
+          AssetsImagesManager.splashLogoBlack,
         ),
       ),
     );

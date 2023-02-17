@@ -9,7 +9,7 @@ import '../../../../map_based_homes/presentation/screens/map/google_map.dart';
 import '../../../../user_profile/presentation/widgets/profile/build_divider.dart';
 import 'product_container.dart';
 import 'virtual_tour.dart';
- import '../../../../../core/utils/assets_manager.dart';
+import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 import '../../widgets/explore/container_button.dart';
 import 'photo_gallery.dart';
@@ -38,7 +38,7 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
               SizedBox(
                 width: double.infinity,
                 child: Image.asset(
-                  ImagesAssetsManager.apartment2,
+                  AssetsImagesManager.apartment2,
                 ),
               ),
               Container(
@@ -125,9 +125,15 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
                   dividerColumn(),
                   Row(
                     children: [
-                      roomsDetails(image: ImagesAssetsManager.livingRooms, number: '2', roomName: 'Living Rooms'),
+                      roomsDetails(
+                          image: AssetsImagesManager.livingRooms,
+                          number: '2',
+                          roomName: 'Living Rooms'),
                       spaceW(),
-                      roomsDetails(image: ImagesAssetsManager.bedrooms, number: '4', roomName: 'Bed Rooms'),
+                      roomsDetails(
+                          image: AssetsImagesManager.bedrooms,
+                          number: '4',
+                          roomName: 'Bed Rooms'),
                     ],
                   ),
                   const SizedBox(
@@ -135,9 +141,15 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
                   ),
                   Row(
                     children: [
-                      roomsDetails(image: ImagesAssetsManager.parking, number: '1', roomName: 'Parking'),
+                      roomsDetails(
+                          image: AssetsImagesManager.parking,
+                          number: '1',
+                          roomName: 'Parking'),
                       spaceW(),
-                      roomsDetails(image: ImagesAssetsManager.bathrooms, number: '3', roomName: 'Baths'),
+                      roomsDetails(
+                          image: AssetsImagesManager.bathrooms,
+                          number: '3',
+                          roomName: 'Baths'),
                     ],
                   ),
                   const SizedBox(
@@ -145,9 +157,15 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
                   ),
                   Row(
                     children: [
-                      roomsDetails(image: ImagesAssetsManager.floors, number: '2', roomName: 'Floors'),
+                      roomsDetails(
+                          image: AssetsImagesManager.floors,
+                          number: '2',
+                          roomName: 'Floors'),
                       spaceW(),
-                      roomsDetails(image: ImagesAssetsManager.squareMeter,number: '', roomName: '100m2'),
+                      roomsDetails(
+                          image: AssetsImagesManager.squareMeter,
+                          number: '',
+                          roomName: '100m2'),
                     ],
                   ),
                 ],
@@ -159,9 +177,6 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
     );
   }
 }
-
-
-
 
 // reusable Widgets
 Widget blurButton(
@@ -211,7 +226,7 @@ Widget mapContainer(context) {
       backgroundColor: ColorManager.white,
       child: Padding(
         padding: const EdgeInsets.all(AppSize.s8),
-        child: SvgPicture.asset(ImagesAssetsManager.map),
+        child: SvgPicture.asset(AssetsImagesManager.map),
       ),
     ),
   );
@@ -235,13 +250,12 @@ Widget roomsDetails({
   required String image,
   required String number,
   required String roomName,
-}){
+}) {
   return Expanded(
     child: Container(
       height: AppSize.s40,
       decoration: BoxDecoration(
-          border:
-          Border.all(color: ColorManager.borderColor),
+          border: Border.all(color: ColorManager.borderColor),
           borderRadius: BorderRadius.circular(AppSize.s10)),
       child: Row(
         children: [
@@ -255,7 +269,7 @@ Widget roomsDetails({
           Text(
             roomName,
             style: getLightStyleInter(
-                color: ColorManager.smokyGray,
+              color: ColorManager.smokyGray,
               fontSize: 14,
             ),
           ),

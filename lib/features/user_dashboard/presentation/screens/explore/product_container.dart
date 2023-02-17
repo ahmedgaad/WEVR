@@ -17,7 +17,7 @@ class ProductContainer extends StatelessWidget {
         child: Column(
           children: [
             Image.asset(
-              ImagesAssetsManager.apartment,
+              AssetsImagesManager.apartment,
             ),
             spaceH(),
             Row(
@@ -27,10 +27,9 @@ class ProductContainer extends StatelessWidget {
                 ),
                 spaceW(),
                 Text(
-                    'Duplex',
+                  'Duplex',
                   style: getMediumStylePoppins(
-
-                      color: ColorManager.lightPink,
+                    color: ColorManager.lightPink,
                     fontSize: AppSize.s16,
                   ),
                 ),
@@ -67,7 +66,6 @@ class ProductContainer extends StatelessWidget {
                   ),
                 ),
                 Text('/month'),
-
               ],
             ),
           ],
@@ -94,7 +92,6 @@ Widget icon({
   );
 }
 
-
 Widget spaceH() {
   return SizedBox(
     height: AppSize.s10.h,
@@ -107,9 +104,9 @@ Widget spaceW() {
   );
 }
 
-Widget favIcon ({
+Widget favIcon({
   double? iconsSize,
-}){
+}) {
   return Icon(
     Icons.favorite_border_outlined,
     size: iconsSize,

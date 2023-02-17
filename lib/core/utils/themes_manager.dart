@@ -15,7 +15,9 @@ ThemeData getThemeData() {
     canvasColor: ColorManager.exploreBackground,
     primarySwatch: Colors.grey,
     appBarTheme: const AppBarTheme(
-        color: ColorManager.exploreBackground,
+      centerTitle: true,
+      backgroundColor: Colors.white,
+        // color: ColorManager.exploreBackground,
         elevation: AppSize.s0,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.dark,
@@ -23,6 +25,7 @@ ThemeData getThemeData() {
         // statusBarColor: ColorManager.primary
       )
     ),
+    scaffoldBackgroundColor: Colors.white,
     //appBar theme
     /*appBarTheme: const AppBarTheme(
         color: ColorManager.white,

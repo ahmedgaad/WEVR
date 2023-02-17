@@ -47,7 +47,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
             // ),
             Align(
               child: SvgPicture.asset(
-                ImagesAssetsManager.forgotPass,
+                AssetsImagesManager.forgotPass,
                 fit: BoxFit.scaleDown,
                 width: AppSize.s304.w,
                 height: AppSize.s264.h,
@@ -62,9 +62,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
               child: Text(
                 AppStrings.forgotPass.tr(),
                 style: getBoldStylePoppins(
-                    color: ColorManager.black,
-                  fontSize: FontSize.s24.sp
-                ),
+                    color: ColorManager.black, fontSize: FontSize.s24.sp),
               ),
             ),
             Padding(
@@ -74,18 +72,16 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
               child: Text(
                 AppStrings.subTitleForgotPass.tr(),
                 style: getRegularStyleInter(
-                    color: ColorManager.darkGrey,
-                    fontSize: FontSize.s20.sp,
+                  color: ColorManager.darkGrey,
+                  fontSize: FontSize.s20.sp,
                 ),
               ),
             ),
             //via phone number
             Padding(
-              padding: const EdgeInsets.all(
-                  PaddingSize.p10
-              ),
+              padding: const EdgeInsets.all(PaddingSize.p10),
               child: GestureDetector(
-                onTap: (){
+                onTap: () {
                   navigatePush(context, const ResetPhoneView());
                 },
                 child: Align(
@@ -99,7 +95,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                         width: AppSize.s1.w,
                       ),
                       borderRadius: BorderRadius.circular(
-                          AppSize.s10,
+                        AppSize.s10,
                       ),
                     ),
                     child: Row(
@@ -108,24 +104,23 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                           width: AppSize.s15.w,
                         ),
                         SvgPicture.asset(
-                          ImagesAssetsManager.phoneIc,
+                          AssetsImagesManager.phoneIc,
                           width: AppSize.s56.w,
                           height: AppSize.s56.h,
                           fit: BoxFit.scaleDown,
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
-                             horizontal:  AppSize.s20.w,
+                            horizontal: AppSize.s20.w,
                             vertical: AppSize.s20.h,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children:
-                            [
+                            children: [
                               Text(
                                 AppStrings.viaPhone.tr(),
                                 style: getRegularStyleInter(
-                                    color: ColorManager.viaPhone,
+                                  color: ColorManager.viaPhone,
                                   fontSize: FontSize.s16.sp,
                                 ),
                               ),
@@ -152,7 +147,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
             Padding(
               padding: const EdgeInsets.all(PaddingSize.p10),
               child: GestureDetector(
-                onTap: (){
+                onTap: () {
                   navigatePush(context, const ResetEmailView());
                 },
                 child: Align(
@@ -175,20 +170,19 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                           width: AppSize.s15.w,
                         ),
                         SvgPicture.asset(
-                          ImagesAssetsManager.emailIc,
+                          AssetsImagesManager.emailIc,
                           width: AppSize.s70.w,
                           height: AppSize.s70.h,
                           fit: BoxFit.scaleDown,
                         ),
                         Padding(
-                          padding:  EdgeInsets.symmetric(
-                            horizontal:  AppSize.s20.w,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: AppSize.s20.w,
                             vertical: AppSize.s20.h,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children:
-                            [
+                            children: [
                               Text(
                                 AppStrings.viaEmail.tr(),
                                 style: getRegularStyleInter(
@@ -215,7 +209,6 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                 ),
               ),
             ),
-
           ],
         ),
       ),

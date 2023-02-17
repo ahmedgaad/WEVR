@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wevr_app/core/utils/routes_manager.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
@@ -33,50 +34,68 @@ class ProfileView extends StatelessWidget {
                   children: [
                     BuildListItem(
                       label: AppStrings.personalInfo.tr(),
-                      icon: ImagesAssetsManager.person,
-                      onTap: () {},
+                      icon: AssetsImagesManager.person,
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.personalInfoRoute);
+                      },
                     ),
                     const BuildDivider(),
                     BuildListItem(
                       label: AppStrings.accountSetting.tr(),
-                      icon: ImagesAssetsManager.setting,
-                      onTap: () {},
+                      icon: AssetsImagesManager.setting,
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, Routes.accountSettingRoute);
+                      },
                     ),
                     const BuildDivider(),
                     BuildListItem(
                       label: AppStrings.payment.tr(),
-                      icon: ImagesAssetsManager.payment,
-                      onTap: () {},
+                      icon: AssetsImagesManager.payment,
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.paymentRoute);
+                      },
                     ),
                     const BuildDivider(),
                     BuildListItem(
                       label: AppStrings.lang.tr(),
-                      icon: ImagesAssetsManager.language,
-                      onTap: () {},
+                      icon: AssetsImagesManager.language,
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.languageRoute);
+                      },
                     ),
                     const BuildDivider(),
                     BuildListItem(
                       label: AppStrings.contactUs.tr(),
-                      icon: ImagesAssetsManager.contactUs,
-                      onTap: () {},
+                      icon: AssetsImagesManager.contactUs,
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.contactUsRoute);
+                      },
                     ),
                     const BuildDivider(),
                     BuildListItem(
                       label: AppStrings.privacy.tr(),
-                      icon: ImagesAssetsManager.privacy,
-                      onTap: () {},
+                      icon: AssetsImagesManager.privacy,
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.privacyPolicyRoute);
+                      },
                     ),
                     const BuildDivider(),
                     BuildListItem(
                       label: AppStrings.myProperties.tr(),
-                      icon: ImagesAssetsManager.myProperties,
-                      onTap: () {},
+                      icon: AssetsImagesManager.myProperties,
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.myPropertiesRoute);
+                      },
                     ),
                     const BuildDivider(),
                     BuildListItem(
                       label: AppStrings.showYourProperties.tr(),
-                      icon: ImagesAssetsManager.showYourProperty,
-                      onTap: () {},
+                      icon: AssetsImagesManager.showYourProperty,
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, Routes.showYourPropertiesRoute);
+                      },
                     ),
                   ],
                 ),

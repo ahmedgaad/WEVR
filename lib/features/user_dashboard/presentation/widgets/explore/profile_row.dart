@@ -24,7 +24,7 @@ class ProfileRow extends StatelessWidget {
             // backgroundColor: ColorManager.primary,
             radius: AppSize.s25.sp,
             child: Image.asset(
-              ImagesAssetsManager.userPic,
+              AssetsImagesManager.userPic,
             ),
           ),
         ),
@@ -37,7 +37,7 @@ class ProfileRow extends StatelessWidget {
                 print("Deleted Successfully ****************");
               },
               icon: SvgPicture.asset(
-                ImagesAssetsManager.signOut,
+                AssetsImagesManager.signOut,
               ),
             );
           },

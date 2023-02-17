@@ -24,15 +24,15 @@ class ResetSuccessfully extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding:  EdgeInsets.symmetric(
-           vertical: AppSize.s40.h,
+          padding: EdgeInsets.symmetric(
+            vertical: AppSize.s40.h,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Center(
                 child: SvgPicture.asset(
-                  ImagesAssetsManager.success,
+                  AssetsImagesManager.success,
                   width: AppSize.s192.w,
                   height: AppSize.s192.h,
                   fit: BoxFit.scaleDown,
@@ -42,9 +42,9 @@ class ResetSuccessfully extends StatelessWidget {
                 height: AppSize.s44.h,
               ),
               Text(
-                  AppStrings.resetSuccessfullyTitle.tr(),
+                AppStrings.resetSuccessfullyTitle.tr(),
                 style: getBoldStylePoppins(
-                    color: ColorManager.black,
+                  color: ColorManager.black,
                   fontSize: FontSize.s24.sp,
                 ),
               ),
@@ -63,10 +63,10 @@ class ResetSuccessfully extends StatelessWidget {
               ),
               defaultButton(
                 width: AppSize.s281_25.w,
-                  function: (){
+                function: () {
                   navigateTo(context, Routes.homeRoute);
-                  },
-                  text: AppStrings.continueExploring.tr(),
+                },
+                text: AppStrings.continueExploring.tr(),
               ),
             ],
           ),

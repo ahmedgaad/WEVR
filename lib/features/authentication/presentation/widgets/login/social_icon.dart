@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,7 +18,7 @@ class SocialButtons extends StatelessWidget {
         IconButton(
           onPressed: () {},
           icon: SvgPicture.asset(
-            ImagesAssetsManager.googleIc,
+            AssetsImagesManager.googleIc,
           ),
         ),
         SizedBox(
@@ -28,7 +27,7 @@ class SocialButtons extends StatelessWidget {
         IconButton(
           onPressed: () {},
           icon: SvgPicture.asset(
-            ImagesAssetsManager.appleIc,
+            AssetsImagesManager.appleIc,
           ),
         ),
         SizedBox(
@@ -37,7 +36,7 @@ class SocialButtons extends StatelessWidget {
         IconButton(
           onPressed: () {},
           icon: SvgPicture.asset(
-            ImagesAssetsManager.facebookLogoIc,
+            AssetsImagesManager.facebookLogoIc,
           ),
         ),
       ],

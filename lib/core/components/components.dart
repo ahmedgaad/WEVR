@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
- import '../utils/assets_manager.dart';
+import '../utils/assets_manager.dart';
 import '../utils/color_manager.dart';
 import '../utils/fonts_manager.dart';
 import '../utils/routes_manager.dart';
@@ -15,7 +15,7 @@ Widget defaultButton({
   double height = AppSize.s50,
   Color background = ColorManager.primary,
   bool isUpperCase = true,
-  double radius = AppSize.s15,
+  double radius = AppSize.s10,
   double borderRadius = AppSize.s3,
   required VoidCallback function,
   required String text,
@@ -39,7 +39,7 @@ Widget defaultButton({
         onPressed: function,
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
-          style: getMediumStylePoppins(color: textColor, fontSize: AppSize.s20 ),
+          style: getMediumStylePoppins(color: textColor, fontSize: AppSize.s20),
           textAlign: TextAlign.center,
         ),
       ),
@@ -84,7 +84,11 @@ Widget defaultFormField({
         label: labelWidget,
         suffixIcon: suffix != null
             ? IconButton(
-                icon: Icon(suffix , size: AppSize.s25, color: ColorManager.black,),
+                icon: Icon(
+                  suffix,
+                  size: AppSize.s25,
+                  color: ColorManager.black,
+                ),
                 onPressed: suffixPressed,
               )
             : null,
@@ -94,9 +98,8 @@ Widget defaultFormField({
 void navigateTo(context, String routeName) =>
     Navigator.pushReplacementNamed(context, routeName);
 
-void navigatePush(context, Widget widget) => Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => widget));
+void navigatePush(context, Widget widget) =>
+    Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
 
 Widget defaultTextButton({
   required String text,
@@ -104,19 +107,20 @@ Widget defaultTextButton({
   Color textColor = ColorManager.darkGrey,
   required VoidCallback onPressed,
   double fontSize = AppSize.s16,
-})=> TextButton(
-  onPressed: onPressed ,
-  child: Text(
-    text,
-    style: TextStyle(
-      decoration: textDecoration,
-      color: textColor,
-      fontSize: fontSize,
-    ),
-  ),
-);
+}) =>
+    TextButton(
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(
+          decoration: textDecoration,
+          color: textColor,
+          fontSize: fontSize,
+        ),
+      ),
+    );
 
-Widget filterWidget(){
+Widget filterWidget() {
   return Padding(
     padding: EdgeInsetsDirectional.only(
       end: AppSize.s10.w,
@@ -126,19 +130,18 @@ Widget filterWidget(){
       height: AppSize.s40.h,
       decoration: BoxDecoration(
         color: ColorManager.white,
-        borderRadius:
-        BorderRadius.all(Radius.circular(AppRadius.r10)),
+        borderRadius: BorderRadius.all(Radius.circular(AppRadius.r10)),
       ),
       child: IconButton(
           onPressed: () {},
-          icon: SvgPicture.asset(ImagesAssetsManager.filters)),
+          icon: SvgPicture.asset(AssetsImagesManager.filters)),
     ),
   );
 }
 
 Widget backButton({
   required VoidCallback function,
-}){
+}) {
   return IconButton(
     onPressed: function,
     icon: const Padding(
@@ -151,7 +154,7 @@ Widget backButton({
   );
 }
 
-Widget emailStack(){
+Widget emailStack() {
   return Stack(
     alignment: Alignment.center,
     children: [
@@ -165,12 +168,10 @@ Widget emailStack(){
         height: AppSize.s12.h,
         decoration: BoxDecoration(
           color: ColorManager.orBackground,
-          borderRadius: BorderRadius.circular(
-              AppRadius.r20),
+          borderRadius: BorderRadius.circular(AppRadius.r20),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(
-              PaddingSize.p0),
+          padding: const EdgeInsets.all(PaddingSize.p0),
           child: Center(
             child: Text(
               AppStrings.or,
@@ -186,13 +187,14 @@ Widget emailStack(){
   );
 }
 
-Widget background(context, {
+Widget background(
+  context, {
   required String buttonText,
   required String questionText,
   required String route,
   required double p1,
   required double p2,
-}){
+}) {
   return Column(children: [
     Expanded(
       flex: AppSize.s2.toInt(),
@@ -211,7 +213,7 @@ Widget background(context, {
         alignment: Alignment.bottomCenter,
         children: [
           Padding(
-            padding:  EdgeInsets.all(
+            padding: EdgeInsets.all(
               p1,
             ),
             child: Text(
@@ -226,7 +228,7 @@ Widget background(context, {
             height: AppSize.s30.h,
           ),
           Padding(
-            padding:  EdgeInsets.all(p2),
+            padding: EdgeInsets.all(p2),
             child: defaultTextButton(
                 textColor: ColorManager.primary,
                 text: buttonText,
@@ -272,10 +274,10 @@ Color chooseToastColor(ToastStates state) {
   return color;
 }
 
-Widget moneyIcon(){
+Widget moneyIcon() {
   return Container(
     width: AppSize.s30,
     height: AppSize.s25,
-    child: SvgPicture.asset(ImagesAssetsManager.moneyIcon),
+    child: SvgPicture.asset(AssetsImagesManager.moneyIcon),
   );
 }

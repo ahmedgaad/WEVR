@@ -35,7 +35,7 @@ class CreateNewPassword extends StatelessWidget {
                 children: [
                   Align(
                     child: SvgPicture.asset(
-                      ImagesAssetsManager.createNewPass,
+                      AssetsImagesManager.createNewPass,
                       width: AppSize.s192.w,
                       height: AppSize.s192.h,
                     ),
@@ -54,7 +54,8 @@ class CreateNewPassword extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.only(start: PaddingSize.p25.w),
+                    padding:
+                        EdgeInsetsDirectional.only(start: PaddingSize.p25.w),
                     child: Text(
                       AppStrings.createNewPasswordSubTitle.tr(),
                       style: getRegularStyleInter(
@@ -134,12 +135,11 @@ class CreateNewPassword extends StatelessWidget {
                                 isPassword: cubit.isPassword,
                                 suffixWidget: cubit.isPasswordMatchCharacter
                                     ? Padding(
-                                        padding:
-                                             EdgeInsetsDirectional.only(
+                                        padding: EdgeInsetsDirectional.only(
                                           end: PaddingSize.p10.w,
                                         ),
                                         child: SvgPicture.asset(
-                                          ImagesAssetsManager.checkIc,
+                                          AssetsImagesManager.checkIc,
                                           width: AppSize.s24.w,
                                           height: AppSize.s24.h,
                                         ),
