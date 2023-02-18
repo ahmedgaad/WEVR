@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/fonts_manager.dart';
@@ -15,14 +16,22 @@ class BuildUserImageAndName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: AppSize.s144.h,
+      height: 160,
       child: Column(
         children: [
-          CircleAvatar(
-            backgroundColor: ColorManager.primary,
-            radius: AppSize.s44.sp,
-            child: Image.asset(
-              AssetsImagesManager.userPic,
+          GestureDetector(
+            onTap: (){},
+            child: CircleAvatar(
+              backgroundImage: const NetworkImage('https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80'),
+              radius: 55,
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 18,
+                  child: SvgPicture.asset(AssetsImagesManager.uploadIc),
+                ),
+              )
             ),
           ),
           SizedBox(

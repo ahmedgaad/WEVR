@@ -1,19 +1,74 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wevr_app">
-    <permission android:name="android.permission.QUERY_ALL_PACKAGES" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="xx.xxxxxx.xxxxxxx.permission.MAPS_RECEIVE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Camera permission: -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Microphone permission: -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Contacts permission: -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
+    <!-- Location permission: -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
+    <!-- Storage permission: -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+    <!-- Phone permission: -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+
+    <!-- SMS permission: -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+
+    <!-- Calendar permission: -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+
+    <!-- Sensors permission: -->
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+
+
+    <!-- Clipboard permission: -->
+    <uses-permission android:name="android.permission.READ_CLIPBOARD_IN_BACKGROUND" />
+    <uses-permission android:name="android.permission.WRITE_CLIPBOARD_IN_BACKGROUND" />
+
+
+    <!-- Bluetooth permission: -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+
+    <!-- Internet permission: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <!-- Fingerprint permission: -->
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+
+    <!-- Phone state permission: -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
+    <!-- Network state permission: -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+    <!-- Installed Apps Access Permission -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
 
     <!-- Provide required visibility configuration for API level 30 and above -->
     <queries>
@@ -33,7 +88,7 @@
             <data android:scheme="tel" />
         </intent>
     </queries>
-    
+
     <application
         android:label="Wevr"
         android:name="${applicationName}"

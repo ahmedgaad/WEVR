@@ -67,6 +67,11 @@ class AssetsImagesManager {
   static const String signOut =
       '${AppConstants.imagePath}/icons/sign-out-icon.svg';
   static const String filters = '${AppConstants.imagePath}/icons/filters.svg';
+  static const String whatsApp = '${AppConstants.imagePath}/icons/whatsapp.svg';
+  static const String email = '${AppConstants.imagePath}/icons/email.svg';
+
+
+
 
   static const String createNewPass =
       '${AppConstants.imagePath}/reset_password/create_new_pass.svg';

@@ -16,10 +16,8 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorManager.exploreBackground,
       appBar: AppBar(
         elevation: AppSize.s0,
-        backgroundColor: ColorManager.exploreBackground,
       ),
       body: Column(
         children: [
