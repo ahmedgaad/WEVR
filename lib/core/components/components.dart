@@ -13,13 +13,13 @@ import '../utils/values_manager.dart';
 Widget defaultButton({
   double width = double.infinity,
   double height = AppSize.s50,
-  Color background = ColorManager.primary,
+  Color? background,
   bool isUpperCase = true,
   double radius = AppSize.s10,
   double borderRadius = AppSize.s3,
   required VoidCallback function,
   required String text,
-  Color textColor = ColorManager.white,
+  Color? textColor,
   Color borderColor = ColorManager.transparent,
 }) =>
     Container(
@@ -33,13 +33,16 @@ Widget defaultButton({
         borderRadius: BorderRadius.circular(
           radius,
         ),
-        color: background,
+        color: background ?? ColorManager.primary,
       ),
       child: MaterialButton(
         onPressed: function,
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
-          style: getMediumStylePoppins(color: textColor, fontSize: AppSize.s20),
+          style: getMediumStylePoppins(
+            color: textColor ?? ColorManager.white,
+            fontSize: AppSize.s20,
+          ),
           textAlign: TextAlign.center,
         ),
       ),
