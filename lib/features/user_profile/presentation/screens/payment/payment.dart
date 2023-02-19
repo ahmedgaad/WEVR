@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:wevr_app/core/components/card_utils.dart';
 import 'package:wevr_app/core/components/components.dart';
 import 'package:wevr_app/core/components/input_formatters.dart';
 import 'package:wevr_app/core/utils/color_manager.dart';
@@ -27,6 +28,28 @@ class _PaymentState extends State<Payment> {
   TextEditingController _cardExpiryController = TextEditingController();
   TextEditingController _cvvController = TextEditingController();
 
+  CardType cardType = CardType.other;
+  void getCardTypeFrmNum() {
+    // With in first 6 digits we can identify the type so
+    if (_cardNumberController.text.length <= 6) {
+      String cardNum = CardUtils.getCleanedNumber(_cardNumberController.text);
+      CardType type = CardUtils.getCardTypeFromNumber(cardNum);
+      if (type != cardType) {
+        setState(() {
+          cardType = type;
+        });
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    _cardNumberController.addListener(() {
+      getCardTypeFrmNum();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,9 +68,8 @@ class _PaymentState extends State<Payment> {
               cardExpiry: _cardExpiryController.text,
               cardHolderName: _cardHolderNameController.text,
               cvv: _cvvController.text,
-              bankName: "Bank Misr",
-              cardType:
-                  CardType.visa, // Optional if you want to override Card Type
+              bankName: "WEVR",
+              cardType: cardType, // Optional if you want to override Card Type
               showBackSide: false,
               frontBackground: CardBackgrounds.black,
               backBackground: CardBackgrounds.white,
@@ -69,6 +91,7 @@ class _PaymentState extends State<Payment> {
                       textEditingController: _cardNumberController,
                       hintText: 'Card Number',
                       prefixIcon: FontAwesomeIcons.creditCard,
+                      suffix: CardUtils.getCardIcon(cardType),
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
                         LengthLimitingTextInputFormatter(16),

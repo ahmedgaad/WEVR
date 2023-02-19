@@ -10,7 +10,8 @@ class PaymentTextFormField extends StatelessWidget {
     required this.hintText,
     required this.prefixIcon,
     required this.onChanged,
-    this.keyboardType,
+    this.keyboardType, 
+    this.suffix,
   });
 
   final TextEditingController textEditingController;
@@ -20,6 +21,7 @@ class PaymentTextFormField extends StatelessWidget {
   final Function(String) onChanged;
   String? Function(String?)? validator;
   final TextInputType? keyboardType;
+  final Widget? suffix;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,6 +44,7 @@ class PaymentTextFormField extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(12.0)),
               borderSide: BorderSide.none),
           hintText: hintText,
+          suffixIcon: suffix,
           prefixIcon: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: Icon(prefixIcon),

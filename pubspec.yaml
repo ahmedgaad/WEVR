@@ -83,6 +83,7 @@ flutter:
     - assets/images/logo/get_started.jpg
     - assets/images/personal_icons/
     - assets/images/change_lang/
+    - assets/images/credit/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

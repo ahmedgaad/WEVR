@@ -127,31 +127,31 @@ class CardUtils {
     Icon? icon;
     switch (cardType) {
       case CardType.masterCard:
-        img = '';
+        img = 'mastercard.png';
         break;
       case CardType.visa:
-        img = '';
+        img = 'visa.png';
         break;
       case CardType.americanExpress:
-        img = '';
+        img = 'AmericanExpress.png';
         break;
       case CardType.dinersClub:
-        img = '';
+        img = 'dinnersclub.png';
         break;
       case CardType.discover:
-        img = '';
+        img = 'discover.png';
         break;
       case CardType.elo:
-        img = '';
+        img = 'elo.png';
         break;
       case CardType.jcb:
-        img = '';
+        img = 'jcb.png';
         break;
       case CardType.maestro:
-        img = '';
+        img = 'maestro.png';
         break;
       case CardType.rupay:
-        img = '';
+        img = 'rupay.png';
         break;
       case CardType.other:
         icon = const Icon(
@@ -171,7 +171,7 @@ class CardUtils {
     Widget? widget;
     if (img.isNotEmpty) {
       widget = Image.asset(
-        '',
+        'assets/images/credit/$img',
         width: 40,
       );
     } else {
