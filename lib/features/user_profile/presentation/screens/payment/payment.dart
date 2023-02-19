@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wevr_app/core/components/components.dart';
-import 'package:wevr_app/core/components/input_formatter.dart';
+import 'package:wevr_app/core/components/input_formatters.dart';
 import 'package:wevr_app/core/utils/color_manager.dart';
 import 'package:wevr_app/core/utils/strings_manager.dart';
 import 'package:wevr_app/core/utils/styles_manager.dart';
@@ -219,5 +219,3 @@ class _PaymentState extends State<Payment> {
     );
   }
 }
-
-// Validating credit card numbers can be done using the Luhn algorithm

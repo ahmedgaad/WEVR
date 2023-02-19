@@ -29,11 +29,11 @@ class ProfileRow extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        BlocBuilder<HomeLayOutCubit, HomeLayOutStates>(
+        BlocBuilder<HomeLayoutCubit, HomeLayOutStates>(
           builder: (context, state) {
             return IconButton(
               onPressed: () {
-                HomeLayOutCubit.get(context).signOut(context);
+                HomeLayoutCubit.get(context).signOut(context);
                 print("Deleted Successfully ****************");
               },
               icon: SvgPicture.asset(

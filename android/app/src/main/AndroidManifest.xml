@@ -3,6 +3,11 @@
 
     <!-- Camera permission: -->
     <uses-permission android:name="android.permission.CAMERA" />
+    
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.microphone" android:required="true" />
+
 
     <!-- Microphone permission: -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />

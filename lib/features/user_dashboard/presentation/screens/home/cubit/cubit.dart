@@ -10,19 +10,16 @@ import '../../homes/homes_view.dart';
 import '../../saved/saved_view.dart';
 import 'states.dart';
 
-class HomeLayOutCubit extends Cubit<HomeLayOutStates> {
+class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
   final LogoutUseCase logoutUseCase;
-  HomeLayOutCubit(
-      {
+  HomeLayoutCubit({
     required this.logoutUseCase,
-  }
-  ) : super(HomeLayOutInitialState());
+  }) : super(HomeLayOutInitialState());
 
-  static HomeLayOutCubit get(context) => BlocProvider.of(context);
+  static HomeLayoutCubit get(context) => BlocProvider.of(context);
 
-  void logout(String token) async{
+  void logout(String token) async {
     var response = await logoutUseCase(token);
-
   }
 
   void signOut(context) {

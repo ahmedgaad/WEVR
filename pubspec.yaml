@@ -47,6 +47,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   get_it: ^7.2.0
   google_maps_flutter: ^2.2.3
+  image_picker: ^0.8.6+2
   internet_connection_checker: ^1.0.0+1
   json_annotation: ^4.8.0
   json_serializable: ^6.6.1

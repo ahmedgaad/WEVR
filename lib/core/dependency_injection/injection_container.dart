@@ -13,11 +13,10 @@ import '../../features/authentication/presentation/screens/register/cubit/cubit.
 GetIt getIt = GetIt.instance;
 void initializeInjector() {
   //Cubit
+  getIt.registerLazySingleton(() => LoginCubit(loginUserUseCase: getIt()));
   getIt.registerLazySingleton(
-          () => LoginCubit(loginUserUseCase: getIt()));
-  getIt.registerLazySingleton(
-          () => RegisterCubit(registerNewUserUseCase: getIt()));
-  getIt.registerLazySingleton(() => HomeLayOutCubit(logoutUseCase: getIt())) ;
+      () => RegisterCubit(registerNewUserUseCase: getIt()));
+  getIt.registerLazySingleton(() => HomeLayoutCubit(logoutUseCase: getIt()));
 
   //Usecase
   getIt.registerLazySingleton(() => RegisterUseCase(getIt()));

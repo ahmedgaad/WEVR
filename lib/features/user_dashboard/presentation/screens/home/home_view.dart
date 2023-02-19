@@ -37,11 +37,11 @@ class _HomeViewState extends State<HomeView> {
     ));
     return BlocProvider(
       create: (BuildContext context) =>
-          HomeLayOutCubit(logoutUseCase: getIt()), //logoutUseCase: getIt()
-      child: BlocConsumer<HomeLayOutCubit, HomeLayOutStates>(
+          HomeLayoutCubit(logoutUseCase: getIt()), //logoutUseCase: getIt()
+      child: BlocConsumer<HomeLayoutCubit, HomeLayOutStates>(
         listener: (context, state) {},
         builder: (context, state) {
-          var cubit = HomeLayOutCubit.get(context);
+          var cubit = HomeLayoutCubit.get(context);
           return Scaffold(
             backgroundColor: ColorManager.exploreBackground,
             // appBar: AppBar(
@@ -94,6 +94,7 @@ class _HomeViewState extends State<HomeView> {
                             children: [
                               SvgPicture.asset(
                                 AssetsImagesManager.explore,
+                                // ignore: deprecated_member_use
                                 color: cubit.currentTap == 0
                                     ? ColorManager.primary
                                     : ColorManager.darkGrey,
@@ -211,33 +212,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             ),
-            // bottomNavigationBar: BottomNavigationBar(
-            //   type: BottomNavigationBarType.fixed,
-            //   currentIndex: cubit.currentIndex,
-            //   selectedItemColor: ColorManager.primary,
-            //   onTap: (index){
-            //     cubit.changeBottom(index);
-            //   },
-            //   items:  [
-            //     BottomNavigationBarItem(
-            //         icon: Icon(Icons.explore),
-            //         label: 'Eplore'
-            //     ),
-            //     BottomNavigationBarItem(
-            //         icon: Icon(Icons.bookmark),
-            //         label: 'Saved'
-            //     ),
-            //     BottomNavigationBarItem(
-            //         icon: Icon(Icons.other_houses_sharp),
-            //         label: 'Homes'
-            //
-            //     ),
-            //     BottomNavigationBarItem(
-            //       label: 'Auction',
-            //       icon: Icon(Icons.h_mobiledata),
-            //     ),
-            //   ],
-            // ),
+
           );
         },
       ),
