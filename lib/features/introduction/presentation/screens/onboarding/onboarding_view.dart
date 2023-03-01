@@ -125,6 +125,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: AppSize.s24.h,
+                    ),
                     SmoothPageIndicator(
                       controller: _pageController,
                       effect: ExpandingDotsEffect(
@@ -273,15 +276,20 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             Text(
               object.title,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: getRegularStylePoppins(
+                fontSize: AppSize.s20,
+              ),
             ),
             SizedBox(
-              height: AppSize.s10.h,
+              height: AppSize.s15.h,
             ),
-            Text(
-              object.subTitle,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyLarge,
+            Container(
+              width: 200,
+              child: Text(
+                object.subTitle,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
             ),
           ],
         ),

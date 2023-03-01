@@ -87,6 +87,7 @@ class AppSize {
   static const double s255 = 255.0;
   static const double s264 = 264.0;
   static const double s281_25 = 281.25;
+  static const double s280 = 280;
   static const double s300 = 300.0;
   static const double s304 = 304.0;
   static const double s320 = 320.0;
@@ -97,6 +98,7 @@ class AppSize {
 
 class AppRadius{
   static const dynamic r2 = 2.0;
+  static const dynamic r1 = 1.0;
   static const dynamic r10 = 10.0;
   static const dynamic r41 = 41.0;
   static const dynamic r93 = 93.0;

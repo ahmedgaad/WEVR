@@ -1,12 +1,11 @@
 import 'constants_manager.dart';
-
 class AssetsImagesManager {
   static const String splashLogoWhite =
       '${AppConstants.imagePath}/logo/white_logo_optimized.svg';
   static const String splashLogoBlack =
       '${AppConstants.imagePath}/logo/splash_logo_black.svg';
   static const String getStartedImage =
-      '${AppConstants.imagePath}/logo/get_started.jpg';
+      '${AppConstants.imagePath}/logo/start.jpg';
   static const String getStartedLogo =
       '${AppConstants.imagePath}/logo/start_logo.svg';
 
@@ -105,4 +104,6 @@ class AssetsImagesManager {
       '${AppConstants.imagePath}/change_lang/change_lang.svg';
   static const String usIc = '${AppConstants.imagePath}/change_lang/us.svg';
   static const String egIc = '${AppConstants.imagePath}/change_lang/eg.svg';
+
+  static const String cardBackground = '${AppConstants.imagePath}/credit/card_background.svg';
 }

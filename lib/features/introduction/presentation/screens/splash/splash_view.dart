@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/constants_manager.dart';
@@ -52,7 +50,7 @@ class _SplashViewState extends State<SplashView> {
         end: Alignment.bottomLeft,
       )),
       child: Padding(
-        padding: EdgeInsets.all(MediaQuery.of(context).size.width / 8),
+        padding: const EdgeInsets.all(86.0),
         child: SvgPicture.asset(
           AssetsImagesManager.splashLogoBlack,
         ),

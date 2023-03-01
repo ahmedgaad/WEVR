@@ -5,7 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../utils/assets_manager.dart';
 import '../utils/color_manager.dart';
 import '../utils/fonts_manager.dart';
-import '../utils/routes_manager.dart';
 import '../utils/strings_manager.dart';
 import '../utils/styles_manager.dart';
 import '../utils/values_manager.dart';
@@ -16,7 +15,7 @@ Widget defaultButton({
   Color? background,
   bool isUpperCase = true,
   double radius = AppSize.s10,
-  double borderRadius = AppSize.s3,
+  double borderRadius = AppSize.s2,
   required VoidCallback function,
   required String text,
   Color? textColor,
@@ -39,9 +38,9 @@ Widget defaultButton({
         onPressed: function,
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
-          style: getMediumStylePoppins(
+          style: getBoldStylePoppins(
             color: textColor ?? ColorManager.white,
-            fontSize: AppSize.s20,
+            fontSize: AppSize.s16,
           ),
           textAlign: TextAlign.center,
         ),
@@ -119,6 +118,7 @@ Widget defaultTextButton({
           decoration: textDecoration,
           color: textColor,
           fontSize: fontSize,
+          fontWeight: FontWeight.bold
         ),
       ),
     );
@@ -190,73 +190,20 @@ Widget emailStack() {
   );
 }
 
-Widget background(
-  context, {
-  required String buttonText,
-  required String questionText,
-  required String route,
-  required double p1,
-  required double p2,
-}) {
-  return Column(children: [
-    Expanded(
-      flex: AppSize.s2.toInt(),
-      child: Container(
-        decoration: const BoxDecoration(
-          color: ColorManager.primary,
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(AppRadius.r93),
-            bottomRight: Radius.circular(AppRadius.r93),
-          ),
-        ),
-      ),
-    ),
-    Expanded(
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(
-              p1,
-            ),
-            child: Text(
-              questionText,
-              style: getRegularStyleInter(
-                color: ColorManager.darkGrey,
-                fontSize: AppSize.s16.sp,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: AppSize.s30.h,
-          ),
-          Padding(
-            padding: EdgeInsets.all(p2),
-            child: defaultTextButton(
-                textColor: ColorManager.primary,
-                text: buttonText,
-                onPressed: () {
-                  navigateTo(context, route);
-                }),
-          ),
-        ],
-      ),
-    ),
-  ]);
-}
+
 
 void showToast({
   required String text,
-  required ToastStates state,
-}) =>
-    Fluttertoast.showToast(
-        msg: text,
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 5,
-        backgroundColor: chooseToastColor(state),
-        textColor: Colors.white,
-        fontSize: 16.0);
+  required ToastStates state, }) {
+  Fluttertoast.showToast(
+      msg: text,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 5,
+      backgroundColor: chooseToastColor(state),
+      textColor: Colors.white,
+      fontSize: 16.0);
+}
 
 //enum
 enum ToastStates { SUCCESS, ERROR, WARNING }
@@ -282,5 +229,15 @@ Widget moneyIcon() {
     width: AppSize.s30,
     height: AppSize.s25,
     child: SvgPicture.asset(AssetsImagesManager.moneyIcon),
+  );
+}
+
+Widget textInputInField (String text) {
+  return Text(
+    text,
+    style: getRegularStylePoppins(
+      color: ColorManager.darkGrey,
+      fontSize: AppSize.s14.sp,
+    ),
   );
 }

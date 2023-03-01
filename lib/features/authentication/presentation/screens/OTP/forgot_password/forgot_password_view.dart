@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../../../core/components/components.dart';
 import '../../../../../../core/utils/assets_manager.dart';
 import '../../../../../../core/utils/color_manager.dart';
@@ -10,6 +9,7 @@ import '../../../../../../core/utils/fonts_manager.dart';
 import '../../../../../../core/utils/strings_manager.dart';
 import '../../../../../../core/utils/styles_manager.dart';
 import '../../../../../../core/utils/values_manager.dart';
+import '../../../widgets/forget_pass/forget_password_top_column.dart';
 import '../reset_via_email/reset_email_view.dart';
 import '../reset_via_phone/reset_phone_view.dart';
 
@@ -32,50 +32,12 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // IconButton(
-            //   onPressed: () {
-            //     navigateTo(context, Routes.loginRoute);
-            //   },
-            //   icon: const Padding(
-            //     padding: EdgeInsets.all(PaddingSize.p25),
-            //     child: Icon(
-            //       Icons.arrow_back_ios,
-            //       size: AppSize.s24,
-            //     ),
-            //   ),
-            // ),
-            Align(
-              child: SvgPicture.asset(
-                AssetsImagesManager.forgotPass,
-                fit: BoxFit.scaleDown,
-                width: AppSize.s304.w,
-                height: AppSize.s264.h,
-                alignment: Alignment.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(
-                start: PaddingSize.p25,
-                top: PaddingSize.p25,
-              ),
-              child: Text(
-                AppStrings.forgotPass.tr(),
-                style: getBoldStylePoppins(
-                    color: ColorManager.black, fontSize: FontSize.s24.sp),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(
-                start: PaddingSize.p25,
-              ),
-              child: Text(
-                AppStrings.subTitleForgotPass.tr(),
-                style: getRegularStyleInter(
-                  color: ColorManager.darkGrey,
-                  fontSize: FontSize.s20.sp,
-                ),
-              ),
+             ForgetPasswordTopColumn(
+              imagePath: AssetsImagesManager.forgotPass,
+              title: AppStrings.forgotPass.tr(),
+              subTitle: AppStrings.subTitleForgotPass.tr(),
             ),
             //via phone number
             Padding(

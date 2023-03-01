@@ -11,6 +11,7 @@ import '../../features/authentication/presentation/screens/login/cubit/cubit.dar
 import '../../features/authentication/presentation/screens/register/cubit/cubit.dart';
 
 GetIt getIt = GetIt.instance;
+
 void initializeInjector() {
   //Cubit
   getIt.registerLazySingleton(() => LoginCubit(loginUserUseCase: getIt()));

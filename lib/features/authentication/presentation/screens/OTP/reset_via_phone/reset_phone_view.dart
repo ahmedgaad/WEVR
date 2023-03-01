@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wevr_app/features/authentication/presentation/widgets/forget_pass/forget_password_top_column.dart';
 import '../../../../../../core/components/components.dart';
 import '../../../../../../core/utils/assets_manager.dart';
 import '../../../../../../core/utils/color_manager.dart';
@@ -11,6 +12,7 @@ import '../../../../../../core/utils/values_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../widgets/forget_pass/via_phone_or_mail.dart';
 import '../create_new_password/create_new_password.dart';
 
 class ResetPhoneView extends StatefulWidget {
@@ -28,16 +30,6 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
       appBar: AppBar(
         backgroundColor: ColorManager.white,
         elevation: AppSize.s0,
-        // leading: IconButton(
-        //   onPressed: () {},
-        //   icon: const Padding(
-        //     padding: EdgeInsets.all(PaddingSize.p20),
-        //     child: Icon(
-        //       Icons.arrow_back_ios,
-        //       size: AppSize.s24,
-        //     ),
-        //   ),
-        // ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -46,52 +38,10 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // IconButton(
-                //   onPressed: () {
-                //     Navigator.pushReplacementNamed(context, Routes.forgetPasswordRoute);
-                //   },
-                //   icon: const Padding(
-                //     padding: EdgeInsets.all(PaddingSize.p25),
-                //     child: Icon(
-                //       Icons.arrow_back_ios,
-                //       size: AppSize.s24,
-                //     ),
-                //   ),
-                // ),
-                Align(
-                  child: SvgPicture.asset(
-                    AssetsImagesManager.mobileReset,
-                    fit: BoxFit.scaleDown,
-                    width: AppSize.s128.w,
-                    height: AppSize.s224.h,
-                    alignment: Alignment.center,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.only(
-                    start: PaddingSize.p25.w,
-                    top: PaddingSize.p25.h,
-                  ),
-                  child: Text(
-                    AppStrings.recoveryCode.tr(),
-                    style: getBoldStylePoppins(
-                        color: ColorManager.black, fontSize: FontSize.s24.sp),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.only(
-                    start: PaddingSize.p25.w,
-                  ),
-                  child: Text(
-                    AppStrings.subTitleRecoveryCode.tr(),
-                    style: getRegularStyleInter(
-                      color: ColorManager.darkGrey,
-                      fontSize: FontSize.s20.sp,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: AppSize.s24,
+                ForgetPasswordTopColumn(
+                    imagePath: AssetsImagesManager.mobileReset,
+                    title: AppStrings.recoveryCode.tr(),
+                    subTitle: AppStrings.subTitleRecoveryCode.tr(),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -240,7 +190,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                     alignment: Alignment.center,
                     child: defaultButton(
                       function: () {
-                        navigatePush(context, CreateNewPassword());
+                        navigatePush(context, const CreateNewPassword());
                       },
                       text: AppStrings.submit.tr(),
                       width: AppSize.s200.w,

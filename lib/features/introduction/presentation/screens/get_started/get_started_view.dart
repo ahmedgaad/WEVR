@@ -38,7 +38,7 @@ class _GetStartedViewState extends State<GetStartedView> {
             )),
           ),
           Padding(
-            padding: EdgeInsets.all(PaddingSize.p40.w),
+            padding: EdgeInsets.all(PaddingSize.p20.w),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(AppRadius.r41),
               child: SingleChildScrollView(
@@ -47,8 +47,8 @@ class _GetStartedViewState extends State<GetStartedView> {
                   children: [
                     BackdropFilter(
                       filter: ImageFilter.blur(
-                        sigmaX: AppSize.s20.w,
-                        sigmaY: AppSize.s20.h,
+                        sigmaX: AppSize.s40.w,
+                        sigmaY: AppSize.s40.h,
                       ),
                       child: Container(),
                     ),
@@ -57,7 +57,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: AppSize.s44.h,
+                          height: AppSize.s50.h,
                         ),
                         Text(
                           AppStrings.welcomeTo.tr(),
@@ -72,7 +72,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                           ),
                         ),
                         SizedBox(
-                          height: AppSize.s44.h,
+                          height: AppSize.s128.h,
                         ),
                         Padding(
                           padding: EdgeInsets.all(PaddingSize.p20.w),
@@ -104,24 +104,13 @@ class _GetStartedViewState extends State<GetStartedView> {
                               ),
                               defaultTextButton(
                                 textColor: ColorManager.black,
-                                fontSize: FontSize.s18.sp,
-                                textDecoration: TextDecoration.underline,
+                                fontSize: FontSize.s14.sp,
+                                // textDecoration: TextDecoration.underline,
                                 text: AppStrings.asGuest.tr(),
                                 onPressed: () {
                                   navigatePush(context, const HomeView());
                                 },
                               ),
-                              // TextButton(
-                              //     onPressed: (){},
-                              //     child: const Text(
-                              //       AppStrings.asGuest,
-                              //       style: TextStyle(
-                              //         decoration: TextDecoration.underline,
-                              //         color: ColorManager.black,
-                              //         fontSize: AppSize.s16,
-                              //       ),
-                              //     ),
-                              // ),
                             ],
                           ),
                         ),
