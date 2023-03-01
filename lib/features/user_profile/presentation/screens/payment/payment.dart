@@ -64,6 +64,7 @@ class _PaymentState extends State<Payment> {
         child: Column(
           children: [
             CreditCard(
+              frontTextColor: ColorManager.black,
               cardNumber: _cardNumberController.text,
               cardExpiry: _cardExpiryController.text,
               cardHolderName: _cardHolderNameController.text,
@@ -71,9 +72,9 @@ class _PaymentState extends State<Payment> {
               bankName: "WEVR",
               cardType: cardType, // Optional if you want to override Card Type
               showBackSide: false,
-              frontBackground: CardBackgrounds.black,
+              frontBackground: gradientBackground(),
               backBackground: CardBackgrounds.white,
-              showShadow: true,
+              showShadow: false,
               textExpDate: 'Exp. Date',
               textName: 'Name',
               textExpiry: 'MM/YY',
@@ -216,7 +217,7 @@ class _PaymentState extends State<Payment> {
                           child: defaultButton(
                             function: () {},
                             text: 'Save',
-                            background: ColorManager.black,
+                            background: ColorManager.primary,
                           ),
                         ),
                         SizedBox(
@@ -227,7 +228,7 @@ class _PaymentState extends State<Payment> {
                           child: defaultButton(
                             function: () {},
                             text: 'Cancel',
-                            background: ColorManager.black,
+                            background: ColorManager.error,
                           ),
                         )
                       ],
@@ -239,6 +240,20 @@ class _PaymentState extends State<Payment> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget gradientBackground(){
+    return Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              ColorManager.lightPrimary,
+              ColorManager.white,
+            ],
+            begin: Alignment.bottomRight,
+            end: Alignment.topLeft,
+          )),
     );
   }
 }

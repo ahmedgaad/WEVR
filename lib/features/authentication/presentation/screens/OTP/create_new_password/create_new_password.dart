@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:wevr_app/features/authentication/presentation/widgets/forget_pass/forget_password_top_column.dart';
 import '../../../../../../core/components/components.dart';
 import '../../../../../../core/utils/assets_manager.dart';
 import '../../../../../../core/utils/color_manager.dart';
@@ -33,36 +34,10 @@ class CreateNewPassword extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Align(
-                    child: SvgPicture.asset(
-                      AssetsImagesManager.createNewPass,
-                      width: AppSize.s192.w,
-                      height: AppSize.s192.h,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.only(
-                      start: PaddingSize.p25.w,
-                      top: PaddingSize.p40.h,
-                    ),
-                    child: Text(
-                      AppStrings.createNewPasswordTitle.tr(),
-                      style: getBoldStylePoppins(
-                        color: ColorManager.black,
-                        fontSize: AppSize.s24.sp,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.only(start: PaddingSize.p25.w),
-                    child: Text(
-                      AppStrings.createNewPasswordSubTitle.tr(),
-                      style: getRegularStyleInter(
-                        color: ColorManager.darkGrey,
-                        fontSize: AppSize.s20.sp,
-                      ),
-                    ),
+                  ForgetPasswordTopColumn(
+                      imagePath: AssetsImagesManager.createNewPass,
+                      title: AppStrings.createNewPasswordTitle.tr(),
+                      subTitle: AppStrings.createNewPasswordSubTitle.tr(),
                   ),
                   Form(
                     key: cubit.formKey,
@@ -81,7 +56,7 @@ class CreateNewPassword extends StatelessWidget {
                               AppStrings.password.tr(),
                               style: getRegularStyleInter(
                                 color: ColorManager.darkGrey,
-                                fontSize: AppSize.s20.sp,
+                                fontSize: AppSize.s16.sp,
                               ),
                             ),
                             isPassword: cubit.isPassword,
@@ -100,7 +75,7 @@ class CreateNewPassword extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height / 23,
+                          height: MediaQuery.of(context).size.height / 30,
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.only(
@@ -129,7 +104,7 @@ class CreateNewPassword extends StatelessWidget {
                                   AppStrings.confirmPassword.tr(),
                                   style: getRegularStyleInter(
                                     color: ColorManager.darkGrey,
-                                    fontSize: AppSize.s20.sp,
+                                    fontSize: AppSize.s16.sp,
                                   ),
                                 ),
                                 isPassword: cubit.isPassword,
@@ -174,7 +149,8 @@ class CreateNewPassword extends StatelessWidget {
                             text: AppStrings.resetPassword.tr(),
                             isUpperCase: false,
                             width: 250.w,
-                            height: 60.h),
+                            height: 50.h,
+                        ),
                       ],
                     ),
                   )

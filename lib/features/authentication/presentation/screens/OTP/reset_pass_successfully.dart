@@ -1,15 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:wevr_app/core/components/success_screen.dart';
 import '../../../../../core/components/components.dart';
-import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
-import '../../../../../core/utils/fonts_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
-import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 
 class ResetSuccessfully extends StatelessWidget {
@@ -30,36 +26,9 @@ class ResetSuccessfully extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(
-                child: SvgPicture.asset(
-                  AssetsImagesManager.success,
-                  width: AppSize.s192.w,
-                  height: AppSize.s192.h,
-                  fit: BoxFit.scaleDown,
-                ),
-              ),
-              SizedBox(
-                height: AppSize.s44.h,
-              ),
-              Text(
-                AppStrings.resetSuccessfullyTitle.tr(),
-                style: getBoldStylePoppins(
-                  color: ColorManager.black,
-                  fontSize: FontSize.s24.sp,
-                ),
-              ),
-              SizedBox(
-                height: AppSize.s44.h,
-              ),
-              Text(
-                AppStrings.resetSuccessfullySubTitle.tr(),
-                style: getRegularStyleInter(
-                  color: ColorManager.darkGrey,
-                  fontSize: FontSize.s20.sp,
-                ),
-              ),
-              SizedBox(
-                height: AppSize.s100.h,
+              SuccessScreen(
+                title: AppStrings.resetSuccessfullyTitle.tr(),
+                subTitle: AppStrings.resetSuccessfullySubTitle.tr(),
               ),
               defaultButton(
                 width: AppSize.s281_25.w,
