@@ -1,9 +1,12 @@
 // ignore_for_file: avoid_print
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wevr_app/core/helpers/cache_helper/cache_helper.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/OTP/forgot_password/forgot_password_view.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login_register_background.dart';
+
 import '../../../../../core/components/components.dart';
 import '../../../../../core/dependency_injection/injection_container.dart';
 import '../../../../../core/utils/color_manager.dart';
@@ -15,8 +18,6 @@ import '../../../data/models/login_model/login_model.dart';
 import '../../widgets/login/form_column.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);

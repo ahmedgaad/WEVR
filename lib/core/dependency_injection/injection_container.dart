@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import '../../features/user_dashboard/presentation/screens/home/cubit/cubit.dart';
+
 import '../../features/authentication/data/data_sources/remote_data_source/web_services.dart';
 import '../../features/authentication/data/repository_implementation/repository_impl.dart';
 import '../../features/authentication/domain/repository/users_repository.dart';
@@ -9,6 +9,7 @@ import '../../features/authentication/domain/usecases/logout.dart';
 import '../../features/authentication/domain/usecases/register.dart';
 import '../../features/authentication/presentation/screens/login/cubit/cubit.dart';
 import '../../features/authentication/presentation/screens/register/cubit/cubit.dart';
+import '../../features/user_dashboard/presentation/screens/home/cubit/cubit.dart';
 
 GetIt getIt = GetIt.instance;
 

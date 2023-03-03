@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wevr_app/core/utils/routes_manager.dart';
+
 import '../../../../../core/utils/assets_manager.dart';
-import '../../../../../core/utils/color_manager.dart';
+import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 import '../../widgets/profile/build_divider.dart';

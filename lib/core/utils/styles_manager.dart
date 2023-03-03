@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wevr_app/core/utils/color_manager.dart';
 
+import 'color_manager.dart';
 import 'fonts_manager.dart';
 
 TextStyle _getTextStyleInter(

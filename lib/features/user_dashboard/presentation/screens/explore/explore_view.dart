@@ -1,16 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:wevr_app/core/components/components.dart';
 import 'package:wevr_app/core/utils/color_manager.dart';
 import 'package:wevr_app/core/utils/strings_manager.dart';
 import 'package:wevr_app/core/utils/styles_manager.dart';
 import 'package:wevr_app/core/utils/values_manager.dart';
+
 import '../../widgets/explore/carousal_slider.dart';
 import '../../widgets/explore/profile_row.dart';
 import '../search/search_view.dart';

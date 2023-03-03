@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:wevr_app/core/utils/color_manager.dart';
-import 'package:wevr_app/core/utils/styles_manager.dart';
+
+import '../../../../../core/utils/color_manager.dart';
+import '../../../../../core/utils/styles_manager.dart';
 
 class BuildListTileItem extends StatelessWidget {
   const BuildListTileItem({
