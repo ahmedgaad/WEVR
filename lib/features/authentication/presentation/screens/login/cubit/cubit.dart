@@ -9,7 +9,7 @@ import 'package:wevr_app/core/errors/network_exceptions.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/login/cubit/states.dart';
 
 import '../../../../data/models/login_model/login_model.dart';
-import '../../../../domain/usecases/login.dart';
+import '../../../../domain/use_cases/login.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   final LoginUseCase loginUserUseCase;
@@ -51,16 +51,16 @@ class LoginCubit extends Cubit<LoginStates> {
   }
 
 
-  void userLogin(LoginModel loginModel) async{
-    var response = await loginUserUseCase(loginModel);
-    response.when(
-        success: (LoginModel loginModel){
-          emit(LoginSuccessState(loginModel));
-        },
-        failure: (NetworkExceptions networkExceptions){
-          emit(LoginErrorState(networkExceptions));
-        });
-  }
+  // void userLogin(LoginModel loginModel) async{
+  //   var response = await loginUserUseCase(loginModel);
+  //   response.when(
+  //       success: (LoginModel loginModel){
+  //         emit(LoginSuccessState(loginModel));
+  //       },
+  //       failure: (NetworkExceptions networkExceptions){
+  //         emit(LoginErrorState(networkExceptions));
+  //       });
+  // }
 
   IconData suffix = Icons.visibility;
   bool isPassword = true;

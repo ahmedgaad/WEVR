@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wevr_app/core/dependency_injection/injection_container.dart';
-import 'package:wevr_app/core/helpers/cache_helper/cache_helper.dart';
+import 'package:wevr_app/core/helpers/cache_helper.dart';
 import 'package:wevr_app/core/utils/constants_manager.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/register/register_successfully.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login/form_column.dart';
@@ -43,20 +43,20 @@ class _RegisterViewState extends State<RegisterView> {
           RegisterCubit(registerNewUserUseCase: getIt()),
       child: BlocConsumer<RegisterCubit, RegisterStates>(
         listener: (context, state) {
-          if (state is RegisterSuccessState) {
-            if (state.registerModel.status != null) {
-              print(state.registerModel.message);
-              print(state.registerModel.token);
+          // if (state is RegisterSuccessState) {
+          //   if (state.registerModel.status != null) {
+          //     print(state.registerModel.message);
+          //     print(state.registerModel.token);
 
-              CacheHelper.saveData(
-                      key: 'token', value: state.registerModel.token)
-                  .then((value) {
-                AppConstants.token = state.registerModel.token!;
-                Navigator.pushReplacementNamed(
-                    context, Routes.registerSuccessRoute);
-              });
-            }
-          }
+          //     CacheHelper.saveData(
+          //             key: 'token', value: state.registerModel.token)
+          //         .then((value) {
+          //       ConstantsManager.token = state.registerModel.token!;
+          //       Navigator.pushReplacementNamed(
+          //           context, Routes.registerSuccessRoute);
+          //     });
+          //   }
+          // }
         },
         builder: (context, state) {
           var cubit = RegisterCubit.get(context);
@@ -107,13 +107,14 @@ class _RegisterViewState extends State<RegisterView> {
                                               AppStrings.registerWord.tr(),
                                         ),
                                         const RegisterForm(),
-                                        const SizedBox(height: 15,),
+                                        const SizedBox(
+                                          height: 15,
+                                        ),
                                         Center(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: ConditionalBuilder(
-                                              condition: state
-                                                  is! RegisterLoadingState,
+                                              condition: state != null,
                                               builder: (BuildContext context) {
                                                 return defaultButton(
                                                   function: () async {
@@ -140,7 +141,8 @@ class _RegisterViewState extends State<RegisterView> {
                                                     //         .getDeviceInfo(),
                                                     //   ));
                                                     // }
-                                                    navigatePush(context, const RegisterSuccessfully());
+                                                    navigatePush(context,
+                                                        const RegisterSuccessfully());
                                                   },
                                                   text: AppStrings.signUp.tr(),
                                                   width: AppSize.s200.w,

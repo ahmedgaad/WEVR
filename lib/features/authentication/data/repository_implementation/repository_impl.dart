@@ -4,9 +4,9 @@ import '../data_sources/remote_data_source/web_services.dart';
 import '../models/login_model/login_model.dart';
 import '../models/register_model/register_model.dart';
 
-import '../../domain/repository/users_repository.dart';
+import '../../domain/repository/auth_repository.dart';
 
-class UsersRepositoryImpl implements UsersRepository {
+class UsersRepositoryImpl implements AuthRepository {
   final WebService webService;
 
   UsersRepositoryImpl(this.webService);
@@ -32,7 +32,7 @@ class UsersRepositoryImpl implements UsersRepository {
   }
 
   @override
-  Future<ApiResult<dynamic>> logout(String token) async{
+  Future<ApiResult<dynamic>> logout(String token) async {
     try {
       var response = await webService.logout(token);
       return ApiResult.success(response);
@@ -40,5 +40,4 @@ class UsersRepositoryImpl implements UsersRepository {
       return ApiResult.failure(NetworkExceptions.getDioException(error));
     }
   }
-  
 }

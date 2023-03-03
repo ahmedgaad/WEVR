@@ -1,12 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-
-import '../../features/authentication/data/data_sources/remote_data_source/web_services.dart';
+import 'package:wevr_app/features/authentication/domain/use_cases/register_usecase.dart';
 import '../../features/authentication/data/repository_implementation/repository_impl.dart';
-import '../../features/authentication/domain/repository/users_repository.dart';
-import '../../features/authentication/domain/usecases/login.dart';
-import '../../features/authentication/domain/usecases/logout.dart';
-import '../../features/authentication/domain/usecases/register.dart';
+import '../../features/authentication/domain/repository/auth_repository.dart';
 import '../../features/authentication/presentation/screens/login/cubit/cubit.dart';
 import '../../features/authentication/presentation/screens/register/cubit/cubit.dart';
 import '../../features/user_dashboard/presentation/screens/home/cubit/cubit.dart';
@@ -22,34 +18,32 @@ void initializeInjector() {
 
   //Usecase
   getIt.registerLazySingleton(() => RegisterUseCase(getIt()));
-  getIt.registerLazySingleton(() => LoginUseCase(getIt()));
-  getIt.registerLazySingleton(() => LogoutUseCase(getIt()));
 
   //Repository
-  getIt.registerLazySingleton<UsersRepository>(
+  getIt.registerLazySingleton<AuthRepository>(
       () => UsersRepositoryImpl(getIt()));
 
   //WebServices
-  getIt
-      .registerLazySingleton<WebService>(() => WebService(createAndSetupDio()));
+  // getIt
+  //     .registerLazySingleton<WebService>(() => WebService(createAndSetupDio()));
 
   //Shared Pref
 }
 
-Dio createAndSetupDio() {
-  Dio dio = Dio();
+// Dio createAndSetupDio() {
+//   Dio dio = Dio();
 
-  dio
-    ..options.connectTimeout = 20 * 100
-    ..options.receiveTimeout = 20 * 100;
+//   dio
+//     ..options.connectTimeout = 20 * 100
+//     ..options.receiveTimeout = 20 * 100;
 
-  dio.interceptors.add(LogInterceptor(
-      responseBody: true,
-      requestBody: true,
-      responseHeader: false,
-      requestHeader: false,
-      request: true,
-      error: true));
+//   dio.interceptors.add(LogInterceptor(
+//       responseBody: true,
+//       requestBody: true,
+//       responseHeader: false,
+//       requestHeader: false,
+//       request: true,
+//       error: true));
 
-  return dio;
-}
+//   return dio;
+// }

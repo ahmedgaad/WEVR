@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../../../../../core/helpers/cache_helper/cache_helper.dart';
+import '../../../../../core/helpers/cache_helper.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/constants_manager.dart';
@@ -157,8 +157,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                   onTap: () {
                                     _pageController.previousPage(
                                       duration: const Duration(
-                                          seconds:
-                                              AppConstants.previousPageTime),
+                                          seconds: ConstantsManager
+                                              .previousPageTime),
                                       curve: Curves.fastLinearToSlowEaseIn,
                                     );
                                   },
@@ -205,7 +205,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                 }
                                 _pageController.nextPage(
                                   duration: const Duration(
-                                    seconds: AppConstants.nextPageTime,
+                                    seconds: ConstantsManager.nextPageTime,
                                   ),
                                   curve: Curves.fastLinearToSlowEaseIn,
                                 );

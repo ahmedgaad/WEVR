@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wevr_app/core/errors/network_exceptions.dart';
   import '../../../../data/models/register_model/register_model.dart';
-import '../../../../domain/usecases/register.dart';
+import '../../../../domain/use_cases/register.dart';
 import 'states.dart';
 import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -48,16 +48,16 @@ class RegisterCubit extends Cubit<RegisterStates> {
     }
   }
 
-  void userRegister(RegisterModel registerModel) async{
-    var response = await registerNewUserUseCase(registerModel);
-    response.when(
-        success: (RegisterModel registerModel){
-          emit(RegisterSuccessState(registerModel));
-        },
-        failure: (NetworkExceptions networkExceptions){
-          emit(RegisterErrorState(networkExceptions));
-        });
-  }
+  // void userRegister(RegisterModel registerModel) async{
+  //   var response = await registerNewUserUseCase(registerModel);
+  //   response.when(
+  //       success: (RegisterModel registerModel){
+  //         emit(RegisterSuccessState(registerModel));
+  //       },
+  //       failure: (NetworkExceptions networkExceptions){
+  //         emit(RegisterErrorState(networkExceptions));
+  //       });
+  // }
 
   IconData suffix = Icons.visibility;
   bool isPassword = true;

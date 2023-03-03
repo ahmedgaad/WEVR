@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wevr_app/core/helpers/cache_helper/cache_helper.dart';
+import 'package:wevr_app/core/helpers/cache_helper.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/OTP/forgot_password/forgot_password_view.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login_register_background.dart';
 
@@ -27,18 +27,18 @@ class LoginView extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => LoginCubit(loginUserUseCase: getIt()),
       child: BlocConsumer<LoginCubit, LoginStates>(listener: (context, state) {
-        if (state is LoginSuccessState) {
-          if (state.loginModel.status != null) {
-            print(state.loginModel.message);
-            print(state.loginModel.token);
+        // if (state is LoginSuccessState) {
+        //   if (state.loginModel.status != null) {
+        //     print(state.loginModel.message);
+        //     print(state.loginModel.token);
 
-            CacheHelper.saveData(key: 'token', value: state.loginModel.token)
-                .then((value) {
-              AppConstants.token = state.loginModel.token!;
-              Navigator.pushReplacementNamed(context, Routes.homeRoute);
-            });
-          }
-        }
+        //     CacheHelper.saveData(key: 'token', value: state.loginModel.token)
+        //         .then((value) {
+        //       ConstantsManager.token = state.loginModel.token!;
+        //       Navigator.pushReplacementNamed(context, Routes.homeRoute);
+        //     });
+        //   }
+        // }
       }, builder: (context, state) {
         var cubit = LoginCubit.get(context);
         return Scaffold(
@@ -135,10 +135,10 @@ class LoginView extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Padding(
-                                        padding:
-                                            const EdgeInsetsDirectional.symmetric(
-                                                horizontal: PaddingSize.p20,
-                                            ),
+                                        padding: const EdgeInsetsDirectional
+                                            .symmetric(
+                                          horizontal: PaddingSize.p20,
+                                        ),
                                         child: defaultTextButton(
                                           text: AppStrings.forgetPassword.tr(),
                                           onPressed: () {
@@ -162,13 +162,13 @@ class LoginView extends StatelessWidget {
                                             .validate()) {
                                           if (cubit.passFieldKey.currentState!
                                               .validate()) {
-                                            cubit.userLogin(LoginModel(
-                                              email: cubit.emailController.text,
-                                              password:
-                                                  cubit.passwordController.text,
-                                              deviceName:
-                                                  await cubit.getDeviceInfo(),
-                                            ));
+                                            // cubit.userLogin(LoginModel(
+                                            //   email: cubit.emailController.text,
+                                            //   password:
+                                            //       cubit.passwordController.text,
+                                            //   deviceName:
+                                            //       await cubit.getDeviceInfo(),
+                                            // ));
                                           }
                                         }
                                       },

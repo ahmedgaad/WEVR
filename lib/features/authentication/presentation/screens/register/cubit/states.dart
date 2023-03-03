@@ -11,13 +11,13 @@ class ChangeRegisterPasswordVisibilityState extends RegisterStates{}
 class ChangeConfirmPasswordVisibilityState extends RegisterStates{}
 
 
-class RegisterLoadingState extends RegisterStates{}
-class RegisterSuccessState extends RegisterStates{
-  final RegisterModel registerModel;
-  RegisterSuccessState(this.registerModel);
-}
-class RegisterErrorState extends RegisterStates{
-  final NetworkExceptions networkExceptions;
+// class RegisterLoadingState extends RegisterStates{}
+// class RegisterSuccessState extends RegisterStates{
+//   final RegisterModel registerModel;
+//   RegisterSuccessState(this.registerModel);
+// }
+// class RegisterErrorState extends RegisterStates{
+//   final NetworkExceptions networkExceptions;
 
-  RegisterErrorState(this.networkExceptions);
-}
+//   RegisterErrorState(this.networkExceptions);
+// }

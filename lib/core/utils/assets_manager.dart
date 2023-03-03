@@ -1,109 +1,118 @@
 import 'constants_manager.dart';
+
 class AssetsImagesManager {
   static const String splashLogoWhite =
-      '${AppConstants.imagePath}/logo/white_logo_optimized.svg';
+      '${ConstantsManager.imagePath}/logo/white_logo_optimized.svg';
   static const String splashLogoBlack =
-      '${AppConstants.imagePath}/logo/splash_logo_black.svg';
+      '${ConstantsManager.imagePath}/logo/splash_logo_black.svg';
   static const String getStartedImage =
-      '${AppConstants.imagePath}/logo/start.jpg';
+      '${ConstantsManager.imagePath}/logo/start.jpg';
   static const String getStartedLogo =
-      '${AppConstants.imagePath}/logo/start_logo.svg';
+      '${ConstantsManager.imagePath}/logo/start_logo.svg';
 
-  static const String userPic = '${AppConstants.imagePath}/home/userPic.png';
+  static const String userPic =
+      '${ConstantsManager.imagePath}/home/userPic.png';
   static const String virtualButton =
-      '${AppConstants.imagePath}/home/virtualTour.svg';
+      '${ConstantsManager.imagePath}/home/virtualTour.svg';
   static const String moneyIcon =
-      '${AppConstants.imagePath}/home/money_icon.svg';
-  static const String bathrooms = '${AppConstants.imagePath}/home/bathroom.svg';
-  static const String bedrooms = '${AppConstants.imagePath}/home/bedRooms.svg';
-  static const String floors = '${AppConstants.imagePath}/home/floors.svg';
+      '${ConstantsManager.imagePath}/home/money_icon.svg';
+  static const String bathrooms =
+      '${ConstantsManager.imagePath}/home/bathroom.svg';
+  static const String bedrooms =
+      '${ConstantsManager.imagePath}/home/bedRooms.svg';
+  static const String floors = '${ConstantsManager.imagePath}/home/floors.svg';
   static const String livingRooms =
-      '${AppConstants.imagePath}/home/living_rooms.svg';
-  static const String parking = '${AppConstants.imagePath}/home/parking.svg';
+      '${ConstantsManager.imagePath}/home/living_rooms.svg';
+  static const String parking =
+      '${ConstantsManager.imagePath}/home/parking.svg';
   static const String squareMeter =
-      '${AppConstants.imagePath}/home/squaremeter.svg';
+      '${ConstantsManager.imagePath}/home/squaremeter.svg';
   static const String apartment =
-      '${AppConstants.imagePath}/home/apartment.png';
+      '${ConstantsManager.imagePath}/home/apartment.png';
   static const String apartment2 =
-      '${AppConstants.imagePath}/home/apartment2.png';
-  static const String slider = '${AppConstants.imagePath}/home/slider.png';
+      '${ConstantsManager.imagePath}/home/apartment2.png';
+  static const String slider = '${ConstantsManager.imagePath}/home/slider.png';
 
   static const String onBoarding1 =
-      '${AppConstants.imagePath}/onboarding/onboarding1.svg';
+      '${ConstantsManager.imagePath}/onboarding/onboarding1.svg';
   static const String onBoarding2 =
-      '${AppConstants.imagePath}/onboarding/onboarding2.svg';
+      '${ConstantsManager.imagePath}/onboarding/onboarding2.svg';
   static const String onBoarding3 =
-      '${AppConstants.imagePath}/onboarding/onboarding3.svg';
+      '${ConstantsManager.imagePath}/onboarding/onboarding3.svg';
   static const String onBoarding4 =
-      '${AppConstants.imagePath}/onboarding/onboarding4.svg';
+      '${ConstantsManager.imagePath}/onboarding/onboarding4.svg';
 
   static const String appleIc =
-      '${AppConstants.imagePath}/icons/apple_logo.svg';
+      '${ConstantsManager.imagePath}/icons/apple_logo.svg';
   static const String backArrowIc =
-      '${AppConstants.imagePath}/icons/back_arrow_ic.svg';
-  static const String checkIc = '${AppConstants.imagePath}/icons/check_ic.svg';
-  static const String eyeIc = '${AppConstants.imagePath}/icons/eye_ic.svg';
+      '${ConstantsManager.imagePath}/icons/back_arrow_ic.svg';
+  static const String checkIc =
+      '${ConstantsManager.imagePath}/icons/check_ic.svg';
+  static const String eyeIc = '${ConstantsManager.imagePath}/icons/eye_ic.svg';
   static const String eyeHiddenIc =
-      '${AppConstants.imagePath}/icons/eye_hidden_ic.svg';
+      '${ConstantsManager.imagePath}/icons/eye_hidden_ic.svg';
   static const String facebookLogoIc =
-      '${AppConstants.imagePath}/icons/facebook_ic.svg';
+      '${ConstantsManager.imagePath}/icons/facebook_ic.svg';
   static const String googleIc =
-      '${AppConstants.imagePath}/icons/google_ic.svg';
-  static const String infoIc = '${AppConstants.imagePath}/icons/info_ic.svg';
+      '${ConstantsManager.imagePath}/icons/google_ic.svg';
+  static const String infoIc =
+      '${ConstantsManager.imagePath}/icons/info_ic.svg';
   static const String rightArrowIc =
-      '${AppConstants.imagePath}/icons/right_arrow_ic.svg';
+      '${ConstantsManager.imagePath}/icons/right_arrow_ic.svg';
   static const String leftArrowIc =
-      '${AppConstants.imagePath}/icons/left_arrow_ic.svg';
+      '${ConstantsManager.imagePath}/icons/left_arrow_ic.svg';
   static const String phoneIc =
-      '${AppConstants.imagePath}/icons/phone_icon.svg';
+      '${ConstantsManager.imagePath}/icons/phone_icon.svg';
   static const String emailIc =
-      '${AppConstants.imagePath}/icons/email_icon.svg';
+      '${ConstantsManager.imagePath}/icons/email_icon.svg';
   static const String uploadIc =
-      '${AppConstants.imagePath}/icons/upload_ic.svg';
-  static const String explore = '${AppConstants.imagePath}/icons/explore.svg';
-  static const String auction = '${AppConstants.imagePath}/icons/auction.svg';
-  static const String map = '${AppConstants.imagePath}/icons/map.svg';
+      '${ConstantsManager.imagePath}/icons/upload_ic.svg';
+  static const String explore =
+      '${ConstantsManager.imagePath}/icons/explore.svg';
+  static const String auction =
+      '${ConstantsManager.imagePath}/icons/auction.svg';
+  static const String map = '${ConstantsManager.imagePath}/icons/map.svg';
   static const String signOut =
-      '${AppConstants.imagePath}/icons/sign-out-icon.svg';
-  static const String filters = '${AppConstants.imagePath}/icons/filters.svg';
-  static const String whatsApp = '${AppConstants.imagePath}/icons/whatsapp.svg';
-  static const String email = '${AppConstants.imagePath}/icons/email.svg';
-
-
-
+      '${ConstantsManager.imagePath}/icons/sign-out-icon.svg';
+  static const String filters =
+      '${ConstantsManager.imagePath}/icons/filters.svg';
+  static const String whatsApp =
+      '${ConstantsManager.imagePath}/icons/whatsapp.svg';
+  static const String email = '${ConstantsManager.imagePath}/icons/email.svg';
 
   static const String createNewPass =
-      '${AppConstants.imagePath}/reset_password/create_new_pass.svg';
+      '${ConstantsManager.imagePath}/reset_password/create_new_pass.svg';
   static const String emailReset =
-      '${AppConstants.imagePath}/reset_password/email_reset.svg';
+      '${ConstantsManager.imagePath}/reset_password/email_reset.svg';
   static const String mobileReset =
-      '${AppConstants.imagePath}/reset_password/mobile_reset.svg';
+      '${ConstantsManager.imagePath}/reset_password/mobile_reset.svg';
   static const String forgotPass =
-      '${AppConstants.imagePath}/reset_password/forgot_password.svg';
+      '${ConstantsManager.imagePath}/reset_password/forgot_password.svg';
   static const String success =
-      '${AppConstants.imagePath}/reset_password/success.svg';
+      '${ConstantsManager.imagePath}/reset_password/success.svg';
 
   static const String person =
-      '${AppConstants.imagePath}/personal_icons/person.svg';
+      '${ConstantsManager.imagePath}/personal_icons/person.svg';
   static const String setting =
-      '${AppConstants.imagePath}/personal_icons/setting.svg';
+      '${ConstantsManager.imagePath}/personal_icons/setting.svg';
   static const String payment =
-      '${AppConstants.imagePath}/personal_icons/payment.svg';
+      '${ConstantsManager.imagePath}/personal_icons/payment.svg';
   static const String language =
-      '${AppConstants.imagePath}/personal_icons/language.svg';
+      '${ConstantsManager.imagePath}/personal_icons/language.svg';
   static const String contactUs =
-      '${AppConstants.imagePath}/personal_icons/contact_us.svg';
+      '${ConstantsManager.imagePath}/personal_icons/contact_us.svg';
   static const String privacy =
-      '${AppConstants.imagePath}/personal_icons/privacy.svg';
+      '${ConstantsManager.imagePath}/personal_icons/privacy.svg';
   static const String myProperties =
-      '${AppConstants.imagePath}/personal_icons/my_properties.svg';
+      '${ConstantsManager.imagePath}/personal_icons/my_properties.svg';
   static const String showYourProperty =
-      '${AppConstants.imagePath}/personal_icons/seller.svg';
+      '${ConstantsManager.imagePath}/personal_icons/seller.svg';
 
   static const String changeLang =
-      '${AppConstants.imagePath}/change_lang/change_lang.svg';
-  static const String usIc = '${AppConstants.imagePath}/change_lang/us.svg';
-  static const String egIc = '${AppConstants.imagePath}/change_lang/eg.svg';
+      '${ConstantsManager.imagePath}/change_lang/change_lang.svg';
+  static const String usIc = '${ConstantsManager.imagePath}/change_lang/us.svg';
+  static const String egIc = '${ConstantsManager.imagePath}/change_lang/eg.svg';
 
-  static const String cardBackground = '${AppConstants.imagePath}/credit/card_background.svg';
+  static const String cardBackground =
+      '${ConstantsManager.imagePath}/credit/card_background.svg';
 }

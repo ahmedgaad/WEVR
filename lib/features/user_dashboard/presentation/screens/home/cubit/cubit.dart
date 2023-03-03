@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/components/components.dart';
-import '../../../../../../core/helpers/cache_helper/cache_helper.dart';
-import '../../../../../authentication/domain/usecases/logout.dart';
+import '../../../../../../core/helpers/cache_helper.dart';
 import '../../../../../introduction/presentation/screens/get_started/get_started_view.dart';
 import '../../auction/auction_view.dart';
 import '../../explore/explore_view.dart';
