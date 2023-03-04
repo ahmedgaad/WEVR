@@ -72,23 +72,27 @@ class RegisterCubit extends Cubit<RegisterStates> {
     required String userName,
     required String email,
     required String phone,
+    required String password,
+    required String passwordConfirmation,
   }) async {
     emit(RegisterLoadingState());
 
-    final failureOrRegister = await registerUseCase.execute(
-      userName: userName,
-      email: email,
-      phone: phone,
-    );
+    final failureOrRegister = await registerUseCase.call(
+        userName: userName,
+        email: email,
+        phone: phone,
+        password: password,
+        passwordConfirmation: passwordConfirmation);
 
     failureOrRegister.fold(
-      (failure) => emit(RegisterErrorState(error: _mapFailureToMessage(failure))),
+      (failure) =>
+          emit(RegisterErrorState(error: _mapFailureToMessage(failure))),
       (register) => emit(RegisterSuccessState(register: register)),
     );
   }
 
-    String _mapFailureToMessage(Failure failure){
-    switch(failure.runtimeType) {
+  String _mapFailureToMessage(Failure failure) {
+    switch (failure.runtimeType) {
       case ServerFailure:
         return AppStrings.SERVER_FAILURE_MESSAGE;
       case OfflineFailure:
@@ -96,6 +100,5 @@ class RegisterCubit extends Cubit<RegisterStates> {
       default:
         return "Unexpected Error, Please try again later";
     }
-
   }
 }

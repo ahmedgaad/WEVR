@@ -1,4 +1,4 @@
-import 'package:wevr_app/features/authentication/domain/entities/register.dart';
+import '../../domain/entities/register.dart';
 
 class RegisterModel extends Register {
   const RegisterModel({
@@ -8,8 +8,6 @@ class RegisterModel extends Register {
     required super.userName,
     required super.email,
     required super.phone,
-    required super.password,
-    required super.passwordConfirmation,
   });
 
   factory RegisterModel.fromJson(Map<String, dynamic> json) {
@@ -20,8 +18,6 @@ class RegisterModel extends Register {
       userName: json['data']['name'],
       email: json['data']['email'],
       phone: json['data']['phone'], 
-      password: '', 
-      passwordConfirmation: '',
     );
   }
 

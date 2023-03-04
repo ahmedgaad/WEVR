@@ -1,10 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:wevr_app/core/errors/exceptions.dart';
-import 'package:wevr_app/core/errors/failures.dart';
-import 'package:wevr_app/core/network/network_info.dart';
-import 'package:wevr_app/features/authentication/data/models/register_model.dart';
-import 'package:wevr_app/features/authentication/domain/entities/register.dart';
-import 'package:wevr_app/features/authentication/domain/repository/auth_repository.dart';
+import '../../../../core/errors/exceptions.dart';
+import '../../../../core/errors/failures.dart';
+import '../../../../core/network/network_info.dart';
+import '../../domain/entities/register.dart';
+import '../../domain/repository/auth_repository.dart';
 
 import '../data_sources/remote_datasource.dart';
 
@@ -22,6 +21,8 @@ class AuthRepositoryImpl implements AuthRepository {
     required String userName,
     required String email,
     required String phone,
+    required String password,
+    required String passwordConfirmation,
   }) async {
     try {
       if (await networkInfo.isConnected) {
@@ -29,6 +30,8 @@ class AuthRepositoryImpl implements AuthRepository {
           userName: userName,
           email: email,
           phone: phone,
+          password: password,
+          passwordConfirmation: passwordConfirmation
         );
         return Right(result);
       } else {

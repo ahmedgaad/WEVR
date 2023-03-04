@@ -4,8 +4,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wevr_app/core/dependency_injection/injection_container.dart';
-import 'package:wevr_app/core/helpers/cache_helper.dart';
-import 'package:wevr_app/core/utils/constants_manager.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/register/register_successfully.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login/form_column.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/register/register_form.dart';
@@ -113,15 +111,22 @@ class _RegisterViewState extends State<RegisterView> {
                                                         .validate()) {
                                                       cubit
                                                           .register(
-                                                              userName: cubit
-                                                                  .userNameController
-                                                                  .text,
-                                                              email: cubit
-                                                                  .emailController
-                                                                  .text,
-                                                              phone: cubit
-                                                                  .phoneController
-                                                                  .text)
+                                                        userName: cubit
+                                                            .userNameController
+                                                            .text,
+                                                        email: cubit
+                                                            .emailController
+                                                            .text,
+                                                        phone: cubit
+                                                            .phoneController
+                                                            .text,
+                                                        password: cubit
+                                                            .passwordController
+                                                            .text,
+                                                        passwordConfirmation: cubit
+                                                            .confirmPasswordController
+                                                            .text,
+                                                      )
                                                           .then((value) {
                                                         navigatePush(context,
                                                             const RegisterSuccessfully());
@@ -163,27 +168,3 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 }
-
-// if (formKey.currentState!
-                                                    //     .validate()) {
-                                                    //   cubit.userRegister(
-                                                    //       RegisterModel(
-                                                    //     name: cubit
-                                                    //         .userNameController
-                                                    //         .text,
-                                                    //     email: cubit
-                                                    //         .emailController
-                                                    //         .text,
-                                                    //     phone: cubit
-                                                    //         .phoneController
-                                                    //         .text,
-                                                    //     password: cubit
-                                                    //         .passwordController
-                                                    //         .text,
-                                                    //     confirmPassword: cubit
-                                                    //         .confirmPasswordController
-                                                    //         .text,
-                                                    //     deviceName: await cubit
-                                                    //         .getDeviceInfo(),
-                                                    //   ));
-                                                    // }

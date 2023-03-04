@@ -1,14 +1,12 @@
-import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:wevr_app/core/network/network_info.dart';
-import 'package:wevr_app/features/authentication/data/data_sources/remote_datasource.dart';
-import 'package:wevr_app/features/authentication/domain/use_cases/register_usecase.dart';
+
+import '../../features/authentication/data/data_sources/remote_datasource.dart';
 import '../../features/authentication/data/repository_implementation/repository_impl.dart';
 import '../../features/authentication/domain/repository/auth_repository.dart';
-import '../../features/authentication/presentation/screens/login/cubit/cubit.dart';
+import '../../features/authentication/domain/use_cases/register_usecase.dart';
 import '../../features/authentication/presentation/screens/register/cubit/cubit.dart';
-import '../../features/user_dashboard/presentation/screens/home/cubit/cubit.dart';
+import '../network/network_info.dart';
 
 GetIt getIt = GetIt.instance;
 

@@ -2,10 +2,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 import 'package:wevr_app/core/dependency_injection/injection_container.dart';
-import 'package:wevr_app/core/helpers/get_device_info_helper.dart';
 import 'package:wevr_app/core/helpers/cache_helper.dart';
+import 'package:wevr_app/core/helpers/get_device_info_helper.dart';
 
 import 'app.dart';
 import 'core/helpers/bloc_observer.dart';

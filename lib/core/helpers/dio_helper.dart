@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:wevr_app/core/utils/constants_manager.dart';
+
+import '../utils/constants_manager.dart';
 
 class DioHelper {
   static Dio? dio;

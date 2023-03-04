@@ -7,8 +7,7 @@ class Register extends Equatable {
   final String userName;
   final String email;
   final String phone;
-  final String password;
-  final String passwordConfirmation;
+
 
   const Register({
     this.status,
@@ -17,8 +16,6 @@ class Register extends Equatable {
     required this.userName,
     required this.email,
     required this.phone,
-    required this.password,
-    required this.passwordConfirmation,
   });
 
   @override
@@ -29,7 +26,5 @@ class Register extends Equatable {
         userName,
         email,
         phone,
-        password,
-        passwordConfirmation
       ];
 }

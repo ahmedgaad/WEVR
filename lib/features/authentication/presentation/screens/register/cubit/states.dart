@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:wevr_app/core/errors/failures.dart';
-import 'package:wevr_app/features/authentication/domain/entities/register.dart';
+import '../../../../../../core/errors/failures.dart';
+import '../../../../domain/entities/register.dart';
 
 abstract class RegisterStates extends Equatable {
   const RegisterStates();
