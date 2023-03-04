@@ -14,7 +14,6 @@ import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
-import '../../../data/models/register_model/register_model.dart';
 import '../../widgets/login_register_background.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
@@ -39,24 +38,14 @@ class _RegisterViewState extends State<RegisterView> {
       statusBarIconBrightness: Brightness.light,
     ));
     return BlocProvider(
-      create: (BuildContext context) =>
-          RegisterCubit(registerNewUserUseCase: getIt()),
+      create: (BuildContext context) => RegisterCubit(registerUseCase: getIt()),
       child: BlocConsumer<RegisterCubit, RegisterStates>(
         listener: (context, state) {
-          // if (state is RegisterSuccessState) {
-          //   if (state.registerModel.status != null) {
-          //     print(state.registerModel.message);
-          //     print(state.registerModel.token);
-
-          //     CacheHelper.saveData(
-          //             key: 'token', value: state.registerModel.token)
-          //         .then((value) {
-          //       ConstantsManager.token = state.registerModel.token!;
-          //       Navigator.pushReplacementNamed(
-          //           context, Routes.registerSuccessRoute);
-          //     });
-          //   }
-          // }
+          if (state is RegisterSuccessState) {
+            if (state.register.status != null) {
+              print(state.register.message);
+            }
+          }
         },
         builder: (context, state) {
           var cubit = RegisterCubit.get(context);
@@ -114,35 +103,30 @@ class _RegisterViewState extends State<RegisterView> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: ConditionalBuilder(
-                                              condition: state != null,
+                                              // ignore: unrelated_type_equality_checks
+                                              condition:
+                                                  state != RegisterLoadingState,
                                               builder: (BuildContext context) {
                                                 return defaultButton(
-                                                  function: () async {
-                                                    // if (formKey.currentState!
-                                                    //     .validate()) {
-                                                    //   cubit.userRegister(
-                                                    //       RegisterModel(
-                                                    //     name: cubit
-                                                    //         .userNameController
-                                                    //         .text,
-                                                    //     email: cubit
-                                                    //         .emailController
-                                                    //         .text,
-                                                    //     phone: cubit
-                                                    //         .phoneController
-                                                    //         .text,
-                                                    //     password: cubit
-                                                    //         .passwordController
-                                                    //         .text,
-                                                    //     confirmPassword: cubit
-                                                    //         .confirmPasswordController
-                                                    //         .text,
-                                                    //     deviceName: await cubit
-                                                    //         .getDeviceInfo(),
-                                                    //   ));
-                                                    // }
-                                                    navigatePush(context,
-                                                        const RegisterSuccessfully());
+                                                  function: () {
+                                                    if (formKey.currentState!
+                                                        .validate()) {
+                                                      cubit
+                                                          .register(
+                                                              userName: cubit
+                                                                  .userNameController
+                                                                  .text,
+                                                              email: cubit
+                                                                  .emailController
+                                                                  .text,
+                                                              phone: cubit
+                                                                  .phoneController
+                                                                  .text)
+                                                          .then((value) {
+                                                        navigatePush(context,
+                                                            const RegisterSuccessfully());
+                                                      });
+                                                    }
                                                   },
                                                   text: AppStrings.signUp.tr(),
                                                   width: AppSize.s200.w,
@@ -179,3 +163,27 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 }
+
+// if (formKey.currentState!
+                                                    //     .validate()) {
+                                                    //   cubit.userRegister(
+                                                    //       RegisterModel(
+                                                    //     name: cubit
+                                                    //         .userNameController
+                                                    //         .text,
+                                                    //     email: cubit
+                                                    //         .emailController
+                                                    //         .text,
+                                                    //     phone: cubit
+                                                    //         .phoneController
+                                                    //         .text,
+                                                    //     password: cubit
+                                                    //         .passwordController
+                                                    //         .text,
+                                                    //     confirmPassword: cubit
+                                                    //         .confirmPasswordController
+                                                    //         .text,
+                                                    //     deviceName: await cubit
+                                                    //         .getDeviceInfo(),
+                                                    //   ));
+                                                    // }

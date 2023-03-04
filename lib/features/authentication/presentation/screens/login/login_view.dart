@@ -14,7 +14,6 @@ import '../../../../../core/utils/constants_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
-import '../../../data/models/login_model/login_model.dart';
 import '../../widgets/login/form_column.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
@@ -25,7 +24,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => LoginCubit(loginUserUseCase: getIt()),
+      create: (BuildContext context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginStates>(listener: (context, state) {
         // if (state is LoginSuccessState) {
         //   if (state.loginModel.status != null) {

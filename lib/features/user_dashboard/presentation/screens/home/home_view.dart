@@ -37,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
     ));
     return BlocProvider(
       create: (BuildContext context) =>
-          HomeLayoutCubit(logoutUseCase: getIt()), //logoutUseCase: getIt()
+          HomeLayoutCubit(), //logoutUseCase: getIt()
       child: BlocConsumer<HomeLayoutCubit, HomeLayOutStates>(
         listener: (context, state) {},
         builder: (context, state) {

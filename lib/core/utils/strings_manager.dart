@@ -68,4 +68,12 @@ class AppStrings {
   static const String pleaseSelectYourLang = "please_select_your_lang";
   static const String continuee = "continue";
   static const String policyTopic = "policy_topic";
+  static const String SERVER_FAILURE_MESSAGE = "Please try again later";
+  static const String EMPTY_CACHE_FAILURE_MESSAGE = "No Data";
+  static const String OFFLINE_FAILURE_MESSAGE =
+      "Please Check your Internet Connection";
+
+  static const String ADD_SUCCESS_MESSAGE = "Post Added Successfully";
+  static const String DELETE_SUCCESS_MESSAGE = "Post Deleted Successfully";
+  static const String UPDATE_SUCCESS_MESSAGE = "Post Updated Successfully";
 }

@@ -10,16 +10,14 @@ import '../../saved/saved_view.dart';
 import 'states.dart';
 
 class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
-  final LogoutUseCase logoutUseCase;
-  HomeLayoutCubit({
-    required this.logoutUseCase,
-  }) : super(HomeLayOutInitialState());
+  // final LogoutUseCase logoutUseCase;
+  HomeLayoutCubit() : super(HomeLayOutInitialState());
 
   static HomeLayoutCubit get(context) => BlocProvider.of(context);
 
-  void logout(String token) async {
-    var response = await logoutUseCase(token);
-  }
+  // void logout(String token) async {
+  //   var response = await logoutUseCase(token);
+  // }
 
   void signOut(context) {
     CacheHelper.removeData(key: 'token').then((value) {

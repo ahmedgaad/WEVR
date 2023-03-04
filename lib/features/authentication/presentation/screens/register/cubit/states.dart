@@ -1,23 +1,34 @@
-import '../../../../../../core/errors/network_exceptions.dart';
+import 'package:equatable/equatable.dart';
+import 'package:wevr_app/core/errors/failures.dart';
+import 'package:wevr_app/features/authentication/domain/entities/register.dart';
 
-import '../../../../data/models/register_model/register_model.dart';
+abstract class RegisterStates extends Equatable {
+  const RegisterStates();
 
-abstract class RegisterStates {}
+  @override
+  List<Object> get props => [];
+}
 
-class RegisterInitialState extends RegisterStates{}
+class RegisterInitialState extends RegisterStates {}
 
-class ChangeRegisterPasswordVisibilityState extends RegisterStates{}
+class ChangeRegisterPasswordVisibilityState extends RegisterStates {}
 
-class ChangeConfirmPasswordVisibilityState extends RegisterStates{}
+class ChangeConfirmPasswordVisibilityState extends RegisterStates {}
 
+class RegisterLoadingState extends RegisterStates {}
 
-// class RegisterLoadingState extends RegisterStates{}
-// class RegisterSuccessState extends RegisterStates{
-//   final RegisterModel registerModel;
-//   RegisterSuccessState(this.registerModel);
-// }
-// class RegisterErrorState extends RegisterStates{
-//   final NetworkExceptions networkExceptions;
+class RegisterSuccessState extends RegisterStates {
+  final Register register;
 
-//   RegisterErrorState(this.networkExceptions);
-// }
+  const RegisterSuccessState({required this.register});
+  @override
+  List<Object> get props => [register];
+}
+
+class RegisterErrorState extends RegisterStates {
+  final String error;
+  const RegisterErrorState({required this.error});
+
+  @override
+  List<Object> get props => [error];
+}

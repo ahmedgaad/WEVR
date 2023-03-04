@@ -1,6 +1,3 @@
-import '../../../../../../core/errors/network_exceptions.dart';
-import '../../../../data/models/login_model/login_model.dart';
-
 abstract class LoginStates{}
 
 class LoginInitialState extends LoginStates{}
