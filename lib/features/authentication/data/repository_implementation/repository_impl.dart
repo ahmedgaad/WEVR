@@ -4,7 +4,6 @@ import '../../../../core/errors/failures.dart';
 import '../../../../core/network/network_info.dart';
 import '../../domain/entities/register.dart';
 import '../../domain/repository/auth_repository.dart';
-
 import '../data_sources/remote_datasource.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -27,18 +26,17 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       if (await networkInfo.isConnected) {
         final result = await authDataSource.register(
-          userName: userName,
-          email: email,
-          phone: phone,
-          password: password,
-          passwordConfirmation: passwordConfirmation
-        );
+            userName: userName,
+            email: email,
+            phone: phone,
+            password: password,
+            passwordConfirmation: passwordConfirmation);
         return Right(result);
       } else {
         throw OfflineException();
       }
-    } on ServerException {
-      return Left(ServerFailure());
+    } on RegisterException catch (failure){
+      return Left(ServerFailure(failure.registerErrorModel.errorMessage));
     } on OfflineException {
       return Left(OfflineFailure());
     }

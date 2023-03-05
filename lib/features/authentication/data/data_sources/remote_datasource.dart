@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:wevr_app/core/errors/auth_error_models.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
 import '../models/register_model.dart';
@@ -49,13 +50,14 @@ class AuthDataSourceImpl implements AuthDataSource {
           "password_confirmation": passwordConfirmation
         }),
       );
-      if (response.statusCode == 200) {
+      if (response.data['status'] == 1) {
         //final decodedData = json.decode(response.data.toString());
         final model = RegisterModel.fromJson(response.data);
         print(model);
         return model;
       } else {
-        throw ServerException();
+        throw 
+        RegisterException(registerErrorModel: RegisterErrorModel.fromJson(response.data));
       }
     } on DioError catch (e) {
       throw ServerException();

@@ -8,7 +8,6 @@ import 'package:wevr_app/features/authentication/presentation/screens/OTP/forgot
 import 'package:wevr_app/features/authentication/presentation/widgets/login_register_background.dart';
 
 import '../../../../../core/components/components.dart';
-import '../../../../../core/dependency_injection/injection_container.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/constants_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';

@@ -9,8 +9,8 @@ import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
-import '../../screens/register/cubit/cubit.dart';
-import '../../screens/register/cubit/states.dart';
+import '../../controller/register/cubit.dart';
+import '../../controller/register/states.dart';
 
 class RegisterForm extends StatelessWidget {
   const RegisterForm({Key? key}) : super(key: key);

@@ -3,7 +3,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wevr_app/core/dependency_injection/injection_container.dart';
+import 'package:wevr_app/core/service/injection_container.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/register/register_successfully.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login/form_column.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/register/register_form.dart';
@@ -13,8 +13,8 @@ import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 import '../../widgets/login_register_background.dart';
-import 'cubit/cubit.dart';
-import 'cubit/states.dart';
+import '../../controller/register/cubit.dart';
+import '../../controller/register/states.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,7 +44,7 @@ class _RegisterViewState extends State<RegisterView> {
                 text: state.register.message!, state: ToastStates.SUCCESS);
             // navigatePush(context, const RegisterSuccessfully());
           } else if (state is RegisterErrorState) {
-            showToast(text: state.error, state: ToastStates.ERROR);
+            showToast(text: state.error.toString(), state: ToastStates.ERROR);
           }
         },
         builder: (context, state) {

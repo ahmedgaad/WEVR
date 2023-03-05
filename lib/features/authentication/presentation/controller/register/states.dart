@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../../../../domain/entities/register.dart';
+import '../../../domain/entities/register.dart';
 
 abstract class RegisterStates extends Equatable {
   const RegisterStates();
