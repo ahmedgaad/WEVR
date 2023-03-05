@@ -40,9 +40,11 @@ class _RegisterViewState extends State<RegisterView> {
       child: BlocConsumer<RegisterCubit, RegisterStates>(
         listener: (context, state) {
           if (state is RegisterSuccessState) {
-            if (state.register.status != null) {
-              print(state.register.message);
-            }
+            showToast(
+                text: state.register.message!, state: ToastStates.SUCCESS);
+            // navigatePush(context, const RegisterSuccessfully());
+          } else if (state is RegisterErrorState) {
+            showToast(text: state.error, state: ToastStates.ERROR);
           }
         },
         builder: (context, state) {
@@ -84,7 +86,8 @@ class _RegisterViewState extends State<RegisterView> {
                                   child: Form(
                                     key: formKey,
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         const SocialColumn(
                                             // firstText: AppStrings.signUp.tr(),
@@ -97,35 +100,34 @@ class _RegisterViewState extends State<RegisterView> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: ConditionalBuilder(
-                                              condition: state is! RegisterLoadingState,
+                                              condition: state
+                                                  is! RegisterLoadingState,
                                               builder: (BuildContext context) {
                                                 return defaultButton(
                                                   function: () {
                                                     if (formKey.currentState!
                                                         .validate()) {
-                                                      cubit
-                                                          .register(
+                                                      cubit.register(
                                                         userName: cubit
                                                             .userNameController
                                                             .text,
                                                         email: cubit
-                                                            .emailController.text,
+                                                            .emailController
+                                                            .text,
                                                         phone: cubit
-                                                            .phoneController.text,
+                                                            .phoneController
+                                                            .text,
                                                         password: cubit
                                                             .passwordController
                                                             .text,
                                                         passwordConfirmation: cubit
                                                             .confirmPasswordController
                                                             .text,
-                                                      )
-                                                          .then((value) {
-                                                        navigatePush(context,
-                                                            const RegisterSuccessfully());
-                                                      });
+                                                      );
                                                     }
                                                   },
-                                                  text: StringsManager.signUp.tr(),
+                                                  text: StringsManager.signUp
+                                                      .tr(),
                                                   width: AppSize.s200.w,
                                                   height: AppSize.s44.h,
                                                   isUpperCase: false,

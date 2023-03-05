@@ -33,9 +33,9 @@ class RegisterSuccessfully extends StatelessWidget {
               defaultButton(
                 width: AppSize.s280.w,
                 function: () {
-                  navigateTo(context, Routes.homeRoute);
+                  navigateTo(context, Routes.loginRoute);
                 },
-                text: StringsManager.continueExploring.tr(),
+                text: StringsManager.continuee.tr(),
               ),
             ],
           ),
