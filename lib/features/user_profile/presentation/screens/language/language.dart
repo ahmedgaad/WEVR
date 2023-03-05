@@ -16,7 +16,7 @@ class LanguageView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppStrings.changeLanguage.tr(),
+          StringsManager.changeLanguage.tr(),
           style: getBoldStylePoppins(),
         ),
       ),
@@ -33,7 +33,7 @@ class LanguageView extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 30,
             ),
             Text(
-              AppStrings.pleaseSelectYourLang.tr(),
+              StringsManager.pleaseSelectYourLang.tr(),
               style: getBoldStylePoppins(),
             ),
             const RadioLang(),
@@ -43,7 +43,7 @@ class LanguageView extends StatelessWidget {
                 function: () {
                   Navigator.of(context).pop();
                 },
-                text: AppStrings.continuee.tr(),
+                text: StringsManager.continuee.tr(),
                 isUpperCase: false,
               ),
             )

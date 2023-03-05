@@ -48,14 +48,13 @@ class _RegisterViewState extends State<RegisterView> {
         builder: (context, state) {
           var cubit = RegisterCubit.get(context);
           return Scaffold(
-            backgroundColor: ColorManager.white,
             body: Stack(
               alignment: Alignment.center,
               children: [
                 LoginRegisterBackground(
-                  buttonText: AppStrings.signIn.tr(),
+                  textButton: StringsManager.signIn.tr(),
                   route: Routes.loginRoute,
-                  questionText: AppStrings.alreadyHaveAccount.tr(),
+                  questionText: StringsManager.alreadyHaveAccount.tr(),
                   p1: PaddingSize.p60,
                   p2: PaddingSize.p24,
                 ),
@@ -76,34 +75,29 @@ class _RegisterViewState extends State<RegisterView> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              backButton(function: () {}),
-                              SizedBox(
-                                height: AppSize.s2.h,
-                              ),
+                              // backButton(function: () {}),
+                              // SizedBox(
+                              //   height: AppSize.s2.h,
+                              // ),
                               Expanded(
                                 child: SingleChildScrollView(
                                   child: Form(
                                     key: formKey,
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        SocialColumn(
-                                          firstText: AppStrings.signUp.tr(),
-                                          secondText:
-                                              AppStrings.registerWord.tr(),
-                                        ),
+                                        const SocialColumn(
+                                            // firstText: AppStrings.signUp.tr(),
+                                            // secondText:
+                                            //     AppStrings.registerWord.tr(),
+                                            ),
                                         const RegisterForm(),
-                                        const SizedBox(
-                                          height: 15,
-                                        ),
+                                        15.ph,
                                         Center(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: ConditionalBuilder(
-                                              // ignore: unrelated_type_equality_checks
-                                              condition:
-                                                  state != RegisterLoadingState,
+                                              condition: state is! RegisterLoadingState,
                                               builder: (BuildContext context) {
                                                 return defaultButton(
                                                   function: () {
@@ -115,11 +109,9 @@ class _RegisterViewState extends State<RegisterView> {
                                                             .userNameController
                                                             .text,
                                                         email: cubit
-                                                            .emailController
-                                                            .text,
+                                                            .emailController.text,
                                                         phone: cubit
-                                                            .phoneController
-                                                            .text,
+                                                            .phoneController.text,
                                                         password: cubit
                                                             .passwordController
                                                             .text,
@@ -133,7 +125,7 @@ class _RegisterViewState extends State<RegisterView> {
                                                       });
                                                     }
                                                   },
-                                                  text: AppStrings.signUp.tr(),
+                                                  text: StringsManager.signUp.tr(),
                                                   width: AppSize.s200.w,
                                                   height: AppSize.s44.h,
                                                   isUpperCase: false,

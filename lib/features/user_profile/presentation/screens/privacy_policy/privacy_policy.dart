@@ -12,7 +12,7 @@ class PrivacyPolicy extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            AppStrings.privacy.tr(),
+            StringsManager.privacy.tr(),
             style: getBoldStylePoppins(),
           ),
         ),
@@ -22,7 +22,7 @@ class PrivacyPolicy extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             children: [
               Text(
-                AppStrings.policyTopic.tr(),
+                StringsManager.policyTopic.tr(),
                 style: getRegularStyleInter(fontSize: 16.0),
               ),
             ],

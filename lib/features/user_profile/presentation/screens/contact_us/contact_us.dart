@@ -27,26 +27,24 @@ class ContactUs extends StatelessWidget {
     }
   }
 
-
-
-void launchEmail() async {
-  final Uri emailLaunchUri = Uri(
-    scheme: 'mailto',
-    path: 'softagi.tech@gmail.com',
-  );
-  if (await canLaunchUrl(emailLaunchUri)) {
-    await launchUrl(emailLaunchUri);
-  } else {
-    throw 'Could not launch $emailLaunchUri';
+  void launchEmail() async {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'softagi.tech@gmail.com',
+    );
+    if (await canLaunchUrl(emailLaunchUri)) {
+      await launchUrl(emailLaunchUri);
+    } else {
+      throw 'Could not launch $emailLaunchUri';
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppStrings.contactUs.tr(),
+          StringsManager.contactUs.tr(),
           style: getBoldStylePoppins(),
         ),
       ),

@@ -37,7 +37,7 @@ class ExploreView extends StatelessWidget {
               height: AppSize.s27.h,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 navigatePush(context, SearchView());
               },
               child: searchBar(),
@@ -69,10 +69,10 @@ class ExploreView extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(20.0)),
               ),
               child: GestureDetector(
-                onTap:(){
+                onTap: () {
                   navigatePush(context, DepartmentDetails());
-                } ,
-                  child: ProductContainer(),
+                },
+                child: ProductContainer(),
               ),
             ),
           ],
@@ -82,7 +82,7 @@ class ExploreView extends StatelessWidget {
   }
 }
 
-Widget searchBar(){
+Widget searchBar() {
   return Row(
     children: [
       Container(
@@ -90,8 +90,7 @@ Widget searchBar(){
         height: AppSize.s41.h,
         decoration: BoxDecoration(
           color: ColorManager.white,
-          borderRadius:
-          BorderRadius.all(Radius.circular(AppRadius.r10)),
+          borderRadius: BorderRadius.all(Radius.circular(AppRadius.r10)),
         ),
         child: Row(
           children: [
@@ -104,10 +103,13 @@ Widget searchBar(){
             SizedBox(
               width: AppSize.s10.w,
             ),
-            Text( AppStrings.searchBar.tr() , style: getRegularStyleInter(
-              color: ColorManager.smokyGray,
-              fontSize: AppSize.s16,
-            ),),
+            Text(
+              StringsManager.searchBar.tr(),
+              style: getRegularStyleInter(
+                color: ColorManager.smokyGray,
+                fontSize: AppSize.s16,
+              ),
+            ),
           ],
         ),
       ),
@@ -117,11 +119,11 @@ Widget searchBar(){
   );
 }
 
-Widget allHomesRow(){
+Widget allHomesRow() {
   return Row(
     children: [
       Text(
-        AppStrings.allHomes.tr(),
+        StringsManager.allHomes.tr(),
         style: getRegularStylePoppins(
             color: ColorManager.black, fontSize: AppSize.s16.sp),
       ),
@@ -137,7 +139,7 @@ Widget allHomesRow(){
           child: IconButton(
               onPressed: () {},
               icon: Text(
-                AppStrings.viewAll.tr(),
+                StringsManager.viewAll.tr(),
               )),
         ),
       )

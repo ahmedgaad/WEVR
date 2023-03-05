@@ -37,23 +37,23 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   List<SliderObject> _getSliderData() => [
         SliderObject(
           AssetsImagesManager.onBoarding1,
-          AppStrings.onBoardingTitle1.tr(),
-          AppStrings.onBoardingSubTitle1.tr(),
+          StringsManager.onBoardingTitle1.tr(),
+          StringsManager.onBoardingSubTitle1.tr(),
         ),
         SliderObject(
           AssetsImagesManager.onBoarding2,
-          AppStrings.onBoardingTitle2.tr(),
-          AppStrings.onBoardingSubTitle2.tr(),
+          StringsManager.onBoardingTitle2.tr(),
+          StringsManager.onBoardingSubTitle2.tr(),
         ),
         SliderObject(
           AssetsImagesManager.onBoarding3,
-          AppStrings.onBoardingTitle3.tr(),
-          AppStrings.onBoardingSubTitle3.tr(),
+          StringsManager.onBoardingTitle3.tr(),
+          StringsManager.onBoardingSubTitle3.tr(),
         ),
         SliderObject(
           AssetsImagesManager.onBoarding4,
-          AppStrings.onBoardingTitle4.tr(),
-          AppStrings.onBoardingSubTitle4.tr(),
+          StringsManager.onBoardingTitle4.tr(),
+          StringsManager.onBoardingSubTitle4.tr(),
         ),
       ];
 
@@ -83,7 +83,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             child: Padding(
               padding: EdgeInsetsDirectional.only(end: PaddingSize.p20.w),
               child: Text(
-                AppStrings.skip.tr(),
+                StringsManager.skip.tr(),
                 style: getRegularStyleInter(
                     color: ColorManager.black, fontSize: FontSize.s20.sp),
               ),

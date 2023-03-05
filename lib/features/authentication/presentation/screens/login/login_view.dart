@@ -46,9 +46,9 @@ class LoginView extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               LoginRegisterBackground(
-                buttonText: AppStrings.signUp.tr(),
+                textButton: StringsManager.signUp.tr(),
                 route: Routes.registerRoute,
-                questionText: AppStrings.haveAccount.tr(),
+                questionText: StringsManager.haveAccount.tr(),
                 p1: PaddingSize.p60,
                 p2: PaddingSize.p24,
               ),
@@ -68,18 +68,18 @@ class LoginView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          backButton(function: () {}),
-                          SizedBox(
-                            height: AppSize.s50.h,
-                          ),
+                          // backButton(function: () {}),
+                          // SizedBox(
+                          //   height: AppSize.s50.h,
+                          // ),
                           Expanded(
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
-                                  SocialColumn(
-                                    secondText: AppStrings.loginAccount.tr(),
-                                    firstText: AppStrings.loginWord.tr(),
-                                  ),
+                                  const SocialColumn(
+                                      // secondText: AppStrings.loginAccount.tr(),
+                                      // firstText: AppStrings.loginWord.tr(),
+                                      ),
                                   Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal: PaddingSize.p40.w),
@@ -90,10 +90,15 @@ class LoginView extends StatelessWidget {
                                         type: TextInputType.emailAddress,
                                         // label: AppStrings.emailOrMobile,
                                         labelWidget: textInputInField(
-                                            AppStrings.emailAddress.tr()),
+                                            StringsManager.emailAddress.tr()),
                                         validate: (value) {
                                           if (value!.isEmpty) {
-                                            return AppStrings.emailValidate
+                                            return StringsManager.emailError1
+                                                .tr();
+                                          } else if (!RegExp(
+                                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                              .hasMatch(value)) {
+                                            return StringsManager.emailError2
                                                 .tr();
                                           }
                                           return null;
@@ -114,12 +119,13 @@ class LoginView extends StatelessWidget {
                                           type: TextInputType.visiblePassword,
                                           // label: AppStrings.password,
                                           labelWidget: textInputInField(
-                                              AppStrings.password.tr()),
+                                              StringsManager.password.tr()),
                                           isPassword: cubit.isPassword,
                                           // validate: AppStrings.passwordValidate,
                                           validate: (value) {
                                             if (value!.isEmpty) {
-                                              return AppStrings.passwordValidate
+                                              return StringsManager
+                                                  .passwordValidate
                                                   .tr();
                                             }
                                             return null;
@@ -139,7 +145,8 @@ class LoginView extends StatelessWidget {
                                           horizontal: PaddingSize.p20,
                                         ),
                                         child: defaultTextButton(
-                                          text: AppStrings.forgetPassword.tr(),
+                                          text: StringsManager.forgetPassword
+                                              .tr(),
                                           onPressed: () {
                                             if (cubit.emailFormKey.currentState!
                                                 .validate()) {
@@ -151,9 +158,10 @@ class LoginView extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
-                                    height: AppSize.s100.h,
-                                  ),
+                                  // SizedBox(
+                                  //   height: AppSize.s100.h,
+                                  // ),
+                                  20.ph,
                                   Center(
                                     child: defaultButton(
                                       function: () async {
@@ -171,7 +179,7 @@ class LoginView extends StatelessWidget {
                                           }
                                         }
                                       },
-                                      text: AppStrings.signIn.tr(),
+                                      text: StringsManager.signIn.tr(),
                                       width: AppSize.s200.w,
                                       height: AppSize.s44.h,
                                       isUpperCase: false,

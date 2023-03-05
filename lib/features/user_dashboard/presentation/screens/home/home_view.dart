@@ -103,7 +103,7 @@ class _HomeViewState extends State<HomeView> {
                                 height: AppSize.s2.h,
                               ),
                               Text(
-                                AppStrings.explore.tr(),
+                                StringsManager.explore.tr(),
                                 style: getRegularStylePoppins(
                                   color: cubit.currentTap == 0
                                       ? ColorManager.primary
@@ -131,7 +131,7 @@ class _HomeViewState extends State<HomeView> {
                                     : ColorManager.darkGrey,
                               ),
                               Text(
-                                AppStrings.saved.tr(),
+                                StringsManager.saved.tr(),
                                 style: getRegularStylePoppins(
                                   color: cubit.currentTap == 1
                                       ? ColorManager.primary
@@ -164,7 +164,7 @@ class _HomeViewState extends State<HomeView> {
                                     : ColorManager.darkGrey,
                               ),
                               Text(
-                                AppStrings.homes.tr(),
+                                StringsManager.homes.tr(),
                                 style: getRegularStylePoppins(
                                   color: cubit.currentTap == 3
                                       ? ColorManager.primary
@@ -195,7 +195,7 @@ class _HomeViewState extends State<HomeView> {
                                 height: AppSize.s2.h,
                               ),
                               Text(
-                                AppStrings.auction.tr(),
+                                StringsManager.auction.tr(),
                                 style: getRegularStylePoppins(
                                   color: cubit.currentTap == 4
                                       ? ColorManager.primary
@@ -212,7 +212,6 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             ),
-
           );
         },
       ),

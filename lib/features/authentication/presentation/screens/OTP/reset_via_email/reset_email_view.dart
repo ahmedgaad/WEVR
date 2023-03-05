@@ -39,9 +39,9 @@ class _ResetEmailViewState extends State<ResetEmailView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ForgetPasswordTopColumn(
-                    imagePath: AssetsImagesManager.emailReset,
-                    title: AppStrings.recoveryCode.tr(),
-                    subTitle: AppStrings.subTitleRecoveryCode.tr(),
+                  imagePath: AssetsImagesManager.emailReset,
+                  title: StringsManager.recoveryCode.tr(),
+                  subTitle: StringsManager.subTitleRecoveryCode.tr(),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -192,7 +192,7 @@ class _ResetEmailViewState extends State<ResetEmailView> {
                       function: () {
                         navigatePush(context, CreateNewPassword());
                       },
-                      text: AppStrings.submit.tr(),
+                      text: StringsManager.submit.tr(),
                       width: AppSize.s200.w,
                       height: AppSize.s60.h,
                       isUpperCase: false,
@@ -203,14 +203,14 @@ class _ResetEmailViewState extends State<ResetEmailView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      AppStrings.resendCode.tr(),
+                      StringsManager.resendCode.tr(),
                       style: getRegularStyleInter(
                         color: ColorManager.darkGrey,
                         fontSize: FontSize.s14,
                       ),
                     ),
                     defaultTextButton(
-                      text: AppStrings.resend.tr(),
+                      text: StringsManager.resend.tr(),
                       textColor: ColorManager.primary,
                       onPressed: () {},
                     )

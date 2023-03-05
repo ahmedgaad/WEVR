@@ -94,11 +94,11 @@ class RouteGenerator {
         builder: (_) => Scaffold(
               appBar: AppBar(
                 title: const Text(
-                  AppStrings.noRouteFound,
+                  StringsManager.noRouteFound,
                 ),
               ),
               body: const Center(
-                child: Text(AppStrings.noRouteFound),
+                child: Text(StringsManager.noRouteFound),
               ),
             ));
   } //static function that return undefined route

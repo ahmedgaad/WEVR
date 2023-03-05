@@ -1,4 +1,4 @@
-class AppStrings {
+class StringsManager {
   static const String noRouteFound = "no_route_found";
   static const String skip = "skip";
 
@@ -20,7 +20,8 @@ class AppStrings {
   static const String emailAddress = "email_address";
   static const String userName = "username";
   static const String mobile = "mobile";
-  static const String emailValidate = "email_validate";
+  static const String emailError1 = "email_error1";
+  static const String emailError2 = "email_error1";
   static const String passwordValidate = "password_validate";
   static const String phoneValidate = "phone_validate";
   static const String userNameValidate = "username_validate";

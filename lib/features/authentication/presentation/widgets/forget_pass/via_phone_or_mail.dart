@@ -41,7 +41,7 @@ class ViaPhoneOrMail extends StatelessWidget {
           child: SizedBox(
             width: AppSize.s128.w,
             child: Text(
-              AppStrings.recoveryCode.tr(),
+              StringsManager.recoveryCode.tr(),
               style: getBoldStylePoppins(
                   color: ColorManager.black, fontSize: FontSize.s18.sp),
             ),
@@ -57,7 +57,7 @@ class ViaPhoneOrMail extends StatelessWidget {
           child: SizedBox(
             width: AppSize.s200.w,
             child: Text(
-              AppStrings.subTitleRecoveryCode.tr(),
+              StringsManager.subTitleRecoveryCode.tr(),
               style: getRegularStyleInter(
                 color: ColorManager.darkGrey,
                 fontSize: FontSize.s16.sp,

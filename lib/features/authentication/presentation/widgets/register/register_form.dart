@@ -17,8 +17,8 @@ class RegisterForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RegisterCubit, RegisterStates>(
-      listener: (context, state) {},
+    return BlocBuilder<RegisterCubit, RegisterStates>(
+      // listener: (context, state) {},
       builder: (context, state) {
         var cubit = RegisterCubit.get(context);
         return Column(
@@ -30,18 +30,18 @@ class RegisterForm extends StatelessWidget {
               child: defaultFormField(
                 controller: cubit.userNameController,
                 type: TextInputType.name,
-                labelWidget: textInputInField(AppStrings.userName.tr(),),
+                labelWidget: textInputInField(
+                  StringsManager.userName.tr(),
+                ),
                 validate: (value) {
                   if (value!.isEmpty) {
-                    return AppStrings.userName.tr();
+                    return StringsManager.userName.tr();
                   }
                   return null;
                 },
               ),
             ),
-            SizedBox(
-              height: AppSize.s10.h,
-            ),
+            10.ph,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: PaddingSize.p40.w),
               child: defaultFormField(
@@ -49,45 +49,51 @@ class RegisterForm extends StatelessWidget {
                 type: TextInputType.emailAddress,
                 // label: AppStrings.emailOrMobile,
 
-                labelWidget: textInputInField(AppStrings.emailAddress.tr(),),
+                labelWidget: textInputInField(
+                  StringsManager.emailAddress.tr(),
+                ),
                 //validate: AppStrings.emailValidate,
                 validate: (value) {
                   if (value!.isEmpty) {
-                    return AppStrings.emailValidate.tr();
+                    return StringsManager.emailError1.tr();
+                  } else if (!RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(value)) {
+                    return StringsManager.emailError2.tr();
                   }
                   return null;
                 },
               ),
             ),
-            SizedBox(
-              height: AppSize.s10.h,
-            ),
+            10.ph,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: PaddingSize.p40.w),
               child: defaultFormField(
                 controller: cubit.phoneController,
                 type: TextInputType.phone,
                 // label: AppStrings.emailOrMobile,
-                labelWidget: textInputInField(AppStrings.mobile.tr(),),
+                labelWidget: textInputInField(
+                  StringsManager.mobile.tr(),
+                ),
                 //validate: AppStrings.emailValidate,
                 validate: (value) {
                   if (value!.isEmpty) {
-                    return AppStrings.phoneValidate.tr();
+                    return StringsManager.phoneValidate.tr();
                   }
                   return null;
                 },
               ),
             ),
-            SizedBox(
-              height: AppSize.s10.h,
-            ),
+            10.ph,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: PaddingSize.p40.w),
               child: defaultFormField(
                 onChange: (String value) {},
                 controller: cubit.passwordController,
                 type: TextInputType.visiblePassword,
-                labelWidget: textInputInField(AppStrings.password.tr(),),
+                labelWidget: textInputInField(
+                  StringsManager.password.tr(),
+                ),
                 isPassword: cubit.isPassword,
                 suffix: cubit.suffix,
                 suffixPressed: cubit.changePasswordVisibility,
@@ -103,9 +109,7 @@ class RegisterForm extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(
-              height: AppSize.s10.h,
-            ),
+            10.ph,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: PaddingSize.p40.w),
               child: StatefulBuilder(
@@ -125,7 +129,9 @@ class RegisterForm extends StatelessWidget {
                     },
                     controller: cubit.confirmPasswordController,
                     type: TextInputType.visiblePassword,
-                    labelWidget: textInputInField(AppStrings.confirmPassword.tr(),),
+                    labelWidget: textInputInField(
+                      StringsManager.confirmPassword.tr(),
+                    ),
                     isPassword: cubit.isPassword,
                     suffixWidget: cubit.isPasswordMatchCharacter
                         ? Padding(
@@ -164,7 +170,7 @@ class RegisterForm extends StatelessWidget {
     );
   }
 
-  Widget textInputInField (String text) {
+  Widget textInputInField(String text) {
     return Text(
       text,
       style: getRegularStylePoppins(

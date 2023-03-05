@@ -28,15 +28,15 @@ class ResetSuccessfully extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SuccessScreen(
-                title: AppStrings.resetSuccessfullyTitle.tr(),
-                subTitle: AppStrings.resetSuccessfullySubTitle.tr(),
+                title: StringsManager.resetSuccessfullyTitle.tr(),
+                subTitle: StringsManager.resetSuccessfullySubTitle.tr(),
               ),
               defaultButton(
                 width: AppSize.s281_25.w,
                 function: () {
                   navigateTo(context, Routes.homeRoute);
                 },
-                text: AppStrings.continueExploring.tr(),
+                text: StringsManager.continueExploring.tr(),
               ),
             ],
           ),
