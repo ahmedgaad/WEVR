@@ -1,4 +1,4 @@
-class AppStrings {
+class StringsManager {
   static const String noRouteFound = "no_route_found";
   static const String skip = "skip";
 
@@ -20,7 +20,8 @@ class AppStrings {
   static const String emailAddress = "email_address";
   static const String userName = "username";
   static const String mobile = "mobile";
-  static const String emailValidate = "email_validate";
+  static const String emailError1 = "email_error1";
+  static const String emailError2 = "email_error1";
   static const String passwordValidate = "password_validate";
   static const String phoneValidate = "phone_validate";
   static const String userNameValidate = "username_validate";
@@ -57,6 +58,9 @@ class AppStrings {
   static const String forgotPass = "forgot_pass";
   static const String subTitleForgotPass = "sub_title_forgot_pass";
   static const String recoveryCode = "recovery_code";
+  static const error = "error";
+    static const okay = "okay";
+
   static const String subTitleRecoveryCode = "sub_title_recovery_code";
   static const String createNewPasswordTitle = "create_new_password_title";
   static const String createNewPasswordSubTitle =
@@ -68,4 +72,12 @@ class AppStrings {
   static const String pleaseSelectYourLang = "please_select_your_lang";
   static const String continuee = "continue";
   static const String policyTopic = "policy_topic";
+  static const String SERVER_FAILURE_MESSAGE = "Please try again later";
+  static const String EMPTY_CACHE_FAILURE_MESSAGE = "No Data";
+  static const String OFFLINE_FAILURE_MESSAGE =
+      "Please Check your Internet Connection";
+
+  static const String ADD_SUCCESS_MESSAGE = "Post Added Successfully";
+  static const String DELETE_SUCCESS_MESSAGE = "Post Deleted Successfully";
+  static const String UPDATE_SUCCESS_MESSAGE = "Post Updated Successfully";
 }

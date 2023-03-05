@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wevr_app/core/utils/routes_manager.dart';
+
 import '../../../../../core/utils/assets_manager.dart';
-import '../../../../../core/utils/color_manager.dart';
+import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 import '../../widgets/profile/build_divider.dart';
@@ -31,7 +31,7 @@ class ProfileView extends StatelessWidget {
                 child: Column(
                   children: [
                     BuildListItem(
-                      label: AppStrings.personalInfo.tr(),
+                      label: StringsManager.personalInfo.tr(),
                       icon: AssetsImagesManager.person,
                       onTap: () {
                         Navigator.pushNamed(context, Routes.personalInfoRoute);
@@ -39,7 +39,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     const BuildDivider(),
                     BuildListItem(
-                      label: AppStrings.accountSetting.tr(),
+                      label: StringsManager.accountSetting.tr(),
                       icon: AssetsImagesManager.setting,
                       onTap: () {
                         Navigator.pushNamed(
@@ -48,7 +48,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     const BuildDivider(),
                     BuildListItem(
-                      label: AppStrings.payment.tr(),
+                      label: StringsManager.payment.tr(),
                       icon: AssetsImagesManager.payment,
                       onTap: () {
                         Navigator.pushNamed(context, Routes.paymentRoute);
@@ -56,7 +56,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     const BuildDivider(),
                     BuildListItem(
-                      label: AppStrings.lang.tr(),
+                      label: StringsManager.lang.tr(),
                       icon: AssetsImagesManager.language,
                       onTap: () {
                         Navigator.pushNamed(context, Routes.languageRoute);
@@ -64,7 +64,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     const BuildDivider(),
                     BuildListItem(
-                      label: AppStrings.contactUs.tr(),
+                      label: StringsManager.contactUs.tr(),
                       icon: AssetsImagesManager.contactUs,
                       onTap: () {
                         Navigator.pushNamed(context, Routes.contactUsRoute);
@@ -72,7 +72,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     const BuildDivider(),
                     BuildListItem(
-                      label: AppStrings.privacy.tr(),
+                      label: StringsManager.privacy.tr(),
                       icon: AssetsImagesManager.privacy,
                       onTap: () {
                         Navigator.pushNamed(context, Routes.privacyPolicyRoute);
@@ -80,7 +80,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     const BuildDivider(),
                     BuildListItem(
-                      label: AppStrings.myProperties.tr(),
+                      label: StringsManager.myProperties.tr(),
                       icon: AssetsImagesManager.myProperties,
                       onTap: () {
                         Navigator.pushNamed(context, Routes.myPropertiesRoute);
@@ -88,7 +88,7 @@ class ProfileView extends StatelessWidget {
                     ),
                     const BuildDivider(),
                     BuildListItem(
-                      label: AppStrings.showYourProperties.tr(),
+                      label: StringsManager.showYourProperties.tr(),
                       icon: AssetsImagesManager.showYourProperty,
                       onTap: () {
                         Navigator.pushNamed(

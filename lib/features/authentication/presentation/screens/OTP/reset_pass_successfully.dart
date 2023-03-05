@@ -1,8 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wevr_app/core/components/success_screen.dart';
+
 import '../../../../../core/components/components.dart';
+import '../../../../../core/components/success_screen.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
@@ -27,15 +28,15 @@ class ResetSuccessfully extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SuccessScreen(
-                title: AppStrings.resetSuccessfullyTitle.tr(),
-                subTitle: AppStrings.resetSuccessfullySubTitle.tr(),
+                title: StringsManager.resetSuccessfullyTitle.tr(),
+                subTitle: StringsManager.resetSuccessfullySubTitle.tr(),
               ),
               defaultButton(
                 width: AppSize.s281_25.w,
                 function: () {
                   navigateTo(context, Routes.homeRoute);
                 },
-                text: AppStrings.continueExploring.tr(),
+                text: StringsManager.continueExploring.tr(),
               ),
             ],
           ),

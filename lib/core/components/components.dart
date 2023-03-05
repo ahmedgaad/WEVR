@@ -115,11 +115,10 @@ Widget defaultTextButton({
       child: Text(
         text,
         style: TextStyle(
-          decoration: textDecoration,
-          color: textColor,
-          fontSize: fontSize,
-          fontWeight: FontWeight.bold
-        ),
+            decoration: textDecoration,
+            color: textColor,
+            fontSize: fontSize,
+            fontWeight: FontWeight.bold),
       ),
     );
 
@@ -177,7 +176,7 @@ Widget emailStack() {
           padding: const EdgeInsets.all(PaddingSize.p0),
           child: Center(
             child: Text(
-              AppStrings.or,
+              StringsManager.or,
               style: getRegularStyleInter(
                 color: ColorManager.black,
                 fontSize: FontSize.s10.sp,
@@ -190,11 +189,10 @@ Widget emailStack() {
   );
 }
 
-
-
 void showToast({
   required String text,
-  required ToastStates state, }) {
+  required ToastStates state,
+}) {
   Fluttertoast.showToast(
       msg: text,
       toastLength: Toast.LENGTH_LONG,
@@ -232,7 +230,7 @@ Widget moneyIcon() {
   );
 }
 
-Widget textInputInField (String text) {
+Widget textInputInField(String text) {
   return Text(
     text,
     style: getRegularStylePoppins(

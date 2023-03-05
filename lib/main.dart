@@ -2,13 +2,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import 'package:wevr_app/core/dependency_injection/injection_container.dart';
-import 'package:wevr_app/core/get_device_info.dart';
-import 'package:wevr_app/core/helpers/cache_helper/cache_helper.dart';
+import 'package:wevr_app/core/helpers/cache_helper.dart';
+import 'package:wevr_app/core/helpers/get_device_info_helper.dart';
 
 import 'app.dart';
-import 'core/bloc_observer.dart';
+import 'core/helpers/bloc_observer.dart';
+import 'core/helpers/dio_helper.dart';
+import 'core/service/injection_container.dart';
 import 'core/utils/languages_manager.dart';
 
 late String initialRoute;
@@ -18,6 +18,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   await getDeviceInfo();
   initializeInjector();
+  DioHelper.init();
   await CacheHelper.init();
   // Widget? widget;
   //

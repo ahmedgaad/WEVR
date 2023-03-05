@@ -26,16 +26,16 @@ class RegisterSuccessfully extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-               SuccessScreen(
-                 title: AppStrings.registerSuccessfully.tr(),
-                 subTitle: AppStrings.registerSuccess.tr(),
-               ),
+              SuccessScreen(
+                title: StringsManager.registerSuccessfully.tr(),
+                subTitle: StringsManager.registerSuccess.tr(),
+              ),
               defaultButton(
                 width: AppSize.s280.w,
                 function: () {
-                  navigateTo(context, Routes.homeRoute);
+                  navigateTo(context, Routes.loginRoute);
                 },
-                text: AppStrings.continueExploring.tr(),
+                text: StringsManager.continuee.tr(),
               ),
             ],
           ),

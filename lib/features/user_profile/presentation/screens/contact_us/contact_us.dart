@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wevr_app/core/utils/assets_manager.dart';
-import 'package:wevr_app/core/utils/strings_manager.dart';
-import 'package:wevr_app/core/utils/styles_manager.dart';
-import 'package:wevr_app/features/user_profile/presentation/widgets/contact_us/build_list_tile_item.dart';
-import 'package:wevr_app/features/user_profile/presentation/widgets/profile/build_divider.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../../../core/utils/assets_manager.dart';
+import '../../../../../core/utils/strings_manager.dart';
+import '../../../../../core/utils/styles_manager.dart';
+import '../../widgets/contact_us/build_list_tile_item.dart';
+import '../../widgets/profile/build_divider.dart';
 
 class ContactUs extends StatelessWidget {
   const ContactUs({Key? key}) : super(key: key);
@@ -27,26 +27,24 @@ class ContactUs extends StatelessWidget {
     }
   }
 
-
-
-void launchEmail() async {
-  final Uri emailLaunchUri = Uri(
-    scheme: 'mailto',
-    path: 'softagi.tech@gmail.com',
-  );
-  if (await canLaunchUrl(emailLaunchUri)) {
-    await launchUrl(emailLaunchUri);
-  } else {
-    throw 'Could not launch $emailLaunchUri';
+  void launchEmail() async {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'softagi.tech@gmail.com',
+    );
+    if (await canLaunchUrl(emailLaunchUri)) {
+      await launchUrl(emailLaunchUri);
+    } else {
+      throw 'Could not launch $emailLaunchUri';
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppStrings.contactUs.tr(),
+          StringsManager.contactUs.tr(),
           style: getBoldStylePoppins(),
         ),
       ),

@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wevr_app/core/components/components.dart';
-import 'package:wevr_app/core/utils/assets_manager.dart';
-import 'package:wevr_app/core/utils/strings_manager.dart';
-import 'package:wevr_app/core/utils/styles_manager.dart';
 
+import '../../../../../core/components/components.dart';
+import '../../../../../core/utils/assets_manager.dart';
+import '../../../../../core/utils/strings_manager.dart';
+import '../../../../../core/utils/styles_manager.dart';
 import '../../widgets/language/radio_lang.dart';
 
 class LanguageView extends StatelessWidget {
@@ -16,7 +16,7 @@ class LanguageView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppStrings.changeLanguage.tr(),
+          StringsManager.changeLanguage.tr(),
           style: getBoldStylePoppins(),
         ),
       ),
@@ -33,7 +33,7 @@ class LanguageView extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 30,
             ),
             Text(
-              AppStrings.pleaseSelectYourLang.tr(),
+              StringsManager.pleaseSelectYourLang.tr(),
               style: getBoldStylePoppins(),
             ),
             const RadioLang(),
@@ -43,7 +43,7 @@ class LanguageView extends StatelessWidget {
                 function: () {
                   Navigator.of(context).pop();
                 },
-                text: AppStrings.continuee.tr(),
+                text: StringsManager.continuee.tr(),
                 isUpperCase: false,
               ),
             )

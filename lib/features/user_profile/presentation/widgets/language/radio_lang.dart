@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:wevr_app/core/utils/assets_manager.dart';
-import 'package:wevr_app/core/utils/languages_manager.dart';
 
+import '../../../../../core/utils/assets_manager.dart';
+import '../../../../../core/utils/languages_manager.dart';
 import '../profile/build_divider.dart';
 
 class RadioLang extends StatefulWidget {

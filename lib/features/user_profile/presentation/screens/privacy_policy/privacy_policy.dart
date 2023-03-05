@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:wevr_app/core/utils/strings_manager.dart';
-import 'package:wevr_app/core/utils/styles_manager.dart';
+
+import '../../../../../core/utils/strings_manager.dart';
+import '../../../../../core/utils/styles_manager.dart';
 
 class PrivacyPolicy extends StatelessWidget {
   const PrivacyPolicy({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class PrivacyPolicy extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            AppStrings.privacy.tr(),
+            StringsManager.privacy.tr(),
             style: getBoldStylePoppins(),
           ),
         ),
@@ -21,7 +22,7 @@ class PrivacyPolicy extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             children: [
               Text(
-                AppStrings.policyTopic.tr(),
+                StringsManager.policyTopic.tr(),
                 style: getRegularStyleInter(fontSize: 16.0),
               ),
             ],

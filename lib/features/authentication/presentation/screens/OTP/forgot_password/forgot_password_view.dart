@@ -34,10 +34,10 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           // mainAxisAlignment: MainAxisAlignment.start,
           children: [
-             ForgetPasswordTopColumn(
+            ForgetPasswordTopColumn(
               imagePath: AssetsImagesManager.forgotPass,
-              title: AppStrings.forgotPass.tr(),
-              subTitle: AppStrings.subTitleForgotPass.tr(),
+              title: StringsManager.forgotPass.tr(),
+              subTitle: StringsManager.subTitleForgotPass.tr(),
             ),
             //via phone number
             Padding(
@@ -80,7 +80,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                AppStrings.viaPhone.tr(),
+                                StringsManager.viaPhone.tr(),
                                 style: getRegularStyleInter(
                                   color: ColorManager.viaPhone,
                                   fontSize: FontSize.s16.sp,
@@ -146,7 +146,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                AppStrings.viaEmail.tr(),
+                                StringsManager.viaEmail.tr(),
                                 style: getRegularStyleInter(
                                   color: ColorManager.viaPhone,
                                   fontSize: FontSize.s16.sp,

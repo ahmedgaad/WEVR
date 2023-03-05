@@ -1,4 +1,6 @@
-class AppMargin{
+import 'package:flutter/material.dart';
+
+class AppMargin {
   static const double m4 = 4.0;
   static const double m6 = 6.0;
   static const double m8 = 8.0;
@@ -96,11 +98,25 @@ class AppSize {
   static const double s700 = 700.0;
 }
 
-class AppRadius{
+class AppRadius {
   static const dynamic r2 = 2.0;
   static const dynamic r1 = 1.0;
   static const dynamic r10 = 10.0;
   static const dynamic r41 = 41.0;
   static const dynamic r93 = 93.0;
   static const dynamic r20 = 20.0;
+}
+
+
+///This is an extension method in Dart that adds two new methods 
+///to the num class: ph and pw. These methods return a SizedBox
+///widget with either the height or width set to the value of 
+///the number.
+extension EmptyPadding on num {
+  SizedBox get ph => SizedBox(
+        height: toDouble(),
+      );
+  SizedBox get pw => SizedBox(
+        width: toDouble(),
+      );
 }

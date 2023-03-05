@@ -1,24 +1,24 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../../../../core/components/components.dart';
-import '../../../../../core/utils/values_manager.dart';
-import '../../../../../core/utils/color_manager.dart';
-import '../../../../map_based_homes/presentation/screens/map/google_map.dart';
-import '../../../../../core/dependency_injection/injection_container.dart';
 import '../../../../../core/utils/assets_manager.dart';
+import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/fonts_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
+import '../../../../../core/utils/values_manager.dart';
+import '../../../../map_based_homes/presentation/screens/map/google_map.dart';
 import '../auction/auction_view.dart';
 import '../explore/explore_view.dart';
 import '../homes/homes_view.dart';
 import '../saved/saved_view.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
     ));
     return BlocProvider(
       create: (BuildContext context) =>
-          HomeLayoutCubit(logoutUseCase: getIt()), //logoutUseCase: getIt()
+          HomeLayoutCubit(), //logoutUseCase: getIt()
       child: BlocConsumer<HomeLayoutCubit, HomeLayOutStates>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -103,7 +103,7 @@ class _HomeViewState extends State<HomeView> {
                                 height: AppSize.s2.h,
                               ),
                               Text(
-                                AppStrings.explore.tr(),
+                                StringsManager.explore.tr(),
                                 style: getRegularStylePoppins(
                                   color: cubit.currentTap == 0
                                       ? ColorManager.primary
@@ -131,7 +131,7 @@ class _HomeViewState extends State<HomeView> {
                                     : ColorManager.darkGrey,
                               ),
                               Text(
-                                AppStrings.saved.tr(),
+                                StringsManager.saved.tr(),
                                 style: getRegularStylePoppins(
                                   color: cubit.currentTap == 1
                                       ? ColorManager.primary
@@ -164,7 +164,7 @@ class _HomeViewState extends State<HomeView> {
                                     : ColorManager.darkGrey,
                               ),
                               Text(
-                                AppStrings.homes.tr(),
+                                StringsManager.homes.tr(),
                                 style: getRegularStylePoppins(
                                   color: cubit.currentTap == 3
                                       ? ColorManager.primary
@@ -195,7 +195,7 @@ class _HomeViewState extends State<HomeView> {
                                 height: AppSize.s2.h,
                               ),
                               Text(
-                                AppStrings.auction.tr(),
+                                StringsManager.auction.tr(),
                                 style: getRegularStylePoppins(
                                   color: cubit.currentTap == 4
                                       ? ColorManager.primary
@@ -212,7 +212,6 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             ),
-
           );
         },
       ),

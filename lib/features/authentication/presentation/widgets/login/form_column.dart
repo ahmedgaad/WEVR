@@ -11,43 +11,39 @@ import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 
 class SocialColumn extends StatelessWidget {
-  const SocialColumn(
-      {Key? key, required this.firstText, required this.secondText})
-      : super(key: key);
+  const SocialColumn({super.key});
 
-  final String firstText;
-  final String secondText;
+  // final String firstText;
+  // final String secondText;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          firstText,
-          style: getSemiBoldStylePoppins(
-            color: ColorManager.primary,
-            fontSize: AppSize.s16,
-          ),
-        ),
-        SizedBox(
-          height: AppSize.s30.h,
-        ),
+        // Text(
+        //   firstText,
+        //   style: getSemiBoldStylePoppins(
+        //     color: ColorManager.primary,
+        //     fontSize: AppSize.s16,
+        //   ),
+        // ),
+        35.ph,
         const SocialButtons(),
         SizedBox(
           height: AppSize.s30.h,
         ),
         emailStack(),
-        SizedBox(
-          height: AppSize.s30.h,
-        ),
-        Text(
-          secondText,
-          style: getRegularStyleInter(
-            color: ColorManager.darkGrey,
-            fontSize: FontSize.s14.sp,
-          ),
-        ),
+        // SizedBox(
+        //   height: AppSize.s30.h,
+        // ),
+        // Text(
+        //   secondText,
+        //   style: getRegularStyleInter(
+        //     color: ColorManager.darkGrey,
+        //     fontSize: FontSize.s14.sp,
+        //   ),
+        // ),
         // SizedBox(
         //   height: AppSize.s24.h,
         // ),

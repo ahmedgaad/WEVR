@@ -7,9 +7,16 @@ import '../../../../core/utils/styles_manager.dart';
 import '../../../../core/utils/values_manager.dart';
 
 class LoginRegisterBackground extends StatelessWidget {
-  const LoginRegisterBackground({Key ?key, required this.buttonText, required this.questionText, required this.route, required this.p1, required this.p2 }) : super(key: key);
+  const LoginRegisterBackground(
+      {Key? key,
+      required this.textButton,
+      required this.questionText,
+      required this.route,
+      required this.p1,
+      required this.p2})
+      : super(key: key);
 
-  final String buttonText;
+  final String textButton;
   final String questionText;
   final String route;
   final double p1;
@@ -46,14 +53,12 @@ class LoginRegisterBackground extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: AppSize.s30.h,
-            ),
+            30.ph,
             Padding(
               padding: EdgeInsets.all(p2),
               child: defaultTextButton(
                   textColor: ColorManager.primary,
-                  text: buttonText,
+                  text: textButton,
                   onPressed: () {
                     navigateTo(context, route);
                   }),
@@ -64,4 +69,3 @@ class LoginRegisterBackground extends StatelessWidget {
     ]);
   }
 }
-

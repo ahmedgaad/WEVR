@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/components/components.dart';
-import '../../../../../../core/helpers/cache_helper/cache_helper.dart';
-import '../../../../../authentication/domain/usecases/logout.dart';
+import '../../../../../../core/helpers/cache_helper.dart';
 import '../../../../../introduction/presentation/screens/get_started/get_started_view.dart';
 import '../../auction/auction_view.dart';
 import '../../explore/explore_view.dart';
@@ -11,16 +10,14 @@ import '../../saved/saved_view.dart';
 import 'states.dart';
 
 class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
-  final LogoutUseCase logoutUseCase;
-  HomeLayoutCubit({
-    required this.logoutUseCase,
-  }) : super(HomeLayOutInitialState());
+  // final LogoutUseCase logoutUseCase;
+  HomeLayoutCubit() : super(HomeLayOutInitialState());
 
   static HomeLayoutCubit get(context) => BlocProvider.of(context);
 
-  void logout(String token) async {
-    var response = await logoutUseCase(token);
-  }
+  // void logout(String token) async {
+  //   var response = await logoutUseCase(token);
+  // }
 
   void signOut(context) {
     CacheHelper.removeData(key: 'token').then((value) {

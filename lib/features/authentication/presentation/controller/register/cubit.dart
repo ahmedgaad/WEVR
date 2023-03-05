@@ -1,19 +1,18 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wevr_app/core/errors/network_exceptions.dart';
-  import '../../../../data/models/register_model/register_model.dart';
-import '../../../../domain/usecases/register.dart';
+import 'package:wevr_app/core/errors/failures.dart';
+import 'package:wevr_app/core/utils/strings_manager.dart';
+import 'package:wevr_app/features/authentication/domain/use_cases/register_usecase.dart';
 import 'states.dart';
 import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 
-
 class RegisterCubit extends Cubit<RegisterStates> {
-  final RegisterUseCase registerNewUserUseCase;
+  final RegisterUseCase registerUseCase;
 
   RegisterCubit({
-    required this.registerNewUserUseCase,
+    required this.registerUseCase,
   }) : super(RegisterInitialState());
   static RegisterCubit get(context) => BlocProvider.of(context);
 
@@ -23,8 +22,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
   var phoneController = TextEditingController();
   var userNameController = TextEditingController();
 
-
- Future<String?> getDeviceInfo() async {
+  Future<String?> getDeviceInfo() async {
     //DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     if (Platform.isAndroid) {
       var androidInfo = await DeviceInfoPlugin().androidInfo;
@@ -48,17 +46,6 @@ class RegisterCubit extends Cubit<RegisterStates> {
     }
   }
 
-  void userRegister(RegisterModel registerModel) async{
-    var response = await registerNewUserUseCase(registerModel);
-    response.when(
-        success: (RegisterModel registerModel){
-          emit(RegisterSuccessState(registerModel));
-        },
-        failure: (NetworkExceptions networkExceptions){
-          emit(RegisterErrorState(networkExceptions));
-        });
-  }
-
   IconData suffix = Icons.visibility;
   bool isPassword = true;
   bool isPasswordMatchCharacter = false;
@@ -79,5 +66,39 @@ class RegisterCubit extends Cubit<RegisterStates> {
     confirmSuffix = isPassword ? Icons.visibility : Icons.visibility_off;
 
     emit(ChangeConfirmPasswordVisibilityState());
+  }
+
+  Future<void> register({
+    required String userName,
+    required String email,
+    required String phone,
+    required String password,
+    required String passwordConfirmation,
+  }) async {
+    emit(RegisterLoadingState());
+
+    final failureOrRegister = await registerUseCase.call(
+        userName: userName,
+        email: email,
+        phone: phone,
+        password: password,
+        passwordConfirmation: passwordConfirmation);
+
+    failureOrRegister.fold(
+      (failure) =>
+          emit(RegisterErrorState(error: failure.message)),
+      (register) => emit(RegisterSuccessState(register: register)),
+    );
+  }
+
+  String _mapFailureToMessage(Failure failure) {
+    switch (failure.runtimeType) {
+      case ServerFailure:
+        return StringsManager.SERVER_FAILURE_MESSAGE;
+      case OfflineFailure:
+        return StringsManager.OFFLINE_FAILURE_MESSAGE;
+      default:
+        return "Unexpected Error, Please try again later";
+    }
   }
 }

@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:wevr_app/features/authentication/presentation/widgets/forget_pass/forget_password_top_column.dart';
+
 import '../../../../../../core/components/components.dart';
 import '../../../../../../core/utils/assets_manager.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/strings_manager.dart';
 import '../../../../../../core/utils/styles_manager.dart';
 import '../../../../../../core/utils/values_manager.dart';
+import '../../../widgets/forget_pass/forget_password_top_column.dart';
 import '../reset_pass_successfully.dart';
 import 'cubit/create_new_password_cubit.dart';
 
@@ -35,9 +36,9 @@ class CreateNewPassword extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ForgetPasswordTopColumn(
-                      imagePath: AssetsImagesManager.createNewPass,
-                      title: AppStrings.createNewPasswordTitle.tr(),
-                      subTitle: AppStrings.createNewPasswordSubTitle.tr(),
+                    imagePath: AssetsImagesManager.createNewPass,
+                    title: StringsManager.createNewPasswordTitle.tr(),
+                    subTitle: StringsManager.createNewPasswordSubTitle.tr(),
                   ),
                   Form(
                     key: cubit.formKey,
@@ -53,7 +54,7 @@ class CreateNewPassword extends StatelessWidget {
                             controller: cubit.passwordController,
                             type: TextInputType.visiblePassword,
                             labelWidget: Text(
-                              AppStrings.password.tr(),
+                              StringsManager.password.tr(),
                               style: getRegularStyleInter(
                                 color: ColorManager.darkGrey,
                                 fontSize: AppSize.s16.sp,
@@ -101,7 +102,7 @@ class CreateNewPassword extends StatelessWidget {
                                 controller: cubit.confirmPasswordController,
                                 type: TextInputType.visiblePassword,
                                 labelWidget: Text(
-                                  AppStrings.confirmPassword.tr(),
+                                  StringsManager.confirmPassword.tr(),
                                   style: getRegularStyleInter(
                                     color: ColorManager.darkGrey,
                                     fontSize: AppSize.s16.sp,
@@ -140,16 +141,15 @@ class CreateNewPassword extends StatelessWidget {
                           height: MediaQuery.of(context).size.height / 20,
                         ),
                         defaultButton(
-                            function: () {
-                              if (cubit.formKey.currentState!.validate()) {
-                                navigatePush(
-                                    context, const ResetSuccessfully());
-                              }
-                            },
-                            text: AppStrings.resetPassword.tr(),
-                            isUpperCase: false,
-                            width: 250.w,
-                            height: 50.h,
+                          function: () {
+                            if (cubit.formKey.currentState!.validate()) {
+                              navigatePush(context, const ResetSuccessfully());
+                            }
+                          },
+                          text: StringsManager.resetPassword.tr(),
+                          isUpperCase: false,
+                          width: 250.w,
+                          height: 50.h,
                         ),
                       ],
                     ),

@@ -55,7 +55,7 @@ class _PaymentState extends State<Payment> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppStrings.payment,
+          StringsManager.payment,
           style: getBoldStylePoppins(),
         ),
       ),
@@ -243,17 +243,17 @@ class _PaymentState extends State<Payment> {
     );
   }
 
-  Widget gradientBackground(){
+  Widget gradientBackground() {
     return Container(
       decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              ColorManager.lightPrimary,
-              ColorManager.white,
-            ],
-            begin: Alignment.bottomRight,
-            end: Alignment.topLeft,
-          )),
+        colors: [
+          ColorManager.lightPrimary,
+          ColorManager.white,
+        ],
+        begin: Alignment.bottomRight,
+        end: Alignment.topLeft,
+      )),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wevr_app/features/authentication/presentation/widgets/forget_pass/forget_password_top_column.dart';
+import '../../../widgets/forget_pass/forget_password_top_column.dart';
 import '../../../../../../core/components/components.dart';
 import '../../../../../../core/utils/assets_manager.dart';
 import '../../../../../../core/utils/color_manager.dart';
@@ -39,9 +39,9 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ForgetPasswordTopColumn(
-                    imagePath: AssetsImagesManager.mobileReset,
-                    title: AppStrings.recoveryCode.tr(),
-                    subTitle: AppStrings.subTitleRecoveryCode.tr(),
+                  imagePath: AssetsImagesManager.mobileReset,
+                  title: StringsManager.recoveryCode.tr(),
+                  subTitle: StringsManager.subTitleRecoveryCode.tr(),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -192,7 +192,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                       function: () {
                         navigatePush(context, const CreateNewPassword());
                       },
-                      text: AppStrings.submit.tr(),
+                      text: StringsManager.submit.tr(),
                       width: AppSize.s200.w,
                       height: AppSize.s60.h,
                       isUpperCase: false,
@@ -203,14 +203,14 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      AppStrings.resendCode.tr(),
+                      StringsManager.resendCode.tr(),
                       style: getRegularStyleInter(
                         color: ColorManager.darkGrey,
                         fontSize: FontSize.s14,
                       ),
                     ),
                     defaultTextButton(
-                      text: AppStrings.resend.tr(),
+                      text: StringsManager.resend.tr(),
                       textColor: ColorManager.primary,
                       onPressed: () {},
                     )
