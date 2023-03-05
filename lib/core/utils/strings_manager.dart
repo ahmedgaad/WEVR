@@ -58,6 +58,9 @@ class StringsManager {
   static const String forgotPass = "forgot_pass";
   static const String subTitleForgotPass = "sub_title_forgot_pass";
   static const String recoveryCode = "recovery_code";
+  static const error = "error";
+    static const okay = "okay";
+
   static const String subTitleRecoveryCode = "sub_title_recovery_code";
   static const String createNewPasswordTitle = "create_new_password_title";
   static const String createNewPasswordSubTitle =

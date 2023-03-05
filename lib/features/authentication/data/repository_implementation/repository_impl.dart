@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:wevr_app/core/utils/strings_manager.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/network/network_info.dart';
@@ -38,7 +39,7 @@ class AuthRepositoryImpl implements AuthRepository {
     } on RegisterException catch (failure){
       return Left(ServerFailure(failure.registerErrorModel.errorMessage));
     } on OfflineException {
-      return Left(OfflineFailure());
+      return Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
     }
   }
 }

@@ -64,6 +64,7 @@
     "reset_successfully_sub_title": " تم تغيير كلمة السر بنجاح ، استخدم كلمة السر الجديدة الخاصة بك عند تسجيل الدخول",
     "language" : "اللغة",
     "please_select_your_lang" : "الرجاء تحديد لغتك",
-    "continue" : "استمر"
-
+    "continue" : "استمر",
+    "error": "خطأ ",
+    "okay" : "حسناً"
 }

@@ -3,6 +3,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:wevr_app/core/service/injection_container.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/register/register_successfully.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login/form_column.dart';
@@ -40,11 +41,15 @@ class _RegisterViewState extends State<RegisterView> {
       child: BlocConsumer<RegisterCubit, RegisterStates>(
         listener: (context, state) {
           if (state is RegisterSuccessState) {
-            showToast(
-                text: state.register.message!, state: ToastStates.SUCCESS);
-            // navigatePush(context, const RegisterSuccessfully());
+            navigatePush(context, const RegisterSuccessfully());
           } else if (state is RegisterErrorState) {
-            showToast(text: state.error.toString(), state: ToastStates.ERROR);
+            QuickAlert.show(
+              context: context,
+              type: QuickAlertType.error,
+              title: StringsManager.error.tr(),
+              text: state.error,
+              confirmBtnText: StringsManager.okay.tr(),
+            );
           }
         },
         builder: (context, state) {
