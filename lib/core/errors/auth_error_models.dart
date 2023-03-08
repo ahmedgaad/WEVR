@@ -15,3 +15,16 @@ class RegisterErrorModel extends Equatable {
   @override
   List<Object?> get props => [errorMessage];
 }
+
+class LoginErrorModel extends Equatable {
+  final String errorMessage;
+
+  const LoginErrorModel({
+    required this.errorMessage,
+  });
+
+  factory LoginErrorModel.fromJson(Map<String, dynamic> json) =>
+      LoginErrorModel(errorMessage: json['massage']);
+  @override
+  List<Object?> get props => [errorMessage];
+}

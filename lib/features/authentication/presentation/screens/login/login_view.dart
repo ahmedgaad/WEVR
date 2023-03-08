@@ -14,8 +14,8 @@ import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 import '../../widgets/login/form_column.dart';
-import 'cubit/cubit.dart';
-import 'cubit/states.dart';
+import '../../controller/login/cubit.dart';
+import '../../controller/login/states.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);

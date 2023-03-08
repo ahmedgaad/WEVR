@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:wevr_app/core/utils/strings_manager.dart';
+import 'package:wevr_app/features/authentication/domain/entities/login.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/network/network_info.dart';
@@ -41,6 +42,12 @@ class AuthRepositoryImpl implements AuthRepository {
     } on OfflineException {
       return Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
     }
+  }
+
+  @override
+  Future<Either<Failure, Login>> login({required String email, required String password, required String deviceInformation}) {
+    // TODO: implement login
+    throw UnimplementedError();
   }
 }
 

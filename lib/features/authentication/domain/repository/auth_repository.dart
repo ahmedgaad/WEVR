@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failures.dart';
+import '../entities/login.dart';
 import '../entities/register.dart';
 
 abstract class AuthRepository {
@@ -9,5 +10,11 @@ abstract class AuthRepository {
     required String phone,
     required String password,
     required String passwordConfirmation,
+  });
+
+  Future<Either<Failure, Login>> login({
+    required String email,
+    required String password,
+    required String deviceInformation,
   });
 }
