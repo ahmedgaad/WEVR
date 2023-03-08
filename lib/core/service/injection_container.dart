@@ -1,5 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
+import 'package:wevr_app/features/authentication/presentation/controller/login/cubit.dart';
 
 import '../../features/authentication/data/data_sources/remote_datasource.dart';
 import '../../features/authentication/data/repository_implementation/repository_impl.dart';
@@ -12,13 +14,13 @@ GetIt getIt = GetIt.instance;
 
 void initializeInjector() {
   //Cubit
-  // getIt.registerLazySingleton(() => LoginCubit(loginUserUseCase: getIt()));
-  getIt.registerLazySingleton(
-      () => RegisterCubit(registerUseCase: getIt()));
+  getIt.registerLazySingleton(() => RegisterCubit(registerUseCase: getIt()));
+  getIt.registerLazySingleton(() => LoginCubit(loginUseCase: getIt()));
   // getIt.registerLazySingleton(() => HomeLayoutCubit(logoutUseCase: getIt()));
 
   //Usecase
   getIt.registerLazySingleton(() => RegisterUseCase(getIt()));
+  getIt.registerLazySingleton(() => LoginUseCase(getIt()));
 
   //Repository
   getIt.registerLazySingleton<AuthRepository>(
@@ -29,8 +31,7 @@ void initializeInjector() {
   );
 
   //DataSource
-  getIt.registerLazySingleton<AuthDataSource>(
-      () => AuthDataSourceImpl());
+  getIt.registerLazySingleton<AuthDataSource>(() => AuthDataSourceImpl());
 
   //NetworkInfo
   getIt.registerLazySingleton<NetworkInfo>(

@@ -18,7 +18,8 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   await getDeviceInfo();
   initializeInjector();
-  DioHelper.init();
+  // DioHelper.init();
+  await getDeviceInfo();
   await CacheHelper.init();
   // Widget? widget;
   //

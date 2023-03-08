@@ -93,7 +93,7 @@ class AuthDataSourceImpl implements AuthDataSource {
           }));
       if (response.data['status'] == 1) {
         final model = LoginModel.fromJson(response.data);
-        print(model);
+        //print(model);
         return model;
       } else {
         throw LoginException(
