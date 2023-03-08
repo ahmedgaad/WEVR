@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:wevr_app/core/utils/strings_manager.dart';
+import 'package:wevr_app/features/authentication/domain/entities/login.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/network/network_info.dart';
@@ -36,10 +37,34 @@ class AuthRepositoryImpl implements AuthRepository {
       } else {
         throw OfflineException();
       }
-    } on RegisterException catch (failure){
+    } on RegisterException catch (failure) {
       return Left(ServerFailure(failure.registerErrorModel.errorMessage));
     } on OfflineException {
-      return Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
+      return const Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Login>> login({
+    required String email,
+    required String password,
+    required String deviceInformation,
+  }) async {
+    try {
+      if (await networkInfo.isConnected) {
+        final result = await authDataSource.login(
+          email: email,
+          password: password,
+          deviceInformation: deviceInformation,
+        );
+        return Right(result);
+      } else {
+        throw OfflineException();
+      }
+    } on LoginException catch (failure) {
+      return Left(ServerFailure(failure.loginErrorModel.errorMessage));
+    } on OfflineException {
+      return const Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
     }
   }
 }

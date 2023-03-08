@@ -9,4 +9,12 @@ class RegisterException implements Exception {
   });
 }
 
+class LoginException implements Exception {
+  final LoginErrorModel loginErrorModel;
+
+  LoginException({
+    required this.loginErrorModel,
+  });
+}
+
 class ServerException implements Exception {}

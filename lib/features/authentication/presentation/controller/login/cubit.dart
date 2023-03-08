@@ -5,21 +5,21 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wevr_app/features/authentication/presentation/screens/login/cubit/states.dart';
-
+import 'package:wevr_app/features/authentication/data/models/login_model.dart';
+import 'package:wevr_app/features/authentication/domain/entities/login.dart';
+import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
+import 'package:wevr_app/features/authentication/presentation/controller/login/states.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
-  // final LoginUseCase loginUserUseCase;
+  final LoginUseCase loginUseCase;
 
-  LoginCubit() : super(LoginInitialState());
+  LoginCubit({required this.loginUseCase}) : super(LoginInitialState());
+
   static LoginCubit get(context) => BlocProvider.of(context);
   var emailFormKey = GlobalKey<FormState>();
   var passFieldKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
-
-
-
 
   Future<String?> getDeviceInfo() async {
     //DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
@@ -45,17 +45,29 @@ class LoginCubit extends Cubit<LoginStates> {
     }
   }
 
+  Future<void> login({
+    required String email,
+    required String password,
+    required String deviceInformation,
+  }) async {
+    emit(LoginLoadingState());
 
-  // void userLogin(LoginModel loginModel) async{
-  //   var response = await loginUserUseCase(loginModel);
-  //   response.when(
-  //       success: (LoginModel loginModel){
-  //         emit(LoginSuccessState(loginModel));
-  //       },
-  //       failure: (NetworkExceptions networkExceptions){
-  //         emit(LoginErrorState(networkExceptions));
-  //       });
-  // }
+    final failureOrLogin = await loginUseCase.call(
+      email: email,
+      password: password,
+      deviceInformation: deviceInformation,
+    );
+
+    failureOrLogin.fold(
+      (failure) {
+        emit(LoginErrorState(error: failure.message));
+      },
+      (login) {
+        emit(LoginSuccessState(login: login));
+        print(login.token);
+      },
+    );
+  }
 
   IconData suffix = Icons.visibility;
   bool isPassword = true;
@@ -67,28 +79,4 @@ class LoginCubit extends Cubit<LoginStates> {
 
     emit(ChangeLoginPasswordVisibilityState());
   }
-
-  //late LoginModel loginModel;
-
-  /*void userLogin({
-    required String email,
-    required String password,
-  }) async {
-
-    emit(UserLoginLoadingState());
-    DioHelper.postData(
-      url: LOGIN,
-      data: {
-        'email': email,
-        'password': password,
-      },
-    ).then((value) {
-      print(value.data);
-      loginModel = LoginModel.fromJson(value.data);
-      emit(SuccessLoginLoadingState(loginModel));
-    }).catchError((error) {
-      print(error.toString());
-      emit(ErrorLoginLoadingState(error.toString()));
-    });
-  }*/
 }

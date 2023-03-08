@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:wevr_app/core/errors/auth_error_models.dart';
+import 'package:wevr_app/features/authentication/data/models/login_model.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
 import '../models/register_model.dart';
@@ -18,11 +19,24 @@ abstract class AuthDataSource {
     required String password,
     required String passwordConfirmation,
   });
+
+  Future<LoginModel> login({
+    required String email,
+    required String password,
+    required String deviceInformation,
+  });
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
   final Dio dio = Dio(
     BaseOptions(
+      receiveDataWhenStatusError: true,
+      receiveTimeout: const Duration(
+        seconds: 20 * 1000,
+      ),
+      sendTimeout: const Duration(
+        seconds: 20 * 1000,
+      ),
       baseUrl: ConstantsManager.baseURL,
       headers: {
         "Content-Type": "application/json",
@@ -56,56 +70,37 @@ class AuthDataSourceImpl implements AuthDataSource {
         print(model);
         return model;
       } else {
-        throw 
-        RegisterException(registerErrorModel: RegisterErrorModel.fromJson(response.data));
+        throw RegisterException(
+            registerErrorModel: RegisterErrorModel.fromJson(response.data));
+      }
+    } on DioError catch (e) {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<LoginModel> login({
+    required String email,
+    required String password,
+    required String deviceInformation,
+  }) async {
+    try {
+      final response = await dio.post(ConstantsManager.loginEP,
+          data: json.encode({
+            'email': email,
+            'password': password,
+            'device_name': deviceInformation,
+          }));
+      if (response.data['status'] == 1) {
+        final model = LoginModel.fromJson(response.data);
+        //print(model);
+        return model;
+      } else {
+        throw LoginException(
+            loginErrorModel: LoginErrorModel.fromJson(response.data));
       }
     } on DioError catch (e) {
       throw ServerException();
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import 'package:wevr_app/core/helpers/dio_helper.dart';
-// import 'package:wevr_app/core/utils/constants_manager.dart';
-// import 'package:wevr_app/features/authentication/data/models/register_model.dart';
-
-// abstract class RemoteDataSource {
-//   Future<RegisterModel> register();
-// }
-
-// class RemoteDataSourceImpl implements RemoteDataSource {
-//   @override
-//   Future<RegisterModel> register(RegisterModel registerModel) async {
-//     var response = await DioHelper.postData(
-//       url: ConstantsManager.registerEP,
-//       data: {
-//         'name': registerModel.userName,
-//         'email': registerModel.email,
-//         'phone': registerModel.phone,
-//       },
-//     );
-//     print(response);
-//     return RegisterModel.fromJson(response.data);
-//   }
-// }
