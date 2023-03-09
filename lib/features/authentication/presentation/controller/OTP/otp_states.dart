@@ -12,7 +12,7 @@ abstract class OtpStates extends Equatable {
 
 class OtpInitial extends OtpStates {}
 
-class ForgotPasswordLoadingState extends OtpStates {}
+class ResetViaEmailLoadingState extends OtpStates {}
 
 class ResetViaEmailSuccessState extends OtpStates {
   final ForgotPassword forgotPassword;

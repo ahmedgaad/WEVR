@@ -1,3 +1,4 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,252 +22,263 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ResetEmailView extends StatelessWidget {
-  const ResetEmailView({Key? key}) : super(key: key);
+  const ResetEmailView({Key? key, required this.email}) : super(key: key);
+
+  final String email;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) =>
-          OtpCubit(forgotPasswordUseCase: getIt(), checkOTPUseCase: getIt()),
-      child: BlocConsumer<OtpCubit, OtpStates>(
-        listener: (context, state) {
-          // TODO: implement listener
-          // if (state is ResetViaEmailSuccessState) {
-          //   QuickAlert.show(
-          //     context: context,
-          //     type: QuickAlertType.info,
-          //     title: StringsManager.info.tr(),
-          //     text: state.forgotPassword.message,
-          //     barrierDismissible: false,
-          //     confirmBtnColor: Colors.amber,
-          //     confirmBtnText: StringsManager.okay.tr(),
-          //   );
-          // } else if (state is ResetViaEmailErrorState) {
-          //   QuickAlert.show(
-          //     context: context,
-          //     type: QuickAlertType.error,
-          //     title: StringsManager.error.tr(),
-          //     text: state.error,
-          //     confirmBtnText: StringsManager.okay.tr(),
-          //   );
-          // }
-          if (state is CheckOTPSuccessState) {
-            if (state.checkOTP.status == 1) {
-              navigatePush(context, CreateNewPassword());
-            }
-          } else if (state is CheckOTPErrorState) {
-            QuickAlert.show(
-              context: context,
-              type: QuickAlertType.error,
-              title: StringsManager.error.tr(),
-              text: state.error,
-              confirmBtnText: StringsManager.okay.tr(),
-            );
+    return BlocConsumer<OtpCubit, OtpStates>(
+      listener: (context, state) {
+        if (state is CheckOTPSuccessState) {
+          if (state.checkOTP.status == 1) {
+            navigatePush(context, const CreateNewPassword());
           }
-        },
-        builder: (context, state) {
-          var cubit = OtpCubit.get(context);
-          return Scaffold(
-            appBar: AppBar(),
-            body: SafeArea(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: AppSize.s20.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ForgetPasswordTopColumn(
-                        imagePath: AssetsImagesManager.emailReset,
-                        title: StringsManager.recoveryCode.tr(),
-                        subTitle: StringsManager.subTitleRecoveryCode.tr(),
+        } else if (state is CheckOTPErrorState) {
+          QuickAlert.show(
+            context: context,
+            type: QuickAlertType.error,
+            title: StringsManager.error.tr(),
+            text: state.error,
+            confirmBtnText: StringsManager.okay.tr(),
+          );
+        } else if (state is ResetViaEmailSuccessState) {
+          QuickAlert.show(
+            context: context,
+            type: QuickAlertType.info,
+            title: StringsManager.info.tr(),
+            text: state.forgotPassword.message,
+            barrierDismissible: false,
+            confirmBtnColor: Colors.amber,
+            confirmBtnText: StringsManager.okay.tr(),
+          );
+        } else if (state is ResetViaEmailErrorState) {
+          QuickAlert.show(
+            context: context,
+            type: QuickAlertType.error,
+            title: StringsManager.error.tr(),
+            text: state.error,
+            confirmBtnText: StringsManager.okay.tr(),
+          );
+        }
+      },
+      builder: (context, state) {
+        var cubit = OtpCubit.get(context);
+        return Scaffold(
+          appBar: AppBar(),
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: AppSize.s20.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ForgetPasswordTopColumn(
+                      imagePath: AssetsImagesManager.emailReset,
+                      title: StringsManager.recoveryCode.tr(),
+                      subTitle: StringsManager.subTitleRecoveryCode.tr(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: PaddingSize.p78,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: PaddingSize.p78,
-                        ),
-                        child: Form(
-                          key: cubit.formKey,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  width: AppSize.s60,
-                                  height: AppSize.s60,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                    color: ColorManager.viaPhoneContainer,
+                      child: Form(
+                        key: cubit.formKey,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                width: AppSize.s60,
+                                height: AppSize.s60,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  color: ColorManager.viaPhoneContainer,
+                                ),
+                                child: TextFormField(
+                                  controller: cubit.firstCodeController,
+                                  onChanged: (value) {
+                                    if (value.length == 1) {
+                                      FocusScope.of(context).nextFocus();
+                                    }
+                                  },
+                                  decoration: const InputDecoration(
+                                      hintText: "8", border: InputBorder.none),
+                                  style: getBoldStylePoppins(
+                                    color: ColorManager.black,
+                                    fontSize: FontSize.s24.sp,
                                   ),
-                                  child: TextFormField(
-                                    controller: cubit.firstCodeController,
-                                    onChanged: (value) {
-                                      if (value.length == 1) {
-                                        FocusScope.of(context).nextFocus();
-                                      }
-                                    },
-                                    decoration: const InputDecoration(
-                                        hintText: "8",
-                                        border: InputBorder.none),
-                                    style: getBoldStylePoppins(
-                                      color: ColorManager.black,
-                                      fontSize: FontSize.s24.sp,
-                                    ),
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
-                                  ),
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(1),
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
                                 ),
                               ),
-                              15.pw,
-                              Expanded(
-                                child: Container(
-                                  width: AppSize.s60,
-                                  height: AppSize.s60,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                    color: ColorManager.viaPhoneContainer,
-                                  ),
-                                  child: TextFormField(
-                                    controller: cubit.secondCodeController,
-                                    onChanged: (value) {
-                                      if (value.length == 1) {
-                                        FocusScope.of(context).nextFocus();
-                                      }
-                                    },
-                                    decoration: const InputDecoration(
-                                      hintText: "-",
-                                      border: InputBorder.none,
-                                    ),
-                                    style: getBoldStylePoppins(
-                                      color: ColorManager.black,
-                                      fontSize: FontSize.s24.sp,
-                                    ),
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              15.pw,
-                              Expanded(
-                                child: Container(
-                                  width: AppSize.s60,
-                                  height: AppSize.s60,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                    color: ColorManager.viaPhoneContainer,
-                                  ),
-                                  child: TextFormField(
-                                    controller: cubit.thirdCodeController,
-                                    onChanged: (value) {
-                                      if (value.length == 1) {
-                                        FocusScope.of(context).nextFocus();
-                                      }
-                                    },
-                                    decoration: const InputDecoration(
-                                      hintText: "-",
-                                      border: InputBorder.none,
-                                    ),
-                                    style: getBoldStylePoppins(
-                                      color: ColorManager.black,
-                                      fontSize: FontSize.s24.sp,
-                                    ),
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              15.pw,
-                              Expanded(
-                                child: Container(
-                                  width: AppSize.s60,
-                                  height: AppSize.s60,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                    color: ColorManager.viaPhoneContainer,
-                                  ),
-                                  child: TextFormField(
-                                    controller: cubit.fourthCodeController,
-                                    onChanged: (value) {
-                                      if (value.length == 1) {
-                                        FocusScope.of(context).nextFocus();
-                                      }
-                                    },
-                                    decoration: const InputDecoration(
-                                      hintText: "-",
-                                      border: InputBorder.none,
-                                    ),
-                                    style: getBoldStylePoppins(
-                                      color: ColorManager.black,
-                                      fontSize: FontSize.s24.sp,
-                                    ),
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(35.0),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: defaultButton(
-                            function: () {
-                              if (cubit.formKey.currentState!.validate()) {
-                                cubit.checkOTP();
-                              }
-                            },
-                            text: StringsManager.submit.tr(),
-                            width: AppSize.s200.w,
-                            height: AppSize.s60.h,
-                            isUpperCase: false,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            StringsManager.resendCode.tr(),
-                            style: getRegularStyleInter(
-                              color: ColorManager.darkGrey,
-                              fontSize: FontSize.s14,
                             ),
-                          ),
-                          defaultTextButton(
-                            text: StringsManager.resend.tr(),
-                            textColor: ColorManager.primary,
-                            onPressed: () {
-                              OtpCubit.get(context).forgotPassword();
-                            },
-                          )
-                        ],
+                            15.pw,
+                            Expanded(
+                              child: Container(
+                                width: AppSize.s60,
+                                height: AppSize.s60,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  color: ColorManager.viaPhoneContainer,
+                                ),
+                                child: TextFormField(
+                                  controller: cubit.secondCodeController,
+                                  onChanged: (value) {
+                                    if (value.length == 1) {
+                                      FocusScope.of(context).nextFocus();
+                                    }
+                                  },
+                                  decoration: const InputDecoration(
+                                    hintText: "-",
+                                    border: InputBorder.none,
+                                  ),
+                                  style: getBoldStylePoppins(
+                                    color: ColorManager.black,
+                                    fontSize: FontSize.s24.sp,
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(1),
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
+                                ),
+                              ),
+                            ),
+                            15.pw,
+                            Expanded(
+                              child: Container(
+                                width: AppSize.s60,
+                                height: AppSize.s60,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  color: ColorManager.viaPhoneContainer,
+                                ),
+                                child: TextFormField(
+                                  controller: cubit.thirdCodeController,
+                                  onChanged: (value) {
+                                    if (value.length == 1) {
+                                      FocusScope.of(context).nextFocus();
+                                    }
+                                  },
+                                  decoration: const InputDecoration(
+                                    hintText: "-",
+                                    border: InputBorder.none,
+                                  ),
+                                  style: getBoldStylePoppins(
+                                    color: ColorManager.black,
+                                    fontSize: FontSize.s24.sp,
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(1),
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
+                                ),
+                              ),
+                            ),
+                            15.pw,
+                            Expanded(
+                              child: Container(
+                                width: AppSize.s60,
+                                height: AppSize.s60,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  color: ColorManager.viaPhoneContainer,
+                                ),
+                                child: TextFormField(
+                                  controller: cubit.fourthCodeController,
+                                  onChanged: (value) {
+                                    if (value.length == 1) {
+                                      FocusScope.of(context).nextFocus();
+                                    }
+                                  },
+                                  decoration: const InputDecoration(
+                                    hintText: "-",
+                                    border: InputBorder.none,
+                                  ),
+                                  style: getBoldStylePoppins(
+                                    color: ColorManager.black,
+                                    fontSize: FontSize.s24.sp,
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(1),
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(35.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: ConditionalBuilder(
+                          condition: state is! CheckOTPLoadingState,
+                          builder: (BuildContext context) {
+                            return defaultButton(
+                              function: () {
+                                if (cubit.formKey.currentState!.validate()) {
+                                  cubit.checkOTP(email: email);
+                                }
+                              },
+                              text: StringsManager.submit.tr(),
+                              width: AppSize.s200.w,
+                              height: AppSize.s60.h,
+                              isUpperCase: false,
+                            );
+                          },
+                          fallback: (BuildContext context) => const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
+                      ),
+                    ),
+                    ConditionalBuilder(
+                      condition: state is! ResetViaEmailLoadingState,
+                      builder: (BuildContext context) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              StringsManager.resendCode.tr(),
+                              style: getRegularStyleInter(
+                                color: ColorManager.darkGrey,
+                                fontSize: FontSize.s14,
+                              ),
+                            ),
+                            defaultTextButton(
+                              text: StringsManager.resend.tr(),
+                              textColor: ColorManager.primary,
+                              onPressed: () {
+                                cubit.forgotPassword(email: email);
+                              },
+                            )
+                          ],
+                        );
+                      },
+                      fallback: (BuildContext context) => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

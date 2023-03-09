@@ -64,8 +64,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ForgotPasswordView());
       case Routes.resetPhoneRoute:
         return MaterialPageRoute(builder: (_) => const ResetPhoneView());
-      case Routes.resetEmailRoute:
-        return MaterialPageRoute(builder: (_) => const ResetEmailView());
+      // case Routes.resetEmailRoute:
+      //   return MaterialPageRoute(builder: (_) => const ResetEmailView());
       case Routes.homeRoute:
         return MaterialPageRoute(builder: (_) => const HomeView());
       case Routes.personalInfoRoute:

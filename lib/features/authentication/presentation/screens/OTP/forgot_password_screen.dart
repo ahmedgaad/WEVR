@@ -12,18 +12,22 @@ import 'package:wevr_app/core/utils/styles_manager.dart';
 import 'package:wevr_app/core/utils/values_manager.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp_cubit.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp_states.dart';
+import 'package:wevr_app/features/authentication/presentation/screens/OTP/reset_via_email/reset_email_view.dart';
 
 import '../../../../../core/utils/strings_manager.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   ForgotPasswordScreen({super.key});
 
-  final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _emailController = TextEditingController();
   final _emailKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  late String email;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OtpCubit(forgotPasswordUseCase: getIt(), checkOTPUseCase: getIt()),
+      create: (context) =>
+          OtpCubit(forgotPasswordUseCase: getIt(), checkOTPUseCase: getIt()),
       child: BlocConsumer<OtpCubit, OtpStates>(
         listener: (context, state) {
           if (state is ResetViaEmailSuccessState) {
@@ -34,9 +38,13 @@ class ForgotPasswordScreen extends StatelessWidget {
               text: state.forgotPassword.message,
               barrierDismissible: false,
               onConfirmBtnTap: () {
-                navigateTo(
+                Navigator.push(
                   context,
-                  Routes.resetEmailRoute,
+                  MaterialPageRoute(
+                    builder: (_) => ResetEmailView(
+                      email: email,
+                    ),
+                  ),
                 );
               },
               confirmBtnColor: Colors.amber,
@@ -53,6 +61,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           }
         },
         builder: (context, state) {
+          var cubit = OtpCubit.get(context);
           return Scaffold(
             body: SafeArea(
               child: SingleChildScrollView(
@@ -81,11 +90,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                         ),
                         defaultFormField(
                           onSaved: (value) {
-                            OtpCubit.get(context).email = value!;
-                            print(OtpCubit.get(context).email);
+                            email = value!;
                           },
                           label: StringsManager.enterYourEmail.tr(),
-                          controller: OtpCubit.get(context).emailController,
+                          controller: emailController,
                           validate: (value) {
                             if (value!.isEmpty) {
                               return StringsManager.emailError1.tr();
@@ -102,12 +110,13 @@ class ForgotPasswordScreen extends StatelessWidget {
                           height: MediaQuery.of(context).size.height * 0.06,
                         ),
                         ConditionalBuilder(
-                          condition: state is! ForgotPasswordLoadingState,
+                          condition: state is! ResetViaEmailLoadingState,
                           builder: (BuildContext context) {
                             return defaultButton(
                               function: () {
                                 if (_emailKey.currentState!.validate()) {
-                                  OtpCubit.get(context).forgotPassword();
+                                  _emailKey.currentState!.save();
+                                  cubit.forgotPassword(email: email);
                                 }
                               },
                               text: StringsManager.continuee,

@@ -14,10 +14,6 @@ class OtpCubit extends Cubit<OtpStates> {
   }) : super(OtpInitial());
   static OtpCubit get(context) => BlocProvider.of(context);
 
-  TextEditingController emailController = TextEditingController();
-  //TODO: save email from forgot pass screen to use in otp screen when click on Resend button
-  String email = '';
-
   final TextEditingController firstCodeController = TextEditingController();
   final TextEditingController secondCodeController = TextEditingController();
   final TextEditingController thirdCodeController = TextEditingController();
@@ -25,16 +21,17 @@ class OtpCubit extends Cubit<OtpStates> {
 
   var formKey = GlobalKey<FormState>();
 
-  Future<void> checkOTP() async {
+  Future<void> checkOTP({
+    required String email,
+  }) async {
     emit(CheckOTPLoadingState());
     final verificationCode = int.parse(firstCodeController.text +
         secondCodeController.text +
         thirdCodeController.text +
         fourthCodeController.text);
     final failureOrSendOTP = await checkOTPUseCase.call(
-      //TODO: save otp form user
       pinCode: verificationCode,
-      email: 'agad92998@gmail.com',
+      email: email,
     );
 
     failureOrSendOTP.fold(
@@ -47,11 +44,13 @@ class OtpCubit extends Cubit<OtpStates> {
     );
   }
 
-  Future<void> forgotPassword() async {
-    emit(ForgotPasswordLoadingState());
+  Future<void> forgotPassword({
+    required String email,
+  }) async {
+    emit(ResetViaEmailLoadingState());
 
     final failureOrForgotPassword = await forgotPasswordUseCase.call(
-      email: emailController.text,
+      email: email,
     );
 
     failureOrForgotPassword.fold(
