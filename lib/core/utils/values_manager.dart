@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+class DistancesManager {
+  static const double screenPadding = 25.0;
+}
+
 class AppMargin {
   static const double m4 = 4.0;
   static const double m6 = 6.0;
@@ -107,10 +111,9 @@ class AppRadius {
   static const dynamic r20 = 20.0;
 }
 
-
-///This is an extension method in Dart that adds two new methods 
+///This is an extension method in Dart that adds two new methods
 ///to the num class: ph and pw. These methods return a SizedBox
-///widget with either the height or width set to the value of 
+///widget with either the height or width set to the value of
 ///the number.
 extension EmptyPadding on num {
   SizedBox get ph => SizedBox(

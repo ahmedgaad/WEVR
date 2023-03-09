@@ -7,7 +7,7 @@ import 'package:quickalert/quickalert.dart';
 import 'package:wevr_app/core/helpers/cache_helper.dart';
 import 'package:wevr_app/core/helpers/get_device_info_helper.dart';
 import 'package:wevr_app/core/service/injection_container.dart';
-import 'package:wevr_app/features/authentication/presentation/screens/OTP/forgot_password/forgot_password_view.dart';
+import 'package:wevr_app/features/authentication/presentation/screens/OTP/reset_pass/reset_pass.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login_register_background.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/screens/home/home_view.dart';
 
@@ -28,7 +28,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) =>
-          LoginCubit(loginUseCase: getIt(), forgotPasswordUseCase: getIt()),
+          LoginCubit(loginUseCase: getIt()),
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
@@ -77,10 +77,7 @@ class LoginView extends StatelessWidget {
                               child: SingleChildScrollView(
                                 child: Column(
                                   children: [
-                                    const SocialColumn(
-                                        // secondText: AppStrings.loginAccount.tr(),
-                                        // firstText: AppStrings.loginWord.tr(),
-                                        ),
+                                    const SocialColumn(),
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: PaddingSize.p40.w),
@@ -170,7 +167,7 @@ class LoginView extends StatelessWidget {
                                                     cubit.emailController.text,
                                                 password: cubit
                                                     .passwordController.text,
-                                                deviceInformation: 'ios',
+                                                deviceInformation: 'manually ios',
                                               );
                                             }
                                           }

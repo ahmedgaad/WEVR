@@ -13,9 +13,8 @@ import 'package:wevr_app/features/authentication/presentation/controller/login/s
 
 class LoginCubit extends Cubit<LoginStates> {
   final LoginUseCase loginUseCase;
-  final ForgotPasswordUseCase forgotPasswordUseCase;
 
-  LoginCubit({required this.forgotPasswordUseCase, required this.loginUseCase})
+  LoginCubit({required this.loginUseCase})
       : super(LoginInitialState());
 
   static LoginCubit get(context) => BlocProvider.of(context);
@@ -48,24 +47,7 @@ class LoginCubit extends Cubit<LoginStates> {
     }
   }
 
-  Future<void> forgotPassword({
-    required String email,
-  }) async {
-    emit(ForgotPasswordLoadingState());
-
-    final failureOrForgotPassword = await forgotPasswordUseCase.call(
-      email: email,
-    );
-
-    failureOrForgotPassword.fold(
-      (failure) {
-        emit(ForgotPasswordErrorState(error: failure.message));
-      },
-      (forgotPass) {
-        emit(ForgotPasswordSuccessState(forgotPassword: forgotPass));
-      },
-    );
-  }
+  
 
   Future<void> login({
     required String email,

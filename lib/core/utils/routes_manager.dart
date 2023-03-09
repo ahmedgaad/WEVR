@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wevr_app/features/authentication/presentation/screens/OTP/forgot_password_screen.dart';
 import '../../features/user_profile/presentation/screens/profile/profile_view.dart';
-import '../../features/authentication/presentation/screens/OTP/forgot_password/forgot_password_view.dart';
+import '../../features/authentication/presentation/screens/OTP/reset_pass/reset_pass.dart';
 import '../../features/authentication/presentation/screens/OTP/reset_via_email/reset_email_view.dart';
 import '../../features/authentication/presentation/screens/OTP/reset_via_phone/reset_phone_view.dart';
 import '../../features/user_dashboard/presentation/screens/home/home_view.dart';
@@ -31,6 +32,7 @@ class Routes {
   static const String homeRoute = "/home";
   static const String resetPhoneRoute = "/resetPhone";
   static const String resetEmailRoute = "/resetEmail";
+  static const String forgotRoute = "/forgot";
 
   static const String personalInfoRoute = "/personalInformation";
   static const String accountSettingRoute = "/accountSetting";
@@ -84,6 +86,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ShowYourProperties());
       case Routes.profileRoute:
         return MaterialPageRoute(builder: (_) => const ProfileView());
+      case Routes.forgotRoute:
+        return MaterialPageRoute(builder: (_) => ForgotPasswordScreen());
       default:
         return undefinedRoute();
     } //switch

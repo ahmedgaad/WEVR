@@ -90,6 +90,8 @@ class AssetsImagesManager {
       '${ConstantsManager.imagePath}/reset_password/forgot_password.svg';
   static const String success =
       '${ConstantsManager.imagePath}/reset_password/success.svg';
+    static const String forgot =
+      '${ConstantsManager.imagePath}/reset_password/forgot.png';
 
   static const String person =
       '${ConstantsManager.imagePath}/personal_icons/person.svg';

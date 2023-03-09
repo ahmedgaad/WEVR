@@ -30,18 +30,3 @@ class LoginErrorState extends LoginStates {
   List<Object> get props => [error];
 }
 
-class ForgotPasswordLoadingState extends LoginStates {}
-class ForgotPasswordSuccessState extends LoginStates {
-  final ForgotPassword forgotPassword;
-
-  const ForgotPasswordSuccessState({required this.forgotPassword});
-  @override
-  List<Object> get props => [forgotPassword];
-}
-
-class ForgotPasswordErrorState extends LoginStates {
-  final String error;
-  const ForgotPasswordErrorState({required this.error});
-  @override
-  List<Object> get props => [error];
-}

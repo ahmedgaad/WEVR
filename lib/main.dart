@@ -16,10 +16,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   Bloc.observer = MyBlocObserver();
-  await getDeviceInfo();
   initializeInjector();
-  // DioHelper.init();
-  await getDeviceInfo();
   await CacheHelper.init();
   // Widget? widget;
   //

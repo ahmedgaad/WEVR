@@ -7,8 +7,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:wevr_app/core/service/injection_container.dart';
+import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp_cubit.dart';
+import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp_states.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/login/cubit.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/login/states.dart';
+import 'package:wevr_app/features/authentication/presentation/screens/OTP/forgot_password_screen.dart';
 import '../../../../../../core/components/components.dart';
 import '../../../../../../core/utils/assets_manager.dart';
 import '../../../../../../core/utils/color_manager.dart';
@@ -31,23 +34,9 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          LoginCubit(loginUseCase: getIt(), forgotPasswordUseCase: getIt()),
-      child: BlocConsumer<LoginCubit, LoginStates>(
-        listener: (context, state) {
-          if (state is ForgotPasswordSuccessState) {
-            navigatePush(context, const ResetEmailView());
-          } else if (state is ForgotPasswordErrorState) {
-            QuickAlert.show(
-              context: context,
-              type: QuickAlertType.error,
-              title: StringsManager.error.tr(),
-              text: state.error,
-              confirmBtnText: StringsManager.okay.tr(),
-              confirmBtnColor: Colors.red
-            );
-          }
-        },
+      create: (context) => OtpCubit(forgotPasswordUseCase: getIt()),
+      child: BlocConsumer<OtpCubit, OtpStates>(
+        listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
@@ -126,79 +115,66 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                     ),
                   ),
                   //via email
-                  ConditionalBuilder(
-                    builder: (BuildContext context) {
-                      return Padding(
-                        padding: const EdgeInsets.all(PaddingSize.p10),
-                        child: GestureDetector(
-                          onTap: () {
-                            LoginCubit.get(context).forgotPassword(
-                              email: 'agad92998@gmail.com',
-                            );
-                          },
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              width: AppSize.s320.w,
-                              height: AppSize.s96.h,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: ColorManager.darkGrey,
-                                  width: AppSize.s1.w,
-                                ),
-                                borderRadius: BorderRadius.circular(
-                                  AppSize.s10,
-                                ),
-                              ),
-                              child: Row(
-                                children: [
-                                  15.pw,
-                                  SvgPicture.asset(
-                                    AssetsImagesManager.emailIc,
-                                    width: AppSize.s70.w,
-                                    height: AppSize.s70.h,
-                                    fit: BoxFit.scaleDown,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: AppSize.s20.w,
-                                      vertical: AppSize.s20.h,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          StringsManager.viaEmail.tr(),
-                                          style: getRegularStyleInter(
-                                            color: ColorManager.viaPhone,
-                                            fontSize: FontSize.s16.sp,
-                                          ),
-                                        ),
-                                        10.ph,
-                                        Text(
-                                          LoginCubit.get(context)
-                                              .emailController
-                                              .text,
-                                          style: getRegularStyleInter(
-                                            color: ColorManager.viaPhone,
-                                            fontSize: FontSize.s16.sp,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                  Padding(
+                    padding: const EdgeInsets.all(PaddingSize.p10),
+                    child: GestureDetector(
+                      onTap: () {
+                        navigatePush(context, ForgotPasswordScreen());
+                      },
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          width: AppSize.s320.w,
+                          height: AppSize.s96.h,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: ColorManager.darkGrey,
+                              width: AppSize.s1.w,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              AppSize.s10,
                             ),
                           ),
+                          child: Row(
+                            children: [
+                              15.pw,
+                              SvgPicture.asset(
+                                AssetsImagesManager.emailIc,
+                                width: AppSize.s70.w,
+                                height: AppSize.s70.h,
+                                fit: BoxFit.scaleDown,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: AppSize.s20.w,
+                                  vertical: AppSize.s20.h,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      StringsManager.viaEmail.tr(),
+                                      style: getRegularStyleInter(
+                                        color: ColorManager.viaPhone,
+                                        fontSize: FontSize.s16.sp,
+                                      ),
+                                    ),
+                                    10.ph,
+                                    Text(
+                                      '... ...ab@gmail.com',
+                                      style: getRegularStyleInter(
+                                        color: ColorManager.viaPhone,
+                                        fontSize: FontSize.s16.sp,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      );
-                    },
-                    condition: state is! ForgotPasswordLoadingState,
-                    fallback: (BuildContext context) {
-                      return const Center(child: CircularProgressIndicator());
-                    },
+                      ),
+                    ),
                   ),
                 ],
               ),
