@@ -25,4 +25,12 @@ class ForgotPasswordException implements Exception {
   });
 }
 
+class CheckOTPException implements Exception {
+  final CheckOTPErrorModel checkOTPErrorModel;
+
+  CheckOTPException({
+    required this.checkOTPErrorModel,
+  });
+}
+
 class ServerException implements Exception {}

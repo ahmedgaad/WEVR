@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:wevr_app/core/errors/auth_error_models.dart';
+import 'package:wevr_app/features/authentication/data/models/check_otp_model.dart';
 import 'package:wevr_app/features/authentication/data/models/forgot_password_model.dart';
 import 'package:wevr_app/features/authentication/data/models/login_model.dart';
 import '../../../../core/errors/exceptions.dart';
@@ -29,6 +30,11 @@ abstract class AuthDataSource {
 
   Future<ForgotPasswordModel> forgotPassword({
     required String email,
+  });
+
+  Future<CheckOTPModel> checkOTP({
+    required String email,
+    required int pinCode,
   });
 }
 
@@ -136,6 +142,32 @@ class AuthDataSourceImpl implements AuthDataSource {
         throw ForgotPasswordException(
             forgotPasswordErrorModel:
                 ForgotPasswordErrorModel.fromJson(response.data));
+      }
+    } on DioError catch (e) {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<CheckOTPModel> checkOTP({
+    required String email,
+    required int pinCode,
+  }) async {
+    try {
+      final response = await dio.post(
+        ConstantsManager.checkOTPEP,
+        data: {
+          'email': email,
+          'pin_code': pinCode,
+        },
+      );
+      if (response.data['status'] == 1) {
+        final model = CheckOTPModel.fromJson(response.data);
+        print(model);
+        return model;
+      } else {
+        throw CheckOTPException(
+            checkOTPErrorModel: CheckOTPErrorModel.fromJson(response.data));
       }
     } on DioError catch (e) {
       throw ServerException();

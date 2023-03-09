@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:wevr_app/core/utils/strings_manager.dart';
+import 'package:wevr_app/features/authentication/domain/entities/check_otp.dart';
 import 'package:wevr_app/features/authentication/domain/entities/forgot_password.dart';
 import 'package:wevr_app/features/authentication/domain/entities/login.dart';
 import '../../../../core/errors/exceptions.dart';
@@ -84,6 +85,28 @@ class AuthRepositoryImpl implements AuthRepository {
       }
     } on ForgotPasswordException catch (failure) {
       return Left(ServerFailure(failure.forgotPasswordErrorModel.errorMessage));
+    } on OfflineException {
+      return const Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
+    }
+  }
+
+  @override
+  Future<Either<Failure, CheckOTP>> checkOTP({
+    required int pinCode,
+    required String email,
+  }) async {
+    try {
+      if (await networkInfo.isConnected) {
+        final result = await authDataSource.checkOTP(
+          email: email,
+          pinCode: pinCode,
+        );
+        return Right(result);
+      } else {
+        throw OfflineException();
+      }
+    } on CheckOTPException catch (failure) {
+      return Left(ServerFailure(failure.checkOTPErrorModel.errorMessage));
     } on OfflineException {
       return const Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
     }

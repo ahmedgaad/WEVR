@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:wevr_app/features/authentication/domain/entities/check_otp.dart';
 import 'package:wevr_app/features/authentication/domain/entities/forgot_password.dart';
 import '../../../../core/errors/failures.dart';
 import '../entities/login.dart';
@@ -20,6 +21,11 @@ abstract class AuthRepository {
   });
 
   Future<Either<Failure, ForgotPassword>> forgotPassword({
+    required String email,
+  });
+
+  Future<Either<Failure, CheckOTP>> checkOTP({
+    required int pinCode,
     required String email,
   });
 }

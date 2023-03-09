@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:wevr_app/features/authentication/domain/use_cases/check_otp_usecase.dart';
 import 'package:wevr_app/features/authentication/domain/use_cases/forgot_password_usecase.dart';
 import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp_cubit.dart';
@@ -18,13 +19,14 @@ void initializeInjector() {
   //Cubit
   getIt.registerLazySingleton(() => RegisterCubit(registerUseCase: getIt()));
   getIt.registerLazySingleton(() => LoginCubit(loginUseCase: getIt()));
-  getIt.registerLazySingleton(() => OtpCubit(forgotPasswordUseCase: getIt()));
+  getIt.registerLazySingleton(() => OtpCubit(forgotPasswordUseCase: getIt(), checkOTPUseCase: getIt()));
   // getIt.registerLazySingleton(() => HomeLayoutCubit(logoutUseCase: getIt()));
 
   //Usecase
   getIt.registerLazySingleton(() => RegisterUseCase(getIt()));
   getIt.registerLazySingleton(() => LoginUseCase(getIt()));
   getIt.registerLazySingleton(() => ForgotPasswordUseCase(getIt()));
+  getIt.registerLazySingleton(() => CheckOTPUseCase(getIt()));
 
   //Repository
   getIt.registerLazySingleton<AuthRepository>(

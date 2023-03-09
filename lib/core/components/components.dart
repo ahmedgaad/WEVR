@@ -53,6 +53,7 @@ Widget defaultFormField({
   Widget? labelWidget,
   Widget? suffixWidget,
   // String? validate,
+  Function(String?)? onSaved,
   String? Function(String?)? validate,
   ValueChanged<String>? onSubmit,
   ValueChanged<String>? onChange,
@@ -66,6 +67,7 @@ Widget defaultFormField({
   bool? isClickable = true,
 }) =>
     TextFormField(
+      onSaved: onSaved,
       keyboardType: type,
       validator: validate,
       controller: controller,

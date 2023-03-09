@@ -80,8 +80,12 @@ class ForgotPasswordScreen extends StatelessWidget {
                           height: 50 / MediaQuery.of(context).devicePixelRatio,
                         ),
                         defaultFormField(
+                          onSaved: (value) {
+                            OtpCubit.get(context).email = value!;
+                            print(OtpCubit.get(context).email);
+                          },
                           label: StringsManager.enterYourEmail.tr(),
-                          controller: _emailController,
+                          controller: OtpCubit.get(context).emailController,
                           validate: (value) {
                             if (value!.isEmpty) {
                               return StringsManager.emailError1.tr();
@@ -103,9 +107,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                             return defaultButton(
                               function: () {
                                 if (_emailKey.currentState!.validate()) {
-                                  OtpCubit.get(context).forgotPassword(
-                                    email: _emailController.text,
-                                  );
+                                  OtpCubit.get(context).forgotPassword();
                                 }
                               },
                               text: StringsManager.continuee,
