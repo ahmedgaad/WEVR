@@ -7,13 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wevr_app/features/authentication/data/models/login_model.dart';
 import 'package:wevr_app/features/authentication/domain/entities/login.dart';
+import 'package:wevr_app/features/authentication/domain/use_cases/forgot_password_usecase.dart';
 import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/login/states.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   final LoginUseCase loginUseCase;
+  final ForgotPasswordUseCase forgotPasswordUseCase;
 
-  LoginCubit({required this.loginUseCase}) : super(LoginInitialState());
+  LoginCubit({required this.forgotPasswordUseCase, required this.loginUseCase})
+      : super(LoginInitialState());
 
   static LoginCubit get(context) => BlocProvider.of(context);
   var emailFormKey = GlobalKey<FormState>();
@@ -43,6 +46,25 @@ class LoginCubit extends Cubit<LoginStates> {
     } else {
       return "";
     }
+  }
+
+  Future<void> forgotPassword({
+    required String email,
+  }) async {
+    emit(ForgotPasswordLoadingState());
+
+    final failureOrForgotPassword = await forgotPasswordUseCase.call(
+      email: email,
+    );
+
+    failureOrForgotPassword.fold(
+      (failure) {
+        emit(ForgotPasswordErrorState(error: failure.message));
+      },
+      (forgotPass) {
+        emit(ForgotPasswordSuccessState(forgotPassword: forgotPass));
+      },
+    );
   }
 
   Future<void> login({

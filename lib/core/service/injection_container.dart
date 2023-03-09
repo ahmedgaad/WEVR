@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:wevr_app/features/authentication/domain/use_cases/forgot_password_usecase.dart';
 import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/login/cubit.dart';
 
@@ -15,7 +16,9 @@ GetIt getIt = GetIt.instance;
 void initializeInjector() {
   //Cubit
   getIt.registerLazySingleton(() => RegisterCubit(registerUseCase: getIt()));
-  getIt.registerLazySingleton(() => LoginCubit(loginUseCase: getIt()));
+  getIt.registerLazySingleton(
+      () => LoginCubit(loginUseCase: getIt(), forgotPasswordUseCase: getIt()));
+  getIt.registerLazySingleton(() => ForgotPasswordUseCase(getIt()));
   // getIt.registerLazySingleton(() => HomeLayoutCubit(logoutUseCase: getIt()));
 
   //Usecase

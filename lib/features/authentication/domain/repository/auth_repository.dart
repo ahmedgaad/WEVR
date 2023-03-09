@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:wevr_app/features/authentication/domain/entities/forgot_password.dart';
 import '../../../../core/errors/failures.dart';
 import '../entities/login.dart';
 import '../entities/register.dart';
@@ -16,5 +17,9 @@ abstract class AuthRepository {
     required String email,
     required String password,
     required String deviceInformation,
+  });
+
+  Future<Either<Failure, ForgotPassword>> forgotPassword({
+    required String email,
   });
 }

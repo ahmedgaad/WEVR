@@ -21,7 +21,7 @@ class StringsManager {
   static const String userName = "username";
   static const String mobile = "mobile";
   static const String emailError1 = "email_error1";
-  static const String emailError2 = "email_error1";
+  static const String emailError2 = "email_error2";
   static const String passwordValidate = "password_validate";
   static const String phoneValidate = "phone_validate";
   static const String userNameValidate = "username_validate";

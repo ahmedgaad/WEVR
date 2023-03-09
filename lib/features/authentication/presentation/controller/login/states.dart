@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:wevr_app/features/authentication/domain/entities/forgot_password.dart';
 import 'package:wevr_app/features/authentication/domain/entities/login.dart';
 
 abstract class LoginStates extends Equatable {
@@ -25,6 +26,22 @@ class LoginSuccessState extends LoginStates {
 class LoginErrorState extends LoginStates {
   final String error;
   const LoginErrorState({required this.error});
+  @override
+  List<Object> get props => [error];
+}
+
+class ForgotPasswordLoadingState extends LoginStates {}
+class ForgotPasswordSuccessState extends LoginStates {
+  final ForgotPassword forgotPassword;
+
+  const ForgotPasswordSuccessState({required this.forgotPassword});
+  @override
+  List<Object> get props => [forgotPassword];
+}
+
+class ForgotPasswordErrorState extends LoginStates {
+  final String error;
+  const ForgotPasswordErrorState({required this.error});
   @override
   List<Object> get props => [error];
 }

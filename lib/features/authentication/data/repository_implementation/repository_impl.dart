@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:wevr_app/core/utils/strings_manager.dart';
+import 'package:wevr_app/features/authentication/domain/entities/forgot_password.dart';
 import 'package:wevr_app/features/authentication/domain/entities/login.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
@@ -63,6 +64,26 @@ class AuthRepositoryImpl implements AuthRepository {
       }
     } on LoginException catch (failure) {
       return Left(ServerFailure(failure.loginErrorModel.errorMessage));
+    } on OfflineException {
+      return const Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ForgotPassword>> forgotPassword({
+    required String email,
+  }) async {
+    try {
+      if (await networkInfo.isConnected) {
+        final result = await authDataSource.forgotPassword(
+          email: email,
+        );
+        return Right(result);
+      } else {
+        throw OfflineException();
+      }
+    } on ForgotPasswordException catch (failure) {
+      return Left(ServerFailure(failure.forgotPasswordErrorModel.errorMessage));
     } on OfflineException {
       return const Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
     }

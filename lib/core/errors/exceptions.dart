@@ -17,4 +17,12 @@ class LoginException implements Exception {
   });
 }
 
+class ForgotPasswordException implements Exception {
+  final ForgotPasswordErrorModel forgotPasswordErrorModel;
+
+  ForgotPasswordException({
+    required this.forgotPasswordErrorModel,
+  });
+}
+
 class ServerException implements Exception {}

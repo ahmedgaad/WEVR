@@ -27,20 +27,20 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => LoginCubit(loginUseCase: getIt()),
+      create: (BuildContext context) =>
+          LoginCubit(loginUseCase: getIt(), forgotPasswordUseCase: getIt()),
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
             navigatePush(context, const HomeView());
           } else if (state is LoginErrorState) {
             QuickAlert.show(
-              context: context,
-              type: QuickAlertType.error,
-              title: StringsManager.error.tr(),
-              text: state.error,
-              confirmBtnText: StringsManager.okay.tr(),
-              confirmBtnColor: Colors.red
-            );
+                context: context,
+                type: QuickAlertType.error,
+                title: StringsManager.error.tr(),
+                text: state.error,
+                confirmBtnText: StringsManager.okay.tr(),
+                confirmBtnColor: Colors.red);
           }
         },
         builder: (context, state) {
@@ -150,12 +150,8 @@ class LoginView extends StatelessWidget {
                                             text: StringsManager.forgetPassword
                                                 .tr(),
                                             onPressed: () {
-                                              if (cubit
-                                                  .emailFormKey.currentState!
-                                                  .validate()) {
-                                                navigatePush(context,
-                                                    const ForgotPasswordView());
-                                              }
+                                              navigatePush(context,
+                                                  const ForgotPasswordView());
                                             },
                                           ),
                                         ),
