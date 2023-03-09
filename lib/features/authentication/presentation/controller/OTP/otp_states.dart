@@ -14,24 +14,23 @@ class OtpInitial extends OtpStates {}
 
 class ForgotPasswordLoadingState extends OtpStates {}
 
-class ForgotPasswordSuccessState extends OtpStates {
+class ResetViaEmailSuccessState extends OtpStates {
   final ForgotPassword forgotPassword;
 
-  const ForgotPasswordSuccessState({required this.forgotPassword});
+  const ResetViaEmailSuccessState({required this.forgotPassword});
   @override
   List<Object> get props => [forgotPassword];
 }
 
-class ForgotPasswordErrorState extends OtpStates {
+class ResetViaEmailErrorState extends OtpStates {
   final String error;
-  const ForgotPasswordErrorState({required this.error});
+  const ResetViaEmailErrorState({required this.error});
   @override
   List<Object> get props => [error];
 }
 
-
-
 class CheckOTPLoadingState extends OtpStates {}
+
 class CheckOTPSuccessState extends OtpStates {
   final CheckOTP checkOTP;
   const CheckOTPSuccessState({
@@ -40,6 +39,7 @@ class CheckOTPSuccessState extends OtpStates {
   @override
   List<Object> get props => [CheckOTP];
 }
+
 class CheckOTPErrorState extends OtpStates {
   final String error;
   const CheckOTPErrorState({required this.error});

@@ -23,10 +23,10 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OtpCubit(forgotPasswordUseCase: getIt()),
+      create: (context) => OtpCubit(forgotPasswordUseCase: getIt(), checkOTPUseCase: getIt()),
       child: BlocConsumer<OtpCubit, OtpStates>(
         listener: (context, state) {
-          if (state is ForgotPasswordSuccessState) {
+          if (state is ResetViaEmailSuccessState) {
             QuickAlert.show(
               context: context,
               type: QuickAlertType.info,
@@ -42,7 +42,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               confirmBtnColor: Colors.amber,
               confirmBtnText: StringsManager.okay.tr(),
             );
-          } else if (state is ForgotPasswordErrorState) {
+          } else if (state is ResetViaEmailErrorState) {
             QuickAlert.show(
               context: context,
               type: QuickAlertType.error,

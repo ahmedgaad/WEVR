@@ -31,17 +31,30 @@ class ResetEmailView extends StatelessWidget {
       child: BlocConsumer<OtpCubit, OtpStates>(
         listener: (context, state) {
           // TODO: implement listener
-          if (state is ForgotPasswordSuccessState) {
-            QuickAlert.show(
-              context: context,
-              type: QuickAlertType.info,
-              title: StringsManager.info.tr(),
-              text: state.forgotPassword.message,
-              barrierDismissible: false,
-              confirmBtnColor: Colors.amber,
-              confirmBtnText: StringsManager.okay.tr(),
-            );
-          } else if (state is ForgotPasswordErrorState) {
+          // if (state is ResetViaEmailSuccessState) {
+          //   QuickAlert.show(
+          //     context: context,
+          //     type: QuickAlertType.info,
+          //     title: StringsManager.info.tr(),
+          //     text: state.forgotPassword.message,
+          //     barrierDismissible: false,
+          //     confirmBtnColor: Colors.amber,
+          //     confirmBtnText: StringsManager.okay.tr(),
+          //   );
+          // } else if (state is ResetViaEmailErrorState) {
+          //   QuickAlert.show(
+          //     context: context,
+          //     type: QuickAlertType.error,
+          //     title: StringsManager.error.tr(),
+          //     text: state.error,
+          //     confirmBtnText: StringsManager.okay.tr(),
+          //   );
+          // }
+          if (state is CheckOTPSuccessState) {
+            if (state.checkOTP.status == 1) {
+              navigatePush(context, CreateNewPassword());
+            }
+          } else if (state is CheckOTPErrorState) {
             QuickAlert.show(
               context: context,
               type: QuickAlertType.error,
@@ -52,6 +65,7 @@ class ResetEmailView extends StatelessWidget {
           }
         },
         builder: (context, state) {
+          var cubit = OtpCubit.get(context);
           return Scaffold(
             appBar: AppBar(),
             body: SafeArea(
@@ -70,141 +84,143 @@ class ResetEmailView extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                           horizontal: PaddingSize.p78,
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Container(
-                                width: AppSize.s60,
-                                height: AppSize.s60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: ColorManager.viaPhoneContainer,
-                                ),
-                                child: TextFormField(
-                                  onChanged: (value) {
-                                    if (value.length == 1) {
-                                      FocusScope.of(context).nextFocus();
-                                    }
-                                  },
-                                  decoration: const InputDecoration(
-                                      hintText: "8", border: InputBorder.none),
-                                  style: getBoldStylePoppins(
-                                    color: ColorManager.black,
-                                    fontSize: FontSize.s24.sp,
+                        child: Form(
+                          key: cubit.formKey,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  width: AppSize.s60,
+                                  height: AppSize.s60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    color: ColorManager.viaPhoneContainer,
                                   ),
-                                  keyboardType: TextInputType.number,
-                                  textAlign: TextAlign.center,
-                                  inputFormatters: [
-                                    LengthLimitingTextInputFormatter(1),
-                                    FilteringTextInputFormatter.digitsOnly,
-                                  ],
+                                  child: TextFormField(
+                                    controller: cubit.firstCodeController,
+                                    onChanged: (value) {
+                                      if (value.length == 1) {
+                                        FocusScope.of(context).nextFocus();
+                                      }
+                                    },
+                                    decoration: const InputDecoration(
+                                        hintText: "8",
+                                        border: InputBorder.none),
+                                    style: getBoldStylePoppins(
+                                      color: ColorManager.black,
+                                      fontSize: FontSize.s24.sp,
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    textAlign: TextAlign.center,
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(1),
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: AppSize.s15,
-                            ),
-                            Expanded(
-                              child: Container(
-                                width: AppSize.s60,
-                                height: AppSize.s60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: ColorManager.viaPhoneContainer,
-                                ),
-                                child: TextFormField(
-                                  onChanged: (value) {
-                                    if (value.length == 1) {
-                                      FocusScope.of(context).nextFocus();
-                                    }
-                                  },
-                                  decoration: const InputDecoration(
-                                    hintText: "-",
-                                    border: InputBorder.none,
+                              15.pw,
+                              Expanded(
+                                child: Container(
+                                  width: AppSize.s60,
+                                  height: AppSize.s60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    color: ColorManager.viaPhoneContainer,
                                   ),
-                                  style: getBoldStylePoppins(
-                                    color: ColorManager.black,
-                                    fontSize: FontSize.s24.sp,
+                                  child: TextFormField(
+                                    controller: cubit.secondCodeController,
+                                    onChanged: (value) {
+                                      if (value.length == 1) {
+                                        FocusScope.of(context).nextFocus();
+                                      }
+                                    },
+                                    decoration: const InputDecoration(
+                                      hintText: "-",
+                                      border: InputBorder.none,
+                                    ),
+                                    style: getBoldStylePoppins(
+                                      color: ColorManager.black,
+                                      fontSize: FontSize.s24.sp,
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    textAlign: TextAlign.center,
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(1),
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
                                   ),
-                                  keyboardType: TextInputType.number,
-                                  textAlign: TextAlign.center,
-                                  inputFormatters: [
-                                    LengthLimitingTextInputFormatter(1),
-                                    FilteringTextInputFormatter.digitsOnly,
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: AppSize.s15,
-                            ),
-                            Expanded(
-                              child: Container(
-                                width: AppSize.s60,
-                                height: AppSize.s60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: ColorManager.viaPhoneContainer,
-                                ),
-                                child: TextFormField(
-                                  onChanged: (value) {
-                                    if (value.length == 1) {
-                                      FocusScope.of(context).nextFocus();
-                                    }
-                                  },
-                                  decoration: const InputDecoration(
-                                    hintText: "-",
-                                    border: InputBorder.none,
-                                  ),
-                                  style: getBoldStylePoppins(
-                                    color: ColorManager.black,
-                                    fontSize: FontSize.s24.sp,
-                                  ),
-                                  keyboardType: TextInputType.number,
-                                  textAlign: TextAlign.center,
-                                  inputFormatters: [
-                                    LengthLimitingTextInputFormatter(1),
-                                    FilteringTextInputFormatter.digitsOnly,
-                                  ],
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: AppSize.s15,
-                            ),
-                            Expanded(
-                              child: Container(
-                                width: AppSize.s60,
-                                height: AppSize.s60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  color: ColorManager.viaPhoneContainer,
-                                ),
-                                child: TextFormField(
-                                  onChanged: (value) {
-                                    if (value.length == 1) {
-                                      FocusScope.of(context).nextFocus();
-                                    }
-                                  },
-                                  decoration: const InputDecoration(
-                                    hintText: "-",
-                                    border: InputBorder.none,
+                              15.pw,
+                              Expanded(
+                                child: Container(
+                                  width: AppSize.s60,
+                                  height: AppSize.s60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    color: ColorManager.viaPhoneContainer,
                                   ),
-                                  style: getBoldStylePoppins(
-                                    color: ColorManager.black,
-                                    fontSize: FontSize.s24.sp,
+                                  child: TextFormField(
+                                    controller: cubit.thirdCodeController,
+                                    onChanged: (value) {
+                                      if (value.length == 1) {
+                                        FocusScope.of(context).nextFocus();
+                                      }
+                                    },
+                                    decoration: const InputDecoration(
+                                      hintText: "-",
+                                      border: InputBorder.none,
+                                    ),
+                                    style: getBoldStylePoppins(
+                                      color: ColorManager.black,
+                                      fontSize: FontSize.s24.sp,
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    textAlign: TextAlign.center,
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(1),
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
                                   ),
-                                  keyboardType: TextInputType.number,
-                                  textAlign: TextAlign.center,
-                                  inputFormatters: [
-                                    LengthLimitingTextInputFormatter(1),
-                                    FilteringTextInputFormatter.digitsOnly,
-                                  ],
                                 ),
                               ),
-                            ),
-                          ],
+                              15.pw,
+                              Expanded(
+                                child: Container(
+                                  width: AppSize.s60,
+                                  height: AppSize.s60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    color: ColorManager.viaPhoneContainer,
+                                  ),
+                                  child: TextFormField(
+                                    controller: cubit.fourthCodeController,
+                                    onChanged: (value) {
+                                      if (value.length == 1) {
+                                        FocusScope.of(context).nextFocus();
+                                      }
+                                    },
+                                    decoration: const InputDecoration(
+                                      hintText: "-",
+                                      border: InputBorder.none,
+                                    ),
+                                    style: getBoldStylePoppins(
+                                      color: ColorManager.black,
+                                      fontSize: FontSize.s24.sp,
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    textAlign: TextAlign.center,
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(1),
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Padding(
@@ -213,7 +229,9 @@ class ResetEmailView extends StatelessWidget {
                           alignment: Alignment.center,
                           child: defaultButton(
                             function: () {
-                              navigatePush(context, CreateNewPassword());
+                              if (cubit.formKey.currentState!.validate()) {
+                                cubit.checkOTP();
+                              }
                             },
                             text: StringsManager.submit.tr(),
                             width: AppSize.s200.w,
