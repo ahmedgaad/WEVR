@@ -1,7 +1,5 @@
 import 'auth_error_models.dart';
 
-import 'auth_error_models.dart';
-
 class OfflineException implements Exception {}
 
 class RegisterException implements Exception {

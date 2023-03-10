@@ -1,9 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../screens/home/cubit/cubit.dart';
-import '../../screens/home/cubit/states.dart';
+import 'package:quickalert/quickalert.dart';
+import '../../../../../core/helpers/cache_helper.dart';
+import '../../../../../core/utils/constants_manager.dart';
+import '../../../../../core/utils/strings_manager.dart';
+import '../../../../authentication/domain/entities/login.dart';
+import '../../../../introduction/presentation/screens/get_started/get_started_view.dart';
+import '../../controller/Home/cubit.dart';
+import '../../controller/Home/states.dart';
 import '../../../../user_profile/presentation/screens/profile/profile_view.dart';
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/assets_manager.dart';
@@ -14,35 +21,58 @@ class ProfileRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        GestureDetector(
-          onTap: () {
-            navigatePush(context, ProfileView());
-          },
-          child: CircleAvatar(
-            // backgroundColor: ColorManager.primary,
-            radius: AppSize.s25.sp,
-            child: Image.asset(
-              AssetsImagesManager.userPic,
-            ),
-          ),
-        ),
-        const Spacer(),
-        BlocBuilder<HomeLayoutCubit, HomeLayOutStates>(
-          builder: (context, state) {
-            return IconButton(
-              onPressed: () {
-                HomeLayoutCubit.get(context).signOut(context);
-                print("Deleted Successfully ****************");
+    return BlocConsumer<HomeLayoutCubit, HomeLayOutStates>(
+      listener: (context, state) {
+        if (state is LogoutSuccessfullyState) {
+          QuickAlert.show(
+            context: context,
+            type: QuickAlertType.success,
+            // title: StringsManager.error.tr(),
+            text: state.logout.message,
+            confirmBtnText: StringsManager.okay.tr(),
+            confirmBtnColor: Colors.green,
+          ).then((value) {
+            navigatePush(context, const GetStartedView());
+          });
+        }
+      },
+      builder: (context, state) {
+        var cubit = HomeLayoutCubit.get(context);
+        return Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                navigatePush(context, const ProfileView());
               },
-              icon: SvgPicture.asset(
-                AssetsImagesManager.signOut,
+              child: CircleAvatar(
+                radius: AppSize.s25.sp,
+                child: Image.asset(
+                  AssetsImagesManager.userPic,
+                ),
               ),
-            );
-          },
-        )
-      ],
+            ),
+            const Spacer(),
+            BlocBuilder<HomeLayoutCubit, HomeLayOutStates>(
+              builder: (context, state) {
+                return IconButton(
+                  onPressed: () {
+                    cubit
+                        .logout(
+                      token: ConstantsManager.userToken,
+                    )
+                        .then((value) {
+                      CacheHelper.removeDataFromCache(key: 'userToken');
+                    });
+                  },
+                  icon: SvgPicture.asset(
+                    AssetsImagesManager.signOut,
+                  ),
+                );
+              },
+            )
+          ],
+        );
+      },
     );
   }
 }

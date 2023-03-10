@@ -3,7 +3,7 @@ class ConstantsManager {
   static const int splashDelay = 3;
   static const int nextPageTime = 2;
   static const int previousPageTime = 2;
-  static String? token;
+  static String? userToken;
   static const String baseURL = "https://wevr.tech/api";
   static const String registerEP = "/register";
   static const String loginEP = "/login";

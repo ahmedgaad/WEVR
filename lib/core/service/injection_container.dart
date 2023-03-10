@@ -1,5 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import '../../features/authentication/domain/use_cases/logout_usecase.dart';
+import '../../features/user_dashboard/presentation/controller/Home/cubit.dart';
 import '../../features/authentication/domain/use_cases/check_otp_usecase.dart';
 import '../../features/authentication/domain/use_cases/create_new_password.dart';
 import '../../features/authentication/domain/use_cases/forgot_password_usecase.dart';
@@ -23,7 +25,7 @@ void initializeInjector() {
   getIt.registerLazySingleton(() => LoginCubit(loginUseCase: getIt()));
   getIt.registerLazySingleton(() => OtpCubit(forgotPasswordUseCase: getIt(), checkOTPUseCase: getIt()));
   getIt.registerLazySingleton(() => CreateNewPasswordCubit(createNewPasswordUseCase: getIt()));
-  // getIt.registerLazySingleton(() => HomeLayoutCubit(logoutUseCase: getIt()));
+  getIt.registerLazySingleton(() => HomeLayoutCubit(logoutUseCase: getIt(),));
 
   //Usecase
   getIt.registerLazySingleton(() => RegisterUseCase(getIt()));
@@ -31,6 +33,7 @@ void initializeInjector() {
   getIt.registerLazySingleton(() => ForgotPasswordUseCase(getIt()));
   getIt.registerLazySingleton(() => CheckOTPUseCase(getIt()));
   getIt.registerLazySingleton(() => CreateNewPasswordUseCase(getIt()));
+  getIt.registerLazySingleton(() => LogoutUseCase(getIt()));
 
   //Repository
   getIt.registerLazySingleton<AuthRepository>(

@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import '../../../../core/helpers/cache_helper.dart';
+import '../models/logout_model.dart';
 import '../../../../core/errors/auth_error_models.dart';
 import '../models/check_otp_model.dart';
 import '../models/create_new_password_model.dart';
@@ -27,6 +29,10 @@ abstract class AuthDataSource {
     required String email,
     required String password,
     required String deviceInformation,
+  });
+
+  Future<LogoutModel> logout({
+    required String token,
   });
 
   Future<ForgotPasswordModel> forgotPassword({
@@ -117,6 +123,11 @@ class AuthDataSourceImpl implements AuthDataSource {
       );
       if (response.data['status'] == 1) {
         final model = LoginModel.fromJson(response.data);
+      //  await CacheHelper.saveDataToCache(
+      //     key: 'userToken',
+      //     value: response.data['data']['token'],
+      //   );
+      
         //print(model);
         return model;
       } else {
@@ -204,6 +215,30 @@ class AuthDataSourceImpl implements AuthDataSource {
         throw CreateNewPasswordException(
             createNewPasswordErrorModel:
                 CreateNewPasswordErrorModel.fromJson(response.data));
+      }
+    } on DioError catch (e) {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<LogoutModel> logout({
+    required String token,
+  }) async {
+    try {
+      final headers = {
+        'Authorization': 'Bearer $token',
+      };
+      final response = await dio.delete(
+        ConstantsManager.logoutEP,
+        options: Options(headers: headers),
+      );
+      if (response.data['status'] == 201) {
+        final model = LogoutModel.fromJson(response.data);
+        print(model);
+        return model;
+      } else {
+        throw ServerException();
       }
     } on DioError catch (e) {
       throw ServerException();
