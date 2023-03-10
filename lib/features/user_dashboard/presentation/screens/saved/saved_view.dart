@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../core/utils/color_manager.dart';
 
 class SavedView extends StatelessWidget {

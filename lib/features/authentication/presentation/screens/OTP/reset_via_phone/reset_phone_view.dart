@@ -190,7 +190,11 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                     alignment: Alignment.center,
                     child: defaultButton(
                       function: () {
-                        navigatePush(context, const CreateNewPassword());
+                        navigatePush(
+                            context,
+                            CreateNewPasswordView(
+                              email: '',
+                            ));
                       },
                       text: StringsManager.submit.tr(),
                       width: AppSize.s200.w,

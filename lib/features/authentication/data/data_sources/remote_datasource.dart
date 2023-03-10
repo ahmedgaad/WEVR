@@ -2,8 +2,11 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:wevr_app/core/errors/auth_error_models.dart';
-import 'package:wevr_app/features/authentication/data/models/login_model.dart';
+import '../../../../core/errors/auth_error_models.dart';
+import '../models/check_otp_model.dart';
+import '../models/create_new_password_model.dart';
+import '../models/forgot_password_model.dart';
+import '../models/login_model.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
 import '../models/register_model.dart';
@@ -24,6 +27,21 @@ abstract class AuthDataSource {
     required String email,
     required String password,
     required String deviceInformation,
+  });
+
+  Future<ForgotPasswordModel> forgotPassword({
+    required String email,
+  });
+
+  Future<CheckOTPModel> checkOTP({
+    required String email,
+    required int pinCode,
+  });
+
+  Future<CreateNewPasswordModel> createNewPassword({
+    required String password,
+    required String passwordConfirmation,
+    required String email,
   });
 }
 
@@ -56,13 +74,15 @@ class AuthDataSourceImpl implements AuthDataSource {
     try {
       final response = await dio.post(
         ConstantsManager.registerEP,
-        data: json.encode({
-          "name": userName,
-          "email": email,
-          "phone": phone,
-          "password": password,
-          "password_confirmation": passwordConfirmation
-        }),
+        data: json.encode(
+          {
+            "name": userName,
+            "email": email,
+            "phone": phone,
+            "password": password,
+            "password_confirmation": passwordConfirmation
+          },
+        ),
       );
       if (response.data['status'] == 1) {
         //final decodedData = json.decode(response.data.toString());
@@ -85,12 +105,16 @@ class AuthDataSourceImpl implements AuthDataSource {
     required String deviceInformation,
   }) async {
     try {
-      final response = await dio.post(ConstantsManager.loginEP,
-          data: json.encode({
+      final response = await dio.post(
+        ConstantsManager.loginEP,
+        data: json.encode(
+          {
             'email': email,
             'password': password,
             'device_name': deviceInformation,
-          }));
+          },
+        ),
+      );
       if (response.data['status'] == 1) {
         final model = LoginModel.fromJson(response.data);
         //print(model);
@@ -98,6 +122,88 @@ class AuthDataSourceImpl implements AuthDataSource {
       } else {
         throw LoginException(
             loginErrorModel: LoginErrorModel.fromJson(response.data));
+      }
+    } on DioError catch (e) {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<ForgotPasswordModel> forgotPassword({
+    required String email,
+  }) async {
+    try {
+      final response = await dio.post(
+        ConstantsManager.resetViaEmailEP,
+        data: json.encode(
+          {
+            'email': email,
+          },
+        ),
+      );
+      if (response.data['status'] == 1) {
+        final model = ForgotPasswordModel.fromJson(response.data);
+        print(model);
+        return model;
+      } else {
+        throw ForgotPasswordException(
+            forgotPasswordErrorModel:
+                ForgotPasswordErrorModel.fromJson(response.data));
+      }
+    } on DioError catch (e) {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<CheckOTPModel> checkOTP({
+    required String email,
+    required int pinCode,
+  }) async {
+    try {
+      final response = await dio.post(
+        ConstantsManager.checkOTPEP,
+        data: {
+          'email': email,
+          'pin_code': pinCode,
+        },
+      );
+      if (response.data['status'] == 1) {
+        final model = CheckOTPModel.fromJson(response.data);
+        print(model);
+        return model;
+      } else {
+        throw CheckOTPException(
+            checkOTPErrorModel: CheckOTPErrorModel.fromJson(response.data));
+      }
+    } on DioError catch (e) {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<CreateNewPasswordModel> createNewPassword({
+    required String password,
+    required String passwordConfirmation,
+    required String email,
+  }) async {
+    try {
+      final response = await dio.post(
+        ConstantsManager.newPasswordEP,
+        data: {
+          'email': email,
+          'password': password,
+          'confirmation_password': passwordConfirmation,
+        },
+      );
+      if (response.data['status'] == 1) {
+        final model = CreateNewPasswordModel.fromJson(response.data);
+        print(model);
+        return model;
+      } else {
+        throw CreateNewPasswordException(
+            createNewPasswordErrorModel:
+                CreateNewPasswordErrorModel.fromJson(response.data));
       }
     } on DioError catch (e) {
       throw ServerException();

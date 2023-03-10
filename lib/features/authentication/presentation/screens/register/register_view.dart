@@ -49,6 +49,7 @@ class _RegisterViewState extends State<RegisterView> {
               title: StringsManager.error.tr(),
               text: state.error,
               confirmBtnText: StringsManager.okay.tr(),
+              confirmBtnColor: Colors.red,
             );
           }
         },

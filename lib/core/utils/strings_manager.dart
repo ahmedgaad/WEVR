@@ -21,7 +21,7 @@ class StringsManager {
   static const String userName = "username";
   static const String mobile = "mobile";
   static const String emailError1 = "email_error1";
-  static const String emailError2 = "email_error1";
+  static const String emailError2 = "email_error2";
   static const String passwordValidate = "password_validate";
   static const String phoneValidate = "phone_validate";
   static const String userNameValidate = "username_validate";
@@ -55,11 +55,17 @@ class StringsManager {
   static const String onBoardingSubTitle2 = "on_boarding_sub_title2";
   static const String onBoardingSubTitle3 = "on_boarding_sub_title3";
   static const String onBoardingSubTitle4 = "on_boarding_sub_title4";
-  static const String forgotPass = "forgot_pass";
   static const String subTitleForgotPass = "sub_title_forgot_pass";
   static const String recoveryCode = "recovery_code";
   static const error = "error";
-    static const okay = "okay";
+  static const okay = "okay";
+  static const String forgotPass = "forgot_pass";
+  static const String forgot = "forgot";
+  static const forgotPassDescription = "forgot_pass_description";
+  static const enterYourEmail = "enter_your_email";
+
+    static const checkYourEmail = "check_your_email";
+  static const info = "info";
 
   static const String subTitleRecoveryCode = "sub_title_recovery_code";
   static const String createNewPasswordTitle = "create_new_password_title";

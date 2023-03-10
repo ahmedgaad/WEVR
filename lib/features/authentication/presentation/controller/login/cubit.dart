@@ -5,15 +5,14 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wevr_app/features/authentication/data/models/login_model.dart';
-import 'package:wevr_app/features/authentication/domain/entities/login.dart';
 import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/login/states.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   final LoginUseCase loginUseCase;
 
-  LoginCubit({required this.loginUseCase}) : super(LoginInitialState());
+  LoginCubit({required this.loginUseCase})
+      : super(LoginInitialState());
 
   static LoginCubit get(context) => BlocProvider.of(context);
   var emailFormKey = GlobalKey<FormState>();
@@ -44,6 +43,8 @@ class LoginCubit extends Cubit<LoginStates> {
       return "";
     }
   }
+
+  
 
   Future<void> login({
     required String email,

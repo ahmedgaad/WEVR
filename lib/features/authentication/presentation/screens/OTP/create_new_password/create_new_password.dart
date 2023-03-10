@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
+import '../../../../../../core/service/injection_container.dart';
 
 import '../../../../../../core/components/components.dart';
 import '../../../../../../core/utils/assets_manager.dart';
@@ -10,25 +13,35 @@ import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/strings_manager.dart';
 import '../../../../../../core/utils/styles_manager.dart';
 import '../../../../../../core/utils/values_manager.dart';
+import '../../../controller/create_new_password/cubit.dart';
 import '../../../widgets/forget_pass/forget_password_top_column.dart';
 import '../reset_pass_successfully.dart';
-import 'cubit/create_new_password_cubit.dart';
 
-class CreateNewPassword extends StatelessWidget {
-  const CreateNewPassword({super.key});
+class CreateNewPasswordView extends StatelessWidget {
+  const CreateNewPasswordView({super.key, required this.email});
+  final String email;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CreateNewPasswordCubit(),
-      child: BlocConsumer<CreateNewPasswordCubit, CreateNewPasswordState>(
-        listener: (context, state) {},
+      create: (context) =>
+          CreateNewPasswordCubit(createNewPasswordUseCase: getIt()),
+      child: BlocConsumer<CreateNewPasswordCubit, CreateNewPasswordStates>(
+        listener: (context, state) {
+          if (state is CreateNewPasswordErrorState) {
+            QuickAlert.show(
+                context: context,
+                type: QuickAlertType.error,
+                title: StringsManager.error.tr(),
+                text: state.error,
+                confirmBtnText: StringsManager.okay.tr(),
+                confirmBtnColor: Colors.red);
+          }
+        },
         builder: (context, state) {
           var cubit = CreateNewPasswordCubit.get(context);
           return Scaffold(
-            backgroundColor: ColorManager.white,
             appBar: AppBar(
-              backgroundColor: ColorManager.white,
               elevation: AppSize.s0,
             ),
             body: SingleChildScrollView(
@@ -41,7 +54,7 @@ class CreateNewPassword extends StatelessWidget {
                     subTitle: StringsManager.createNewPasswordSubTitle.tr(),
                   ),
                   Form(
-                    key: cubit.formKey,
+                    key: cubit.passFormKey,
                     child: Column(
                       children: [
                         Padding(
@@ -142,8 +155,18 @@ class CreateNewPassword extends StatelessWidget {
                         ),
                         defaultButton(
                           function: () {
-                            if (cubit.formKey.currentState!.validate()) {
-                              navigatePush(context, const ResetSuccessfully());
+                            if (cubit.passFormKey.currentState!.validate()) {
+                              cubit
+                                  .createNewPassword(
+                                email: email,
+                                password: cubit.passwordController.text,
+                                passwordConfirmation:
+                                    cubit.confirmPasswordController.text,
+                              )
+                                  .then((value) {
+                                navigatePush(
+                                    context, const ResetSuccessfully());
+                              });
                             }
                           },
                           text: StringsManager.resetPassword.tr(),

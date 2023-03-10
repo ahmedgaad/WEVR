@@ -34,7 +34,7 @@ class ResetSuccessfully extends StatelessWidget {
               defaultButton(
                 width: AppSize.s281_25.w,
                 function: () {
-                  navigateTo(context, Routes.homeRoute);
+                  navigateTo(context, Routes.loginRoute);
                 },
                 text: StringsManager.continueExploring.tr(),
               ),

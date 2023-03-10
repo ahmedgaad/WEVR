@@ -1,4 +1,6 @@
-import 'package:wevr_app/core/errors/auth_error_models.dart';
+import 'auth_error_models.dart';
+
+import 'auth_error_models.dart';
 
 class OfflineException implements Exception {}
 
@@ -14,6 +16,30 @@ class LoginException implements Exception {
 
   LoginException({
     required this.loginErrorModel,
+  });
+}
+
+class ForgotPasswordException implements Exception {
+  final ForgotPasswordErrorModel forgotPasswordErrorModel;
+
+  ForgotPasswordException({
+    required this.forgotPasswordErrorModel,
+  });
+}
+
+class CheckOTPException implements Exception {
+  final CheckOTPErrorModel checkOTPErrorModel;
+
+  CheckOTPException({
+    required this.checkOTPErrorModel,
+  });
+}
+
+class CreateNewPasswordException implements Exception {
+  final CreateNewPasswordErrorModel createNewPasswordErrorModel;
+
+  CreateNewPasswordException({
+    required this.createNewPasswordErrorModel,
   });
 }
 
