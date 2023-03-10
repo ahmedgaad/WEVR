@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:wevr_app/core/errors/failures.dart';
-import 'package:wevr_app/features/authentication/domain/repository/auth_repository.dart';
+import '../../../../core/errors/failures.dart';
+import '../repository/auth_repository.dart';
 
 import '../entities/login.dart';
 

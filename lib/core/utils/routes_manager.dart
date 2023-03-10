@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wevr_app/features/authentication/presentation/screens/OTP/forgot_password_screen.dart';
+import '../../features/authentication/presentation/screens/OTP/forgot_password_screen.dart';
 import '../../features/user_profile/presentation/screens/profile/profile_view.dart';
 import '../../features/authentication/presentation/screens/OTP/reset_pass/reset_pass.dart';
 import '../../features/authentication/presentation/screens/OTP/reset_via_email/reset_email_view.dart';

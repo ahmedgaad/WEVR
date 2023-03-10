@@ -1,4 +1,4 @@
-import 'package:wevr_app/features/authentication/domain/entities/login.dart';
+import '../../domain/entities/login.dart';
 
 class LoginModel extends Login {
   const LoginModel({

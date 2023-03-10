@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickalert/quickalert.dart';
-import 'package:wevr_app/core/service/injection_container.dart';
-import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp_cubit.dart';
-import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp_states.dart';
+import '../../../../../../core/service/injection_container.dart';
+import '../../../controller/OTP/otp_cubit.dart';
+import '../../../controller/OTP/otp_states.dart';
 import '../../../widgets/forget_pass/forget_password_top_column.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/components/components.dart';
@@ -32,7 +32,12 @@ class ResetEmailView extends StatelessWidget {
       listener: (context, state) {
         if (state is CheckOTPSuccessState) {
           if (state.checkOTP.status == 1) {
-            navigatePush(context, const CreateNewPassword());
+            navigatePush(
+              context,
+              CreateNewPasswordView(
+                email: email,
+              ),
+            );
           }
         } else if (state is CheckOTPErrorState) {
           QuickAlert.show(
@@ -59,6 +64,7 @@ class ResetEmailView extends StatelessWidget {
             title: StringsManager.error.tr(),
             text: state.error,
             confirmBtnText: StringsManager.okay.tr(),
+            confirmBtnColor: Colors.red,
           );
         }
       },

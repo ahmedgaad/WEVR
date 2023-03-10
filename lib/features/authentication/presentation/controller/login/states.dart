@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:wevr_app/features/authentication/domain/entities/forgot_password.dart';
-import 'package:wevr_app/features/authentication/domain/entities/login.dart';
+import '../../../domain/entities/forgot_password.dart';
+import '../../../domain/entities/login.dart';
 
 abstract class LoginStates extends Equatable {
   const LoginStates();

@@ -51,6 +51,20 @@ class CheckOTPErrorModel extends Equatable {
       );
 
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [errorMessage];
+}
+
+
+class CreateNewPasswordErrorModel extends Equatable {
+  final String errorMessage;
+
+  const CreateNewPasswordErrorModel({required this.errorMessage});
+
+  factory CreateNewPasswordErrorModel.fromJson(Map<String, dynamic> json) =>
+      CreateNewPasswordErrorModel(
+        errorMessage: json['massage'],
+      );
+
+  @override
+  List<Object?> get props => [errorMessage];
 }

@@ -13,9 +13,7 @@ class RegisterSuccessfully extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorManager.white,
       appBar: AppBar(
-        backgroundColor: ColorManager.white,
         elevation: AppSize.s0,
       ),
       body: SingleChildScrollView(

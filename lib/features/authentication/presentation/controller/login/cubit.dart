@@ -5,9 +5,6 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wevr_app/features/authentication/data/models/login_model.dart';
-import 'package:wevr_app/features/authentication/domain/entities/login.dart';
-import 'package:wevr_app/features/authentication/domain/use_cases/forgot_password_usecase.dart';
 import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/login/states.dart';
 

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:wevr_app/features/authentication/domain/entities/check_otp.dart';
+import '../../../domain/entities/check_otp.dart';
 
 import '../../../domain/entities/forgot_password.dart';
 

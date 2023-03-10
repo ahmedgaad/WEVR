@@ -2,10 +2,11 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:wevr_app/core/errors/auth_error_models.dart';
-import 'package:wevr_app/features/authentication/data/models/check_otp_model.dart';
-import 'package:wevr_app/features/authentication/data/models/forgot_password_model.dart';
-import 'package:wevr_app/features/authentication/data/models/login_model.dart';
+import '../../../../core/errors/auth_error_models.dart';
+import '../models/check_otp_model.dart';
+import '../models/create_new_password_model.dart';
+import '../models/forgot_password_model.dart';
+import '../models/login_model.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
 import '../models/register_model.dart';
@@ -35,6 +36,12 @@ abstract class AuthDataSource {
   Future<CheckOTPModel> checkOTP({
     required String email,
     required int pinCode,
+  });
+
+  Future<CreateNewPasswordModel> createNewPassword({
+    required String password,
+    required String passwordConfirmation,
+    required String email,
   });
 }
 
@@ -168,6 +175,35 @@ class AuthDataSourceImpl implements AuthDataSource {
       } else {
         throw CheckOTPException(
             checkOTPErrorModel: CheckOTPErrorModel.fromJson(response.data));
+      }
+    } on DioError catch (e) {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<CreateNewPasswordModel> createNewPassword({
+    required String password,
+    required String passwordConfirmation,
+    required String email,
+  }) async {
+    try {
+      final response = await dio.post(
+        ConstantsManager.newPasswordEP,
+        data: {
+          'email': email,
+          'password': password,
+          'confirmation_password': passwordConfirmation,
+        },
+      );
+      if (response.data['status'] == 1) {
+        final model = CreateNewPasswordModel.fromJson(response.data);
+        print(model);
+        return model;
+      } else {
+        throw CreateNewPasswordException(
+            createNewPasswordErrorModel:
+                CreateNewPasswordErrorModel.fromJson(response.data));
       }
     } on DioError catch (e) {
       throw ServerException();

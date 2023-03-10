@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wevr_app/features/authentication/domain/use_cases/check_otp_usecase.dart';
+import '../../../domain/use_cases/check_otp_usecase.dart';
 
 import '../../../domain/use_cases/forgot_password_usecase.dart';
 import 'otp_states.dart';

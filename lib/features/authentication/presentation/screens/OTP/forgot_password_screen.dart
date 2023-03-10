@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
-import 'package:wevr_app/core/components/components.dart';
-import 'package:wevr_app/core/service/injection_container.dart';
-import 'package:wevr_app/core/utils/assets_manager.dart';
-import 'package:wevr_app/core/utils/routes_manager.dart';
-import 'package:wevr_app/core/utils/styles_manager.dart';
-import 'package:wevr_app/core/utils/values_manager.dart';
-import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp_cubit.dart';
-import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp_states.dart';
-import 'package:wevr_app/features/authentication/presentation/screens/OTP/reset_via_email/reset_email_view.dart';
+import '../../../../../core/components/components.dart';
+import '../../../../../core/service/injection_container.dart';
+import '../../../../../core/utils/assets_manager.dart';
+import '../../../../../core/utils/routes_manager.dart';
+import '../../../../../core/utils/styles_manager.dart';
+import '../../../../../core/utils/values_manager.dart';
+import '../../controller/OTP/otp_cubit.dart';
+import '../../controller/OTP/otp_states.dart';
+import 'reset_via_email/reset_email_view.dart';
 
 import '../../../../../core/utils/strings_manager.dart';
 
@@ -119,7 +119,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                                   cubit.forgotPassword(email: email);
                                 }
                               },
-                              text: StringsManager.continuee,
+                              text: StringsManager.continuee.tr(),
                             );
                           },
                           fallback: (BuildContext context) => const Center(

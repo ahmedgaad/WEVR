@@ -1,5 +1,6 @@
 // ignore_for_file: unused_field, prefer_final_fields
 
+import 'package:awesome_card/awesome_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,7 +10,6 @@ import 'package:wevr_app/core/components/input_formatters.dart';
 import 'package:wevr_app/core/utils/color_manager.dart';
 import 'package:wevr_app/core/utils/strings_manager.dart';
 import 'package:wevr_app/core/utils/styles_manager.dart';
-import 'package:awesome_card/awesome_card.dart';
 import 'package:wevr_app/core/utils/values_manager.dart';
 
 import '../../widgets/payment/credit_card_form_filed.dart';

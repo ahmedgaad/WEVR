@@ -40,7 +40,7 @@ class LoginView extends StatelessWidget {
                 title: StringsManager.error.tr(),
                 text: state.error,
                 confirmBtnText: StringsManager.okay.tr(),
-                confirmBtnColor: Colors.red);
+                confirmBtnColor: Colors.red,);
           }
         },
         builder: (context, state) {

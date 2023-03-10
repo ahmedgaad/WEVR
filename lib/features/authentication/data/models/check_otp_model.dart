@@ -1,4 +1,4 @@
-import 'package:wevr_app/features/authentication/domain/entities/check_otp.dart';
+import '../../domain/entities/check_otp.dart';
 
 class CheckOTPModel extends CheckOTP {
   const CheckOTPModel({
