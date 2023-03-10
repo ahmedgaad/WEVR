@@ -5,14 +5,16 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wevr_app/core/helpers/cache_helper.dart';
 import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/login/states.dart';
+
+import '../../../../../core/utils/constants_manager.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   final LoginUseCase loginUseCase;
 
-  LoginCubit({required this.loginUseCase})
-      : super(LoginInitialState());
+  LoginCubit({required this.loginUseCase}) : super(LoginInitialState());
 
   static LoginCubit get(context) => BlocProvider.of(context);
   var emailFormKey = GlobalKey<FormState>();
@@ -44,8 +46,6 @@ class LoginCubit extends Cubit<LoginStates> {
     }
   }
 
-  
-
   Future<void> login({
     required String email,
     required String password,
@@ -63,9 +63,11 @@ class LoginCubit extends Cubit<LoginStates> {
       (failure) {
         emit(LoginErrorState(error: failure.message));
       },
-      (login) {
+      (login) async{
         emit(LoginSuccessState(login: login));
         print(login.token);
+        await CacheHelper.saveDataToCache(key: 'userToken', value: login.token);
+        ConstantsManager.userToken = CacheHelper.getDataFromCache(key: 'userToken');
       },
     );
   }

@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 import '../../../../../core/helpers/cache_helper.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
@@ -29,7 +30,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   bool isLast = false;
 
   void submit() {
-    CacheHelper.saveData(key: 'onBoarding', value: true).then((value) {
+    CacheHelper.saveDataToCache(key: 'onBoarding', value: true).then((value) {
       Navigator.pushReplacementNamed(context, Routes.getStarted);
     });
   }

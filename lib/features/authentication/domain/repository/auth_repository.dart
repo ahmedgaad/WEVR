@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import '../entities/logout.dart';
 import '../entities/check_otp.dart';
 import '../entities/create_new_password.dart';
 import '../entities/forgot_password.dart';
@@ -19,6 +20,10 @@ abstract class AuthRepository {
     required String email,
     required String password,
     required String deviceInformation,
+  });
+
+  Future<Either<Failure, Logout>> logout({
+    required String token,
   });
 
   Future<Either<Failure, ForgotPassword>> forgotPassword({

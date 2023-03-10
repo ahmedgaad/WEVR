@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 import '../utils/assets_manager.dart';
 import '../utils/color_manager.dart';
 import '../utils/fonts_manager.dart';

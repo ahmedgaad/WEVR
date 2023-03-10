@@ -1,4 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import '../../domain/entities/logout.dart';
 import '../../../../core/utils/strings_manager.dart';
 import '../../domain/entities/check_otp.dart';
 import '../../domain/entities/create_new_password.dart';
@@ -133,9 +135,28 @@ class AuthRepositoryImpl implements AuthRepository {
     } on CreateNewPasswordException catch (failure) {
       return Left(
           ServerFailure(failure.createNewPasswordErrorModel.errorMessage));
-    } on OfflineException{
-            return const Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
+    } on OfflineException {
+      return const Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
+    }
+  }
 
+  @override
+  Future<Either<Failure, Logout>> logout({
+    required String token,
+  }) async {
+    try {
+      if (await networkInfo.isConnected) {
+        final result = await authDataSource.logout(
+          token: token,
+        );
+        return Right(result);
+      } else {
+        throw OfflineException();
+      }
+    } on ServerFailure {
+      return const Left(ServerFailure(StringsManager.SERVER_FAILURE_MESSAGE));
+    } on OfflineFailure {
+      return const Left(OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
     }
   }
 }
