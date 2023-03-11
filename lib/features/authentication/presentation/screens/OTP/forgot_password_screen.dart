@@ -57,6 +57,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               title: StringsManager.error.tr(),
               text: state.error,
               confirmBtnText: StringsManager.okay.tr(),
+              confirmBtnColor: Colors.red,
             );
           }
         },

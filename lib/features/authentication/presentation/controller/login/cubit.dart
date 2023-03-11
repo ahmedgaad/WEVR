@@ -6,6 +6,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wevr_app/core/helpers/cache_helper.dart';
+import 'package:wevr_app/core/helpers/get_device_info_helper.dart';
 import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/login/states.dart';
 
@@ -14,7 +15,9 @@ import '../../../../../core/utils/constants_manager.dart';
 class LoginCubit extends Cubit<LoginStates> {
   final LoginUseCase loginUseCase;
 
-  LoginCubit({required this.loginUseCase}) : super(LoginInitialState());
+  LoginCubit({
+    required this.loginUseCase,
+  }) : super(LoginInitialState());
 
   static LoginCubit get(context) => BlocProvider.of(context);
   var emailFormKey = GlobalKey<FormState>();
@@ -22,52 +25,30 @@ class LoginCubit extends Cubit<LoginStates> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
 
-  Future<String?> getDeviceInfo() async {
-    //DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    if (Platform.isAndroid) {
-      var androidInfo = await DeviceInfoPlugin().androidInfo;
-      print(androidInfo.device);
-      return androidInfo.device;
-    } else if (Platform.isIOS) {
-      var iosInfo = await DeviceInfoPlugin().iosInfo;
-      print(iosInfo.name);
-      return iosInfo.name;
-    } else if (Platform.isWindows) {
-      var windowsInfo = await DeviceInfoPlugin().windowsInfo;
-      return windowsInfo.computerName;
-    } else if (Platform.isMacOS) {
-      var macOsInfo = await DeviceInfoPlugin().macOsInfo;
-      return macOsInfo.computerName;
-    } else if (Platform.isLinux) {
-      var linuxInfo = await DeviceInfoPlugin().linuxInfo;
-      return linuxInfo.name;
-    } else {
-      return "";
-    }
-  }
-
   Future<void> login({
     required String email,
     required String password,
-    required String deviceInformation,
+    // required String deviceInformation,
   }) async {
     emit(LoginLoadingState());
-
+    await CacheHelper.saveDataToCache(key: 'isGuest', value: false);
+    String deviceInfo = (await getDeviceInfo()) ?? "Unknown device";
     final failureOrLogin = await loginUseCase.call(
       email: email,
       password: password,
-      deviceInformation: deviceInformation,
+      deviceInformation: deviceInfo,
     );
 
     failureOrLogin.fold(
       (failure) {
         emit(LoginErrorState(error: failure.message));
       },
-      (login) async{
+      (login) async {
         emit(LoginSuccessState(login: login));
         print(login.token);
         await CacheHelper.saveDataToCache(key: 'userToken', value: login.token);
-        ConstantsManager.userToken = CacheHelper.getDataFromCache(key: 'userToken');
+        ConstantsManager.userToken =
+            CacheHelper.getDataFromCache(key: 'userToken');
       },
     );
   }

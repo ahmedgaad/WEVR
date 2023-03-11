@@ -4,6 +4,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wevr_app/core/helpers/cache_helper.dart';
+import 'package:wevr_app/core/utils/constants_manager.dart';
 
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/assets_manager.dart';
@@ -23,6 +25,7 @@ class GetStartedView extends StatefulWidget {
 }
 
 class _GetStartedViewState extends State<GetStartedView> {
+  bool isGuest = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,6 +111,12 @@ class _GetStartedViewState extends State<GetStartedView> {
                                 // textDecoration: TextDecoration.underline,
                                 text: StringsManager.asGuest.tr(),
                                 onPressed: () {
+                                  setState(() {
+                                    isGuest = true;
+                                    CacheHelper.saveDataToCache(
+                                      key: 'isGuest', value: isGuest);
+                                  });
+                                  // ignore: use_build_context_synchronously
                                   navigatePush(context, const HomeView());
                                 },
                               ),

@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
-import '../../../../map_based_homes/presentation/screens/map/google_map.dart';
+import '../../../../map_based_homes/presentation/screens/google_map.dart';
 import '../../../../user_profile/presentation/widgets/profile/build_divider.dart';
 import 'product_container.dart';
 import 'virtual_tour.dart';

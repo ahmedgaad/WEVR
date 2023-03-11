@@ -4,6 +4,7 @@ class ConstantsManager {
   static const int nextPageTime = 2;
   static const int previousPageTime = 2;
   static String? userToken;
+  static bool isGuest = false;
   static const String baseURL = "https://wevr.tech/api";
   static const String registerEP = "/register";
   static const String loginEP = "/login";

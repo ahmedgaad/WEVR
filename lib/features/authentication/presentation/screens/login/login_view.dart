@@ -1,4 +1,5 @@
 // ignore_for_file: avoid_print
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,20 +28,20 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) =>
-          LoginCubit(loginUseCase: getIt()),
+      create: (BuildContext context) => LoginCubit(loginUseCase: getIt()),
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
             navigatePush(context, const HomeView());
           } else if (state is LoginErrorState) {
             QuickAlert.show(
-                context: context,
-                type: QuickAlertType.error,
-                title: StringsManager.error.tr(),
-                text: state.error,
-                confirmBtnText: StringsManager.okay.tr(),
-                confirmBtnColor: Colors.red,);
+              context: context,
+              type: QuickAlertType.error,
+              title: StringsManager.error.tr(),
+              text: state.error,
+              confirmBtnText: StringsManager.okay.tr(),
+              confirmBtnColor: Colors.red,
+            );
           }
         },
         builder: (context, state) {
@@ -156,26 +157,37 @@ class LoginView extends StatelessWidget {
                                     ),
                                     20.ph,
                                     Center(
-                                      child: defaultButton(
-                                        function: () async {
-                                          if (cubit.emailFormKey.currentState!
-                                              .validate()) {
-                                            if (cubit.passFieldKey.currentState!
-                                                .validate()) {
-                                              cubit.login(
-                                                email:
-                                                    cubit.emailController.text,
-                                                password: cubit
-                                                    .passwordController.text,
-                                                deviceInformation: 'manually ios',
-                                              );
-                                            }
-                                          }
+                                      child: ConditionalBuilder(
+                                        condition: state is! LoginLoadingState,
+                                        builder: (BuildContext context) {
+                                          return defaultButton(
+                                            function: () async {
+                                              if (cubit
+                                                  .emailFormKey.currentState!
+                                                  .validate()) {
+                                                if (cubit
+                                                    .passFieldKey.currentState!
+                                                    .validate()) {
+                                                  cubit.login(
+                                                    email: cubit
+                                                        .emailController.text,
+                                                    password: cubit
+                                                        .passwordController
+                                                        .text,
+                                                  );
+                                                }
+                                              }
+                                            },
+                                            text: StringsManager.signIn.tr(),
+                                            width: AppSize.s200.w,
+                                            height: AppSize.s44.h,
+                                            isUpperCase: false,
+                                          );
                                         },
-                                        text: StringsManager.signIn.tr(),
-                                        width: AppSize.s200.w,
-                                        height: AppSize.s44.h,
-                                        isUpperCase: false,
+                                        fallback: (BuildContext context) =>
+                                            const Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
                                       ),
                                     ),
                                   ],

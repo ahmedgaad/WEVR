@@ -14,8 +14,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await CacheHelper.cacheInitialization();
+  injectorInitialization();
   Bloc.observer = MyBlocObserver();
-  initializeInjector();
   // Widget? widget;
   //
   // bool? onBoarding = CacheHelper.getData(key: 'onBoarding');

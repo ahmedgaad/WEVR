@@ -10,6 +10,7 @@ import 'package:wevr_app/core/utils/routes_manager.dart';
 import 'package:wevr_app/core/utils/themes_manager.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp_cubit.dart';
 import 'package:wevr_app/features/introduction/presentation/screens/splash/splash_view.dart';
+import 'package:wevr_app/features/map_based_homes/presentation/controller/map/map_cubit.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/cubit.dart';
 // import 'dart:ui' as ui;
 
@@ -33,8 +34,12 @@ class _WevrState extends State<Wevr> {
               checkOTPUseCase: getIt(), forgotPasswordUseCase: getIt()),
         ),
         BlocProvider(
-            create: (BuildContext context) =>
-                HomeLayoutCubit(logoutUseCase: getIt(),)),
+            create: (BuildContext context) => HomeLayoutCubit(
+                  logoutUseCase: getIt(),
+                )),
+        BlocProvider(
+          create: (BuildContext context) => MapCubit(),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 900),

@@ -151,7 +151,8 @@ class AuthRepositoryImpl implements AuthRepository {
         );
         return Right(result);
       } else {
-        throw OfflineException();
+        return const Left(
+            OfflineFailure(StringsManager.OFFLINE_FAILURE_MESSAGE));
       }
     } on ServerFailure {
       return const Left(ServerFailure(StringsManager.SERVER_FAILURE_MESSAGE));

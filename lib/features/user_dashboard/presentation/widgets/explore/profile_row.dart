@@ -34,6 +34,15 @@ class ProfileRow extends StatelessWidget {
           ).then((value) {
             navigatePush(context, const GetStartedView());
           });
+        }else if(state is LogoutErrorState){
+          QuickAlert.show(
+              context: context,
+              type: QuickAlertType.error,
+              title: StringsManager.error.tr(),
+              text: state.error,
+              confirmBtnText: StringsManager.okay.tr(),
+              confirmBtnColor: Colors.red,
+            );
         }
       },
       builder: (context, state) {
@@ -54,20 +63,24 @@ class ProfileRow extends StatelessWidget {
             const Spacer(),
             BlocBuilder<HomeLayoutCubit, HomeLayOutStates>(
               builder: (context, state) {
-                return IconButton(
-                  onPressed: () {
-                    cubit
-                        .logout(
-                      token: ConstantsManager.userToken,
-                    )
-                        .then((value) {
-                      CacheHelper.removeDataFromCache(key: 'userToken');
-                    });
-                  },
-                  icon: SvgPicture.asset(
-                    AssetsImagesManager.signOut,
-                  ),
-                );
+                if (!CacheHelper.getDataFromCache(key: 'isGuest')) {
+                  return IconButton(
+                    onPressed: () {
+                      cubit
+                          .logout(
+                        token: ConstantsManager.userToken,
+                      )
+                          .then((value) {
+                        CacheHelper.removeDataFromCache(key: 'userToken');
+                      });
+                    },
+                    icon: SvgPicture.asset(
+                      AssetsImagesManager.signOut,
+                    ),
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
               },
             )
           ],

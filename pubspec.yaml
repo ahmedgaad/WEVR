@@ -26,8 +26,9 @@ dependencies:
   flutter_svg: ^2.0.1
   fluttertoast: ^8.1.3
   font_awesome_flutter: ^10.4.0
+  geolocator: ^9.0.2
   get_it: ^7.2.0
-  google_maps_flutter: ^2.2.3
+  google_maps_flutter: ^2.2.5
   image_picker: ^0.8.6+2
   internet_connection_checker: ^1.0.0+1
   quickalert: ^1.0.1

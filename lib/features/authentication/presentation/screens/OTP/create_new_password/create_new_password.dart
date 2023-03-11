@@ -36,6 +36,8 @@ class CreateNewPasswordView extends StatelessWidget {
                 text: state.error,
                 confirmBtnText: StringsManager.okay.tr(),
                 confirmBtnColor: Colors.red);
+          } else if (state is CreateNewPasswordSuccessState) {
+            navigatePush(context, const ResetSuccessfully());
           }
         },
         builder: (context, state) {
@@ -156,17 +158,12 @@ class CreateNewPasswordView extends StatelessWidget {
                         defaultButton(
                           function: () {
                             if (cubit.passFormKey.currentState!.validate()) {
-                              cubit
-                                  .createNewPassword(
+                              cubit.createNewPassword(
                                 email: email,
                                 password: cubit.passwordController.text,
                                 passwordConfirmation:
                                     cubit.confirmPasswordController.text,
-                              )
-                                  .then((value) {
-                                navigatePush(
-                                    context, const ResetSuccessfully());
-                              });
+                              );
                             }
                           },
                           text: StringsManager.resetPassword.tr(),
