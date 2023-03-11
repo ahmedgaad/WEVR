@@ -31,6 +31,8 @@ dependencies:
   google_maps_flutter: ^2.2.5
   image_picker: ^0.8.6+2
   internet_connection_checker: ^1.0.0+1
+  material_floating_search_bar: ^0.3.7
+  permission_handler: ^10.2.0
   quickalert: ^1.0.1
   shared_preferences: ^2.0.17
   smooth_page_indicator: ^1.0.0+2

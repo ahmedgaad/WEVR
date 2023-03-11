@@ -20,8 +20,10 @@ class BuildGoogleMap extends StatelessWidget {
           myLocationButtonEnabled: false,
           zoomControlsEnabled: false,
           onMapCreated: (GoogleMapController googleMapController) {
-            // ignore: null_argument_to_non_null_type
-            cubit.mapController.complete(googleMapController);
+            if (!cubit.mapController.isCompleted) {
+              cubit.mapController.complete(googleMapController);
+            }
+            // cubit.mapController.complete(googleMapController);
           },
         );
       },
