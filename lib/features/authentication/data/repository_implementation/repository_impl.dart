@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
-import '../../domain/entities/logout.dart';
+
+import '../../../../core/errors/exceptions.dart';
+import '../../../../core/errors/failures.dart';
+import '../../../../core/network/network_info.dart';
 import '../../../../core/utils/strings_manager.dart';
 import '../../domain/entities/check_otp.dart';
 import '../../domain/entities/create_new_password.dart';
 import '../../domain/entities/forgot_password.dart';
 import '../../domain/entities/login.dart';
-import '../../../../core/errors/exceptions.dart';
-import '../../../../core/errors/failures.dart';
-import '../../../../core/network/network_info.dart';
+import '../../domain/entities/logout.dart';
 import '../../domain/entities/register.dart';
 import '../../domain/repository/auth_repository.dart';
 import '../data_sources/remote_datasource.dart';

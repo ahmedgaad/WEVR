@@ -1,11 +1,11 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import '../../../../../core/components/components.dart';
-import '../../../../../core/service/injection_container.dart';
+import '../../../../../core/service/service_locator.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
@@ -26,15 +26,15 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          OtpCubit(forgotPasswordUseCase: getIt(), checkOTPUseCase: getIt()),
+      create: (context) => OtpCubit(
+          forgotPasswordUseCase: locator(), checkOTPUseCase: locator()),
       child: BlocConsumer<OtpCubit, OtpStates>(
         listener: (context, state) {
           if (state is ResetViaEmailSuccessState) {
             QuickAlert.show(
               context: context,
               type: QuickAlertType.info,
-              title: StringsManager.info.tr(),
+              title: StringsManager.info.tr,
               text: state.forgotPassword.message,
               barrierDismissible: false,
               onConfirmBtnTap: () {
@@ -48,15 +48,15 @@ class ForgotPasswordScreen extends StatelessWidget {
                 );
               },
               confirmBtnColor: Colors.amber,
-              confirmBtnText: StringsManager.okay.tr(),
+              confirmBtnText: StringsManager.okay.tr,
             );
           } else if (state is ResetViaEmailErrorState) {
             QuickAlert.show(
               context: context,
               type: QuickAlertType.error,
-              title: StringsManager.error.tr(),
+              title: StringsManager.error.tr,
               text: state.error,
-              confirmBtnText: StringsManager.okay.tr(),
+              confirmBtnText: StringsManager.okay.tr,
               confirmBtnColor: Colors.red,
             );
           }
@@ -79,12 +79,12 @@ class ForgotPasswordScreen extends StatelessWidget {
                           height: MediaQuery.of(context).size.height * .04,
                         ),
                         Text(
-                          StringsManager.forgot.tr(),
+                          StringsManager.forgot.tr,
                           style: getBoldStylePoppins(),
                         ),
                         5.ph,
                         Text(
-                          StringsManager.forgotPassDescription.tr(),
+                          StringsManager.forgotPassDescription.tr,
                         ),
                         SizedBox(
                           height: 50 / MediaQuery.of(context).devicePixelRatio,
@@ -93,15 +93,15 @@ class ForgotPasswordScreen extends StatelessWidget {
                           onSaved: (value) {
                             email = value!;
                           },
-                          label: StringsManager.enterYourEmail.tr(),
+                          label: StringsManager.enterYourEmail.tr,
                           controller: emailController,
                           validate: (value) {
                             if (value!.isEmpty) {
-                              return StringsManager.emailError1.tr();
+                              return StringsManager.emailError1.tr;
                             } else if (!RegExp(
                                     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                 .hasMatch(value)) {
-                              return StringsManager.emailError2.tr();
+                              return StringsManager.emailError2.tr;
                             }
                             return null;
                           },
@@ -120,7 +120,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                                   cubit.forgotPassword(email: email);
                                 }
                               },
-                              text: StringsManager.continuee.tr(),
+                              text: StringsManager.continuee.tr,
                             );
                           },
                           fallback: (BuildContext context) => const Center(

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import '../repository/auth_repository.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../entities/check_otp.dart';
+import '../repository/auth_repository.dart';
 
 class CheckOTPUseCase {
   final AuthRepository authRepository;

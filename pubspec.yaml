@@ -17,7 +17,6 @@ dependencies:
   dartz: ^0.10.1
   device_info_plus: ^8.1.0
   dio: ^5.0.1
-  easy_localization: ^3.0.1
   equatable: ^2.0.5
   flutter:
     sdk: flutter
@@ -27,6 +26,7 @@ dependencies:
   fluttertoast: ^8.1.3
   font_awesome_flutter: ^10.4.0
   geolocator: ^9.0.2
+  get: ^4.6.5
   get_it: ^7.2.0
   google_maps_flutter: ^2.2.5
   image_picker: ^0.8.6+2

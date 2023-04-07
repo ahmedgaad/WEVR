@@ -1,26 +1,23 @@
 // ignore_for_file: avoid_print
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
-import 'package:wevr_app/core/helpers/cache_helper.dart';
-import 'package:wevr_app/core/helpers/get_device_info_helper.dart';
-import 'package:wevr_app/core/service/injection_container.dart';
+import 'package:wevr_app/core/service/service_locator.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/OTP/reset_pass/reset_pass.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login_register_background.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/screens/home/home_view.dart';
 
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/color_manager.dart';
-import '../../../../../core/utils/constants_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
-import '../../widgets/login/form_column.dart';
 import '../../controller/login/cubit.dart';
 import '../../controller/login/states.dart';
+import '../../widgets/login/form_column.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -28,7 +25,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => LoginCubit(loginUseCase: getIt()),
+      create: (BuildContext context) => LoginCubit(loginUseCase: locator()),
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
@@ -37,9 +34,9 @@ class LoginView extends StatelessWidget {
             QuickAlert.show(
               context: context,
               type: QuickAlertType.error,
-              title: StringsManager.error.tr(),
+              title: StringsManager.error.tr,
               text: state.error,
-              confirmBtnText: StringsManager.okay.tr(),
+              confirmBtnText: StringsManager.okay.tr,
               confirmBtnColor: Colors.red,
             );
           }
@@ -52,9 +49,9 @@ class LoginView extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 LoginRegisterBackground(
-                  textButton: StringsManager.signUp.tr(),
+                  textButton: StringsManager.signUp.tr,
                   route: Routes.registerRoute,
-                  questionText: StringsManager.haveAccount.tr(),
+                  questionText: StringsManager.haveAccount.tr,
                   p1: PaddingSize.p60,
                   p2: PaddingSize.p24,
                 ),
@@ -89,16 +86,16 @@ class LoginView extends StatelessWidget {
                                           type: TextInputType.emailAddress,
                                           // label: AppStrings.emailOrMobile,
                                           labelWidget: textInputInField(
-                                              StringsManager.emailAddress.tr()),
+                                              StringsManager.emailAddress.tr),
                                           validate: (value) {
                                             if (value!.isEmpty) {
                                               return StringsManager.emailError1
-                                                  .tr();
+                                                  .tr;
                                             } else if (!RegExp(
                                                     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                                 .hasMatch(value)) {
                                               return StringsManager.emailError2
-                                                  .tr();
+                                                  .tr;
                                             }
                                             return null;
                                           },
@@ -119,14 +116,14 @@ class LoginView extends StatelessWidget {
                                             type: TextInputType.visiblePassword,
                                             // label: AppStrings.password,
                                             labelWidget: textInputInField(
-                                                StringsManager.password.tr()),
+                                                StringsManager.password.tr),
                                             isPassword: cubit.isPassword,
                                             // validate: AppStrings.passwordValidate,
                                             validate: (value) {
                                               if (value!.isEmpty) {
                                                 return StringsManager
                                                     .passwordValidate
-                                                    .tr();
+                                                    .tr;
                                               }
                                               return null;
                                             },
@@ -146,7 +143,7 @@ class LoginView extends StatelessWidget {
                                           ),
                                           child: defaultTextButton(
                                             text: StringsManager.forgetPassword
-                                                .tr(),
+                                                .tr,
                                             onPressed: () {
                                               navigatePush(context,
                                                   const ForgotPasswordView());
@@ -178,7 +175,7 @@ class LoginView extends StatelessWidget {
                                                 }
                                               }
                                             },
-                                            text: StringsManager.signIn.tr(),
+                                            text: StringsManager.signIn.tr,
                                             width: AppSize.s200.w,
                                             height: AppSize.s44.h,
                                             isUpperCase: false,

@@ -1,10 +1,10 @@
 // ignore_for_file: avoid_print
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
-import 'package:wevr_app/core/service/injection_container.dart';
+import 'package:wevr_app/core/service/service_locator.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/register/register_successfully.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login/form_column.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/register/register_form.dart';
@@ -36,8 +36,8 @@ class _RegisterViewState extends State<RegisterView> {
       statusBarBrightness: Brightness.light,
       statusBarIconBrightness: Brightness.light,
     ));
-    return BlocProvider(
-      create: (BuildContext context) => RegisterCubit(registerUseCase: getIt()),
+    return BlocProvider.value(
+      value: locator<RegisterCubit>(),
       child: BlocConsumer<RegisterCubit, RegisterStates>(
         listener: (context, state) {
           if (state is RegisterSuccessState) {
@@ -46,9 +46,9 @@ class _RegisterViewState extends State<RegisterView> {
             QuickAlert.show(
               context: context,
               type: QuickAlertType.error,
-              title: StringsManager.error.tr(),
+              title: StringsManager.error.tr,
               text: state.error,
-              confirmBtnText: StringsManager.okay.tr(),
+              confirmBtnText: StringsManager.okay.tr,
               confirmBtnColor: Colors.red,
             );
           }
@@ -60,9 +60,9 @@ class _RegisterViewState extends State<RegisterView> {
               alignment: Alignment.center,
               children: [
                 LoginRegisterBackground(
-                  textButton: StringsManager.signIn.tr(),
+                  textButton: StringsManager.signIn.tr,
                   route: Routes.loginRoute,
-                  questionText: StringsManager.alreadyHaveAccount.tr(),
+                  questionText: StringsManager.alreadyHaveAccount.tr,
                   p1: PaddingSize.p60,
                   p2: PaddingSize.p24,
                 ),
@@ -96,9 +96,9 @@ class _RegisterViewState extends State<RegisterView> {
                                           CrossAxisAlignment.center,
                                       children: [
                                         const SocialColumn(
-                                            // firstText: AppStrings.signUp.tr(),
+                                            // firstText: AppStrings.signUp.tr,
                                             // secondText:
-                                            //     AppStrings.registerWord.tr(),
+                                            //     AppStrings.registerWord.tr,
                                             ),
                                         const RegisterForm(),
                                         15.ph,
@@ -132,8 +132,8 @@ class _RegisterViewState extends State<RegisterView> {
                                                       );
                                                     }
                                                   },
-                                                  text: StringsManager.signUp
-                                                      .tr(),
+                                                  text:
+                                                      StringsManager.signUp.tr,
                                                   width: AppSize.s200.w,
                                                   height: AppSize.s44.h,
                                                   isUpperCase: false,

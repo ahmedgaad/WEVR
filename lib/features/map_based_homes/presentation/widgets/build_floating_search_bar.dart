@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:wevr_app/features/map_based_homes/presentation/controller/map/map_cubit.dart';
-import 'package:wevr_app/features/map_based_homes/presentation/controller/map/map_states.dart';
+import '../controller/map/map_cubit.dart';
+import '../controller/map/map_states.dart';
 
 class BuildFloatingSearchBar extends StatelessWidget {
   const BuildFloatingSearchBar({super.key});

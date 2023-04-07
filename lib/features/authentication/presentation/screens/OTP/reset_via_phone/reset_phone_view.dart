@@ -1,6 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import '../../../widgets/forget_pass/forget_password_top_column.dart';
 import '../../../../../../core/components/components.dart';
 import '../../../../../../core/utils/assets_manager.dart';
@@ -10,9 +10,6 @@ import '../../../../../../core/utils/strings_manager.dart';
 import '../../../../../../core/utils/styles_manager.dart';
 import '../../../../../../core/utils/values_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../../widgets/forget_pass/via_phone_or_mail.dart';
 import '../create_new_password/create_new_password.dart';
 
 class ResetPhoneView extends StatefulWidget {
@@ -40,8 +37,8 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
               children: [
                 ForgetPasswordTopColumn(
                   imagePath: AssetsImagesManager.mobileReset,
-                  title: StringsManager.recoveryCode.tr(),
-                  subTitle: StringsManager.subTitleRecoveryCode.tr(),
+                  title: StringsManager.recoveryCode.tr,
+                  subTitle: StringsManager.subTitleRecoveryCode.tr,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -196,7 +193,7 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                               email: '',
                             ));
                       },
-                      text: StringsManager.submit.tr(),
+                      text: StringsManager.submit.tr,
                       width: AppSize.s200.w,
                       height: AppSize.s60.h,
                       isUpperCase: false,
@@ -207,14 +204,14 @@ class _ResetPhoneViewState extends State<ResetPhoneView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      StringsManager.resendCode.tr(),
+                      StringsManager.resendCode.tr,
                       style: getRegularStyleInter(
                         color: ColorManager.darkGrey,
                         fontSize: FontSize.s14,
                       ),
                     ),
                     defaultTextButton(
-                      text: StringsManager.resend.tr(),
+                      text: StringsManager.resend.tr,
                       textColor: ColorManager.primary,
                       onPressed: () {},
                     )

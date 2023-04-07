@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:wevr_app/features/map_based_homes/presentation/controller/map/map_cubit.dart';
-import 'package:wevr_app/features/map_based_homes/presentation/controller/map/map_states.dart';
+import '../controller/map/map_cubit.dart';
+import '../controller/map/map_states.dart';
 
 import '../../../../core/utils/color_manager.dart';
 import '../widgets/build_floating_search_bar.dart';

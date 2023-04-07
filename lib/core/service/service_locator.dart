@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:wevr_app/features/map_based_homes/presentation/controller/map/map_cubit.dart';
+import '../../features/map_based_homes/presentation/controller/map/map_cubit.dart';
 import '../../features/authentication/domain/use_cases/logout_usecase.dart';
 import '../../features/user_dashboard/presentation/controller/Home/cubit.dart';
 import '../../features/authentication/domain/use_cases/check_otp_usecase.dart';
@@ -18,42 +18,45 @@ import '../../features/authentication/domain/use_cases/register_usecase.dart';
 import '../../features/authentication/presentation/controller/register/cubit.dart';
 import '../network/network_info.dart';
 
-GetIt getIt = GetIt.instance;
+GetIt locator = GetIt.instance;
 
 void injectorInitialization() {
   //Cubit
-  getIt.registerLazySingleton(() => RegisterCubit(registerUseCase: getIt()));
-  getIt.registerLazySingleton(() => LoginCubit(loginUseCase: getIt()));
-  getIt.registerLazySingleton(
-      () => OtpCubit(forgotPasswordUseCase: getIt(), checkOTPUseCase: getIt()));
-  getIt.registerLazySingleton(
-      () => CreateNewPasswordCubit(createNewPasswordUseCase: getIt()));
-  getIt.registerLazySingleton(() => HomeLayoutCubit(
-        logoutUseCase: getIt(),
+  locator
+      .registerLazySingleton(() => RegisterCubit(registerUseCase: locator()));
+  locator.registerLazySingleton(() => LoginCubit(loginUseCase: locator()));
+  locator.registerLazySingleton(() =>
+      OtpCubit(forgotPasswordUseCase: locator(), checkOTPUseCase: locator()));
+  locator.registerLazySingleton(
+      () => CreateNewPasswordCubit(createNewPasswordUseCase: locator()));
+  locator.registerLazySingleton(() => HomeLayoutCubit(
+        logoutUseCase: locator(),
       ));
-  getIt.registerLazySingleton(() => MapCubit());
+  locator.registerLazySingleton(() => MapCubit());
 
   //Usecase
-  getIt.registerLazySingleton(() => RegisterUseCase(getIt()));
-  getIt.registerLazySingleton(() => LoginUseCase(getIt()));
-  getIt.registerLazySingleton(() => ForgotPasswordUseCase(getIt()));
-  getIt.registerLazySingleton(() => CheckOTPUseCase(getIt()));
-  getIt.registerLazySingleton(() => CreateNewPasswordUseCase(getIt()));
-  getIt.registerLazySingleton(() => LogoutUseCase(getIt()));
+  locator.registerLazySingleton(() => RegisterUseCase(locator()));
+  locator.registerLazySingleton(() => LoginUseCase(locator()));
+  locator.registerLazySingleton(() => ForgotPasswordUseCase(locator()));
+  locator.registerLazySingleton(() => CheckOTPUseCase(locator()));
+  locator.registerLazySingleton(() => CreateNewPasswordUseCase(locator()));
+  locator.registerLazySingleton(() => LogoutUseCase(locator()));
 
   //Repository
-  getIt.registerLazySingleton<AuthRepository>(
+  locator.registerLazySingleton<AuthRepository>(
     () => AuthRepositoryImpl(
-      authDataSource: getIt(),
-      networkInfo: getIt(),
+      authDataSource: locator(),
+      networkInfo: locator(),
     ),
   );
 
   //DataSource
-  getIt.registerLazySingleton<AuthDataSource>(() => AuthDataSourceImpl());
+  locator.registerLazySingleton<AuthDataSource>(() => AuthDataSourceImpl());
 
   //NetworkInfo
-  getIt.registerLazySingleton<NetworkInfo>(
+  locator.registerLazySingleton<NetworkInfo>(
       () => NetworkInfoImpl(InternetConnectionChecker()));
 
+
+  
 }

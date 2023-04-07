@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, depend_on_referenced_packages
 
-import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wevr_app/core/service/injection_container.dart';
+import 'package:get/get.dart';
+import 'package:wevr_app/core/localization/change_locale.dart';
+import 'package:wevr_app/core/localization/translations.dart';
+import 'package:wevr_app/core/service/service_locator.dart';
 import 'package:wevr_app/core/utils/languages_manager.dart';
 import 'package:wevr_app/core/utils/routes_manager.dart';
 import 'package:wevr_app/core/utils/themes_manager.dart';
@@ -15,8 +17,12 @@ import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/cu
 // import 'dart:ui' as ui;
 
 class Wevr extends StatefulWidget {
-  const Wevr({super.key});
+  const Wevr({
+    super.key,
+    required this.initialRoute,
+  });
 
+  final String initialRoute;
   @override
   State<Wevr> createState() => _WevrState();
 }
@@ -25,18 +31,18 @@ class _WevrState extends State<Wevr> {
   //MyApp._internal(this.startWidget); //named constructor
   @override
   Widget build(BuildContext context) {
+    LocaleController localeController = Get.put(LocaleController());
     precacheImage(
         const AssetImage("assets/images/logo/get_started.jpg"), context);
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (BuildContext context) => OtpCubit(
-              checkOTPUseCase: getIt(), forgotPasswordUseCase: getIt()),
+              checkOTPUseCase: locator(), forgotPasswordUseCase: locator()),
         ),
-        BlocProvider(
-            create: (BuildContext context) => HomeLayoutCubit(
-                  logoutUseCase: getIt(),
-                )),
+        BlocProvider.value(
+          value: locator<HomeLayoutCubit>(),
+        ),
         BlocProvider(
           create: (BuildContext context) => MapCubit(),
         ),
@@ -46,23 +52,13 @@ class _WevrState extends State<Wevr> {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (BuildContext context, child) {
-          return MaterialApp(
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
+          return GetMaterialApp(
+            translations: WevrTranslations(),
+            locale: localeController.language,
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RouteGenerator.getRoute,
-            initialRoute: Routes.splashRoute,
-            //home: startWidget,
+            initialRoute: widget.initialRoute,
             theme: getThemeData(),
-            builder: (context, child) {
-              return Directionality(
-                  // ignore: unrelated_type_equality_checks
-                  textDirection: context.locale.languageCode == ARABIC_LOCALE
-                      ? TextDirection.rtl
-                      : TextDirection.ltr,
-                  child: child ?? const SplashView());
-            },
           );
         },
       ),

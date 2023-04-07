@@ -4,10 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login/social_icon.dart';
 
 import '../../../../../core/components/components.dart';
-import '../../../../../core/utils/color_manager.dart';
-import '../../../../../core/utils/fonts_manager.dart';
-// import '../../../../../core/utils/strings_manager.dart';
-import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 
 class SocialColumn extends StatelessWidget {

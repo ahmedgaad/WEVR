@@ -1,10 +1,10 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../../core/service/injection_container.dart';
+import 'package:get/get.dart';
+import '../../../../../core/service/service_locator.dart';
 
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/assets_manager.dart';
@@ -97,7 +97,7 @@ class _HomeViewState extends State<HomeView> {
                               height: AppSize.s2.h,
                             ),
                             Text(
-                              StringsManager.explore.tr(),
+                              StringsManager.explore.tr,
                               style: getRegularStylePoppins(
                                 color: cubit.currentTap == 0
                                     ? ColorManager.primary
@@ -125,7 +125,7 @@ class _HomeViewState extends State<HomeView> {
                                   : ColorManager.darkGrey,
                             ),
                             Text(
-                              StringsManager.saved.tr(),
+                              StringsManager.saved.tr,
                               style: getRegularStylePoppins(
                                 color: cubit.currentTap == 1
                                     ? ColorManager.primary
@@ -158,7 +158,7 @@ class _HomeViewState extends State<HomeView> {
                                   : ColorManager.darkGrey,
                             ),
                             Text(
-                              StringsManager.homes.tr(),
+                              StringsManager.homes.tr,
                               style: getRegularStylePoppins(
                                 color: cubit.currentTap == 3
                                     ? ColorManager.primary
@@ -189,7 +189,7 @@ class _HomeViewState extends State<HomeView> {
                               height: AppSize.s2.h,
                             ),
                             Text(
-                              StringsManager.auction.tr(),
+                              StringsManager.auction.tr,
                               style: getRegularStylePoppins(
                                 color: cubit.currentTap == 4
                                     ? ColorManager.primary

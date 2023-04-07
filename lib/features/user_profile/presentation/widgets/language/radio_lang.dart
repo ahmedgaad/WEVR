@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
+import '../../../../../core/localization/change_locale.dart';
 import '../../../../../core/utils/assets_manager.dart';
-import '../../../../../core/utils/languages_manager.dart';
 import '../profile/build_divider.dart';
 
-class RadioLang extends StatefulWidget {
+class RadioLang extends GetView<LocaleController> {
   const RadioLang({super.key});
 
   @override
-  State<RadioLang> createState() => _RadioLangState();
-}
-
-class _RadioLangState extends State<RadioLang> {
-  String? selectedLang;
-  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(10, 80, 20, 120),
+      padding: const EdgeInsetsDirectional.fromSTEB(10, 50, 20, 60),
       child: Column(
         children: [
           ListTile(
@@ -28,11 +23,18 @@ class _RadioLangState extends State<RadioLang> {
               fit: BoxFit.scaleDown,
             ),
             title: const Text('English'),
-            trailing: Radio(
-              value: ENGLISH_LOCALE,
-              groupValue: selectedLang,
-              onChanged: (val) {
-                setState(() {});
+            trailing: StatefulBuilder(
+              builder: (BuildContext context,
+                  void Function(void Function()) setState) {
+                return Radio(
+                  value: 'en',
+                  groupValue: controller.language!.languageCode,
+                  onChanged: (val) {
+                    setState(() {
+                      controller.changeLocale(val!);
+                    });
+                  },
+                );
               },
             ),
           ),
@@ -45,11 +47,18 @@ class _RadioLangState extends State<RadioLang> {
               fit: BoxFit.scaleDown,
             ),
             title: const Text('Arabic'),
-            trailing: Radio(
-              value: ENGLISH_LOCALE,
-              groupValue: selectedLang,
-              onChanged: (val) {
-                setState(() {});
+            trailing: StatefulBuilder(
+              builder: (BuildContext context,
+                  void Function(void Function()) setState) {
+                return Radio(
+                  value: 'ar',
+                  groupValue: controller.language!.languageCode,
+                  onChanged: (val) {
+                    setState(() {
+                      controller.changeLocale(val!);
+                    });
+                  },
+                );
               },
             ),
           ),

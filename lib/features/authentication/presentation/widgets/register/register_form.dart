@@ -1,8 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
@@ -31,11 +31,11 @@ class RegisterForm extends StatelessWidget {
                 controller: cubit.userNameController,
                 type: TextInputType.name,
                 labelWidget: textInputInField(
-                  StringsManager.userName.tr(),
+                  StringsManager.userName.tr,
                 ),
                 validate: (value) {
                   if (value!.isEmpty) {
-                    return StringsManager.userName.tr();
+                    return StringsManager.userName.tr;
                   }
                   return null;
                 },
@@ -50,16 +50,16 @@ class RegisterForm extends StatelessWidget {
                 // label: AppStrings.emailOrMobile,
 
                 labelWidget: textInputInField(
-                  StringsManager.emailAddress.tr(),
+                  StringsManager.emailAddress.tr,
                 ),
                 //validate: AppStrings.emailValidate,
                 validate: (value) {
                   if (value!.isEmpty) {
-                    return StringsManager.emailError1.tr();
+                    return StringsManager.emailError1.tr;
                   } else if (!RegExp(
                           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                       .hasMatch(value)) {
-                    return StringsManager.emailError2.tr();
+                    return StringsManager.emailError2.tr;
                   }
                   return null;
                 },
@@ -73,12 +73,12 @@ class RegisterForm extends StatelessWidget {
                 type: TextInputType.phone,
                 // label: AppStrings.emailOrMobile,
                 labelWidget: textInputInField(
-                  StringsManager.mobile.tr(),
+                  StringsManager.mobile.tr,
                 ),
                 //validate: AppStrings.emailValidate,
                 validate: (value) {
                   if (value!.isEmpty) {
-                    return StringsManager.phoneValidate.tr();
+                    return StringsManager.phoneValidate.tr;
                   }
                   return null;
                 },
@@ -92,7 +92,7 @@ class RegisterForm extends StatelessWidget {
                 controller: cubit.passwordController,
                 type: TextInputType.visiblePassword,
                 labelWidget: textInputInField(
-                  StringsManager.password.tr(),
+                  StringsManager.password.tr,
                 ),
                 isPassword: cubit.isPassword,
                 suffix: cubit.suffix,
@@ -130,7 +130,7 @@ class RegisterForm extends StatelessWidget {
                     controller: cubit.confirmPasswordController,
                     type: TextInputType.visiblePassword,
                     labelWidget: textInputInField(
-                      StringsManager.confirmPassword.tr(),
+                      StringsManager.confirmPassword.tr,
                     ),
                     isPassword: cubit.isPassword,
                     suffixWidget: cubit.isPasswordMatchCharacter

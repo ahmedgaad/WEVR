@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:wevr_app/core/helpers/location_helper.dart';
-import 'package:wevr_app/features/map_based_homes/presentation/controller/map/map_states.dart';
+import '../../../../../core/helpers/location_helper.dart';
+import 'map_states.dart';
 
 class MapCubit extends Cubit<MapStates> {
   MapCubit() : super(MapInitial()) {

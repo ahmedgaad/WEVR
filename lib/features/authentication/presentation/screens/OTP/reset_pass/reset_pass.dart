@@ -1,12 +1,11 @@
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
-import '../../../../../../core/service/injection_container.dart';
+import '../../../../../../core/service/service_locator.dart';
 import '../../../controller/OTP/otp_cubit.dart';
 import '../../../controller/OTP/otp_states.dart';
 import '../../../controller/login/cubit.dart';
@@ -34,7 +33,8 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OtpCubit(forgotPasswordUseCase: getIt(), checkOTPUseCase: getIt()),
+      create: (context) => OtpCubit(
+          forgotPasswordUseCase: locator(), checkOTPUseCase: locator()),
       child: BlocConsumer<OtpCubit, OtpStates>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -49,8 +49,8 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                 children: [
                   ForgetPasswordTopColumn(
                     imagePath: AssetsImagesManager.forgotPass,
-                    title: StringsManager.forgotPass.tr(),
-                    subTitle: StringsManager.subTitleForgotPass.tr(),
+                    title: StringsManager.forgotPass.tr,
+                    subTitle: StringsManager.subTitleForgotPass.tr,
                   ),
                   //via phone number
                   Padding(
@@ -91,7 +91,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      StringsManager.viaPhone.tr(),
+                                      StringsManager.viaPhone.tr,
                                       style: getRegularStyleInter(
                                         color: ColorManager.viaPhone,
                                         fontSize: FontSize.s16.sp,
@@ -153,7 +153,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      StringsManager.viaEmail.tr(),
+                                      StringsManager.viaEmail.tr,
                                       style: getRegularStyleInter(
                                         color: ColorManager.viaPhone,
                                         fontSize: FontSize.s16.sp,

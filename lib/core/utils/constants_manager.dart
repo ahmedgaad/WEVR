@@ -4,6 +4,7 @@ class ConstantsManager {
   static const int nextPageTime = 2;
   static const int previousPageTime = 2;
   static String? userToken;
+  static bool? opendBefore;
   static bool? isGuest;
   static const String baseURL = "https://wevr.tech/api";
   static const String suggestionsBaseURL =

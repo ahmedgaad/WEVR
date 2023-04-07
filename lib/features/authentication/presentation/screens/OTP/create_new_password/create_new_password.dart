@@ -1,11 +1,11 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
-import '../../../../../../core/service/injection_container.dart';
+import '../../../../../../core/service/service_locator.dart';
 
 import '../../../../../../core/components/components.dart';
 import '../../../../../../core/utils/assets_manager.dart';
@@ -25,16 +25,16 @@ class CreateNewPasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          CreateNewPasswordCubit(createNewPasswordUseCase: getIt()),
+          CreateNewPasswordCubit(createNewPasswordUseCase: locator()),
       child: BlocConsumer<CreateNewPasswordCubit, CreateNewPasswordStates>(
         listener: (context, state) {
           if (state is CreateNewPasswordErrorState) {
             QuickAlert.show(
                 context: context,
                 type: QuickAlertType.error,
-                title: StringsManager.error.tr(),
+                title: StringsManager.error.tr,
                 text: state.error,
-                confirmBtnText: StringsManager.okay.tr(),
+                confirmBtnText: StringsManager.okay.tr,
                 confirmBtnColor: Colors.red);
           } else if (state is CreateNewPasswordSuccessState) {
             navigatePush(context, const ResetSuccessfully());
@@ -52,8 +52,8 @@ class CreateNewPasswordView extends StatelessWidget {
                 children: [
                   ForgetPasswordTopColumn(
                     imagePath: AssetsImagesManager.createNewPass,
-                    title: StringsManager.createNewPasswordTitle.tr(),
-                    subTitle: StringsManager.createNewPasswordSubTitle.tr(),
+                    title: StringsManager.createNewPasswordTitle.tr,
+                    subTitle: StringsManager.createNewPasswordSubTitle.tr,
                   ),
                   Form(
                     key: cubit.passFormKey,
@@ -69,7 +69,7 @@ class CreateNewPasswordView extends StatelessWidget {
                             controller: cubit.passwordController,
                             type: TextInputType.visiblePassword,
                             labelWidget: Text(
-                              StringsManager.password.tr(),
+                              StringsManager.password.tr,
                               style: getRegularStyleInter(
                                 color: ColorManager.darkGrey,
                                 fontSize: AppSize.s16.sp,
@@ -117,7 +117,7 @@ class CreateNewPasswordView extends StatelessWidget {
                                 controller: cubit.confirmPasswordController,
                                 type: TextInputType.visiblePassword,
                                 labelWidget: Text(
-                                  StringsManager.confirmPassword.tr(),
+                                  StringsManager.confirmPassword.tr,
                                   style: getRegularStyleInter(
                                     color: ColorManager.darkGrey,
                                     fontSize: AppSize.s16.sp,
@@ -166,7 +166,7 @@ class CreateNewPasswordView extends StatelessWidget {
                               );
                             }
                           },
-                          text: StringsManager.resetPassword.tr(),
+                          text: StringsManager.resetPassword.tr,
                           isUpperCase: false,
                           width: 250.w,
                           height: 50.h,

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:wevr_app/core/errors/exceptions.dart';
-import 'package:wevr_app/features/map_based_homes/data/models/places_model.dart';
 
+import '../../../../core/errors/exceptions.dart';
 import '../../../../core/utils/constants_manager.dart';
+import '../models/places_model.dart';
 
 abstract class PlacesRemoteDataSource {
   Future<PlacesSuggestionModel> getPlacesSuggestions({
