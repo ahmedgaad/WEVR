@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
-
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:wevr_app/core/components/components.dart';
 import 'package:wevr_app/core/utils/color_manager.dart';
 import 'package:wevr_app/core/utils/strings_manager.dart';
@@ -104,7 +103,7 @@ Widget searchBar() {
               width: AppSize.s10.w,
             ),
             Text(
-              StringsManager.searchBar.tr(),
+              StringsManager.searchBar.tr,
               style: getRegularStyleInter(
                 color: ColorManager.smokyGray,
                 fontSize: AppSize.s16,
@@ -123,7 +122,7 @@ Widget allHomesRow() {
   return Row(
     children: [
       Text(
-        StringsManager.allHomes.tr(),
+        StringsManager.allHomes.tr,
         style: getRegularStylePoppins(
             color: ColorManager.black, fontSize: AppSize.s16.sp),
       ),
@@ -139,7 +138,7 @@ Widget allHomesRow() {
           child: IconButton(
               onPressed: () {},
               icon: Text(
-                StringsManager.viewAll.tr(),
+                StringsManager.viewAll.tr,
               )),
         ),
       )

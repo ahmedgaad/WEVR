@@ -1,25 +1,23 @@
 // ignore_for_file: avoid_print
-import 'package:easy_localization/easy_localization.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
-import 'package:wevr_app/core/helpers/cache_helper.dart';
-import 'package:wevr_app/core/helpers/get_device_info_helper.dart';
-import 'package:wevr_app/core/service/injection_container.dart';
+import 'package:wevr_app/core/service/service_locator.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/OTP/reset_pass/reset_pass.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login_register_background.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/screens/home/home_view.dart';
 
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/color_manager.dart';
-import '../../../../../core/utils/constants_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
-import '../../widgets/login/form_column.dart';
 import '../../controller/login/cubit.dart';
 import '../../controller/login/states.dart';
+import '../../widgets/login/form_column.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -27,20 +25,20 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) =>
-          LoginCubit(loginUseCase: getIt()),
+      create: (BuildContext context) => LoginCubit(loginUseCase: locator()),
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
             navigatePush(context, const HomeView());
           } else if (state is LoginErrorState) {
             QuickAlert.show(
-                context: context,
-                type: QuickAlertType.error,
-                title: StringsManager.error.tr(),
-                text: state.error,
-                confirmBtnText: StringsManager.okay.tr(),
-                confirmBtnColor: Colors.red,);
+              context: context,
+              type: QuickAlertType.error,
+              title: StringsManager.error.tr,
+              text: state.error,
+              confirmBtnText: StringsManager.okay.tr,
+              confirmBtnColor: Colors.red,
+            );
           }
         },
         builder: (context, state) {
@@ -51,9 +49,9 @@ class LoginView extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 LoginRegisterBackground(
-                  textButton: StringsManager.signUp.tr(),
+                  textButton: StringsManager.signUp.tr,
                   route: Routes.registerRoute,
-                  questionText: StringsManager.haveAccount.tr(),
+                  questionText: StringsManager.haveAccount.tr,
                   p1: PaddingSize.p60,
                   p2: PaddingSize.p24,
                 ),
@@ -88,16 +86,16 @@ class LoginView extends StatelessWidget {
                                           type: TextInputType.emailAddress,
                                           // label: AppStrings.emailOrMobile,
                                           labelWidget: textInputInField(
-                                              StringsManager.emailAddress.tr()),
+                                              StringsManager.emailAddress.tr),
                                           validate: (value) {
                                             if (value!.isEmpty) {
                                               return StringsManager.emailError1
-                                                  .tr();
+                                                  .tr;
                                             } else if (!RegExp(
                                                     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                                 .hasMatch(value)) {
                                               return StringsManager.emailError2
-                                                  .tr();
+                                                  .tr;
                                             }
                                             return null;
                                           },
@@ -118,14 +116,14 @@ class LoginView extends StatelessWidget {
                                             type: TextInputType.visiblePassword,
                                             // label: AppStrings.password,
                                             labelWidget: textInputInField(
-                                                StringsManager.password.tr()),
+                                                StringsManager.password.tr),
                                             isPassword: cubit.isPassword,
                                             // validate: AppStrings.passwordValidate,
                                             validate: (value) {
                                               if (value!.isEmpty) {
                                                 return StringsManager
                                                     .passwordValidate
-                                                    .tr();
+                                                    .tr;
                                               }
                                               return null;
                                             },
@@ -145,7 +143,7 @@ class LoginView extends StatelessWidget {
                                           ),
                                           child: defaultTextButton(
                                             text: StringsManager.forgetPassword
-                                                .tr(),
+                                                .tr,
                                             onPressed: () {
                                               navigatePush(context,
                                                   const ForgotPasswordView());
@@ -156,26 +154,37 @@ class LoginView extends StatelessWidget {
                                     ),
                                     20.ph,
                                     Center(
-                                      child: defaultButton(
-                                        function: () async {
-                                          if (cubit.emailFormKey.currentState!
-                                              .validate()) {
-                                            if (cubit.passFieldKey.currentState!
-                                                .validate()) {
-                                              cubit.login(
-                                                email:
-                                                    cubit.emailController.text,
-                                                password: cubit
-                                                    .passwordController.text,
-                                                deviceInformation: 'manually ios',
-                                              );
-                                            }
-                                          }
+                                      child: ConditionalBuilder(
+                                        condition: state is! LoginLoadingState,
+                                        builder: (BuildContext context) {
+                                          return defaultButton(
+                                            function: () async {
+                                              if (cubit
+                                                  .emailFormKey.currentState!
+                                                  .validate()) {
+                                                if (cubit
+                                                    .passFieldKey.currentState!
+                                                    .validate()) {
+                                                  cubit.login(
+                                                    email: cubit
+                                                        .emailController.text,
+                                                    password: cubit
+                                                        .passwordController
+                                                        .text,
+                                                  );
+                                                }
+                                              }
+                                            },
+                                            text: StringsManager.signIn.tr,
+                                            width: AppSize.s200.w,
+                                            height: AppSize.s44.h,
+                                            isUpperCase: false,
+                                          );
                                         },
-                                        text: StringsManager.signIn.tr(),
-                                        width: AppSize.s200.w,
-                                        height: AppSize.s44.h,
-                                        isUpperCase: false,
+                                        fallback: (BuildContext context) =>
+                                            const Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
                                       ),
                                     ),
                                   ],

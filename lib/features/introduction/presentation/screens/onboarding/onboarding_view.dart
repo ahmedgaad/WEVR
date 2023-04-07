@@ -1,9 +1,9 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../../core/helpers/cache_helper.dart';
@@ -29,32 +29,34 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   int currentIndex = 0;
   bool isLast = false;
 
-  void submit() {
-    CacheHelper.saveDataToCache(key: 'onBoarding', value: true).then((value) {
-      Navigator.pushReplacementNamed(context, Routes.getStarted);
-    });
+  void submit() async {
+    // await CacheHelper.saveDataToCache(key: 'opendBefore', value: true)
+    //     .then((value) {
+    //   Navigator.pushReplacementNamed(context, Routes.getStartedRoute);
+    // });
+    Navigator.pushReplacementNamed(context, Routes.getStartedRoute);
   }
 
   List<SliderObject> _getSliderData() => [
         SliderObject(
           AssetsImagesManager.onBoarding1,
-          StringsManager.onBoardingTitle1.tr(),
-          StringsManager.onBoardingSubTitle1.tr(),
+          StringsManager.onBoardingTitle1.tr,
+          StringsManager.onBoardingSubTitle1.tr,
         ),
         SliderObject(
           AssetsImagesManager.onBoarding2,
-          StringsManager.onBoardingTitle2.tr(),
-          StringsManager.onBoardingSubTitle2.tr(),
+          StringsManager.onBoardingTitle2.tr,
+          StringsManager.onBoardingSubTitle2.tr,
         ),
         SliderObject(
           AssetsImagesManager.onBoarding3,
-          StringsManager.onBoardingTitle3.tr(),
-          StringsManager.onBoardingSubTitle3.tr(),
+          StringsManager.onBoardingTitle3.tr,
+          StringsManager.onBoardingSubTitle3.tr,
         ),
         SliderObject(
           AssetsImagesManager.onBoarding4,
-          StringsManager.onBoardingTitle4.tr(),
-          StringsManager.onBoardingSubTitle4.tr(),
+          StringsManager.onBoardingTitle4.tr,
+          StringsManager.onBoardingSubTitle4.tr,
         ),
       ];
 
@@ -79,12 +81,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.pushReplacementNamed(context, Routes.getStarted);
+              Navigator.pushReplacementNamed(context, Routes.getStartedRoute);
             },
             child: Padding(
               padding: EdgeInsetsDirectional.only(end: PaddingSize.p20.w),
               child: Text(
-                StringsManager.skip.tr(),
+                StringsManager.skip.tr,
                 style: getRegularStyleInter(
                     color: ColorManager.black, fontSize: FontSize.s20.sp),
               ),

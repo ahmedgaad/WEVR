@@ -1,10 +1,10 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
-import '../../../../../../core/service/injection_container.dart';
+import '../../../../../../core/service/service_locator.dart';
 import '../../../controller/OTP/otp_cubit.dart';
 import '../../../controller/OTP/otp_states.dart';
 import '../../../widgets/forget_pass/forget_password_top_column.dart';
@@ -43,27 +43,27 @@ class ResetEmailView extends StatelessWidget {
           QuickAlert.show(
             context: context,
             type: QuickAlertType.error,
-            title: StringsManager.error.tr(),
+            title: StringsManager.error.tr,
             text: state.error,
-            confirmBtnText: StringsManager.okay.tr(),
+            confirmBtnText: StringsManager.okay.tr,
           );
         } else if (state is ResetViaEmailSuccessState) {
           QuickAlert.show(
             context: context,
             type: QuickAlertType.info,
-            title: StringsManager.info.tr(),
+            title: StringsManager.info.tr,
             text: state.forgotPassword.message,
             barrierDismissible: false,
             confirmBtnColor: Colors.amber,
-            confirmBtnText: StringsManager.okay.tr(),
+            confirmBtnText: StringsManager.okay.tr,
           );
         } else if (state is ResetViaEmailErrorState) {
           QuickAlert.show(
             context: context,
             type: QuickAlertType.error,
-            title: StringsManager.error.tr(),
+            title: StringsManager.error.tr,
             text: state.error,
-            confirmBtnText: StringsManager.okay.tr(),
+            confirmBtnText: StringsManager.okay.tr,
             confirmBtnColor: Colors.red,
           );
         }
@@ -81,8 +81,8 @@ class ResetEmailView extends StatelessWidget {
                   children: [
                     ForgetPasswordTopColumn(
                       imagePath: AssetsImagesManager.emailReset,
-                      title: StringsManager.recoveryCode.tr(),
-                      subTitle: StringsManager.subTitleRecoveryCode.tr(),
+                      title: StringsManager.recoveryCode.tr,
+                      subTitle: StringsManager.subTitleRecoveryCode.tr,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
@@ -247,7 +247,7 @@ class ResetEmailView extends StatelessWidget {
                                   cubit.checkOTP(email: email);
                                 }
                               },
-                              text: StringsManager.submit.tr(),
+                              text: StringsManager.submit.tr,
                               width: AppSize.s200.w,
                               height: AppSize.s60.h,
                               isUpperCase: false,
@@ -266,14 +266,14 @@ class ResetEmailView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              StringsManager.resendCode.tr(),
+                              StringsManager.resendCode.tr,
                               style: getRegularStyleInter(
                                 color: ColorManager.darkGrey,
                                 fontSize: FontSize.s14,
                               ),
                             ),
                             defaultTextButton(
-                              text: StringsManager.resend.tr(),
+                              text: StringsManager.resend.tr,
                               textColor: ColorManager.primary,
                               onPressed: () {
                                 cubit.forgotPassword(email: email);

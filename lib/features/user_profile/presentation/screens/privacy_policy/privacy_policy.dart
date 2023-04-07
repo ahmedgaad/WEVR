@@ -1,5 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
@@ -12,7 +12,7 @@ class PrivacyPolicy extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            StringsManager.privacy.tr(),
+            StringsManager.privacy.tr,
             style: getBoldStylePoppins(),
           ),
         ),
@@ -22,7 +22,7 @@ class PrivacyPolicy extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             children: [
               Text(
-                StringsManager.policyTopic.tr(),
+                StringsManager.policyTopic.tr,
                 style: getRegularStyleInter(fontSize: 16.0),
               ),
             ],

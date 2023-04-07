@@ -23,7 +23,7 @@ class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
 
     failureOrDelete.fold(
       (failure) {
-        emit(LogoutErrorState());
+        emit(LogoutErrorState(error: failure.message));
       },
       (delete) {
         emit(LogoutSuccessfullyState(logout: delete));
@@ -31,11 +31,7 @@ class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
     );
   }
 
-  // void signOut(context) {
-  //   CacheHelper.removeDataFromCache(key: 'userToken').then((value) {
-  //     navigatePush(context, const GetStartedView());
-  //   });
-  // }
+
 
   // int currentIndex=0;
   int currentTap = 0;

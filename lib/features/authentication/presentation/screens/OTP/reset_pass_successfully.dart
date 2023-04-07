@@ -1,6 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../../../core/components/components.dart';
 import '../../../../../core/components/success_screen.dart';
@@ -28,15 +28,15 @@ class ResetSuccessfully extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SuccessScreen(
-                title: StringsManager.resetSuccessfullyTitle.tr(),
-                subTitle: StringsManager.resetSuccessfullySubTitle.tr(),
+                title: StringsManager.resetSuccessfullyTitle.tr,
+                subTitle: StringsManager.resetSuccessfullySubTitle.tr,
               ),
               defaultButton(
                 width: AppSize.s281_25.w,
                 function: () {
                   navigateTo(context, Routes.loginRoute);
                 },
-                text: StringsManager.continueExploring.tr(),
+                text: StringsManager.continueExploring.tr,
               ),
             ],
           ),

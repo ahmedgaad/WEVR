@@ -1,9 +1,10 @@
 import 'dart:ui';
-
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import '../../../../../core/helpers/cache_helper.dart';
+import '../../../../../core/utils/constants_manager.dart';
 
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/assets_manager.dart';
@@ -23,6 +24,7 @@ class GetStartedView extends StatefulWidget {
 }
 
 class _GetStartedViewState extends State<GetStartedView> {
+  bool isGuest = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +62,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                           height: AppSize.s50.h,
                         ),
                         Text(
-                          StringsManager.welcomeTo.tr(),
+                          StringsManager.welcomeTo.tr,
                           style: getRegularStylePoppins(
                               color: ColorManager.black,
                               fontSize: FontSize.s24.sp),
@@ -83,7 +85,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                                   navigateTo(context, Routes.loginRoute);
                                 },
                                 isUpperCase: false,
-                                text: StringsManager.signIn.tr(),
+                                text: StringsManager.signIn.tr,
                               ),
                               SizedBox(
                                 height: AppSize.s20.h,
@@ -96,7 +98,7 @@ class _GetStartedViewState extends State<GetStartedView> {
                                   navigateTo(context, Routes.registerRoute);
                                 },
                                 isUpperCase: false,
-                                text: StringsManager.signUp.tr(),
+                                text: StringsManager.signUp.tr,
                                 textColor: ColorManager.black,
                               ),
                               SizedBox(
@@ -106,8 +108,14 @@ class _GetStartedViewState extends State<GetStartedView> {
                                 textColor: ColorManager.black,
                                 fontSize: FontSize.s14.sp,
                                 // textDecoration: TextDecoration.underline,
-                                text: StringsManager.asGuest.tr(),
+                                text: StringsManager.asGuest.tr,
                                 onPressed: () {
+                                  setState(() {
+                                    isGuest = true;
+                                    CacheHelper.saveDataToCache(
+                                      key: 'isGuest', value: isGuest);
+                                  });
+                                  // ignore: use_build_context_synchronously
                                   navigatePush(context, const HomeView());
                                 },
                               ),

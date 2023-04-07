@@ -3,7 +3,7 @@ import '../../../../authentication/domain/entities/logout.dart';
 
 abstract class HomeLayOutStates extends Equatable {
   const HomeLayOutStates();
-  
+
   @override
   List<Object?> get props => [];
 }
@@ -17,4 +17,8 @@ class LogoutSuccessfullyState extends HomeLayOutStates {
   const LogoutSuccessfullyState({required this.logout});
 }
 
-class LogoutErrorState extends HomeLayOutStates{}
+class LogoutErrorState extends HomeLayOutStates {
+  final String error;
+
+  const LogoutErrorState({required this.error});
+}

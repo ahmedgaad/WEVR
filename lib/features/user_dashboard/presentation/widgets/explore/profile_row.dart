@@ -1,8 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
 import '../../../../../core/helpers/cache_helper.dart';
 import '../../../../../core/utils/constants_manager.dart';
@@ -27,13 +27,22 @@ class ProfileRow extends StatelessWidget {
           QuickAlert.show(
             context: context,
             type: QuickAlertType.success,
-            // title: StringsManager.error.tr(),
+            // title: StringsManager.error.tr,
             text: state.logout.message,
-            confirmBtnText: StringsManager.okay.tr(),
+            confirmBtnText: StringsManager.okay.tr,
             confirmBtnColor: Colors.green,
           ).then((value) {
             navigatePush(context, const GetStartedView());
           });
+        }else if(state is LogoutErrorState){
+          QuickAlert.show(
+              context: context,
+              type: QuickAlertType.error,
+              title: StringsManager.error.tr,
+              text: state.error,
+              confirmBtnText: StringsManager.okay.tr,
+              confirmBtnColor: Colors.red,
+            );
         }
       },
       builder: (context, state) {
@@ -54,20 +63,24 @@ class ProfileRow extends StatelessWidget {
             const Spacer(),
             BlocBuilder<HomeLayoutCubit, HomeLayOutStates>(
               builder: (context, state) {
-                return IconButton(
-                  onPressed: () {
-                    cubit
-                        .logout(
-                      token: ConstantsManager.userToken,
-                    )
-                        .then((value) {
-                      CacheHelper.removeDataFromCache(key: 'userToken');
-                    });
-                  },
-                  icon: SvgPicture.asset(
-                    AssetsImagesManager.signOut,
-                  ),
-                );
+                if (!CacheHelper.getDataFromCache(key: 'isGuest')) {
+                  return IconButton(
+                    onPressed: () {
+                      cubit
+                          .logout(
+                        token: ConstantsManager.userToken,
+                      )
+                          .then((value) {
+                        CacheHelper.removeDataFromCache(key: 'userToken');
+                      });
+                    },
+                    icon: SvgPicture.asset(
+                      AssetsImagesManager.signOut,
+                    ),
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
               },
             )
           ],

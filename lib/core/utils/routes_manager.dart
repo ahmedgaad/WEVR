@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
+
 import '../../features/authentication/presentation/screens/OTP/forgot_password_screen.dart';
-import '../../features/user_profile/presentation/screens/profile/profile_view.dart';
 import '../../features/authentication/presentation/screens/OTP/reset_pass/reset_pass.dart';
-import '../../features/authentication/presentation/screens/OTP/reset_via_email/reset_email_view.dart';
 import '../../features/authentication/presentation/screens/OTP/reset_via_phone/reset_phone_view.dart';
-import '../../features/user_dashboard/presentation/screens/home/home_view.dart';
 import '../../features/authentication/presentation/screens/login/login_view.dart';
 import '../../features/authentication/presentation/screens/register/register_successfully.dart';
 import '../../features/authentication/presentation/screens/register/register_view.dart';
 import '../../features/introduction/presentation/screens/get_started/get_started_view.dart';
 import '../../features/introduction/presentation/screens/onboarding/onboarding_view.dart';
 import '../../features/introduction/presentation/screens/splash/splash_view.dart';
+import '../../features/user_dashboard/presentation/screens/home/home_view.dart';
+import '../../features/user_profile/presentation/screens/account_setting/account_setting.dart';
 import '../../features/user_profile/presentation/screens/contact_us/contact_us.dart';
 import '../../features/user_profile/presentation/screens/language/language.dart';
 import '../../features/user_profile/presentation/screens/my_properties/my_properties.dart';
 import '../../features/user_profile/presentation/screens/payment/payment.dart';
 import '../../features/user_profile/presentation/screens/personal_info/personal_information.dart';
 import '../../features/user_profile/presentation/screens/privacy_policy/privacy_policy.dart';
+import '../../features/user_profile/presentation/screens/profile/profile_view.dart';
 import '../../features/user_profile/presentation/screens/show_your_properties/show_your_properties.dart';
-import '../../features/user_profile/presentation/screens/account_setting/account_setting.dart';
 import 'strings_manager.dart';
 
 class Routes {
   static const String splashRoute = "/";
   static const String onBoardingRoute = '/onBoarding';
-  static const String getStarted = '/getStarted';
+  static const String getStartedRoute = '/getStarted';
   static const String loginRoute = "/login";
   static const String registerRoute = "/register";
   static const String registerSuccessRoute = "/registerSuccess";
@@ -52,7 +52,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => const OnBoardingView());
-      case Routes.getStarted:
+      case Routes.getStartedRoute:
         return MaterialPageRoute(builder: (_) => const GetStartedView());
       case Routes.loginRoute:
         return MaterialPageRoute(builder: (_) => const LoginView());
