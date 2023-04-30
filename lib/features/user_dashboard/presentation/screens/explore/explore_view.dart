@@ -3,17 +3,19 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wevr_app/core/components/components.dart';
 import 'package:wevr_app/core/utils/color_manager.dart';
 import 'package:wevr_app/core/utils/strings_manager.dart';
 import 'package:wevr_app/core/utils/styles_manager.dart';
 import 'package:wevr_app/core/utils/values_manager.dart';
-
+import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/cubit.dart';
+import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/states.dart';
 import '../../widgets/explore/carousal_slider.dart';
 import '../../widgets/explore/profile_row.dart';
+import '../../widgets/search/filter_widget.dart';
 import '../search/search_view.dart';
-import 'department_details.dart';
 import 'product_container.dart';
 
 class ExploreView extends StatelessWidget {
@@ -30,56 +32,62 @@ class ExploreView extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorManager.exploreBackground,
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             ProfileRow(),
-            SizedBox(
-              height: AppSize.s27.h,
-            ),
+            27.ph,
             GestureDetector(
               onTap: () {
                 navigatePush(context, SearchView());
               },
               child: searchBar(),
             ),
-            SizedBox(
-              height: AppSize.s27.h,
-            ),
+            27.ph,
             CarousalSlider(),
-            SizedBox(
-              height: AppSize.s15.h,
-            ),
+            15.ph,
             Container(
               height: AppSize.s1.h,
               width: AppSize.s300.w,
               color: ColorManager.lightGrey,
             ),
-            SizedBox(
-              height: AppSize.s15.h,
-            ),
+            15.ph,
             allHomesRow(),
+            15.ph,
             SizedBox(
-              height: AppSize.s15.h,
-            ),
-            Container(
-              width: AppSize.s250.w,
-              height: AppSize.s320.h,
-              decoration: BoxDecoration(
-                color: ColorManager.white,
-                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  navigatePush(context, DepartmentDetails());
-                },
-                child: ProductContainer(),
-              ),
-            ),
+                height: 300.h,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) =>
+                      listViewBuilder(),
+                  separatorBuilder: (BuildContext context, int index) =>
+                      Container(
+                        width: 20,
+                      ),
+                  itemCount: 10,
+                )),
           ],
         ),
       ),
     );
+
+        }
+
+
   }
+
+
+Widget listViewBuilder() {
+  return Container(
+    width: AppSize.s250.w,
+    height: AppSize.s320.h,
+    decoration: BoxDecoration(
+      color: ColorManager.white,
+      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+    ),
+    child: SizedBox(height: 250.h, child: ProductContainer()),
+  );
 }
 
 Widget searchBar() {
@@ -87,8 +95,14 @@ Widget searchBar() {
     children: [
       Container(
         width: AppSize.s255.w,
-        height: AppSize.s41.h,
+        height: AppSize.s50.h,
         decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade300,
+              blurRadius: 6.0,
+            )
+          ],
           color: ColorManager.white,
           borderRadius: BorderRadius.all(Radius.circular(AppRadius.r10)),
         ),
@@ -114,7 +128,7 @@ Widget searchBar() {
         ),
       ),
       Spacer(),
-      filterWidget(),
+      FilterWidget(),
     ],
   );
 }

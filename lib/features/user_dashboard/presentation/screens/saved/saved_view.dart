@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wevr_app/features/user_dashboard/presentation/widgets/explore/container_button.dart';
 
 import '../../../../../core/utils/color_manager.dart';
 
@@ -9,12 +10,14 @@ class SavedView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.exploreBackground,
-      body: Center(
-        child: Text(
-            'Saved view'
+      body: SafeArea(
+        child: Column(
+          children:
+          [
+
+          ],
         ),
       ),
-
     );
   }
 }

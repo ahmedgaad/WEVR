@@ -125,25 +125,6 @@ Widget defaultTextButton({
       ),
     );
 
-Widget filterWidget() {
-  return Padding(
-    padding: EdgeInsetsDirectional.only(
-      end: AppSize.s10.w,
-    ),
-    child: Container(
-      width: AppSize.s40.w,
-      height: AppSize.s40.h,
-      decoration: BoxDecoration(
-        color: ColorManager.white,
-        borderRadius: BorderRadius.all(Radius.circular(AppRadius.r10)),
-      ),
-      child: IconButton(
-          onPressed: () {},
-          icon: SvgPicture.asset(AssetsImagesManager.filters)),
-    ),
-  );
-}
-
 Widget backButton({
   required VoidCallback function,
 }) {

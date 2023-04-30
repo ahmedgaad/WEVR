@@ -1,6 +1,11 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:wevr_app/features/user_dashboard/data/repository_implementation/repository_implementation.dart';
+import 'package:wevr_app/features/user_dashboard/domain/repository/home_repository.dart';
+import 'package:wevr_app/features/user_dashboard/domain/use_cases/get_product_usecase.dart';
 import '../../features/authentication/domain/use_cases/logout_usecase.dart';
+import '../../features/user_dashboard/data/data_sources/remote_datasource.dart';
+import '../../features/user_dashboard/domain/use_cases/get_banner_usecase.dart';
 import '../../features/user_dashboard/presentation/controller/Home/cubit.dart';
 import '../../features/authentication/domain/use_cases/check_otp_usecase.dart';
 import '../../features/authentication/domain/use_cases/create_new_password.dart';
@@ -23,9 +28,15 @@ void initializeInjector() {
   //Cubit
   getIt.registerLazySingleton(() => RegisterCubit(registerUseCase: getIt()));
   getIt.registerLazySingleton(() => LoginCubit(loginUseCase: getIt()));
-  getIt.registerLazySingleton(() => OtpCubit(forgotPasswordUseCase: getIt(), checkOTPUseCase: getIt()));
-  getIt.registerLazySingleton(() => CreateNewPasswordCubit(createNewPasswordUseCase: getIt()));
-  getIt.registerLazySingleton(() => HomeLayoutCubit(logoutUseCase: getIt(),));
+  getIt.registerLazySingleton(
+      () => OtpCubit(forgotPasswordUseCase: getIt(), checkOTPUseCase: getIt()));
+  getIt.registerLazySingleton(
+      () => CreateNewPasswordCubit(createNewPasswordUseCase: getIt()));
+  getIt.registerLazySingleton(() => HomeLayoutCubit(
+        logoutUseCase: getIt(),
+        getProductUseCase: getIt(),
+    getBannerUseCase: getIt(),
+      ));
 
   //Usecase
   getIt.registerLazySingleton(() => RegisterUseCase(getIt()));
@@ -34,6 +45,8 @@ void initializeInjector() {
   getIt.registerLazySingleton(() => CheckOTPUseCase(getIt()));
   getIt.registerLazySingleton(() => CreateNewPasswordUseCase(getIt()));
   getIt.registerLazySingleton(() => LogoutUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetProductUseCase(homeRepo: getIt()));
+  getIt.registerLazySingleton(() => GetBannersUseCase(homeRepo: getIt()));
 
   //Repository
   getIt.registerLazySingleton<AuthRepository>(
@@ -42,9 +55,16 @@ void initializeInjector() {
       networkInfo: getIt(),
     ),
   );
+  getIt.registerLazySingleton<HomeRepo>(
+    () => HomeRepositoryImpl(
+      homeDataSource: getIt(),
+      networkInfo: getIt(),
+    ),
+  );
 
   //DataSource
   getIt.registerLazySingleton<AuthDataSource>(() => AuthDataSourceImpl());
+  getIt.registerLazySingleton<HomeDataSource>(() => HomeDataSourceImpl());
 
   //NetworkInfo
   getIt.registerLazySingleton<NetworkInfo>(
@@ -52,17 +72,6 @@ void initializeInjector() {
 
   //Shared Pref
 }
-
-
-
-
-
-
-
-
-
-
-
 
 // import 'package:dio/dio.dart';
 // import 'package:get_it/get_it.dart';

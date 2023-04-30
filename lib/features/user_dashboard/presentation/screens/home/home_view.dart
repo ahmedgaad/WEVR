@@ -36,8 +36,7 @@ class _HomeViewState extends State<HomeView> {
       statusBarBrightness: Brightness.light,
       statusBarIconBrightness: Brightness.dark,
     ));
-    return BlocConsumer<HomeLayoutCubit, HomeLayOutStates>(
-      listener: (context, state) {},
+    return BlocBuilder<HomeLayoutCubit, HomeLayOutStates> (
       builder: (context, state) {
         var cubit = HomeLayoutCubit.get(context);
         return Scaffold(
@@ -52,8 +51,8 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
           floatingActionButton: SizedBox(
-            height: AppSize.s80.h,
-            width: AppSize.s80.w,
+            height: AppSize.s70.h,
+            width: AppSize.s70.w,
             child: FloatingActionButton(
               onPressed: () {
                 navigatePush(context, const MapView());
@@ -81,6 +80,7 @@ class _HomeViewState extends State<HomeView> {
                           setState(() {
                             cubit.currentScreen = const ExploreView();
                             cubit.currentTap = 0;
+                            cubit.getProducts();
                           });
                         },
                         child: Column(

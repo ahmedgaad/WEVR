@@ -42,26 +42,25 @@ class LoginRegisterBackground extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           children: [
             Padding(
-              padding: EdgeInsets.all(
-                p1,
+              padding: const EdgeInsets.only(bottom: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    questionText,
+                    style: getRegularStyleInter(
+                      color: ColorManager.darkGrey,
+                      fontSize: AppSize.s16.sp,
+                    ),
+                  ),
+                  defaultTextButton(
+                      textColor: ColorManager.primary,
+                      text: textButton,
+                      onPressed: () {
+                        navigateTo(context, route);
+                      }),
+                ],
               ),
-              child: Text(
-                questionText,
-                style: getRegularStyleInter(
-                  color: ColorManager.darkGrey,
-                  fontSize: AppSize.s16.sp,
-                ),
-              ),
-            ),
-            30.ph,
-            Padding(
-              padding: EdgeInsets.all(p2),
-              child: defaultTextButton(
-                  textColor: ColorManager.primary,
-                  text: textButton,
-                  onPressed: () {
-                    navigateTo(context, route);
-                  }),
             ),
           ],
         ),

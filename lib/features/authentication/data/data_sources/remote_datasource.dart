@@ -1,8 +1,5 @@
 import 'dart:convert';
-
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import '../../../../core/helpers/cache_helper.dart';
 import '../models/logout_model.dart';
 import '../../../../core/errors/auth_error_models.dart';
 import '../models/check_otp_model.dart';
@@ -10,10 +7,7 @@ import '../models/create_new_password_model.dart';
 import '../models/forgot_password_model.dart';
 import '../models/login_model.dart';
 import '../../../../core/errors/exceptions.dart';
-import '../../../../core/errors/failures.dart';
 import '../models/register_model.dart';
-import '../../domain/entities/register.dart';
-
 import '../../../../core/utils/constants_manager.dart';
 
 abstract class AuthDataSource {

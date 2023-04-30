@@ -7,6 +7,7 @@ import 'package:quickalert/quickalert.dart';
 import 'package:wevr_app/core/helpers/cache_helper.dart';
 import 'package:wevr_app/core/helpers/get_device_info_helper.dart';
 import 'package:wevr_app/core/service/injection_container.dart';
+import 'package:wevr_app/core/utils/styles_manager.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/OTP/reset_pass/reset_pass.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login_register_background.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/screens/home/home_view.dart';
@@ -17,6 +18,7 @@ import '../../../../../core/utils/constants_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
+import '../../../../introduction/presentation/screens/get_started/get_started_view.dart';
 import '../../widgets/login/form_column.dart';
 import '../../controller/login/cubit.dart';
 import '../../controller/login/states.dart';
@@ -27,20 +29,20 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) =>
-          LoginCubit(loginUseCase: getIt()),
+      create: (BuildContext context) => LoginCubit(loginUseCase: getIt()),
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
             navigatePush(context, const HomeView());
           } else if (state is LoginErrorState) {
             QuickAlert.show(
-                context: context,
-                type: QuickAlertType.error,
-                title: StringsManager.error.tr(),
-                text: state.error,
-                confirmBtnText: StringsManager.okay.tr(),
-                confirmBtnColor: Colors.red,);
+              context: context,
+              type: QuickAlertType.error,
+              title: StringsManager.error.tr(),
+              text: state.error,
+              confirmBtnText: StringsManager.okay.tr(),
+              confirmBtnColor: Colors.red,
+            );
           }
         },
         builder: (context, state) {
@@ -68,16 +70,28 @@ class LoginView extends StatelessWidget {
                       color: ColorManager.white,
                       borderRadius: BorderRadius.circular(AppRadius.r41),
                     ),
-                    child: Column(children: [
+                    child: Column( children: [
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            backButton(function: (){
+                              navigatePush(context, const GetStartedView());
+                            }),
                             Expanded(
                               child: SingleChildScrollView(
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
+                                    20.ph,
+                                    Text(
+                                      StringsManager.loginAccount.tr(),
+                                      style: getSemiBoldStylePoppins(
+                                          color: ColorManager.primary,
+                                        fontSize: 16.sp,
+                                      ),),
                                     const SocialColumn(),
+                                    20.ph,
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: PaddingSize.p40.w),
@@ -104,9 +118,7 @@ class LoginView extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: AppSize.s20.h,
-                                    ),
+                                    25.ph,
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: PaddingSize.p40.w),
@@ -135,6 +147,7 @@ class LoginView extends StatelessWidget {
                                             }),
                                       ),
                                     ),
+                                    10.ph,
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
@@ -146,6 +159,8 @@ class LoginView extends StatelessWidget {
                                           child: defaultTextButton(
                                             text: StringsManager.forgetPassword
                                                 .tr(),
+                                            textColor: ColorManager.darkGrey,
+
                                             onPressed: () {
                                               navigatePush(context,
                                                   const ForgotPasswordView());
@@ -154,34 +169,37 @@ class LoginView extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    20.ph,
-                                    Center(
-                                      child: defaultButton(
-                                        function: () async {
-                                          if (cubit.emailFormKey.currentState!
-                                              .validate()) {
-                                            if (cubit.passFieldKey.currentState!
-                                                .validate()) {
-                                              cubit.login(
-                                                email:
-                                                    cubit.emailController.text,
-                                                password: cubit
-                                                    .passwordController.text,
-                                                deviceInformation: 'manually ios',
-                                              );
-                                            }
-                                          }
-                                        },
-                                        text: StringsManager.signIn.tr(),
-                                        width: AppSize.s200.w,
-                                        height: AppSize.s44.h,
-                                        isUpperCase: false,
-                                      ),
-                                    ),
+                                    //20.ph,
+
                                   ],
                                 ),
                               ),
                             ),
+                            Center(
+                              child: defaultButton(
+                                function: () async {
+                                  if (cubit.emailFormKey.currentState!
+                                      .validate()) {
+                                    if (cubit.passFieldKey.currentState!
+                                        .validate()) {
+                                      cubit.login(
+                                        email:
+                                        cubit.emailController.text,
+                                        password: cubit
+                                            .passwordController.text,
+                                        deviceInformation:
+                                        'manually ios',
+                                      );
+                                    }
+                                  }
+                                },
+                                text: StringsManager.signIn.tr(),
+                                width: AppSize.s162.w,
+                                height: 48.h,
+                                isUpperCase: false,
+                              ),
+                            ),
+                            30.ph,
                           ],
                         ),
                       ),

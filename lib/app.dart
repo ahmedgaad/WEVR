@@ -34,7 +34,7 @@ class _WevrState extends State<Wevr> {
         ),
         BlocProvider(
             create: (BuildContext context) =>
-                HomeLayoutCubit(logoutUseCase: getIt(),)),
+                HomeLayoutCubit(logoutUseCase: getIt(), getProductUseCase: getIt(), getBannerUseCase: getIt(),)..getProducts()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 900),
@@ -57,7 +57,7 @@ class _WevrState extends State<Wevr> {
                       ? TextDirection.rtl
                       : TextDirection.ltr,
                   child: child ?? const SplashView());
-            },
+            }, 
           );
         },
       ),
