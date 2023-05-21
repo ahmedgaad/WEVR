@@ -12,7 +12,9 @@ import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
+import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
+import '../../../../introduction/presentation/screens/get_started/get_started_view.dart';
 import '../../widgets/login_register_background.dart';
 import '../../controller/register/cubit.dart';
 import '../../controller/register/states.dart';
@@ -83,6 +85,9 @@ class _RegisterViewState extends State<RegisterView> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              backButton(function: (){
+                                navigatePush(context, const GetStartedView());
+                              }),
                               // backButton(function: () {}),
                               // SizedBox(
                               //   height: AppSize.s2.h,
@@ -95,64 +100,73 @@ class _RegisterViewState extends State<RegisterView> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
+                                        20.ph,
+                                        Text(
+                                          StringsManager.signUp.tr,
+                                          style: getSemiBoldStylePoppins(
+                                            color: ColorManager.primary,
+                                            fontSize: 16.sp,
+                                          ),),
                                         const SocialColumn(
                                             // firstText: AppStrings.signUp.tr,
                                             // secondText:
                                             //     AppStrings.registerWord.tr,
                                             ),
                                         const RegisterForm(),
-                                        15.ph,
-                                        Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(0),
-                                            child: ConditionalBuilder(
-                                              condition: state
-                                                  is! RegisterLoadingState,
-                                              builder: (BuildContext context) {
-                                                return defaultButton(
-                                                  function: () {
-                                                    if (formKey.currentState!
-                                                        .validate()) {
-                                                      cubit.register(
-                                                        userName: cubit
-                                                            .userNameController
-                                                            .text,
-                                                        email: cubit
-                                                            .emailController
-                                                            .text,
-                                                        phone: cubit
-                                                            .phoneController
-                                                            .text,
-                                                        password: cubit
-                                                            .passwordController
-                                                            .text,
-                                                        passwordConfirmation: cubit
-                                                            .confirmPasswordController
-                                                            .text,
-                                                      );
-                                                    }
-                                                  },
-                                                  text:
-                                                      StringsManager.signUp.tr,
-                                                  width: AppSize.s200.w,
-                                                  height: AppSize.s44.h,
-                                                  isUpperCase: false,
-                                                );
-                                              },
-                                              fallback: (BuildContext context) {
-                                                return const Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ),
+                                        // 15.ph,
+
                                       ],
                                     ),
                                   ),
                                 ),
                               ),
+                              Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(0),
+                                  child: ConditionalBuilder(
+                                    condition: state
+                                    is! RegisterLoadingState,
+                                    builder: (BuildContext context) {
+                                      return defaultButton(
+                                        function: () {
+                                          if (formKey.currentState!
+                                              .validate()) {
+                                            cubit.register(
+                                              userName: cubit
+                                                  .userNameController
+                                                  .text,
+                                              email: cubit
+                                                  .emailController
+                                                  .text,
+                                              phone: cubit
+                                                  .phoneController
+                                                  .text,
+                                              password: cubit
+                                                  .passwordController
+                                                  .text,
+                                              passwordConfirmation: cubit
+                                                  .confirmPasswordController
+                                                  .text,
+                                            );
+                                          }
+                                        },
+                                        text:
+                                        StringsManager.signUp.tr,
+                                        width: AppSize.s162.w,
+                                        height: 48.h,
+                                        isUpperCase: false,
+                                      );
+                                    },
+                                    fallback: (BuildContext context) {
+                                      return const Center(
+                                        child:
+                                        CircularProgressIndicator(),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                              30.ph,
                             ],
                           ),
                         ),

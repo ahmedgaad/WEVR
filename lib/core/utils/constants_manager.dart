@@ -16,4 +16,8 @@ class ConstantsManager {
   static const String resetViaEmailEP = "/resetViaEmail";
   static const String newPasswordEP = "/newPassword";
   static const String checkOTPEP = "/checkOTP";
+  static const String apartment = "/apartment";
+  static const String saveApartment = "/save/apartment/";
+  static const String savedApartment = "/saved/apartment";
+  static const String search = "/search";
 }

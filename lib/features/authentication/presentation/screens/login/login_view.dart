@@ -14,7 +14,9 @@ import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
+import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
+import '../../../../introduction/presentation/screens/get_started/get_started_view.dart';
 import '../../controller/login/cubit.dart';
 import '../../controller/login/states.dart';
 import '../../widgets/login/form_column.dart';
@@ -71,11 +73,22 @@ class LoginView extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            backButton(function: (){
+                              navigatePush(context, const GetStartedView());
+                            }),
                             Expanded(
                               child: SingleChildScrollView(
                                 child: Column(
                                   children: [
+                                    20.ph,
+                                    Text(
+                                      StringsManager.loginAccount.tr,
+                                      style: getSemiBoldStylePoppins(
+                                        color: ColorManager.primary,
+                                        fontSize: 16.sp,
+                                      ),),
                                     const SocialColumn(),
+                                    20.ph,
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: PaddingSize.p40.w),
@@ -102,9 +115,7 @@ class LoginView extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: AppSize.s20.h,
-                                    ),
+                                    25.ph,
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: PaddingSize.p40.w),
@@ -133,6 +144,7 @@ class LoginView extends StatelessWidget {
                                             }),
                                       ),
                                     ),
+                                    10.ph,
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
@@ -152,45 +164,46 @@ class LoginView extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    20.ph,
-                                    Center(
-                                      child: ConditionalBuilder(
-                                        condition: state is! LoginLoadingState,
-                                        builder: (BuildContext context) {
-                                          return defaultButton(
-                                            function: () async {
-                                              if (cubit
-                                                  .emailFormKey.currentState!
-                                                  .validate()) {
-                                                if (cubit
-                                                    .passFieldKey.currentState!
-                                                    .validate()) {
-                                                  cubit.login(
-                                                    email: cubit
-                                                        .emailController.text,
-                                                    password: cubit
-                                                        .passwordController
-                                                        .text,
-                                                  );
-                                                }
-                                              }
-                                            },
-                                            text: StringsManager.signIn.tr,
-                                            width: AppSize.s200.w,
-                                            height: AppSize.s44.h,
-                                            isUpperCase: false,
-                                          );
-                                        },
-                                        fallback: (BuildContext context) =>
-                                            const Center(
-                                          child: CircularProgressIndicator(),
-                                        ),
-                                      ),
-                                    ),
                                   ],
                                 ),
                               ),
                             ),
+                            20.ph,
+                            Center(
+                              child: ConditionalBuilder(
+                                condition: state is! LoginLoadingState,
+                                builder: (BuildContext context) {
+                                  return defaultButton(
+                                    function: () async {
+                                      if (cubit
+                                          .emailFormKey.currentState!
+                                          .validate()) {
+                                        if (cubit
+                                            .passFieldKey.currentState!
+                                            .validate()) {
+                                          cubit.login(
+                                            email: cubit
+                                                .emailController.text,
+                                            password: cubit
+                                                .passwordController
+                                                .text,
+                                          );
+                                        }
+                                      }
+                                    },
+                                    text: StringsManager.signIn.tr,
+                                    width: AppSize.s162.w,
+                                    height: 48.h,
+                                    isUpperCase: false,
+                                  );
+                                },
+                                fallback: (BuildContext context) =>
+                                const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              ),
+                            ),
+                            30.ph,
                           ],
                         ),
                       ),

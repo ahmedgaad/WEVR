@@ -4,8 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../../../../../core/service/service_locator.dart';
-
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
@@ -52,8 +50,8 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
           floatingActionButton: SizedBox(
-            height: AppSize.s80.h,
-            width: AppSize.s80.w,
+            height: AppSize.s75.h,
+            width: AppSize.s75.w,
             child: FloatingActionButton(
               onPressed: () {
                 navigatePush(context, const MapView());
@@ -81,6 +79,7 @@ class _HomeViewState extends State<HomeView> {
                           setState(() {
                             cubit.currentScreen = const ExploreView();
                             cubit.currentTap = 0;
+                            cubit.getApartment();
                           });
                         },
                         child: Column(
@@ -113,6 +112,7 @@ class _HomeViewState extends State<HomeView> {
                           setState(() {
                             cubit.currentScreen = const SavedView();
                             cubit.currentTap = 1;
+                            cubit.getSavedApartments();
                           });
                         },
                         child: Column(

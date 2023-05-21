@@ -1,18 +1,22 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/states.dart';
+import 'package:wevr_app/features/user_dashboard/presentation/widgets/explore/rating_bar.dart';
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../../../map_based_homes/presentation/screens/google_map.dart';
 import '../../../../user_profile/presentation/widgets/profile/build_divider.dart';
+import '../../controller/Home/cubit.dart';
+import '../../widgets/apartment/stack_vr_gallery.dart';
+import '../../widgets/explore/links_button.dart';
+import '../../widgets/explore/read_more_text.dart';
 import 'product_container.dart';
-import 'virtual_tour.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 import '../../widgets/explore/container_button.dart';
-import 'photo_gallery.dart';
 
 class DepartmentDetails extends StatefulWidget {
   const DepartmentDetails({super.key});
@@ -22,7 +26,6 @@ class DepartmentDetails extends StatefulWidget {
 }
 
 class _DepartmentDetailsState extends State<DepartmentDetails> {
-  // const DepartmentDetails({Key? key}) : super(key: key);
   @override
   void initState() {
     super.initState();
@@ -30,188 +33,230 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              SizedBox(
-                width: double.infinity,
-                child: Image.asset(
-                  AssetsImagesManager.apartment2,
-                ),
-              ),
-              Container(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    //TODO handling statusbar
-                    horizontal: 10.0,
-                    vertical: 30.0,
-                  ),
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      size: 35,
+    return BlocBuilder<HomeLayoutCubit, HomeLayOutStates>(
+      builder: (context, state) {
+        if (state is ApartmentLoadedState) {
+          return Scaffold(
+            backgroundColor: ColorManager.exploreBackground,
+            body: Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Column(
+                      children: [
+                        const StackVr(),
+                        spaceH(),
+                        Padding(
+                          padding: const EdgeInsets.all(PaddingSize.p20),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const ContainerButton(),
+                              dividerColumn(),
+                              Row(
+                                children: [
+                                  icon(
+                                    icon: Icons.location_on_outlined,
+                                  ),
+                                  spaceW(),
+                                  Text(
+                                    state.apartment.apartments[0].location,
+                                    style: getMediumStylePoppins(
+                                      color: ColorManager.smokyGray,
+                                      fontSize: AppSize.s16,
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  mapContainer(context),
+                                ],
+                              ),
+                              dividerColumn(),
+                              Row(
+                                children: [
+                                  roomsDetails(
+                                      image: AssetsImagesManager.livingRooms,
+                                      number: state.apartment.apartments[0].info
+                                          .livingroom,
+                                      roomName: 'Living Rooms'),
+                                  spaceW(),
+                                  roomsDetails(
+                                      image: AssetsImagesManager.bedrooms,
+                                      number: state
+                                          .apartment.apartments[0].info.bedroom,
+                                      roomName: 'Bed Rooms'),
+                                ],
+                              ),
+                              15.ph,
+                              Row(
+                                children: [
+                                  roomsDetails(
+                                      image: AssetsImagesManager.parking,
+                                      number: state
+                                          .apartment.apartments[0].info.parking,
+                                      roomName: 'Parking'),
+                                  spaceW(),
+                                  roomsDetails(
+                                      image: AssetsImagesManager.bathrooms,
+                                      number: state
+                                          .apartment.apartments[0].info.baths,
+                                      roomName: 'Baths'),
+                                ],
+                              ),
+                              15.ph,
+                              Row(
+                                children: [
+                                  roomsDetails(
+                                      image: AssetsImagesManager.floors,
+                                      number: state
+                                          .apartment.apartments[0].info.floors,
+                                      roomName: 'Floors'),
+                                  spaceW(),
+                                  roomsDetails(
+                                    image: AssetsImagesManager.squareMeter,
+                                    number:
+                                        state.apartment.apartments[0].info.erea,
+                                    roomName: '100m2',
+                                  ),
+                                ],
+                              ),
+                              // 15.ph,
+                              dividerColumn(),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Excellent',
+                                    style: getRegularStylePoppins(
+                                        fontSize: AppSize.s16),
+                                  ),
+                                  const Spacer(),
+                                  const RatingBarWidget(),
+                                ],
+                              ),
+                              dividerColumn(),
+                              Text(
+                                'About this apartment',
+                                style: getMediumStylePoppins(
+                                  fontSize: 16.0,
+                                  color: ColorManager.darkGrey,
+                                ),
+                              ),
+                              15.ph,
+                              ReadMoreText(
+                                text: state.apartment.apartments[0].descrption,
+                              ),
+                              dividerColumn(),
+                              Text(
+                                'features & aminies',
+                                style: getMediumStylePoppins(
+                                  fontSize: 16.0,
+                                  color: ColorManager.darkGrey,
+                                ),
+                              ),
+                              15.ph,
+                              SizedBox(
+                                  width: 500.0,
+                                  child: ListView.separated(
+                                    shrinkWrap: true,
+                                    itemCount: state.apartment.apartments[0]
+                                        .features.length,
+                                    scrollDirection: Axis.vertical,
+                                    itemBuilder: (context, index) => Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Icon(
+                                          Icons.circle,
+                                          color: Colors.black,
+                                          size: 8,
+                                        ),
+                                        10.pw,
+                                        Expanded(
+                                          child: Text(
+                                            state.apartment.apartments[index]
+                                                .features[index],
+                                            textAlign: TextAlign.start,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    separatorBuilder:
+                                        (BuildContext context, int index) =>
+                                            Container(
+                                      height: 20,
+                                    ),
+                                  )),
+                              25.ph,
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
                   ),
                 ),
-              ),
-              Positioned(
-                top: 120,
-                left: 20,
-                child: blurButton(
-                  context,
-                  text: 'Virtual Tour',
-                  widget: const VirtualTour(),
-                ),
-              ),
-              Positioned(
-                top: 120,
-                right: 20,
-                child: blurButton(
-                  context,
-                  text: 'photo gallery',
-                  widget: const PhotGallery(),
-                ),
-              ),
-            ],
-          ),
-          spaceH(),
-          SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.all(PaddingSize.p20),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      moneyIcon(),
-                      spaceW(),
-                      Text(
-                        '2000EGP',
-                        style: getSemiBoldStylePoppins(
-                          color: ColorManager.primary,
-                          fontSize: AppSize.s18,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 35,
-                      ),
-                      const ContainerButton(),
-                    ],
+                15.ph,
+                Container(
+                  color: ColorManager.white,
+                  width: double.infinity,
+                  height: 80,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: LinksButton(
+                          icon: const Icon(
+                            Icons.email,
+                            color: Colors.white,
+                            size: 15,
+
+                          ),
+                          function: () {},
+                          text: 'Email',
+                          background: Colors.grey,
+                        )),
+                        10.pw,
+                        Expanded(
+                            child: LinksButton(
+                          icon: const Icon(
+                            Icons.phone,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          function: () {},
+                          text: 'WhatsApp',
+                          background: Colors.grey,
+                        )),
+                        10.pw,
+                        Expanded(
+                            child: LinksButton(
+                          icon: const Icon(
+                            Icons.access_alarm,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          function: () {},
+                          text: 'book visit',
+                          background: ColorManager.primary,
+                        )),
+                      ],
+                    ),
                   ),
-                  dividerColumn(),
-                  Row(
-                    children: [
-                      icon(
-                        icon: Icons.location_on_outlined,
-                      ),
-                      spaceW(),
-                      Text(
-                        'Cairo',
-                        style: getMediumStylePoppins(
-                          color: ColorManager.smokyGray,
-                          fontSize: AppSize.s16,
-                        ),
-                      ),
-                      const Spacer(),
-                      mapContainer(context),
-                    ],
-                  ),
-                  dividerColumn(),
-                  Row(
-                    children: [
-                      roomsDetails(
-                          image: AssetsImagesManager.livingRooms,
-                          number: '2',
-                          roomName: 'Living Rooms'),
-                      spaceW(),
-                      roomsDetails(
-                          image: AssetsImagesManager.bedrooms,
-                          number: '4',
-                          roomName: 'Bed Rooms'),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      roomsDetails(
-                          image: AssetsImagesManager.parking,
-                          number: '1',
-                          roomName: 'Parking'),
-                      spaceW(),
-                      roomsDetails(
-                          image: AssetsImagesManager.bathrooms,
-                          number: '3',
-                          roomName: 'Baths'),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: [
-                      roomsDetails(
-                          image: AssetsImagesManager.floors,
-                          number: '2',
-                          roomName: 'Floors'),
-                      spaceW(),
-                      roomsDetails(
-                          image: AssetsImagesManager.squareMeter,
-                          number: '',
-                          roomName: '100m2'),
-                    ],
-                  ),
-                ],
-              ),
+                )
+              ],
             ),
-          ),
-        ],
-      ),
+          );
+        }
+        return const Scaffold();
+      },
     );
   }
 }
 
 // reusable Widgets
-Widget blurButton(
-  context, {
-  required String text,
-  required Widget widget,
-}) {
-  return GestureDetector(
-    onTap: () {
-      navigatePush(context, widget);
-    },
-    child: ClipRect(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
-        child: Container(
-          width: AppSize.s162,
-          height: AppSize.s50,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: ColorManager.white.withOpacity(0.4),
-          ),
-          child: Center(
-            child: Text(
-              text,
-              style: getMediumStylePoppins(
-                color: ColorManager.black,
-                fontSize: AppSize.s20.sp,
-              ),
-            ),
-          ),
-        ),
-      ),
-    ),
-  );
-}
 
 Widget mapContainer(context) {
   return Container(
@@ -265,7 +310,7 @@ Widget roomsDetails({
           Text(
             number,
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             roomName,
             style: getLightStyleInter(

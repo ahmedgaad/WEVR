@@ -14,7 +14,8 @@ import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp
 import 'package:wevr_app/features/introduction/presentation/screens/splash/splash_view.dart';
 import 'package:wevr_app/features/map_based_homes/presentation/controller/map/map_cubit.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/cubit.dart';
-// import 'dart:ui' as ui;
+import 'package:wevr_app/features/user_dashboard/presentation/controller/search/cubit.dart';
+import 'dart:ui' as ui;
 
 class Wevr extends StatefulWidget {
   const Wevr({
@@ -23,6 +24,7 @@ class Wevr extends StatefulWidget {
   });
 
   final String initialRoute;
+
   @override
   State<Wevr> createState() => _WevrState();
 }
@@ -40,12 +42,23 @@ class _WevrState extends State<Wevr> {
           create: (BuildContext context) => OtpCubit(
               checkOTPUseCase: locator(), forgotPasswordUseCase: locator()),
         ),
-        BlocProvider.value(
-          value: locator<HomeLayoutCubit>(),
+        BlocProvider(
+          create: (BuildContext context) => HomeLayoutCubit(
+            getApartmentUseCase: locator(),
+            logoutUseCase: locator(),
+            // saveApartmentUsecCase: locator(),
+            getSavedApartmentsUseCase: locator(),
+          )..getApartment(),
         ),
         BlocProvider(
           create: (BuildContext context) => MapCubit(),
         ),
+        BlocProvider(
+          create: (BuildContext context) => SearchCubit(
+            searchUseCase: locator(),
+          ),
+        ),
+
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 900),
