@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/states.dart';
 
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
+import '../../controller/Home/cubit.dart';
 
 class VirtualTour extends StatelessWidget {
   const VirtualTour({Key? key}) : super(key: key);
@@ -15,16 +18,48 @@ class VirtualTour extends StatelessWidget {
         title: Text(
           "Virtual Tour",
           style: getSemiBoldStylePoppins(
-              color: ColorManager.black
+            color: ColorManager.black,
+            fontSize: 20,
           ),
         ),
       ),
-      body: Container(
-        height: double.infinity,
-        child: const WebView(
-          initialUrl: "https://eyes360.cloud/lacville/twinhousedecor/",
-          javascriptMode: JavascriptMode.unrestricted,
-        ),
+      body: BlocBuilder<HomeLayoutCubit, HomeLayOutStates>(
+        builder: (context, state) {
+          if (state is ApartmentLoadingState) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: ColorManager.primary,
+              ),
+            );
+          }
+          if (state is ApartmentLoadedState) {
+            return SizedBox(
+              height: double.infinity,
+              child: WebView(
+                initialUrl: state.apartment.apartments[0].vrlink,
+                javascriptMode: JavascriptMode.unrestricted,
+              ),
+            );
+          } else {
+            return Scaffold(
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text('Fail to load , please try again '),
+                    IconButton(
+                      onPressed: () {
+                        HomeLayoutCubit.get(context).getApartment();
+                      },
+                      icon: const Icon(Icons.refresh),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }
+        },
       ),
     );
   }

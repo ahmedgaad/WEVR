@@ -29,9 +29,13 @@ class AssetsImagesManager {
       '${ConstantsManager.imagePath}/home/squaremeter.svg';
   static const String apartment =
       '${ConstantsManager.imagePath}/home/apartment.png';
+  static const String emptySaved =
+      '${ConstantsManager.imagePath}/home/EmptySaved.png';
   static const String apartment2 =
       '${ConstantsManager.imagePath}/home/apartment2.png';
   static const String slider = '${ConstantsManager.imagePath}/home/slider.png';
+  static const String whatsapp = '${ConstantsManager.imagePath}/home/whatsapp.png';
+  static const String bookVisit = '${ConstantsManager.imagePath}/home/book_visit.png';
 
   static const String onBoarding1 =
       '${ConstantsManager.imagePath}/onboarding/onboarding1.svg';
