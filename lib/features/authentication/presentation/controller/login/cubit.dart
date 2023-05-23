@@ -1,16 +1,12 @@
-// ignore_for_file: depend_on_referenced_packages, avoid_print
-
-import 'dart:io';
-
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wevr_app/core/functions/debug_message.dart';
 import 'package:wevr_app/core/helpers/cache_helper.dart';
 import 'package:wevr_app/core/helpers/get_device_info_helper.dart';
 import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/login/states.dart';
 
-import '../../../../../core/utils/constants_manager.dart';
+import '../../../../../core/utils/constants.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   final LoginUseCase loginUseCase;
@@ -43,14 +39,21 @@ class LoginCubit extends Cubit<LoginStates> {
       (failure) {
         emit(LoginErrorState(error: failure.message));
       },
-      (login) async {
+      (login) {
         emit(LoginSuccessState(login: login));
-        print(login.token);
-        await CacheHelper.saveDataToCache(key: 'userToken', value: login.token);
-        ConstantsManager.userToken =
-            CacheHelper.getDataFromCache(key: 'userToken');
+        _saveToken(login.token);
       },
     );
+  }
+
+  void _saveToken(String token) async {
+    try {
+      await CacheHelper.saveDataToCache(key: Constants.kToken, value: token);
+      debugMessage('Barear Token $token', name: 'token');
+      Constants.userToken = CacheHelper.getDataFromCache(key: Constants.kToken);
+    } on Exception catch (e) {
+      debugMessage('Error while saving token $e', name: 'token');
+    }
   }
 
   IconData suffix = Icons.visibility;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wevr_app/features/user_dashboard/domain/use_cases/Save_apartment_usecase.dart';
 import '../../../../authentication/domain/use_cases/logout_usecase.dart';
 import '../../../domain/use_cases/get_apartment_use_case.dart';
 import '../../../domain/use_cases/get_saved_apartments_usecase.dart';

@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wevr_app/core/errors/failures.dart';
 import 'package:wevr_app/core/utils/strings_manager.dart';
 import 'package:wevr_app/features/authentication/domain/use_cases/register_usecase.dart';
+import '../../../../../core/functions/debug_message.dart';
+import '../../../../../core/helpers/cache_helper.dart';
+import '../../../../../core/utils/constants.dart';
 import 'states.dart';
-import 'dart:io';
-import 'package:device_info_plus/device_info_plus.dart';
 
 class RegisterCubit extends Cubit<RegisterStates> {
   final RegisterUseCase registerUseCase;
@@ -21,7 +22,6 @@ class RegisterCubit extends Cubit<RegisterStates> {
   var confirmPasswordController = TextEditingController();
   var phoneController = TextEditingController();
   var userNameController = TextEditingController();
-
 
   IconData suffix = Icons.visibility;
   bool isPassword = true;
@@ -62,10 +62,21 @@ class RegisterCubit extends Cubit<RegisterStates> {
         passwordConfirmation: passwordConfirmation);
 
     failureOrRegister.fold(
-      (failure) =>
-          emit(RegisterErrorState(error: failure.message)),
-      (register) => emit(RegisterSuccessState(register: register)),
+      (failure) => emit(RegisterErrorState(error: failure.message)),
+      (register) {
+        emit(RegisterSuccessState(register: register));
+        // _saveToken(register.);
+      },
     );
+  }
+
+  void _saveToken(String token) async {
+    try {
+      await CacheHelper.saveDataToCache(key: Constants.kToken, value: token);
+      debugMessage('Barear Token $token', name: 'token');
+    } on Exception catch (e) {
+      debugMessage('Error while saving token $e', name: 'token');
+    }
   }
 
   String _mapFailureToMessage(Failure failure) {

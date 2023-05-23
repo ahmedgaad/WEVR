@@ -10,7 +10,7 @@ import 'package:wevr_app/features/authentication/presentation/widgets/login/form
 import 'package:wevr_app/features/authentication/presentation/widgets/register/register_form.dart';
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/color_manager.dart';
-import '../../../../../core/utils/routes_manager.dart';
+import '../../../../../core/config/routes/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
@@ -39,7 +39,7 @@ class _RegisterViewState extends State<RegisterView> {
       statusBarIconBrightness: Brightness.light,
     ));
     return BlocProvider.value(
-      value: locator<RegisterCubit>(),
+      value: sl<RegisterCubit>(),
       child: BlocConsumer<RegisterCubit, RegisterStates>(
         listener: (context, state) {
           if (state is RegisterSuccessState) {
@@ -85,7 +85,7 @@ class _RegisterViewState extends State<RegisterView> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              backButton(function: (){
+                              backButton(function: () {
                                 navigatePush(context, const GetStartedView());
                               }),
                               // backButton(function: () {}),
@@ -106,7 +106,8 @@ class _RegisterViewState extends State<RegisterView> {
                                           style: getSemiBoldStylePoppins(
                                             color: ColorManager.primary,
                                             fontSize: 16.sp,
-                                          ),),
+                                          ),
+                                        ),
                                         const SocialColumn(
                                             // firstText: AppStrings.signUp.tr,
                                             // secondText:
@@ -114,7 +115,6 @@ class _RegisterViewState extends State<RegisterView> {
                                             ),
                                         const RegisterForm(),
                                         // 15.ph,
-
                                       ],
                                     ),
                                   ),
@@ -124,34 +124,26 @@ class _RegisterViewState extends State<RegisterView> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(0),
                                   child: ConditionalBuilder(
-                                    condition: state
-                                    is! RegisterLoadingState,
+                                    condition: state is! RegisterLoadingState,
                                     builder: (BuildContext context) {
                                       return defaultButton(
                                         function: () {
                                           if (formKey.currentState!
                                               .validate()) {
                                             cubit.register(
-                                              userName: cubit
-                                                  .userNameController
-                                                  .text,
-                                              email: cubit
-                                                  .emailController
-                                                  .text,
-                                              phone: cubit
-                                                  .phoneController
-                                                  .text,
-                                              password: cubit
-                                                  .passwordController
-                                                  .text,
+                                              userName:
+                                                  cubit.userNameController.text,
+                                              email: cubit.emailController.text,
+                                              phone: cubit.phoneController.text,
+                                              password:
+                                                  cubit.passwordController.text,
                                               passwordConfirmation: cubit
                                                   .confirmPasswordController
                                                   .text,
                                             );
                                           }
                                         },
-                                        text:
-                                        StringsManager.signUp.tr,
+                                        text: StringsManager.signUp.tr,
                                         width: AppSize.s162.w,
                                         height: 48.h,
                                         isUpperCase: false,
@@ -159,8 +151,7 @@ class _RegisterViewState extends State<RegisterView> {
                                     },
                                     fallback: (BuildContext context) {
                                       return const Center(
-                                        child:
-                                        CircularProgressIndicator(),
+                                        child: CircularProgressIndicator(),
                                       );
                                     },
                                   ),

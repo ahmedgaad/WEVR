@@ -25,7 +25,7 @@ class CreateNewPasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          CreateNewPasswordCubit(createNewPasswordUseCase: locator()),
+          CreateNewPasswordCubit(createNewPasswordUseCase: sl()),
       child: BlocConsumer<CreateNewPasswordCubit, CreateNewPasswordStates>(
         listener: (context, state) {
           if (state is CreateNewPasswordErrorState) {

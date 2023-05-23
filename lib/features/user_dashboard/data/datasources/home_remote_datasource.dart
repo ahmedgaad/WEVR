@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:wevr_app/features/user_dashboard/data/models/search_model.dart';
 import '../../../../core/errors/exceptions.dart';
-import '../../../../core/utils/constants_manager.dart';
+import '../../../../core/utils/constants.dart';
 import '../models/apartment_model.dart';
 import '../models/save_apartment_model.dart';
 import '../models/saved_aparments_model.dart';
@@ -26,22 +26,22 @@ class HomeRemoteDataSourceDio implements HomeRemoteDataSource {
     sendTimeout: const Duration(
       seconds: 20 * 1000,
     ),
-    baseUrl: ConstantsManager.baseURL,
+    baseUrl: Constants.baseURL,
   ));
 
   @override
   Future<ApartmentModel> getApartments() async {
     try {
       final headers = {
-        'Authorization': 'Bearer ${ConstantsManager.userToken!}',
+        'Authorization': 'Bearer ${Constants.userToken!}',
       };
       final response = await dio.get(
-        ConstantsManager.apartment,
+        Constants.apartment,
         options: Options(headers: headers),
       );
       if (response.statusCode == 200) {
-        final ApartmentModel apartments = ApartmentModel.fromJson(
-            response.data);
+        final ApartmentModel apartments =
+            ApartmentModel.fromJson(response.data);
         return apartments;
       } else {
         throw ServerException();
@@ -55,15 +55,15 @@ class HomeRemoteDataSourceDio implements HomeRemoteDataSource {
   Future<SavedApartmentsModel> getSavedApartments() async {
     try {
       final headers = {
-        'Authorization': 'Bearer ${ConstantsManager.userToken!}',
+        'Authorization': 'Bearer ${Constants.userToken!}',
       };
       final response = await dio.get(
-        ConstantsManager.savedApartment,
+        Constants.savedApartment,
         options: Options(headers: headers),
       );
       if (response.statusCode == 200) {
-        final SavedApartmentsModel apartments = SavedApartmentsModel.fromJson(
-            response.data);
+        final SavedApartmentsModel apartments =
+            SavedApartmentsModel.fromJson(response.data);
         return apartments;
       } else {
         throw ServerException();
@@ -77,10 +77,10 @@ class HomeRemoteDataSourceDio implements HomeRemoteDataSource {
   Future<SaveApartmentModel> saveApartment({required int id}) async {
     try {
       final headers = {
-        'Authorization': 'Bearer ${ConstantsManager.userToken!}',
+        'Authorization': 'Bearer ${Constants.userToken!}',
       };
       final response = await dio.post(
-        '${ConstantsManager.saveApartment}$id',
+        '${Constants.saveApartment}$id',
         options: Options(headers: headers),
       );
       if (response.statusCode == 200) {
@@ -98,15 +98,16 @@ class HomeRemoteDataSourceDio implements HomeRemoteDataSource {
   Future<List<SearchModel>> searchApartments({required String query}) async {
     try {
       final headers = {
-        'Authorization': 'Bearer ${ConstantsManager.userToken!}',
+        'Authorization': 'Bearer ${Constants.userToken!}',
       };
       final response = await dio.get(
-        ConstantsManager.search, queryParameters: {'query': query},
+        Constants.search,
+        queryParameters: {'query': query},
         options: Options(headers: headers),
       );
       if (response.statusCode == 200) {
-        final List<SearchModel> results = (response.data['data'] as List).map((
-            apartmentJson) => SearchModel.fromJson(apartmentJson))
+        final List<SearchModel> results = (response.data['data'] as List)
+            .map((apartmentJson) => SearchModel.fromJson(apartmentJson))
             .toList();
         return results;
       } else {
@@ -116,6 +117,4 @@ class HomeRemoteDataSourceDio implements HomeRemoteDataSource {
       throw Exception('Failed to load apartments: $e');
     }
   }
-
-
 }

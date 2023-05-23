@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 
-import '../utils/constants_manager.dart';
+import '../utils/constants.dart';
 
 class DioHelper {
   static Dio? dio;
   static init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: ConstantsManager.baseURL,
+        baseUrl: Constants.baseURL,
         receiveDataWhenStatusError: true,
         receiveTimeout: const Duration(
           seconds: 20 * 100,

@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import '../../../domain/entities/forgot_password.dart';
 import '../../../domain/entities/login.dart';
 
 abstract class LoginStates extends Equatable {

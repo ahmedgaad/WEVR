@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_print
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +11,7 @@ import 'package:wevr_app/features/user_dashboard/presentation/screens/home/home_
 
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/color_manager.dart';
-import '../../../../../core/utils/routes_manager.dart';
+import '../../../../../core/config/routes/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
@@ -27,7 +26,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => LoginCubit(loginUseCase: locator()),
+      create: (BuildContext context) => LoginCubit(loginUseCase: sl()),
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
@@ -73,7 +72,7 @@ class LoginView extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            backButton(function: (){
+                            backButton(function: () {
                               navigatePush(context, const GetStartedView());
                             }),
                             Expanded(
@@ -86,7 +85,8 @@ class LoginView extends StatelessWidget {
                                       style: getSemiBoldStylePoppins(
                                         color: ColorManager.primary,
                                         fontSize: 16.sp,
-                                      ),),
+                                      ),
+                                    ),
                                     const SocialColumn(),
                                     20.ph,
                                     Padding(
@@ -102,13 +102,13 @@ class LoginView extends StatelessWidget {
                                               StringsManager.emailAddress.tr),
                                           validate: (value) {
                                             if (value!.isEmpty) {
-                                              return StringsManager.emailError1
-                                                  .tr;
+                                              return StringsManager
+                                                  .emailError1.tr;
                                             } else if (!RegExp(
                                                     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                                 .hasMatch(value)) {
-                                              return StringsManager.emailError2
-                                                  .tr;
+                                              return StringsManager
+                                                  .emailError2.tr;
                                             }
                                             return null;
                                           },
@@ -133,8 +133,7 @@ class LoginView extends StatelessWidget {
                                             validate: (value) {
                                               if (value!.isEmpty) {
                                                 return StringsManager
-                                                    .passwordValidate
-                                                    .tr;
+                                                    .passwordValidate.tr;
                                               }
                                               return null;
                                             },
@@ -154,8 +153,8 @@ class LoginView extends StatelessWidget {
                                             horizontal: PaddingSize.p20,
                                           ),
                                           child: defaultTextButton(
-                                            text: StringsManager.forgetPassword
-                                                .tr,
+                                            text: StringsManager
+                                                .forgetPassword.tr,
                                             onPressed: () {
                                               navigatePush(context,
                                                   const ForgotPasswordView());
@@ -175,18 +174,14 @@ class LoginView extends StatelessWidget {
                                 builder: (BuildContext context) {
                                   return defaultButton(
                                     function: () async {
-                                      if (cubit
-                                          .emailFormKey.currentState!
+                                      if (cubit.emailFormKey.currentState!
                                           .validate()) {
-                                        if (cubit
-                                            .passFieldKey.currentState!
+                                        if (cubit.passFieldKey.currentState!
                                             .validate()) {
                                           cubit.login(
-                                            email: cubit
-                                                .emailController.text,
-                                            password: cubit
-                                                .passwordController
-                                                .text,
+                                            email: cubit.emailController.text,
+                                            password:
+                                                cubit.passwordController.text,
                                           );
                                         }
                                       }
@@ -198,7 +193,7 @@ class LoginView extends StatelessWidget {
                                   );
                                 },
                                 fallback: (BuildContext context) =>
-                                const Center(
+                                    const Center(
                                   child: CircularProgressIndicator(),
                                 ),
                               ),

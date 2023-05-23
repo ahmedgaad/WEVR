@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+// import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import '../../../../../core/helpers/location_helper.dart';
 import 'map_states.dart';
 
@@ -15,8 +15,8 @@ class MapCubit extends Cubit<MapStates> {
 
   static Position? position;
   final Completer<GoogleMapController> mapController = Completer();
-  FloatingSearchBarController floatingSearchBarController =
-      FloatingSearchBarController();
+  // FloatingSearchBarController floatingSearchBarController =
+  //     FloatingSearchBarController();
   late final CameraPosition myCurrentLocationCameraPosition;
   Future<void> getCurrentLocation() async {
     position = await LocationHelper.determinePosition();
