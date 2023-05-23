@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../../../core/errors/exceptions.dart';
-import '../../../../core/utils/constants_manager.dart';
+import '../../../../core/utils/constants.dart';
 import '../models/places_model.dart';
 
 abstract class PlacesRemoteDataSource {
@@ -35,9 +35,9 @@ class PlacesRemoteDataSourceImpl implements PlacesRemoteDataSource {
   }) async {
     try {
       Response response = await dio.get(
-        ConstantsManager.suggestionsBaseURL,
+        Constants.suggestionsBaseURL,
         queryParameters: {
-          'key': ConstantsManager.googleAPIKey,
+          'key': Constants.googleAPIKey,
           'input': place,
           'types': 'address',
           'sessiontoken': sessionToken,

@@ -1,8 +1,5 @@
 import 'dart:convert';
-
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import '../../../../core/helpers/cache_helper.dart';
 import '../models/logout_model.dart';
 import '../../../../core/errors/auth_error_models.dart';
 import '../models/check_otp_model.dart';
@@ -10,11 +7,8 @@ import '../models/create_new_password_model.dart';
 import '../models/forgot_password_model.dart';
 import '../models/login_model.dart';
 import '../../../../core/errors/exceptions.dart';
-import '../../../../core/errors/failures.dart';
 import '../models/register_model.dart';
-import '../../domain/entities/register.dart';
-
-import '../../../../core/utils/constants_manager.dart';
+import '../../../../core/utils/constants.dart';
 
 abstract class AuthDataSource {
   Future<RegisterModel> register({
@@ -61,7 +55,7 @@ class AuthDataSourceImpl implements AuthDataSource {
       sendTimeout: const Duration(
         seconds: 20 * 1000,
       ),
-      baseUrl: ConstantsManager.baseURL,
+      baseUrl: Constants.baseURL,
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -79,7 +73,7 @@ class AuthDataSourceImpl implements AuthDataSource {
   }) async {
     try {
       final response = await dio.post(
-        ConstantsManager.registerEP,
+        Constants.registerEP,
         data: json.encode(
           {
             "name": userName,
@@ -112,7 +106,7 @@ class AuthDataSourceImpl implements AuthDataSource {
   }) async {
     try {
       final response = await dio.post(
-        ConstantsManager.loginEP,
+        Constants.loginEP,
         data: json.encode(
           {
             'email': email,
@@ -123,11 +117,11 @@ class AuthDataSourceImpl implements AuthDataSource {
       );
       if (response.data['status'] == 1) {
         final model = LoginModel.fromJson(response.data);
-      //  await CacheHelper.saveDataToCache(
-      //     key: 'userToken',
-      //     value: response.data['data']['token'],
-      //   );
-      
+        //  await CacheHelper.saveDataToCache(
+        //     key: 'userToken',
+        //     value: response.data['data']['token'],
+        //   );
+
         //print(model);
         return model;
       } else {
@@ -145,7 +139,7 @@ class AuthDataSourceImpl implements AuthDataSource {
   }) async {
     try {
       final response = await dio.post(
-        ConstantsManager.resetViaEmailEP,
+        Constants.resetViaEmailEP,
         data: json.encode(
           {
             'email': email,
@@ -173,7 +167,7 @@ class AuthDataSourceImpl implements AuthDataSource {
   }) async {
     try {
       final response = await dio.post(
-        ConstantsManager.checkOTPEP,
+        Constants.checkOTPEP,
         data: {
           'email': email,
           'pin_code': pinCode,
@@ -200,7 +194,7 @@ class AuthDataSourceImpl implements AuthDataSource {
   }) async {
     try {
       final response = await dio.post(
-        ConstantsManager.newPasswordEP,
+        Constants.newPasswordEP,
         data: {
           'email': email,
           'password': password,
@@ -230,7 +224,7 @@ class AuthDataSourceImpl implements AuthDataSource {
         'Authorization': 'Bearer $token',
       };
       final response = await dio.delete(
-        ConstantsManager.logoutEP,
+        Constants.logoutEP,
         options: Options(headers: headers),
       );
       if (response.data['status'] == 201) {

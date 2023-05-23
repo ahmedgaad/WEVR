@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wevr_app/core/utils/color_manager.dart';
 import 'package:wevr_app/core/utils/styles_manager.dart';
-import 'package:wevr_app/core/utils/values_manager.dart';
-
 class ReadMoreText extends StatefulWidget {
   final String text;
 

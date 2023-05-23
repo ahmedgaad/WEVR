@@ -27,68 +27,65 @@ import '../../features/authentication/domain/use_cases/register_usecase.dart';
 import '../../features/authentication/presentation/controller/register/cubit.dart';
 import '../network/network_info.dart';
 
-GetIt locator = GetIt.instance;
+GetIt sl = GetIt.instance;
 
 void injectorInitialization() {
   //Cubit
-  locator
-      .registerLazySingleton(() => RegisterCubit(registerUseCase: locator()));
-  locator.registerLazySingleton(() => LoginCubit(loginUseCase: locator()));
-  locator.registerLazySingleton(() =>
-      OtpCubit(forgotPasswordUseCase: locator(), checkOTPUseCase: locator()));
-  locator.registerLazySingleton(
-      () => CreateNewPasswordCubit(createNewPasswordUseCase: locator()));
-  locator.registerLazySingleton(() => HomeLayoutCubit(
-        logoutUseCase: locator(),
-        getApartmentUseCase: locator(),
+  sl.registerLazySingleton(() => RegisterCubit(registerUseCase: sl()));
+  sl.registerLazySingleton(() => LoginCubit(loginUseCase: sl()));
+  sl.registerLazySingleton(
+      () => OtpCubit(forgotPasswordUseCase: sl(), checkOTPUseCase: sl()));
+  sl.registerLazySingleton(
+      () => CreateNewPasswordCubit(createNewPasswordUseCase: sl()));
+  sl.registerLazySingleton(() => HomeLayoutCubit(
+        logoutUseCase: sl(),
+        getApartmentUseCase: sl(),
         // saveApartmentUsecCase: locator(),
-        getSavedApartmentsUseCase: locator(),
+        getSavedApartmentsUseCase: sl(),
       ));
-  locator.registerLazySingleton(() => MapCubit());
+  sl.registerLazySingleton(() => MapCubit());
 
-  locator.registerLazySingleton(() => SearchCubit(searchUseCase: locator()));
-  locator
-      .registerLazySingleton(() => SaveCubit(saveApartmentUsecCase: locator()));
+  sl.registerLazySingleton(() => SearchCubit(searchUseCase: sl()));
+  sl.registerLazySingleton(() => SaveCubit(saveApartmentUsecCase: sl()));
 
   //Usecase
-  locator.registerLazySingleton(() => RegisterUseCase(locator()));
-  locator.registerLazySingleton(() => LoginUseCase(locator()));
-  locator.registerLazySingleton(() => ForgotPasswordUseCase(locator()));
-  locator.registerLazySingleton(() => CheckOTPUseCase(locator()));
-  locator.registerLazySingleton(() => CreateNewPasswordUseCase(locator()));
-  locator.registerLazySingleton(() => LogoutUseCase(locator()));
-  locator.registerLazySingleton(() => GetApartmentUseCase(
-        homeRepository: locator(),
+  sl.registerLazySingleton(() => RegisterUseCase(sl()));
+  sl.registerLazySingleton(() => LoginUseCase(sl()));
+  sl.registerLazySingleton(() => ForgotPasswordUseCase(sl()));
+  sl.registerLazySingleton(() => CheckOTPUseCase(sl()));
+  sl.registerLazySingleton(() => CreateNewPasswordUseCase(sl()));
+  sl.registerLazySingleton(() => LogoutUseCase(sl()));
+  sl.registerLazySingleton(() => GetApartmentUseCase(
+        homeRepository: sl(),
       ));
-  locator.registerLazySingleton(() => SaveApartmentUsecCase(
-        homeRepository: locator(),
+  sl.registerLazySingleton(() => SaveApartmentUsecCase(
+        homeRepository: sl(),
       ));
-  locator.registerLazySingleton(() => GetSavedApartmentsUseCase(
-        homeRepository: locator(),
+  sl.registerLazySingleton(() => GetSavedApartmentsUseCase(
+        homeRepository: sl(),
       ));
-  locator.registerLazySingleton(() => SearchUseCase(
-        homeRepository: locator(),
+  sl.registerLazySingleton(() => SearchUseCase(
+        homeRepository: sl(),
       ));
 
   //Repository
-  locator.registerLazySingleton<AuthRepository>(
+  sl.registerLazySingleton<AuthRepository>(
     () => AuthRepositoryImpl(
-      authDataSource: locator(),
-      networkInfo: locator(),
+      authDataSource: sl(),
+      networkInfo: sl(),
     ),
   );
-  locator
-      .registerLazySingleton<HomeRepository>(() => HomeRepositoryImplementation(
-            homeRemoteDataSource: locator(),
-            networkInfo: locator(),
-          ));
+  sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImplementation(
+        homeRemoteDataSource: sl(),
+        networkInfo: sl(),
+      ));
 
   //DataSource
-  locator.registerLazySingleton<AuthDataSource>(() => AuthDataSourceImpl());
-  locator.registerLazySingleton<HomeRemoteDataSource>(
+  sl.registerLazySingleton<AuthDataSource>(() => AuthDataSourceImpl());
+  sl.registerLazySingleton<HomeRemoteDataSource>(
       () => HomeRemoteDataSourceDio());
 
   //NetworkInfo
-  locator.registerLazySingleton<NetworkInfo>(
+  sl.registerLazySingleton<NetworkInfo>(
       () => NetworkInfoImpl(InternetConnectionChecker()));
 }

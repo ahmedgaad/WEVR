@@ -33,8 +33,8 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OtpCubit(
-          forgotPasswordUseCase: locator(), checkOTPUseCase: locator()),
+      create: (context) =>
+          OtpCubit(forgotPasswordUseCase: sl(), checkOTPUseCase: sl()),
       child: BlocConsumer<OtpCubit, OtpStates>(
         listener: (context, state) {},
         builder: (context, state) {

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../../../core/components/components.dart';
 import '../../../../../core/components/success_screen.dart';
 import '../../../../../core/utils/color_manager.dart';
-import '../../../../../core/utils/routes_manager.dart';
+import '../../../../../core/config/routes/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 

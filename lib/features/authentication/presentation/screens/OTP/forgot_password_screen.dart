@@ -7,7 +7,7 @@ import 'package:quickalert/widgets/quickalert_dialog.dart';
 import '../../../../../core/components/components.dart';
 import '../../../../../core/service/service_locator.dart';
 import '../../../../../core/utils/assets_manager.dart';
-import '../../../../../core/utils/routes_manager.dart';
+import '../../../../../core/config/routes/routes_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 import '../../controller/OTP/otp_cubit.dart';
@@ -26,8 +26,8 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OtpCubit(
-          forgotPasswordUseCase: locator(), checkOTPUseCase: locator()),
+      create: (context) =>
+          OtpCubit(forgotPasswordUseCase: sl(), checkOTPUseCase: sl()),
       child: BlocConsumer<OtpCubit, OtpStates>(
         listener: (context, state) {
           if (state is ResetViaEmailSuccessState) {

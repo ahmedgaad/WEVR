@@ -17,8 +17,7 @@ class _FavIconState extends State<FavIcon> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) =>
-          SaveCubit(saveApartmentUsecCase: locator()),
+      create: (BuildContext context) => SaveCubit(saveApartmentUsecCase: sl()),
       child: BlocBuilder<SaveCubit, SaveApartmentState>(
         builder: (context, state) {
           var cubit = SaveCubit.get(context);

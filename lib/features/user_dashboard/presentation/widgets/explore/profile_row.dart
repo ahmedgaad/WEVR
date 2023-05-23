@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
 import '../../../../../core/helpers/cache_helper.dart';
-import '../../../../../core/utils/constants_manager.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../authentication/domain/entities/login.dart';
 import '../../../../introduction/presentation/screens/get_started/get_started_view.dart';
@@ -34,15 +34,15 @@ class ProfileRow extends StatelessWidget {
           ).then((value) {
             navigatePush(context, const GetStartedView());
           });
-        }else if(state is LogoutErrorState){
+        } else if (state is LogoutErrorState) {
           QuickAlert.show(
-              context: context,
-              type: QuickAlertType.error,
-              title: StringsManager.error.tr,
-              text: state.error,
-              confirmBtnText: StringsManager.okay.tr,
-              confirmBtnColor: Colors.red,
-            );
+            context: context,
+            type: QuickAlertType.error,
+            title: StringsManager.error.tr,
+            text: state.error,
+            confirmBtnText: StringsManager.okay.tr,
+            confirmBtnColor: Colors.red,
+          );
         }
       },
       builder: (context, state) {
@@ -68,7 +68,7 @@ class ProfileRow extends StatelessWidget {
                     onPressed: () {
                       cubit
                           .logout(
-                        token: ConstantsManager.userToken,
+                        token: Constants.kToken,
                       )
                           .then((value) {
                         CacheHelper.removeDataFromCache(key: 'userToken');

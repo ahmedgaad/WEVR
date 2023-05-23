@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/utils/assets_manager.dart';
-import '../../../../../core/utils/routes_manager.dart';
+import '../../../../../core/config/routes/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 import '../../widgets/profile/build_divider.dart';

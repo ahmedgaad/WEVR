@@ -5,13 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../../../../../core/helpers/cache_helper.dart';
+import 'package:wevr_app/features/introduction/presentation/components/item_slider.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
-import '../../../../../core/utils/constants_manager.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/fonts_manager.dart';
-import '../../../../../core/utils/routes_manager.dart';
+import '../../../../../core/config/routes/routes_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
@@ -28,14 +27,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   late final List<SliderObject> _list = _getSliderData();
   int currentIndex = 0;
   bool isLast = false;
-
-  void submit() async {
-    // await CacheHelper.saveDataToCache(key: 'opendBefore', value: true)
-    //     .then((value) {
-    //   Navigator.pushReplacementNamed(context, Routes.getStartedRoute);
-    // });
-    Navigator.pushReplacementNamed(context, Routes.getStartedRoute);
-  }
 
   List<SliderObject> _getSliderData() => [
         SliderObject(
@@ -72,12 +63,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       appBar: AppBar(
         backgroundColor: ColorManager.white,
         elevation: AppSize.s0,
-        /*systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: ColorManager.white,
-          statusBarBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.dark,
-        ),
-         */
         actions: [
           TextButton(
             onPressed: () {
@@ -118,12 +103,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     });
                   }
                 },
-                itemBuilder: (context, index) => itemSlider(_list[index]),
+                itemBuilder: (context, index) =>
+                    ItemSlider(object: _list[index]),
               ),
             ),
-            SizedBox(
-              height: AppSize.s50.h,
-            ),
+            AppSize.s50.h.ph,
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -160,8 +144,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                   onTap: () {
                                     _pageController.previousPage(
                                       duration: const Duration(
-                                          seconds: ConstantsManager
-                                              .previousPageTime),
+                                          seconds: Constants.previousPageTime),
                                       curve: Curves.fastLinearToSlowEaseIn,
                                     );
                                   },
@@ -204,11 +187,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                             child: GestureDetector(
                               onTap: () {
                                 if (isLast) {
-                                  submit();
+                                  Navigator.pushReplacementNamed(context, Routes.getStartedRoute);
                                 }
                                 _pageController.nextPage(
                                   duration: const Duration(
-                                    seconds: ConstantsManager.nextPageTime,
+                                    seconds: Constants.nextPageTime,
                                   ),
                                   curve: Curves.fastLinearToSlowEaseIn,
                                 );
@@ -245,58 +228,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 ),
               ),
             ),
-            // Column(
-            //   children: [
-            //
-            //    // SizedBox(
-            //    //    height: AppSize.s6.h,
-            //    //  ),
-            //
-            //   ],
-            // ),
           ],
         ),
       ),
     );
   }
-
-  Widget itemSlider(SliderObject object) => SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: AppSize.s36.h,
-            ),
-            SvgPicture.asset(
-              object.image,
-              height: AppSize.s300.h,
-              width: AppSize.s281_25.w,
-              fit: BoxFit.scaleDown,
-            ),
-            SizedBox(
-              height: AppSize.s24.h,
-            ),
-            Text(
-              object.title,
-              textAlign: TextAlign.center,
-              style: getRegularStylePoppins(
-                fontSize: AppSize.s20,
-              ),
-            ),
-            SizedBox(
-              height: AppSize.s15.h,
-            ),
-            Container(
-              width: 200,
-              child: Text(
-                object.subTitle,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            ),
-          ],
-        ),
-      );
 }
 
 class SliderObject {
