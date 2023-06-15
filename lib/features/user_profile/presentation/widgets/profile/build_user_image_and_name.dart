@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wevr_app/features/authentication/presentation/controller/login/cubit.dart';
+import 'package:wevr_app/features/authentication/presentation/controller/login/cubit.dart';
+import 'package:wevr_app/features/authentication/presentation/controller/login/states.dart';
 
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
@@ -14,6 +18,11 @@ class BuildUserImageAndName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocConsumer<LoginCubit, LoginStates>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
     return Container(
       alignment: Alignment.center,
       height: 160,
@@ -37,8 +46,9 @@ class BuildUserImageAndName extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height / 70,
           ),
-          Text(
-            'Ahmed Gad',
+          if(state is LoginSuccessState)
+            Text(
+            state.login.message,
             style: getMediumStylePoppins(
               color: ColorManager.black,
               fontSize: FontSize.s20.sp,
@@ -47,5 +57,7 @@ class BuildUserImageAndName extends StatelessWidget {
         ],
       ),
     );
+  },
+);
   }
 }

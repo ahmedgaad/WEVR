@@ -17,7 +17,7 @@ void main() async {
   debugMessage('--main: injectorInitialization');
 
   Bloc.observer = MyBlocObserver();
-  debugMessage('--main: BlocObserever');
+  debugMessage('--main: BlocObserver');
   runApp(
     const Wevr(),
   );

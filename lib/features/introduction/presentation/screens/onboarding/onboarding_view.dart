@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:wevr_app/features/introduction/presentation/components/item_slider.dart';
+import '../../../../../core/localization/change_locale.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/constants.dart';
@@ -53,6 +56,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
   @override
   Widget build(BuildContext context) {
+    LocaleController localeController = Get.put(LocaleController());
+
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: ColorManager.transparent,
       statusBarBrightness: Brightness.dark,
@@ -162,12 +167,16 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                         horizontal: AppSize.s6.w,
                                         vertical: AppSize.s6.h,
                                       ),
-                                      child: SvgPicture.asset(
-                                        AssetsImagesManager.leftArrowIc,
-                                        color: ColorManager.lightGrey,
-                                        fit: BoxFit.scaleDown,
-                                        height: AppSize.s25_33.h,
-                                        width: AppSize.s14_67.w,
+                                      child: Transform(
+                                        alignment: Alignment.center,
+                                        transform: Matrix4.rotationY(localeController.language?.languageCode == "ar" ? math.pi : 0),
+                                        child: SvgPicture.asset(
+                                          AssetsImagesManager.leftArrowIc,
+                                          color: ColorManager.lightGrey,
+                                          fit: BoxFit.scaleDown,
+                                          height: AppSize.s25_33.h,
+                                          width: AppSize.s14_67.w,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -211,11 +220,15 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                     horizontal: AppSize.s6.w,
                                     vertical: AppSize.s6.h,
                                   ),
-                                  child: SvgPicture.asset(
-                                    AssetsImagesManager.rightArrowIc,
-                                    fit: BoxFit.scaleDown,
-                                    height: AppSize.s25_33.h,
-                                    width: AppSize.s14_67.w,
+                                  child: Transform(
+                                    alignment: Alignment.center,
+                                    transform: Matrix4.rotationY(localeController.language?.languageCode == "ar" ? math.pi : 0),
+                                    child: SvgPicture.asset(
+                                      AssetsImagesManager.rightArrowIc,
+                                      fit: BoxFit.scaleDown,
+                                      height: AppSize.s25_33.h,
+                                      width: AppSize.s14_67.w,
+                                    ),
                                   ),
                                 ),
                               ),

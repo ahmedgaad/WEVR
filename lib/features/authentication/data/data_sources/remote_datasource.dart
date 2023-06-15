@@ -117,12 +117,6 @@ class AuthDataSourceImpl implements AuthDataSource {
       );
       if (response.data['status'] == 1) {
         final model = LoginModel.fromJson(response.data);
-        //  await CacheHelper.saveDataToCache(
-        //     key: 'userToken',
-        //     value: response.data['data']['token'],
-        //   );
-
-        //print(model);
         return model;
       } else {
         throw LoginException(
