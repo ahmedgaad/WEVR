@@ -101,4 +101,10 @@ class AssetsImagesManager {
 
   static const String cardBackground =
       '${Constants.imagePath}/credit/card_background.svg';
+
+  static const String frontNationalId =
+      '${Constants.imagePath}/user/front_national_id.png';
+
+  static const String backNationalId =
+      '${Constants.imagePath}/user/back_national_id.png';
 }

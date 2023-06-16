@@ -41,7 +41,7 @@ class SearchView extends StatelessWidget {
                               icon: const Icon(Icons.arrow_back),
                             ),
                             15.pw,
-                            const SearchBarWidget(),
+                            SearchBarWidget(width: 240.w, height: 50.h,),
                             15.pw,
                             const FilterWidget(),
                           ],

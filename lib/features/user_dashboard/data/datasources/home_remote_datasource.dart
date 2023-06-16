@@ -33,7 +33,7 @@ class HomeRemoteDataSourceDio implements HomeRemoteDataSource {
   Future<ApartmentModel> getApartments() async {
     try {
       final headers = {
-        'Authorization': 'Bearer ${Constants.userToken!}',
+        'Authorization': 'Bearer ${Constants.userToken}',
       };
       final response = await dio.get(
         Constants.apartment,
