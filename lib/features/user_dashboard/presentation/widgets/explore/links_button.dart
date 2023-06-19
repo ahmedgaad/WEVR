@@ -14,7 +14,7 @@ class LinksButton extends StatefulWidget {
 
   final String text;
   final VoidCallback function;
-  final Icon icon;
+  final Widget icon;
   final Color background;
 
   @override
@@ -37,10 +37,10 @@ class _LinksButtonState extends State<LinksButton> {
         ),
         color: widget.background ,
       ),
-      child: MaterialButton(
-         padding: EdgeInsets.only(left: 10),
-        onPressed: widget.function,
+      child: GestureDetector(
+        onTap: widget.function,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             widget.icon,
             8.pw,

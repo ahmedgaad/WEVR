@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:wevr_app/core/functions/first_launch.dart';
-import 'package:wevr_app/core/functions/is_authorized.dart';
+
+// import 'package:wevr_app/core/functions/first_launch.dart';
+// import 'package:wevr_app/core/functions/is_authorized.dart';
 import 'package:wevr_app/core/localization/change_locale.dart';
 import 'package:wevr_app/core/localization/translations.dart';
 import 'package:wevr_app/core/service/service_locator.dart';
@@ -16,6 +17,7 @@ import 'package:wevr_app/features/map_based_homes/presentation/controller/map/ma
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/cubit.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/search/cubit.dart';
 import 'core/config/themes/light_theme.dart';
+import 'features/authentication/presentation/controller/login/cubit.dart';
 import 'features/introduction/presentation/screens/splash/splash_view.dart';
 
 class Wevr extends StatefulWidget {
@@ -28,19 +30,19 @@ class Wevr extends StatefulWidget {
 class _WevrState extends State<Wevr> with WidgetsBindingObserver {
   String? initialRoute;
 
-  @override
-  void initState() {
-    isFirstLaunch().then((firstlaunch) {
-      if (firstlaunch) {
-        initialRoute = Routes.onBoardingRoute;
-      } else if (isAuthorized()) {
-        initialRoute = Routes.homeRoute;
-      } else {
-        initialRoute = Routes.getStartedRoute;
-      }
-    });
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   isFirstLaunch().then((firstlaunch) {
+  //     if (firstlaunch) {
+  //       initialRoute = Routes.onBoardingRoute;
+  //     } else if (isAuthorized()) {
+  //       initialRoute = Routes.homeRoute;
+  //     } else {
+  //       initialRoute = Routes.getStartedRoute;
+  //     }
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +54,10 @@ class _WevrState extends State<Wevr> with WidgetsBindingObserver {
         BlocProvider(
           create: (BuildContext context) =>
               OtpCubit(checkOTPUseCase: sl(), forgotPasswordUseCase: sl()),
+        ),
+        BlocProvider(
+          create: (BuildContext context) =>
+              LoginCubit(loginUseCase: sl()),
         ),
         BlocProvider(
           create: (BuildContext context) => HomeLayoutCubit(
