@@ -29,7 +29,10 @@ class BuildListItem extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(AppMargin.m6.sp),
       child: ListTile(
-        leading: SvgPicture.asset(icon),
+        leading: SvgPicture.asset(
+          icon,
+          width: 25,
+        ),
         title: Text(
           label,
           style: getRegularStylePoppins(
@@ -39,7 +42,8 @@ class BuildListItem extends StatelessWidget {
         ),
         trailing: Transform(
           alignment: Alignment.center,
-          transform: Matrix4.rotationY(localeController.language?.languageCode == "ar" ? math.pi : 0),
+          transform: Matrix4.rotationY(
+              localeController.language?.languageCode == "ar" ? math.pi : 0),
           child: SvgPicture.asset(
             AssetsImagesManager.rightArrowIc,
             fit: BoxFit.scaleDown,

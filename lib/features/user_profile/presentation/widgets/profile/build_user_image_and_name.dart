@@ -25,7 +25,6 @@ class BuildUserImageAndName extends StatelessWidget {
   builder: (context, state) {
     return Container(
       alignment: Alignment.center,
-      height: 160,
       child: Column(
         children: [
           GestureDetector(
@@ -48,7 +47,7 @@ class BuildUserImageAndName extends StatelessWidget {
           ),
           if(state is LoginSuccessState)
             Text(
-            state.login.message,
+            state.login.name,
             style: getMediumStylePoppins(
               color: ColorManager.black,
               fontSize: FontSize.s20.sp,

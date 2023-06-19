@@ -107,4 +107,7 @@ class AssetsImagesManager {
 
   static const String backNationalId =
       '${Constants.imagePath}/user/back_national_id.png';
+
+  static const String myProperty =
+      '${Constants.imagePath}/user/my_properties.png';
 }

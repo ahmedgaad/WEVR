@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/states.dart';
+import 'package:wevr_app/features/user_dashboard/presentation/screens/booking/book_visit_view.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/widgets/explore/rating_bar.dart';
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/color_manager.dart';
@@ -212,7 +213,6 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
                             Icons.email,
                             color: Colors.white,
                             size: 15,
-
                           ),
                           function: () {},
                           text: 'Email',
@@ -221,11 +221,7 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
                         10.pw,
                         Expanded(
                             child: LinksButton(
-                          icon: const Icon(
-                            Icons.phone,
-                            color: Colors.white,
-                            size: 15,
-                          ),
+                          icon: Image.asset(AssetsImagesManager.whatsapp , width: 20,),
                           function: () {},
                           text: 'WhatsApp',
                           background: Colors.grey,
@@ -233,12 +229,10 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
                         10.pw,
                         Expanded(
                             child: LinksButton(
-                          icon: const Icon(
-                            Icons.access_alarm,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                          function: () {},
+                          icon: Image.asset(AssetsImagesManager.bookVisit , width: 20,),
+                          function: () {
+                            navigatePush(context, BookVisitView());
+                          },
                           text: 'book visit',
                           background: ColorManager.primary,
                         )),
