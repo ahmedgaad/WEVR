@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import '../models/logout_model.dart';
 import '../../../../core/errors/auth_error_models.dart';
@@ -117,6 +118,7 @@ class AuthDataSourceImpl implements AuthDataSource {
       );
       if (response.data['status'] == 1) {
         final model = LoginModel.fromJson(response.data);
+        log(name: 'login', model.toString());
         return model;
       } else {
         throw LoginException(
@@ -142,7 +144,8 @@ class AuthDataSourceImpl implements AuthDataSource {
       );
       if (response.data['status'] == 1) {
         final model = ForgotPasswordModel.fromJson(response.data);
-        print(model);
+        log(name: 'forgot password', model.toString());
+
         return model;
       } else {
         throw ForgotPasswordException(

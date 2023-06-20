@@ -5,9 +5,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
 import '../../../../../core/helpers/cache_helper.dart';
+import '../../../../../core/localization/change_locale.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/strings_manager.dart';
-import '../../../../authentication/domain/entities/login.dart';
 import '../../../../introduction/presentation/screens/get_started/get_started_view.dart';
 import '../../controller/Home/cubit.dart';
 import '../../controller/Home/states.dart';
@@ -15,12 +15,14 @@ import '../../../../user_profile/presentation/screens/profile/profile_view.dart'
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
+import 'dart:math' as math;
 
 class ProfileRow extends StatelessWidget {
   const ProfileRow({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    LocaleController localeController = Get.put(LocaleController());
     return BlocConsumer<HomeLayoutCubit, HomeLayOutStates>(
       listener: (context, state) {
         if (state is LogoutSuccessfullyState) {
@@ -74,8 +76,15 @@ class ProfileRow extends StatelessWidget {
                         CacheHelper.removeDataFromCache(key: 'userToken');
                       });
                     },
-                    icon: SvgPicture.asset(
-                      AssetsImagesManager.signOut,
+                    icon: Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationY(
+                          localeController.language?.languageCode == "ar"
+                              ? math.pi
+                              : 0),
+                      child: SvgPicture.asset(
+                        AssetsImagesManager.signOut,
+                      ),
                     ),
                   );
                 } else {

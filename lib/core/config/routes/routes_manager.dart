@@ -32,7 +32,6 @@ class Routes {
   static const String resetPhoneRoute = "/resetPhone";
   static const String resetEmailRoute = "/resetEmail";
   static const String forgotRoute = "/forgot";
-
   static const String personalInfoRoute = "/personalInformation";
   static const String accountSettingRoute = "/accountSetting";
   static const String paymentRoute = "/payment";
@@ -68,7 +67,7 @@ class RouteGenerator {
       case Routes.homeRoute:
         return MaterialPageRoute(builder: (_) => const HomeView());
       case Routes.personalInfoRoute:
-        return MaterialPageRoute(builder: (_) => const PersonalInformation());
+        return MaterialPageRoute(builder: (_) => PersonalInformation());
       case Routes.accountSettingRoute:
         return MaterialPageRoute(builder: (_) => const AccountSetting());
       case Routes.paymentRoute:
