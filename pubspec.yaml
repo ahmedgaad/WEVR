@@ -40,6 +40,7 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   url_launcher: ^6.1.9
   webview_flutter: ^3.0.4
+  table_calendar: ^3.0.9
 
 dev_dependencies:
   flutter_lints: ^2.0.1

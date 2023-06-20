@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../controller/map/map_cubit.dart';
 import '../controller/map/map_states.dart';
-
 import '../../../../core/utils/color_manager.dart';
 import '../widgets/build_floating_search_bar.dart';
 import '../widgets/build_google_map.dart';
 
 class MapView extends StatelessWidget {
   const MapView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<MapCubit, MapStates>(
@@ -33,26 +31,6 @@ class MapView extends StatelessWidget {
                 ),
               ),
               BuildFloatingSearchBar(),
-              // Positioned(
-              //   top: 19,
-              //   left: 19,
-              //   child: Container(
-              //     width: 64,
-              //     height: 64,
-              //     decoration: BoxDecoration(
-              //         color: ColorManager.darkGrey,
-              //         borderRadius: BorderRadius.circular(50)),
-              //     child: IconButton(
-              //       onPressed: () {
-              //         Navigator.pop(context);
-              //       },
-              //       icon: const Icon(
-              //         Icons.arrow_back,
-              //         size: 35,
-              //       ),
-              //     ),
-              //   ),
-              // )
             ],
           ),
           floatingActionButton: Container(

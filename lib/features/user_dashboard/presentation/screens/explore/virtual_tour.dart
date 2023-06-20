@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/states.dart';
-
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../controller/Home/cubit.dart';
-
 class VirtualTour extends StatelessWidget {
   const VirtualTour({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

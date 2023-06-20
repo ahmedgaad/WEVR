@@ -35,6 +35,7 @@ class SuccessScreen extends StatelessWidget {
             color: ColorManager.black,
             fontSize: FontSize.s20.sp,
           ),
+          textAlign: TextAlign.center,
         ),
         SizedBox(
           height: AppSize.s44.h,
