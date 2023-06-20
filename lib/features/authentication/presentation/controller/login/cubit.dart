@@ -24,7 +24,6 @@ class LoginCubit extends Cubit<LoginStates> {
   Future<void> login({
     required String email,
     required String password,
-    // required String deviceInformation,
   }) async {
     emit(LoginLoadingState());
     await CacheHelper.saveDataToCache(key: 'isGuest', value: false);
@@ -41,7 +40,7 @@ class LoginCubit extends Cubit<LoginStates> {
       },
       (login) {
         emit(LoginSuccessState(login: login));
-        _saveToken(login.token);
+        _saveToken(login.data.token);
       },
     );
   }
@@ -49,7 +48,7 @@ class LoginCubit extends Cubit<LoginStates> {
   void _saveToken(String token) async {
     try {
       await CacheHelper.saveDataToCache(key: Constants.kToken, value: token);
-      debugMessage('Barear Token $token', name: 'token');
+      debugMessage('Bearer Token $token', name: 'token');
       Constants.userToken = CacheHelper.getDataFromCache(key: Constants.kToken);
     } on Exception catch (e) {
       debugMessage('Error while saving token $e', name: 'token');

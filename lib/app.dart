@@ -11,7 +11,9 @@ import 'package:wevr_app/core/localization/translations.dart';
 import 'package:wevr_app/core/service/service_locator.dart';
 import 'package:wevr_app/core/config/routes/routes_manager.dart';
 import 'package:wevr_app/core/utils/constants.dart';
+import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
 import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp_cubit.dart';
+import 'package:wevr_app/features/authentication/presentation/controller/login/cubit.dart';
 import 'package:wevr_app/features/map_based_homes/presentation/controller/map/map_cubit.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/cubit.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/search/cubit.dart';
@@ -67,6 +69,11 @@ class _WevrState extends State<Wevr> with WidgetsBindingObserver {
         BlocProvider(
           create: (BuildContext context) => SearchCubit(
             searchUseCase: sl(),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => LoginCubit(
+            loginUseCase: sl<LoginUseCase>(),
           ),
         ),
       ],

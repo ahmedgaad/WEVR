@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FormFieldWidget extends StatelessWidget {
-  const FormFieldWidget({Key? key, required this.height,}) : super(key: key);
+  const FormFieldWidget({Key? key, required this.height,this.controller,}) : super(key: key);
   final double height;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,6 +23,7 @@ class FormFieldWidget extends StatelessWidget {
         child: TextFormField(
           // initialValue: StringsManager.searchBar.tr,
           keyboardType: TextInputType.text,
+          controller: controller,
           decoration: const InputDecoration(
             border: InputBorder.none,
           ),
