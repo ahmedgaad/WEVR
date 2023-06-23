@@ -5,9 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
-import '../../../../../../core/service/service_locator.dart';
-
 import '../../../../../../core/components/components.dart';
+import '../../../../../../core/service/service_locator_imports.dart';
 import '../../../../../../core/utils/assets_manager.dart';
 import '../../../../../../core/utils/color_manager.dart';
 import '../../../../../../core/utils/strings_manager.dart';

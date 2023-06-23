@@ -4,7 +4,7 @@ import '../entities/create_new_password.dart';
 import '../repository/auth_repository.dart';
 
 class CreateNewPasswordUseCase {
-  final AuthRepository authRepository;
+  final BaseAuthRepository authRepository;
   CreateNewPasswordUseCase(this.authRepository);
 
   Future<Either<Failure, CreateNewPassword>> call({

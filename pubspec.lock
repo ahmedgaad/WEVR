@@ -225,6 +225,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.10.1"
+  date_count_down:
+    dependency: "direct main"
+    description:
+      name: date_count_down
+      sha256: "8dc871f5091d76292042c1104ecca2559e919a3161dbc56af2d39e38e6c32327"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   device_info_plus:
     dependency: "direct main"
     description:

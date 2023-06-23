@@ -15,6 +15,7 @@ dependencies:
   conditional_builder_null_safety: ^0.0.6
   cupertino_icons: ^1.0.5
   dartz: ^0.10.1
+  date_count_down: ^2.1.0
   device_info_plus: ^8.1.0
   dio: ^5.1.2
   equatable: ^2.0.5
@@ -30,17 +31,16 @@ dependencies:
   get: ^4.6.5
   get_it: ^7.2.0
   google_maps_flutter: ^2.2.5
-  image_picker: ^0.8.9
   image_cropper: ^5.0.0
+  image_picker: ^0.8.9
   internet_connection_checker: ^1.0.0+1
-  # material_floating_search_bar: ^0.3.7
   permission_handler: ^10.2.0
   quickalert: ^1.0.1
   shared_preferences: ^2.0.17
   smooth_page_indicator: ^1.0.0+2
+  table_calendar: ^3.0.9
   url_launcher: ^6.1.9
   webview_flutter: ^3.0.4
-  table_calendar: ^3.0.9
 
 dev_dependencies:
   flutter_lints: ^2.0.1

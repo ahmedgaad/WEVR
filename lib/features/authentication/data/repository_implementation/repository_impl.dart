@@ -13,8 +13,8 @@ import '../../domain/entities/register.dart';
 import '../../domain/repository/auth_repository.dart';
 import '../data_sources/remote_datasource.dart';
 
-class AuthRepositoryImpl implements AuthRepository {
-  final AuthDataSource authDataSource;
+class AuthRepositoryImpl implements BaseAuthRepository {
+  final BaseAuthDataSource authDataSource;
   final NetworkInfo networkInfo;
 
   AuthRepositoryImpl({

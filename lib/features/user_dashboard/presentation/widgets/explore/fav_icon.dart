@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/save/states.dart';
-import '../../../../../core/service/service_locator.dart';
+import '../../../../../core/service/service_locator_imports.dart';
 import '../../controller/save/cubit.dart';
 
 class FavIcon extends StatefulWidget {

@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
-import '../../../../../../core/service/service_locator.dart';
 import '../../../controller/OTP/otp_cubit.dart';
 import '../../../controller/OTP/otp_states.dart';
 import '../../../widgets/forget_pass/forget_password_top_column.dart';
@@ -15,11 +14,8 @@ import '../../../../../../core/utils/fonts_manager.dart';
 import '../../../../../../core/utils/strings_manager.dart';
 import '../../../../../../core/utils/styles_manager.dart';
 import '../../../../../../core/utils/values_manager.dart';
-import '../../../widgets/forget_pass/via_phone_or_mail.dart';
 import '../create_new_password/create_new_password.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:flutter_svg/svg.dart';
 
 class ResetEmailView extends StatelessWidget {
   const ResetEmailView({Key? key, required this.email}) : super(key: key);

@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 // import 'package:wevr_app/core/functions/is_authorized.dart';
 import 'package:wevr_app/core/localization/change_locale.dart';
 import 'package:wevr_app/core/localization/translations.dart';
-import 'package:wevr_app/core/service/service_locator.dart';
 import 'package:wevr_app/core/config/routes/routes_manager.dart';
 import 'package:wevr_app/core/utils/constants.dart';
 import 'package:wevr_app/features/authentication/domain/use_cases/login_usecase.dart';
@@ -17,9 +16,10 @@ import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp
 import 'package:wevr_app/features/authentication/presentation/controller/login/cubit.dart';
 import 'package:wevr_app/features/map_based_homes/presentation/controller/map/map_cubit.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/cubit.dart';
+import 'package:wevr_app/features/user_dashboard/presentation/controller/auction/auction_cubit.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/search/cubit.dart';
 import 'core/config/themes/light_theme.dart';
-import 'features/authentication/presentation/controller/login/cubit.dart';
+import 'core/service/service_locator_imports.dart';
 import 'features/introduction/presentation/screens/splash/splash_view.dart';
 
 class Wevr extends StatefulWidget {
@@ -58,8 +58,7 @@ class _WevrState extends State<Wevr> with WidgetsBindingObserver {
               OtpCubit(checkOTPUseCase: sl(), forgotPasswordUseCase: sl()),
         ),
         BlocProvider(
-          create: (BuildContext context) =>
-              LoginCubit(loginUseCase: sl()),
+          create: (BuildContext context) => LoginCubit(loginUseCase: sl()),
         ),
         BlocProvider(
           create: (BuildContext context) => HomeLayoutCubit(
@@ -82,11 +81,13 @@ class _WevrState extends State<Wevr> with WidgetsBindingObserver {
             loginUseCase: sl<LoginUseCase>(),
           ),
         ),
+        BlocProvider(create: (BuildContext context) => AuctionCubit(getAuctionUsecase: sl())..getAuctions()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 900),
         minTextAdapt: true,
         splitScreenMode: true,
+        rebuildFactor: RebuildFactors.all,
         builder: (BuildContext context, child) {
           return GetMaterialApp(
             translations: WevrTranslations(),

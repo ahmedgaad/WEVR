@@ -11,7 +11,7 @@ import '../../../../core/errors/exceptions.dart';
 import '../models/register_model.dart';
 import '../../../../core/utils/constants.dart';
 
-abstract class AuthDataSource {
+abstract class BaseAuthDataSource {
   Future<RegisterModel> register({
     required String userName,
     required String email,
@@ -46,7 +46,7 @@ abstract class AuthDataSource {
   });
 }
 
-class AuthDataSourceImpl implements AuthDataSource {
+class AuthDataSourceImpl implements BaseAuthDataSource {
   final Dio dio = Dio(
     BaseOptions(
       receiveDataWhenStatusError: true,
@@ -94,7 +94,7 @@ class AuthDataSourceImpl implements AuthDataSource {
         throw RegisterException(
             registerErrorModel: RegisterErrorModel.fromJson(response.data));
       }
-    } on DioError catch (e) {
+    } on DioError {
       throw ServerException();
     }
   }
@@ -124,7 +124,7 @@ class AuthDataSourceImpl implements AuthDataSource {
         throw LoginException(
             loginErrorModel: LoginErrorModel.fromJson(response.data));
       }
-    } on DioError catch (e) {
+    } on DioError {
       throw ServerException();
     }
   }
@@ -152,7 +152,7 @@ class AuthDataSourceImpl implements AuthDataSource {
             forgotPasswordErrorModel:
                 ForgotPasswordErrorModel.fromJson(response.data));
       }
-    } on DioError catch (e) {
+    } on DioError {
       throw ServerException();
     }
   }
@@ -172,13 +172,13 @@ class AuthDataSourceImpl implements AuthDataSource {
       );
       if (response.data['status'] == 1) {
         final model = CheckOTPModel.fromJson(response.data);
-        print(model);
+        log(model.toString(), name: 'Check OTP');
         return model;
       } else {
         throw CheckOTPException(
             checkOTPErrorModel: CheckOTPErrorModel.fromJson(response.data));
       }
-    } on DioError catch (e) {
+    } on DioError {
       throw ServerException();
     }
   }
@@ -200,14 +200,14 @@ class AuthDataSourceImpl implements AuthDataSource {
       );
       if (response.data['status'] == 1) {
         final model = CreateNewPasswordModel.fromJson(response.data);
-        print(model);
+        log(model.toString(), name: 'Create New Password');
         return model;
       } else {
         throw CreateNewPasswordException(
             createNewPasswordErrorModel:
                 CreateNewPasswordErrorModel.fromJson(response.data));
       }
-    } on DioError catch (e) {
+    } on DioError {
       throw ServerException();
     }
   }
@@ -226,12 +226,12 @@ class AuthDataSourceImpl implements AuthDataSource {
       );
       if (response.data['status'] == 201) {
         final model = LogoutModel.fromJson(response.data);
-        print(model);
+        log(model.toString(), name: 'Logout');
         return model;
       } else {
         throw ServerException();
       }
-    } on DioError catch (e) {
+    } on DioError {
       throw ServerException();
     }
   }

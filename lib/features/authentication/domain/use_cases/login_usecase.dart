@@ -5,7 +5,7 @@ import '../repository/auth_repository.dart';
 import '../entities/login.dart';
 
 class LoginUseCase {
-  final AuthRepository authRepository;
+  final BaseAuthRepository authRepository;
   LoginUseCase(this.authRepository);
 
   //callable method

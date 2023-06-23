@@ -4,7 +4,7 @@ import 'package:wevr_app/core/functions/debug_message.dart';
 import 'package:wevr_app/core/helpers/cache_helper.dart';
 import 'app.dart';
 import 'core/helpers/bloc_observer.dart';
-import 'core/service/service_locator.dart';
+import 'core/service/service_locator_imports.dart';
 
 void main() async {
   debugMessage('--main');
@@ -13,7 +13,7 @@ void main() async {
 
   await CacheHelper.cacheInitialization();
 
-  injectorInitialization();
+  await injectorInitialization();
   debugMessage('--main: injectorInitialization');
 
   Bloc.observer = MyBlocObserver();

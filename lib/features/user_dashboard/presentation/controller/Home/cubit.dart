@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../authentication/domain/use_cases/logout_usecase.dart';
 import '../../../domain/use_cases/get_apartment_use_case.dart';
 import '../../../domain/use_cases/get_saved_apartments_usecase.dart';
-import '../../screens/auction/auction_view.dart';
+import '../../screens/auction/auction_imports.dart';
 import '../../screens/explore/explore_view.dart';
 import '../../screens/homes/homes_view.dart';
 import '../../screens/saved/saved_view.dart';
@@ -12,12 +12,10 @@ import 'states.dart';
 class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
   final LogoutUseCase logoutUseCase;
   final GetApartmentUseCase getApartmentUseCase;
-  // final SaveApartmentUsecCase saveApartmentUsecCase;
   final GetSavedApartmentsUseCase getSavedApartmentsUseCase;
 
 
   HomeLayoutCubit({
-    // required this.saveApartmentUsecCase,
     required this.getApartmentUseCase,
     required this.logoutUseCase,
     required this.getSavedApartmentsUseCase,
@@ -58,21 +56,6 @@ class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
       emit(ApartmentErrorState(error: e.toString()));
     }
   }
-
-  // Future<void> saveApartment({
-  //   required int id,
-  // }) async {
-  //   try {
-  //     final saveApartment = await saveApartmentUsecCase.call(id: id);
-  //     saveApartment.fold((failure) {
-  //       emit(ErrorApartmentSavedState(error: failure.toString()));
-  //     }, (saveApartment) {
-  //       emit(SuccessApartmentSavedState(saveApartment: saveApartment,));
-  //     });
-  //   } catch (e) {
-  //     emit(ErrorApartmentSavedState(error: e.toString()));
-  //   }
-  // }
 
   Future<void> getSavedApartments() async {
     emit(SavedApartmentsLoadingStates());
