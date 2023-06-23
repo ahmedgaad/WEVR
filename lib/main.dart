@@ -13,8 +13,8 @@ void main() async {
 
   await CacheHelper.cacheInitialization();
 
-  await injectorInitialization();
-  debugMessage('--main: injectorInitialization');
+  serviceLocator();
+  debugMessage('--main: serviceLocator');
 
   Bloc.observer = MyBlocObserver();
   debugMessage('--main: BlocObserver');

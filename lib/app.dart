@@ -81,7 +81,10 @@ class _WevrState extends State<Wevr> with WidgetsBindingObserver {
             loginUseCase: sl<LoginUseCase>(),
           ),
         ),
-        BlocProvider(create: (BuildContext context) => AuctionCubit(getAuctionUsecase: sl())..getAuctions()),
+        // BlocProvider(
+        //   create: (BuildContext context) =>
+        //       AuctionCubit(getAuctionUsecase: sl())..getAuctions(),
+        // ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 900),

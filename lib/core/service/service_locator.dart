@@ -2,7 +2,7 @@ part of 'service_locator_imports.dart';
 
 GetIt sl = GetIt.instance;
 
-Future<void> injectorInitialization() async {
+void serviceLocator() {
   //************************ CUBIT *******************************//
   sl.registerFactory(
     () => AuctionCubit(
@@ -30,11 +30,13 @@ Future<void> injectorInitialization() async {
       createNewPasswordUseCase: sl(),
     ),
   );
-  sl.registerLazySingleton(() => HomeLayoutCubit(
-        logoutUseCase: sl(),
-        getApartmentUseCase: sl(),
-        getSavedApartmentsUseCase: sl(),
-      ),);
+  sl.registerLazySingleton(
+    () => HomeLayoutCubit(
+      logoutUseCase: sl(),
+      getApartmentUseCase: sl(),
+      getSavedApartmentsUseCase: sl(),
+    ),
+  );
   sl.registerLazySingleton(
     () => MapCubit(),
   );
@@ -121,8 +123,8 @@ Future<void> injectorInitialization() async {
   );
   sl.registerLazySingleton<BaseAuctionRepository>(
     () => AuctionRepoImpl(
-      auctionRemoteDatasourceImpl: sl(),
       networkInfo: sl(),
+      baseAuctionRemoteDatasource: sl(),
     ),
   );
 
@@ -133,7 +135,7 @@ Future<void> injectorInitialization() async {
   sl.registerLazySingleton<HomeRemoteDataSource>(
     () => HomeRemoteDataSourceImpl(),
   );
-  sl.registerLazySingleton<BaseAuctionRemoteDatasource>(
+  sl.registerFactory<BaseAuctionRemoteDatasource>(
     () => AuctionRemoteDatasourceImpl(),
   );
 
@@ -143,4 +145,6 @@ Future<void> injectorInitialization() async {
       InternetConnectionChecker(),
     ),
   );
+
+  sl.registerLazySingleton<Dio>(() => Dio());
 }
