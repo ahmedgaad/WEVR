@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/states.dart';
+import '../../../../../core/components/vr_alert_dialog.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../controller/Home/cubit.dart';
+
 class VirtualTour extends StatelessWidget {
   const VirtualTour({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +22,14 @@ class VirtualTour extends StatelessWidget {
             fontSize: 20,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showAlertDialogWidget(context);
+            },
+            icon: const Icon(Icons.more_vert),
+          ),
+        ],
       ),
       body: BlocBuilder<HomeLayoutCubit, HomeLayOutStates>(
         builder: (context, state) {
@@ -30,12 +41,17 @@ class VirtualTour extends StatelessWidget {
             );
           }
           if (state is ApartmentLoadedState) {
-            return SizedBox(
-              height: double.infinity,
-              child: WebView(
-                initialUrl: state.apartment.apartments[0].vrlink,
-                javascriptMode: JavascriptMode.unrestricted,
+            return Stack(
+              children:[
+              SizedBox(
+                height: double.infinity,
+                child: WebView(
+                  initialUrl: state.apartment.apartments[0].vrlink,
+                  javascriptMode: JavascriptMode.unrestricted,
+                ),
               ),
+
+            ]
             );
           } else {
             return Scaffold(

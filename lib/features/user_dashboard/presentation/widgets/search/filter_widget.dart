@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wevr_app/core/components/components.dart';
-import 'package:wevr_app/features/user_dashboard/presentation/screens/explore/filters.dart';
+import 'package:wevr_app/features/user_dashboard/presentation/screens/search_filter/filters.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/values_manager.dart';

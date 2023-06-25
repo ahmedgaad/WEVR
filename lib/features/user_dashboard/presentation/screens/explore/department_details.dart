@@ -5,8 +5,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/states.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/screens/booking/book_visit_view.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/widgets/explore/rating_bar.dart';
+import '../../../../../core/components/bottom_sheet.dart';
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/color_manager.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../../../map_based_homes/presentation/screens/google_map.dart';
 import '../../../../user_profile/presentation/widgets/profile/build_divider.dart';
@@ -177,8 +179,8 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
                                         10.pw,
                                         Expanded(
                                           child: Text(
-                                            state.apartment.apartments[index]
-                                                .features[index],
+                                            state.apartment.apartments[0]
+                                                .features[0],
                                             textAlign: TextAlign.start,
                                           ),
                                         ),
@@ -221,7 +223,10 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
                         10.pw,
                         Expanded(
                             child: LinksButton(
-                          icon: Image.asset(AssetsImagesManager.whatsapp , width: 20,),
+                          icon: Image.asset(
+                            AssetsImagesManager.whatsapp,
+                            width: 20,
+                          ),
                           function: () {},
                           text: 'WhatsApp',
                           background: Colors.grey,
@@ -229,9 +234,16 @@ class _DepartmentDetailsState extends State<DepartmentDetails> {
                         10.pw,
                         Expanded(
                             child: LinksButton(
-                          icon: Image.asset(AssetsImagesManager.bookVisit , width: 20,),
+                          icon: Image.asset(
+                            AssetsImagesManager.bookVisit,
+                            width: 20,
+                          ),
                           function: () {
-                            navigatePush(context, BookVisitView());
+                            if (Constants.userToken == null) {
+                              showBottomSheetWidget(context);
+                            } else {
+                              navigatePush(context, const BookVisitView());
+                            }
                           },
                           text: 'book visit',
                           background: ColorManager.primary,

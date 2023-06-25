@@ -56,15 +56,14 @@ class _WevrState extends State<Wevr> with WidgetsBindingObserver {
               OtpCubit(checkOTPUseCase: sl(), forgotPasswordUseCase: sl()),
         ),
         BlocProvider(
-          create: (BuildContext context) =>
-              LoginCubit(loginUseCase: sl()),
+          create: (BuildContext context) => LoginCubit(loginUseCase: sl()),
         ),
         BlocProvider(
           create: (BuildContext context) => HomeLayoutCubit(
             getApartmentUseCase: sl(),
             logoutUseCase: sl(),
-            // saveApartmentUsecCase: locator(),
             getSavedApartmentsUseCase: sl(),
+            bookVisitUseCase: sl(),
           )..getApartment(),
         ),
         BlocProvider(
@@ -73,6 +72,7 @@ class _WevrState extends State<Wevr> with WidgetsBindingObserver {
         BlocProvider(
           create: (BuildContext context) => SearchCubit(
             searchUseCase: sl(),
+            searchFilterUseCase: sl(),
           ),
         ),
       ],
