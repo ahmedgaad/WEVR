@@ -66,6 +66,7 @@ class StringsManager {
 
     static const checkYourEmail = "check_your_email";
   static const info = "info";
+  static const String loginAsGeustWarnning = "login_as_guest_warnning";
 
   static const String subTitleRecoveryCode = "sub_title_recovery_code";
   static const String createNewPasswordTitle = "create_new_password_title";

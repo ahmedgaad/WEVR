@@ -16,7 +16,6 @@ import 'package:wevr_app/features/authentication/presentation/controller/OTP/otp
 import 'package:wevr_app/features/authentication/presentation/controller/login/cubit.dart';
 import 'package:wevr_app/features/map_based_homes/presentation/controller/map/map_cubit.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/cubit.dart';
-import 'package:wevr_app/features/user_dashboard/presentation/controller/auction/auction_cubit.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/search/cubit.dart';
 import 'core/config/themes/light_theme.dart';
 import 'core/service/service_locator_imports.dart';
