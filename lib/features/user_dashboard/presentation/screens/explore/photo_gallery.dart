@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:wevr_app/core/utils/constants_manager.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/cubit.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/controller/Home/states.dart';
+import '../../../../../core/components/vr_alert_dialog.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 
@@ -21,6 +22,14 @@ class PhotoGallery extends StatelessWidget {
             fontSize: 20,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showAlertDialogWidget(context);
+            },
+            icon: const Icon(Icons.more_vert),
+          ),
+        ],
       ),
       body: BlocBuilder<HomeLayoutCubit, HomeLayOutStates>(
         builder: (context, state) {

@@ -11,6 +11,8 @@ import 'package:wevr_app/features/user_dashboard/presentation/controller/save/cu
 import 'package:wevr_app/features/user_dashboard/presentation/controller/search/cubit.dart';
 import '../../features/map_based_homes/presentation/controller/map/map_cubit.dart';
 import '../../features/authentication/domain/use_cases/logout_usecase.dart';
+import '../../features/user_dashboard/domain/use_cases/book_visit_usecase.dart';
+import '../../features/user_dashboard/domain/use_cases/search_filter_usecase.dart';
 import '../../features/user_dashboard/presentation/controller/Home/cubit.dart';
 import '../../features/authentication/domain/use_cases/check_otp_usecase.dart';
 import '../../features/authentication/domain/use_cases/create_new_password.dart';
@@ -42,10 +44,11 @@ void injectorInitialization() {
         getApartmentUseCase: sl(),
         // saveApartmentUsecCase: locator(),
         getSavedApartmentsUseCase: sl(),
+    bookVisitUseCase: sl(),
       ));
   sl.registerLazySingleton(() => MapCubit());
 
-  sl.registerLazySingleton(() => SearchCubit(searchUseCase: sl()));
+  sl.registerLazySingleton(() => SearchCubit(searchUseCase: sl(), searchFilterUseCase: sl()));
   sl.registerLazySingleton(() => SaveCubit(saveApartmentUsecCase: sl()));
 
   //Usecase
@@ -55,6 +58,7 @@ void injectorInitialization() {
   sl.registerLazySingleton(() => CheckOTPUseCase(sl()));
   sl.registerLazySingleton(() => CreateNewPasswordUseCase(sl()));
   sl.registerLazySingleton(() => LogoutUseCase(sl()));
+  sl.registerLazySingleton(() => BookVisitUseCase( homeRepository: sl(),));
   sl.registerLazySingleton(() => GetApartmentUseCase(
         homeRepository: sl(),
       ));
@@ -67,6 +71,9 @@ void injectorInitialization() {
   sl.registerLazySingleton(() => SearchUseCase(
         homeRepository: sl(),
       ));
+  sl.registerLazySingleton(() => SearchFilterUseCase(
+    homeRepository: sl(),
+  ));
 
   //Repository
   sl.registerLazySingleton<AuthRepository>(
