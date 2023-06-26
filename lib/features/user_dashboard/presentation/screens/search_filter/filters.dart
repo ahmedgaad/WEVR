@@ -192,7 +192,264 @@ class _FiltersViewState extends State<FiltersView> {
                     color: ColorManager.darkGrey,
                   ),
                 ),
-
+                40.ph,
+                Text(
+                  'Bed Rooms',
+                  style: getMediumStylePoppins(
+                    fontSize: AppSize.s16,
+                  ),
+                ),
+                20.ph,
+                Row(
+                  children: [
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '1', isUpperCase: false),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {},
+                            text: '2',
+                            isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                          background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '3', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '4', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '5', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '+5', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent),
+                      ),
+                    ),
+                  ],
+                ),
+                40.ph,
+                Text(
+                  'Baths',
+                  style: getMediumStylePoppins(
+                    fontSize: AppSize.s16,
+                  ),
+                ),
+                20.ph,
+                Row(
+                  children: [
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '1', isUpperCase: false),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {},
+                            text: '2',
+                            isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '3', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '4', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '5', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '+5', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent),
+                      ),
+                    ),
+                  ],
+                ),
+                40.ph,
+                Text(
+                  'Living Rooms',
+                  style: getMediumStylePoppins(
+                    fontSize: AppSize.s16,
+                  ),
+                ),
+                20.ph,
+                Row(
+                  children: [
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '1', isUpperCase: false),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {},
+                            text: '2',
+                            isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '3', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '4', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '5', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent
+                        ),
+                      ),
+                    ),
+                    5.pw,
+                    Expanded(
+                      child: SizedBox(
+                        height: 30,
+                        width: 75,
+                        child: defaultButton(
+                            function: () {}, text: '+5', isUpperCase: false,
+                            textColor: ColorManager.primary,
+                            borderColor: ColorManager.primary,
+                            background: ColorManager.transparent),
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),

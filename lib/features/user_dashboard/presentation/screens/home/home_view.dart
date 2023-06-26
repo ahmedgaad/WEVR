@@ -150,8 +150,13 @@ class _HomeViewState extends State<HomeView> {
                       MaterialButton(
                         onPressed: () {
                           setState(() {
-                            cubit.currentScreen = const HomesView();
-                            cubit.currentTap = 3;
+                            if (Constants.userToken == null) {
+                              showBottomSheetWidget(context);
+                            } else{
+                              cubit.currentScreen = const HomesView();
+                              cubit.currentTap = 3;
+                            }
+
                           });
                         },
                         child: Column(
@@ -178,8 +183,12 @@ class _HomeViewState extends State<HomeView> {
                       MaterialButton(
                         onPressed: () {
                           setState(() {
-                            cubit.currentScreen = const AuctionView();
-                            cubit.currentTap = 4;
+                            if (Constants.userToken == null) {
+                              showBottomSheetWidget(context);
+                            } else {
+                              cubit.currentScreen = const AuctionView();
+                              cubit.currentTap = 4;
+                            }
                           });
                         },
                         child: Column(

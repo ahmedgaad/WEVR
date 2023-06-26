@@ -116,7 +116,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   Future<List<SearchModel>> searchApartments({required String query}) async {
     try {
       final headers = {
-        'Authorization': 'Bearer ${Constants.userToken!}',
+        'Authorization': 'Bearer ${Constants.userToken}',
       };
       final response = await dio.get(
         Constants.search,
@@ -141,7 +141,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
       int? bedroom, int? baths, int? livingRoom, int? maxPrice) async {
     try {
       final headers = {
-        'Authorization': 'Bearer ${Constants.userToken!}',
+        'Authorization': 'Bearer ${Constants.userToken}',
       };
       final params = {
         'type': type,
