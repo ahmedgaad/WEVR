@@ -6,6 +6,7 @@ import 'package:wevr_app/features/user_dashboard/domain/entities/apartment_eniti
 import 'package:wevr_app/features/user_dashboard/domain/entities/save_apartment_entity.dart';
 import 'package:wevr_app/features/user_dashboard/domain/entities/saved_apartment_entity.dart';
 import 'package:wevr_app/features/user_dashboard/domain/entities/search_entity.dart';
+import 'package:wevr_app/features/user_dashboard/domain/entities/search_filter_entity.dart';
 import 'package:wevr_app/features/user_dashboard/domain/repository/home_repository.dart';
 
 import '../../../../core/errors/exceptions.dart';
@@ -78,6 +79,47 @@ class HomeRepositoryImplementation implements HomeRepository {
       throw UnimplementedError();
     }
   }
+
+  @override
+  Future<Either<Failure, List<SearchFilterEntity>>> searchFilter(
+      int? type,
+      int? minPrice,
+      int? bedroom,
+      int? baths,
+      int? livingRoom,
+      int? maxPrice,
+      ) async {
+    if (await networkInfo.isConnected) {
+      try{
+        final result = await homeRemoteDataSource.searchFilter(type, minPrice, bedroom, baths, livingRoom, maxPrice);
+        return Right(result);
+      } on ServerException {
+        return const Left(ServerFailure(StringsManager.SERVER_FAILURE_MESSAGE));
+      }
+    }
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, dynamic>> bookVisit({
+    required int id,
+    required DateTime datetime,
+  }) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await homeRemoteDataSource.bookVisit(
+          id: id,
+          dateTime: datetime,
+        );
+        return Right(result);
+      } on ServerException {
+        return const Left(ServerFailure(StringsManager.SERVER_FAILURE_MESSAGE));
+      }
+    }
+    throw UnimplementedError();
+  }
+
+
 
 // @override
 // Future<Either<Failure, SaveApartmentEntity>> saveApartment({required ApartmentEntity apartment}) async{

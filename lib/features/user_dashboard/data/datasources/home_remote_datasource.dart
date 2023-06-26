@@ -1,4 +1,6 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:wevr_app/features/user_dashboard/data/models/search_filter_model.dart';
 import 'package:wevr_app/features/user_dashboard/data/models/search_model.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/utils/constants.dart';
@@ -14,12 +16,28 @@ abstract class HomeRemoteDataSource {
   Future<SavedApartmentsModel> getSavedApartments();
 
   Future<List<SearchModel>> searchApartments({required String query});
+
+  Future<dynamic> bookVisit({
+    required int id,
+    required DateTime dateTime,
+  });
+
+  Future<List<SearchFilterModel>> searchFilter(
+    int? type,
+    int? minPrice,
+    int? bedroom,
+    int? baths,
+    int? livingRoom,
+    int? maxPrice,
+  );
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   final Dio dio = Dio(BaseOptions(
     headers: {"Content-Type": "application/json"},
     receiveDataWhenStatusError: true,
+    followRedirects: false,
+    maxRedirects: 0,
     receiveTimeout: const Duration(
       seconds: 20 * 1000,
     ),
@@ -115,6 +133,67 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
       }
     } catch (e) {
       throw Exception('Failed to load apartments: $e');
+    }
+  }
+
+  @override
+  Future<List<SearchFilterModel>> searchFilter(int? type, int? minPrice,
+      int? bedroom, int? baths, int? livingRoom, int? maxPrice) async {
+    try {
+      final headers = {
+        'Authorization': 'Bearer ${Constants.userToken!}',
+      };
+      final params = {
+        'type': type,
+        'min_price': minPrice,
+        'bedroom': bedroom,
+        'baths': baths,
+        'Livingroom': livingRoom,
+        'max_price': maxPrice,
+      };
+      final response = await dio.get(
+        Constants.search,
+        queryParameters: params,
+        options: Options(headers: headers),
+      );
+      if (response.statusCode == 200) {
+        final List<dynamic> data = response.data['data'];
+        final List<SearchFilterModel> results = data
+            .map((apartmentJson) => SearchFilterModel.fromJson(apartmentJson))
+            .toList();
+        return results;
+      } else {
+        throw ServerException();
+      }
+    } catch (e) {
+      throw Exception('Failed to load apartments: $e');
+    }
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Response> bookVisit({
+    required int id,
+    required DateTime dateTime,
+  }) async {
+    try {
+      final headers = {
+        'Authorization': 'Bearer ${Constants.userToken}',
+      };
+      final body = {
+        'reserve_date': dateTime.toString(),
+      };
+      final response = await dio.post(
+        '${Constants.booking}$id',
+        data: body,
+        options: Options(headers: headers),
+      );
+      if (response.statusCode == 200) {
+        print('booking done successfully');
+      }
+      return response;
+    } catch (e) {
+      throw Exception('Failed to book : $e');
     }
   }
 }

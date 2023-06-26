@@ -17,6 +17,10 @@ class ChangeBottomNavState extends HomeLayOutStates {}
 
 class ChangeFavState extends HomeLayOutStates {}
 
+class BookingSuccess extends HomeLayOutStates {}
+
+class BookingFailed extends HomeLayOutStates {}
+
 class LogoutSuccessfullyState extends HomeLayOutStates {
   final Logout logout;
 
@@ -50,7 +54,7 @@ class ApartmentErrorState extends HomeLayOutStates {
 class SuccessApartmentSavedState extends HomeLayOutStates {
   final SaveApartmentEntity saveApartment;
 
-  const SuccessApartmentSavedState( {
+  const SuccessApartmentSavedState({
     required this.saveApartment,
   });
 }

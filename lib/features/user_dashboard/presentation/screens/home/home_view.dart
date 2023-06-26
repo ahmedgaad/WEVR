@@ -4,9 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import '../../../../../core/components/bottom_sheet.dart';
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/assets_manager.dart';
 import '../../../../../core/utils/color_manager.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/fonts_manager.dart';
 import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
@@ -110,9 +112,13 @@ class _HomeViewState extends State<HomeView> {
                       MaterialButton(
                         onPressed: () {
                           setState(() {
-                            cubit.currentScreen = const SavedView();
-                            cubit.currentTap = 1;
-                            cubit.getSavedApartments();
+                            if (Constants.userToken == null) {
+                              showBottomSheetWidget(context);
+                            } else {
+                              cubit.currentScreen = const SavedView();
+                              cubit.currentTap = 1;
+                              cubit.getSavedApartments();
+                            }
                           });
                         },
                         child: Column(

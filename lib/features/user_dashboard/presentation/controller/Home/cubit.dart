@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../authentication/domain/use_cases/logout_usecase.dart';
+import '../../../domain/use_cases/book_visit_usecase.dart';
 import '../../../domain/use_cases/get_apartment_use_case.dart';
 import '../../../domain/use_cases/get_saved_apartments_usecase.dart';
 import '../../screens/auction/auction_imports.dart';
@@ -13,13 +14,17 @@ class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
   final LogoutUseCase logoutUseCase;
   final GetApartmentUseCase getApartmentUseCase;
   final GetSavedApartmentsUseCase getSavedApartmentsUseCase;
+  final BookVisitUseCase bookVisitUseCase;
 
+ 
 
-  HomeLayoutCubit({
-    required this.getApartmentUseCase,
-    required this.logoutUseCase,
-    required this.getSavedApartmentsUseCase,
-  }) : super(HomeLayOutInitialState());
+  HomeLayoutCubit(
+      {required this.getApartmentUseCase,
+      required this.logoutUseCase,
+      required this.getSavedApartmentsUseCase,
+      required this.bookVisitUseCase})
+      : super(HomeLayOutInitialState());
+
 
   static HomeLayoutCubit get(context) => BlocProvider.of(context);
 
@@ -57,15 +62,44 @@ class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
     }
   }
 
+   Future<void> bookVisit({
+    required int id,
+    required DateTime dateTime,
+    required String token,
+  }) async {
+
+    final booking =
+        await bookVisitUseCase.call(id: id, dateTime: dateTime,);
+    booking.fold((failure) {
+      emit(BookingSuccess());
+    }, (right) {
+      BookingFailed();
+    });
+  }
+
+  // Future<void> saveApartment({
+  //   required int id,
+  // }) async {
+  //   try {
+  //     final saveApartment = await saveApartmentUsecCase.call(id: id);
+  //     saveApartment.fold((failure) {
+  //       emit(ErrorApartmentSavedState(error: failure.toString()));
+  //     }, (saveApartment) {
+  //       emit(SuccessApartmentSavedState(saveApartment: saveApartment,));
+  //     });
+  //   } catch (e) {
+  //     emit(ErrorApartmentSavedState(error: e.toString()));
+  //   }
+  // }
   Future<void> getSavedApartments() async {
     emit(SavedApartmentsLoadingStates());
     try {
       final apartments = await getSavedApartmentsUseCase.call();
       apartments.fold(
-            (failure) {
+        (failure) {
           emit(SavedApartmentsErrorLoadedStates(error: failure.toString()));
         },
-            (apartments) {
+        (apartments) {
           emit(SavedApartmentsSuccessLoadedStates(savedApartments: apartments));
         },
       );
@@ -73,6 +107,7 @@ class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
       emit(SavedApartmentsErrorLoadedStates(error: e.toString()));
     }
   }
+
   // int currentIndex=0;
   int currentTap = 0;
 
