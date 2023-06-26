@@ -27,20 +27,34 @@ class ApartmentsModel extends Apartments {
     required super.image,
   });
 
-  factory ApartmentsModel.fromJson(Map<String, dynamic> json) =>
-      ApartmentsModel(
-        id: json['id'],
-        userId: json['user_id'],
-        type: json['type'],
-        vrlink: json['vrlink'],
-        location: json['location'],
-        status: json['status'],
-        descrption: json['descrption'],
-        features: List<String>.from(json['features']),
-        rating: json['rating'],
-        info: InfoModel.fromJson(json['info']),
-        image: List<String>.from(json['image']),
-      );
+  factory ApartmentsModel.fromJson(Map<String, dynamic> json) {
+    String type = json['type'];
+    switch (type) {
+      case '1':
+        type = 'Apartment';
+        break;
+      case '2':
+        type = 'Duplex';
+        break;
+      case '3':
+        type = 'Villa';
+        break;
+      default:
+    }
+    return ApartmentsModel(
+      id: json['id'],
+      userId: json['user_id'],
+      type: type,
+      vrlink: json['vrlink'],
+      location: json['location'],
+      status: json['status'],
+      descrption: json['descrption'],
+      features: List<String>.from(json['features']),
+      rating: json['rating'],
+      info: InfoModel.fromJson(json['info']),
+      image: List<String>.from(json['image']),
+    );
+  }
 }
 
 class InfoModel extends Info {
