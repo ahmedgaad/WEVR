@@ -20,7 +20,10 @@ class Constants {
   static const String saveApartment = "/save/apartment/";
   static const String savedApartment = "/saved/apartment";
   static const String search = "/search";
-  static const String booking = "/reservation/apartment/";
+   static const String booking = "/reservation/apartment/";
+ 
+  static const String auction = "/list/auction/apartments";
+ 
   static String kToken = "token";
   static String kOnBoarding = "onboarding";
 }

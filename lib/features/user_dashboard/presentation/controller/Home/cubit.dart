@@ -4,7 +4,7 @@ import '../../../../authentication/domain/use_cases/logout_usecase.dart';
 import '../../../domain/use_cases/book_visit_usecase.dart';
 import '../../../domain/use_cases/get_apartment_use_case.dart';
 import '../../../domain/use_cases/get_saved_apartments_usecase.dart';
-import '../../screens/auction/auction_view.dart';
+import '../../screens/auction/auction_imports.dart';
 import '../../screens/explore/explore_view.dart';
 import '../../screens/homes/homes_view.dart';
 import '../../screens/saved/saved_view.dart';
@@ -13,10 +13,10 @@ import 'states.dart';
 class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
   final LogoutUseCase logoutUseCase;
   final GetApartmentUseCase getApartmentUseCase;
-
-  // final SaveApartmentUsecCase saveApartmentUsecCase;
   final GetSavedApartmentsUseCase getSavedApartmentsUseCase;
   final BookVisitUseCase bookVisitUseCase;
+
+ 
 
   HomeLayoutCubit(
       {required this.getApartmentUseCase,
@@ -24,6 +24,7 @@ class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
       required this.getSavedApartmentsUseCase,
       required this.bookVisitUseCase})
       : super(HomeLayOutInitialState());
+
 
   static HomeLayoutCubit get(context) => BlocProvider.of(context);
 
@@ -61,7 +62,7 @@ class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
     }
   }
 
-  Future<void> bookVisit({
+   Future<void> bookVisit({
     required int id,
     required DateTime dateTime,
     required String token,
@@ -90,7 +91,6 @@ class HomeLayoutCubit extends Cubit<HomeLayOutStates> {
   //     emit(ErrorApartmentSavedState(error: e.toString()));
   //   }
   // }
-
   Future<void> getSavedApartments() async {
     emit(SavedApartmentsLoadingStates());
     try {

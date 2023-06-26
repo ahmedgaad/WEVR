@@ -1,9 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:wevr_app/features/user_dashboard/domain/entities/search_entity.dart';
-
 import '../../../data/models/search_model.dart';
 import '../../../domain/entities/search_filter_entity.dart';
-
 abstract class SearchStates extends Equatable {
   const SearchStates();
 

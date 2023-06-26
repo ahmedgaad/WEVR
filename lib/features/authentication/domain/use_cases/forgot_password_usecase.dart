@@ -5,7 +5,7 @@ import '../entities/forgot_password.dart';
 import '../repository/auth_repository.dart';
 
 class ForgotPasswordUseCase {
-  final AuthRepository authRepository;
+  final BaseAuthRepository authRepository;
   ForgotPasswordUseCase(this.authRepository);
 
   Future<Either<Failure, ForgotPassword>> call({

@@ -7,7 +7,7 @@ import '../../../../core/errors/failures.dart';
 import '../entities/login.dart';
 import '../entities/register.dart';
 
-abstract class AuthRepository {
+abstract class BaseAuthRepository {
   Future<Either<Failure, Register>> register({
     required String userName,
     required String email,

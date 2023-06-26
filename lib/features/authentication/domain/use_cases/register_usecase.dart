@@ -5,7 +5,7 @@ import '../entities/register.dart';
 import '../repository/auth_repository.dart';
 
 class RegisterUseCase {
-  final AuthRepository authRepository;
+  final BaseAuthRepository authRepository;
   RegisterUseCase(this.authRepository);
 
   Future<Either<Failure, Register>> call({

@@ -32,7 +32,7 @@ abstract class HomeRemoteDataSource {
   );
 }
 
-class HomeRemoteDataSourceDio implements HomeRemoteDataSource {
+class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   final Dio dio = Dio(BaseOptions(
     headers: {"Content-Type": "application/json"},
     receiveDataWhenStatusError: true,

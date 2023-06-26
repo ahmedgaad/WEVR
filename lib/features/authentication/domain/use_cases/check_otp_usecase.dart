@@ -5,7 +5,7 @@ import '../entities/check_otp.dart';
 import '../repository/auth_repository.dart';
 
 class CheckOTPUseCase {
-  final AuthRepository authRepository;
+  final BaseAuthRepository authRepository;
   CheckOTPUseCase(this.authRepository);
 
   Future<Either<Failure, CheckOTP>> call({

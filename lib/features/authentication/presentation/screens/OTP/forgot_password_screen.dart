@@ -5,9 +5,8 @@ import 'package:get/get.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import '../../../../../core/components/components.dart';
-import '../../../../../core/service/service_locator.dart';
+import '../../../../../core/service/service_locator_imports.dart';
 import '../../../../../core/utils/assets_manager.dart';
-import '../../../../../core/config/routes/routes_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 import '../../controller/OTP/otp_cubit.dart';
@@ -16,13 +15,20 @@ import 'reset_via_email/reset_email_view.dart';
 
 import '../../../../../core/utils/strings_manager.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  ForgotPasswordScreen({super.key});
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({super.key});
 
-  // final TextEditingController _emailController = TextEditingController();
+  @override
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+}
+
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _emailKey = GlobalKey<FormState>();
+
   TextEditingController emailController = TextEditingController();
+
   late String email;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

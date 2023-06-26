@@ -83,6 +83,8 @@ class WevrTranslations extends Translations {
           "enter_your_email": "أدخل بريدك الإلكتروني",
           "info": "معلومة",
           "check_your_email": "تحقق من بريدك الإلكتروني",
+          "login_as_guest_warnning":
+              "برجاء تسجيل الدخول للمتابعة والوصول لكل مميزات ويفر!",
         },
         'en': {
           "no_route_found": "No Route Found",
@@ -169,6 +171,8 @@ class WevrTranslations extends Translations {
           "enter_your_email": "Enter your Email",
           "check_your_email": "Check your Email",
           "info": "Info",
+          "login_as_guest_warnning":
+              "Please log in to continue and access all the features of Wevr!",
         },
       };
 }

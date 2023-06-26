@@ -14,7 +14,7 @@ import '../../../../../core/utils/strings_manager.dart';
 import '../../../../../core/utils/styles_manager.dart';
 import '../../../../../core/utils/values_manager.dart';
 import '../../../../map_based_homes/presentation/screens/google_map.dart';
-import '../auction/auction_view.dart';
+import '../auction/auction_imports.dart';
 import '../explore/explore_view.dart';
 import '../homes/homes_view.dart';
 import '../saved/saved_view.dart';

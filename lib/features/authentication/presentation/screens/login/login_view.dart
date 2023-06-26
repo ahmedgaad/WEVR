@@ -4,11 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/quickalert.dart';
-import 'package:wevr_app/core/service/service_locator.dart';
 import 'package:wevr_app/features/authentication/presentation/screens/OTP/reset_pass/reset_pass.dart';
 import 'package:wevr_app/features/authentication/presentation/widgets/login_register_background.dart';
 import 'package:wevr_app/features/user_dashboard/presentation/screens/home/home_view.dart';
-
 import '../../../../../core/components/components.dart';
 import '../../../../../core/utils/color_manager.dart';
 import '../../../../../core/config/routes/routes_manager.dart';

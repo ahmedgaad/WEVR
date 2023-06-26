@@ -3,13 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:quickalert/models/quickalert_type.dart';
-import 'package:quickalert/widgets/quickalert_dialog.dart';
-import '../../../../../../core/service/service_locator.dart';
+import '../../../../../../core/service/service_locator_imports.dart';
 import '../../../controller/OTP/otp_cubit.dart';
 import '../../../controller/OTP/otp_states.dart';
-import '../../../controller/login/cubit.dart';
-import '../../../controller/login/states.dart';
 import '../forgot_password_screen.dart';
 import '../../../../../../core/components/components.dart';
 import '../../../../../../core/utils/assets_manager.dart';
@@ -19,7 +15,6 @@ import '../../../../../../core/utils/strings_manager.dart';
 import '../../../../../../core/utils/styles_manager.dart';
 import '../../../../../../core/utils/values_manager.dart';
 import '../../../widgets/forget_pass/forget_password_top_column.dart';
-import '../reset_via_email/reset_email_view.dart';
 import '../reset_via_phone/reset_phone_view.dart';
 
 class ForgotPasswordView extends StatefulWidget {
